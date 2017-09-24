@@ -1,0 +1,186 @@
+<meta meta charset=utf-8>
+
+<br><br><br>
+<div class="col-sm-4 col-sm-offset-4">
+	<div class="alert alert-danger" ng-show="error" style="text-align:center;">
+	  <strong>{{'login.error' | translate}}!</strong> <span>{{'login.incorrect_login_or_password' | translate}}. <br>{{'login.try_again' | translate}}.</span>
+	</div>
+	<form ng-submit="login($event)" 
+		name="loginForm"
+		id="loginForm"
+		method="post"
+		class="form-horizontal"
+		novalidate>
+
+		<fieldset>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<input id="username" 
+						name="username"
+						ng-model="data.credentials.username"
+						class="form-control"
+						ng-class="{submitted:loginForm.submitted}"
+						required
+						placeholder="Login" 
+						type="text">
+						<span 
+							ng-show="loginForm.username.$error.required && loginForm.submitted" 
+							style="color : #f00; float:left;"
+							>{{'login.login_is_required' | translate}}
+						</span>
+<!-- 					 <div *ngIf="loginForm.submitted && !username.valid" class="help-block" style="color:#f00">Login jest wymagany</div> -->
+				</div>
+		
+				<div class="col-sm-12 no-top-border">
+					<input id="password" 
+						name="password" 
+						ng-model="data.credentials.password"
+						ng-class="{submitted:loginForm.submitted}"
+						required
+						class="form-control" 
+						placeholder="Hasło"
+						type="password">
+					<span 
+						ng-show="loginForm.password.$error.required && loginForm.submitted" 
+						style="color : #f00; float:left;"
+						>{{'login.password_is_required' | translate}}
+					</span>
+<!-- 					<div *ngIf="loginForm.submitted && !password.valid" class="help-block" style="color:#f00">Hasło jest wymagane</div> -->
+				</div>
+				<div
+					class="col-sm-5 col-sm-offset-7 col-xs-offset-8 col-xs-4 text-right password-reset">
+					<a class="faded" href="javascript:void(0)"
+						(click)="forgotPassword()">Nie pamiętasz? </a>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<!--                         <div class="col-xs-12"> -->
+				<!--                             <div class="checkbox"> -->
+				<!--                                 <label for="remember_me"> -->
+				<!--                                     <input id="remember_me" name="_remember_me" value="on" type="checkbox"> -->
+				<!--                                         Remember me -->
+				<!--                                 </label> -->
+				<!--                             </div> -->
+				<!--                         </div> -->
+
+				<div class="col-xs-12">
+					<button type="submit" class="btn btn-lg btn-success btn-block"
+						name="login" style="background-color: #d68121;">Zaloguj</button>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-6 text-left">
+					<a href="javascript:void(0)" 
+						class=""
+						(click)="createAccount()"> Nie masz
+						jeszcze konta? </a>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<style>
+input.submitted.ng-invalid
+{
+  border:2px solid #f00;
+}
+.btn-success, .btn-success:active, .btn-success:focus, .btn-success:hover {
+    background-color: #d68121 !important;
+    border-color: #d68121 !important;
+}
+.btn-group-lg > .btn, .btn-lg {
+    padding: 14px 16px;
+    font-size: 16px;
+}
+.btn-success {
+    background-color: #009d12;
+    color: #FFF;
+}
+.btn {
+    transition: backgroundColor,color;
+        transition-duration: 0s, 0s;
+        transition-timing-function: ease, ease;
+    transition-duration: 60ms;
+    transition-timing-function: ease-out;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-group-lg > .btn, .btn-lg {
+    line-height: 1.33333;
+    border-radius: 3px;
+}
+.btn-success {
+    border-color: #4cae4c;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn, .btn-danger.active, .btn-danger:active, .btn-default.active, .btn-default:active, .btn-info.active, .btn-info:active, .btn-primary.active, .btn-primary:active, .btn-warning.active, .btn-warning:active, .btn.active, .btn:active, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover, .form-control, .navbar-toggle, .open > .btn-danger.dropdown-toggle, .open > .btn-default.dropdown-toggle, .open > .btn-info.dropdown-toggle, .open > .btn-primary.dropdown-toggle, .open > .btn-warning.dropdown-toggle {
+    background-image: none;
+}
+[data-view="account-login"] .form-group .form-control {
+    padding: 6px 11px;
+    height: 52px;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-appearance: none;
+}
+.form-control {
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.form-control, output {
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555;
+    display: block;
+}
+.btn, .btn-danger.active, .btn-danger:active, .btn-default.active, .btn-default:active, .btn-info.active, .btn-info:active, .btn-primary.active, .btn-primary:active, .btn-warning.active, .btn-warning:active, .btn.active, .btn:active, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover, .form-control, .navbar-toggle, .open > .btn-danger.dropdown-toggle, .open > .btn-default.dropdown-toggle, .open > .btn-info.dropdown-toggle, .open > .btn-primary.dropdown-toggle, .open > .btn-warning.dropdown-toggle {
+    background-image: none;
+}
+a {
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+a, body {
+    color: #333;
+}
+ .password-reset {
+    margin-top: -30px;
+    padding-right: 20px;
+}
+	
+</style>

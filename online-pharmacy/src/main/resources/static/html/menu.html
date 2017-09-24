@@ -1,0 +1,143 @@
+
+<nav class="nav-bar" role="navigation">
+			<div class="wrapper">
+				<div class="medium-down--hide">
+					<ul class="site-nav" id="AccessibleNav" style="text-align: center;">
+						<li class="parentDiv" ng-repeat="menu in menus">
+<!-- 							<div > -->
+								<a class="site-nav__link">{{'menu.'+menu.name | translate}}</a>
+								<ul class="site-nav__dropdown dropdown two-column drop1"
+									style="margin: 0px 0 0px 0px;">
+									<li ng-repeat="submenu in menu.subcategory
+									">
+										<a class="site-nav__link" href="javascript:void(0)" 
+										ng-click="changeRoute(submenu.url)" ui-sref="medicineList({name:'{{submenu.url}}'})">
+										{{'submenu.'+submenu.name | translate}}</a>
+									</li>
+								</ul>
+						</li>
+<!-- 						<li class="parentDiv"> -->
+<!-- 							          <div class="parentDiv">             <a class="site-nav__link">MEDICINE</a> -->
+<!-- 							<a class="site-nav__link">Lekarstwa</a> -->
+<!-- 							<ul class="site-nav__dropdown dropdown two-column drop1" -->
+<!-- 								style="margin: 0px 0 0px 0px;"> -->
+<!-- 								<li> -->
+<!-- 									                      <a href="/collections/adult-pain-relief" class="site-nav__link">Adult Pain Relief</a> -->
+<!-- 									<a routerLink="pain-relief" class="site-nav__link" -->
+<!-- 									routerLinkActive="active-link">Leki przeciwbólowe</a> -->
+<!-- 								</li> -->
+<!-- 								<li><a href="/collections/child-pain-relief" -->
+<!-- 									class="site-nav__link">Child Pain Relief</a></li> -->
+<!-- 								<li><a href="/collections/allergies-hayfever" -->
+<!-- 									class="site-nav__link">Allergies &amp; Hayfever</a></li> -->
+<!-- 								                    <li> -->
+<!-- 								                      <a href="/collections/common-eye-problems" class="site-nav__link">Eye Conditions</a> -->
+<!-- 								                    </li> -->
+<!-- 								                    <li> -->
+<!-- 								                      <a href="/collections/fungal-infections-wart-remedies" class="site-nav__link">Fungal Infections &amp; Warts</a> -->
+<!-- 								                    </li> -->
+<!-- 							</ul>                </div> -->
+<!-- 						</li> -->
+
+
+<!-- 						<li class="parentDiv" aria-haspopup="true"> -->
+<!-- 							            <a class="site-nav__link">VITAMINS</a> <a -->
+<!-- 							class="site-nav__link">Witaminy</a> -->
+<!-- 							<ul class="site-nav__dropdown dropdown two-column drop1" -->
+<!-- 								style="margin: 0px 0 0px 0px;"> -->
+<!-- 								<li><a routerLink="energy-vitality" class="site-nav__link" -->
+<!-- 									routerLinkActive="active-link">Energia i witalnoœæ</a> -->
+<!-- <!-- 									class="site-nav__link">Energy and Vitality</a></li> --> -->
+<!-- 								<li><a href="/collections/multi-vitamins" -->
+<!-- 									class="site-nav__link">Multi-witaminy</a></li> -->
+<!-- <!-- 									class="site-nav__link">Multi-Vitamins</a></li> --> -->
+
+
+
+
+<!-- 								<li><a href="/collections/probiotics" -->
+<!-- 									class="site-nav__link">Probiotyki</a></li> -->
+<!-- 							</ul> -->
+<!-- 						</li> -->
+<!-- 						<li class="site-nav--has-dropdown" aria-haspopup="true"><a -->
+<!-- 							class="site-nav__link">DZIECKO</a> -->
+<!-- 							<ul class="site-nav__dropdown dropdown two-column"> -->
+<!-- 								<li><a href="/collections/bottles-teats" -->
+<!-- 									class="site-nav__link">Bottles &amp; Teats</a></li> -->
+<!-- 								<li><a href="/collections/soothers" class="site-nav__link">Soothers</a> -->
+<!-- 								</li> -->
+<!-- 								<li><a href="/collections/training-cups" -->
+<!-- 									class="site-nav__link">Training Cups</a></li> -->
+<!-- 								<li><a href="/collections/sterilisers" -->
+<!-- 									class="site-nav__link">Sterilisers</a></li> -->
+<!-- 							</ul></li> -->
+<!-- 						<li class="site-nav--has-dropdown" aria-haspopup="true"><a -->
+<!-- 							class="site-nav__link">URODA</a> -->
+<!-- 							<ul class="site-nav__dropdown dropdown"> -->
+<!-- 								<li><a href="/collections/new-trending" -->
+<!-- 									class="site-nav__link">New &amp; Trending</a></li> -->
+<!-- 								<li><a href="/collections/brows" class="site-nav__link">Brows</a> -->
+<!-- 								</li> -->
+<!-- 								<li><a href="/collections/contouring" -->
+<!-- 									class="site-nav__link">Contouring</a></li> -->
+<!-- 								<li><a href="/collections/hair" class="site-nav__link">Hair</a> -->
+<!-- 								</li> -->
+<!-- 								<li><a href="/collections/nails" class="site-nav__link">Nails</a> -->
+<!-- 								</li> -->
+<!-- 								<li><a href="/collections/bronzers" class="site-nav__link">Bronzers</a> -->
+<!-- 								</li> -->
+<!-- 								<li><a href="/collections/cosmetics" class="site-nav__link">Cosmetics</a> -->
+<!-- 								</li> -->
+<!-- 							</ul></li> -->
+<!-- 						<li class="site-nav--has-dropdown" aria-haspopup="true"><a -->
+<!-- 							class="site-nav__link">Mê¿czyzna</a> -->
+<!-- 							<ul class="site-nav__dropdown dropdown"> -->
+<!-- 								<li><a href="/collections/shaving-essentials" -->
+<!-- 									class="site-nav__link">Shaving Essentials</a></li> -->
+<!-- 								<li><a href="/collections/deodorants" -->
+<!-- 									class="site-nav__link">Deodorants</a></li> -->
+<!-- 								<li><a href="/collections/razor-and-blades-combi-packs" -->
+<!-- 									class="site-nav__link">Razor &amp; Blades Combi Packs</a></li> -->
+<!-- 								<li><a href="/collections/after-shaves" -->
+<!-- 									class="site-nav__link">After-Shaves</a></li> -->
+<!-- 							</ul></li> -->
+<!-- 						<li class="site-nav--has-dropdown" aria-haspopup="true"><a -->
+<!-- 							class="site-nav__link">PREZENTY</a> -->
+<!-- 							<ul class="site-nav__dropdown dropdown"> -->
+<!-- 								<li><a href="/collections/for-her" class="site-nav__link">For -->
+<!-- 										Her</a></li> -->
+<!-- 								<li><a href="/collections/for-him" class="site-nav__link">For -->
+<!-- 										Him</a></li> -->
+<!-- 								<li><a href="/collections/christmas-gifts" -->
+<!-- 									class="site-nav__link">Christmas Gifts</a></li> -->
+<!-- 							</ul></li> -->
+
+					</ul>
+					<!-- //site-nav -->
+				</div>
+<!-- 				<div class="large--hide medium-down--show"> -->
+<!-- 					<div class="grid"> -->
+<!-- 						<div class="grid__item one-half"> -->
+<!-- 							<div class="site-nav--mobile"> -->
+<!-- 								<button type="button" -->
+<!-- 									class="icon-fallback-text site-nav__link js-drawer-open-left" -->
+<!-- 									aria-controls="NavDrawer" aria-expanded="false"> -->
+<!-- 									<span class="icon icon-hamburger" aria-hidden="true"></span> <span -->
+<!-- 										class="fallback-text">Menu</span> -->
+<!-- 								</button> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="grid__item one-half text-right"> -->
+<!-- 							<div class="site-nav--mobile"> -->
+<!-- 								<button type="button" -->
+<!-- 									class="icon-fallback-text site-nav__link js-drawer-open-right" -->
+<!-- 									aria-controls="CartDrawer" aria-expanded="false"> -->
+<!-- 									<span class="icon icon-cart" aria-hidden="true"></span> <span -->
+<!-- 										class="fallback-text">Cart</span> -->
+<!-- 								</button> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+			</div>
+		</nav>

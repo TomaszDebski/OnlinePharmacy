@@ -1,0 +1,151 @@
+<meta meta charset=utf-8>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="page-header" style="margin: 0;">
+				<h1>
+					Rejestracja <small>Stwórz konto w naszym sklepie</small>
+				</h1>
+			</div>
+	
+			<form ng-submit="createUser(user)" name="registerForm"
+					id="registerForm"
+				 class="form-horizontal" novalidate>
+				 <div class="alert alert-success" ng-show="successAdd">
+					  <strong>{{'commons.success' | translate}}!</strong> {{'registration.create_new_user' | translate}}
+				</div>
+			<div class="form-group">
+				<div class="col-xs-6">
+					<input id="name" name="name"
+						ng-model="user.name"
+						ng-class="{submitted:registerForm.submitted}"
+						required
+						class=" form-control" placeholder="Imię" type="text">
+<!-- 				<div *ngIf="registerForm.submitted && !firstName.valid" class="help-block" style="color:#f00">Imię jest wymagane</div> -->
+						<span ng-show="registerForm.name.$error.required  && registerForm.submitted" 
+							style="color : #f00; float:left;"
+							>{{'commons.firstname_is_required' | translate}}
+						</span>
+				</div>
+
+				<div class="col-xs-6">
+					<input id="fos_user_registration_form_lastName" name="lastName"
+						ng-model="user.lastName"
+						ng-class="{submitted:registerForm.submitted}"
+						required
+						class=" form-control" placeholder="Nazwisko" type="text">
+<!-- 					<div *ngIf="registerForm.submitted && !lastName.valid" class="help-block" style="color:#f00">Nazwisko jest wymagane</div>	 -->
+					<span 
+						ng-show="registerForm.lastName.$error.required && registerForm.submitted" 
+						style="color : #f00; float:left;">{{'commons.lastname_is_required' | translate}}</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-6">
+					<input id="fos_user_registration_form_plainPassword_first"
+						name="username" 
+						ng-model="user.username"
+						required class="zxcvbn-password form-control" placeholder="Login"
+						ng-class="{submitted:registerForm.submitted}"
+						username-available-directive
+						type="text">
+<!-- 					<meter max="5" id="password-strength-meter"></meter> -->
+<!-- 					<div *ngIf="registerForm.submitted && !username.valid" class="help-block" style="color:#f00">Login jest wymagany</div> -->
+						<span 
+								ng-if="registerForm.username.$error.required && registerForm.submitted" 
+								style="color : #f00; float:left;">
+								{{'login.login_is_required' | translate}}</span>
+						<span 
+								ng-if="registerForm.$error.usernameExists && registerForm.submitted" 
+								style="color : #f00; float:left;">
+								{{'registration.username_already_reserved' | translate}}</span>
+					<!--                     <p id="password-strength-text"><strong>Minimum 8 Characters</strong></p> -->
+				</div>
+				<div class="col-xs-6">
+					<input id="fos_user_registration_form_email" name="email"
+						ng-model="user.email" required
+						ng-class="{submitted:registerForm.submitted}"
+						class=" form-control" placeholder="Email" type="email">
+<!-- 					<div *ngIf="registerForm.submitted && !email.valid" class="help-block" style="color:#f00">E-mail jest wymagany</div> -->
+					<span 
+								ng-show="registerForm.email.$error.required && registerForm.submitted" 
+								style="color : #f00; float:left;">{{'commons.email_is_required' | translate}}
+							</span>
+							<span 
+	        					ng-show="registerForm.email.$error.email && registerForm.submitted" 
+	        					style="color : #f00; float:left;"
+	        					>{{'commons.incorrect_email' | translate}}
+	        				</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-6">
+					<input id="password"
+						name="password" 
+						ng-model="user.password"
+						ng-class="{submitted:registerForm.submitted}"
+						required 
+						class="zxcvbn-password form-control" placeholder="Hasło"
+						type="password">
+<!-- 					<meter max="5" id="password-strength-meter"></meter> -->
+<!-- 					<div *ngIf="registerForm.submitted && !password.valid" class="help-block" style="color:#f00">Hasło jest wymagane</div> -->
+					<!--                     <p id="password-strength-text"><strong>Minimum 8 Characters</strong></p> -->
+						<span 
+							ng-show="registerForm.password.$error.required && registerForm.submitted" 
+							style="color : #f00; float:left;"
+							>{{'login.password_is_required' | translate}}
+						</span>
+				</div>
+				<div class="col-xs-6">
+                    <input 
+                    id="passwordConfirm" 
+                    name="passwordConfirm" 
+                    ng-model="passwordConfirm"
+                    ng-class="{submitted:registerForm.submitted}"
+                    required 
+                    class=" form-control" 
+                    placeholder="Powtórz hasło" 
+                  	type="password"
+                  	required data-password-verify="user.password">
+                  	<span 
+						ng-show="registerForm.passwordConfirm.$error.required && registerForm.submitted" 
+						 style="color : #f00; float:left;"
+						 >{{'registration.password_confirmation_required' | translate}}
+					</span>
+					 <span 
+					 	ng-show="registerForm.passwordConfirm.$error.passwordVerify && registerForm.submitted"
+					 	style="color : #f00; float:left;"
+					 	>{{'registration.passwords_not_identical' | translate}}
+					 </span>
+<!--                   	<div *ngIf="registerForm.submitted && repeat_password.length == 0" class="help-block" style="color:#f00">Hasło jest wymagane</div> -->
+<!--                   	<div *ngIf="registerForm.submitted && repeat_password != model.password && repeat_password.length > 0" class="help-block" style="color:#f00">Hasło muszą się zgadzać</div> -->
+				</div>
+			</div>
+
+			<!--                 <input  -->
+			<!--                 	id="fos_user_registration_form__token"  -->
+			<!--                 	name="fos_user_registration_form[_token]"  -->
+			<!--                 	class=" form-control"  -->
+			<!--                 	value="1Y9_bKNq7YrpKx-11O7S6NiXPOtgPc_fop6kIuTTzfY"  -->
+			<!--                 	type="hidden"> -->
+
+			<div class="form-actions clearfix" style="text-align: right">
+
+				<button type="submit" class="btn btn-lg btn-success"
+					style="background-color: #d68121;">Zarejestruj</button>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+<style>
+input.submitted.ng-invalid
+{
+  border:2px solid #f00;
+}
+.red-border-class {
+	border: 2px solid #f00;
+}
+</style>

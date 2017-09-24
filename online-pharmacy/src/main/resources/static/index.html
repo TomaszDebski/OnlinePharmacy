@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html ng-app="app" ng-cloak class="ng-cloak">
+<head>
+<!-- <meta charset="UTF-8"> -->
+<meta meta charset=utf-8>
+<!-- <base href="/"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+
+ <!--
+      IE8 support, see AngularJS Internet Explorer Compatibility https://docs.angularjs.org/guide/ie
+      For Firefox 3.6, you will also need to include jQuery and ECMAScript 5 shim
+    -->
+    <!--[if lt IE 9]>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
+      <script>
+        document.createElement('ui-select');
+        document.createElement('ui-select-match');
+        document.createElement('ui-select-choices');
+      </script>
+    <![endif]-->
+
+
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="resources/js/libraries/jquery-ui.css">
+<link rel="stylesheet" href="resources/js/libraries/fullcalendar.css">
+
+<script src="resources/js/libraries/jQuery.js"></script>
+<script src="resources/js/libraries/jquery-ui.min.js"></script>
+<script src="resources/js/libraries/angular.js"></script>
+<script src="resources/js/libraries/angular-resource.js"></script>
+<script src="resources/js/libraries/angular-animate.js"></script>
+<script src="resources/js/libraries/ui-bootstrap-tpls-2.5.0.js"></script>
+<script src="resources/js/libraries/angular-touch.js"></script>
+<script src="resources/js/libraries/calendar.js"></script>
+<script src="resources/js/libraries/angular-ui-router.js"></script>
+<script src="resources/js/libraries/ui-validate.js"></script>
+<script src="resources/js/libraries/angular-translate.js"></script>
+<script src="resources/js/libraries/angular-translate-loader-static-files.js"></script>
+<script src="resources/js/libraries/angular-translate-storage-cookie.js"></script>
+<script src="resources/js/libraries/angular-sanitize.js"></script>
+<script src="resources/js/libraries/components/cookies/angular-cookies.js"></script>
+<script src="resources/js/libraries/moment.min.js"></script>
+<script src="resources/js/libraries/fullcalendar.js"></script>
+<script src="resources/js/libraries/locale-all.js"></script>
+<script src="resources/js/libraries/components/jquery.timepicker.js"></script>
+<script src="resources/js/libraries/components/select/select.js"></script>
+<script src="resources/js/libraries/components/uploader/uploader.js"></script>
+<script src="resources/js/libraries/anim-in-out.js"></script>
+<link rel="stylesheet" href="resources/js/libraries/anim-in-out.css">
+
+<script src="resources/js/libraries/components/bootstrap-sweetalert/sweetalert.js"></script>
+<link rel="stylesheet" href="resources/js/libraries/components/bootstrap-sweetalert/sweetalert.css">
+<script src="resources/js/libraries/components/bootstrap-sweetalert/SweetAlert.min.js"></script>
+
+<link rel="stylesheet" href="css/components/select.css">
+<link rel="stylesheet" href="css/components/select2.css">
+
+<link rel="stylesheet" href="resources/js/libraries/components/jquery.timepicker.css">
+<link rel="stylesheet" href="css/components/selectize.default.css">
+
+<link href="css/fonts/font-awesome.min.css" rel="stylesheet">
+<link href="css/fonts/fontawesome-webfont.woff" rel="stylesheet">
+<link href="css/fonts/font-awesome.css" rel="stylesheet">
+<link href="css/fonts/font-awesome.css.map" rel="stylesheet">
+
+<!-- nowe -->
+<link href="/css/menu.css" rel="stylesheet">
+<link href="/css/grid.css" rel="stylesheet">
+<!-- <link href="/css/login.css" rel="stylesheet"> -->
+
+
+<!-- nowe -->
+<!-- <link rel="stylesheet" href="css/style-header-upper.css"> -->
+<!-- <link rel="stylesheet" href="css/style-header-bottom.css"> -->
+<!-- <link rel="stylesheet" href="css/style-main.css"> -->
+<!-- <link rel="stylesheet" href="css/grid.css"> -->
+<!-- <link rel="stylesheet" href="css/style-main-header.css"> -->
+<!-- <link rel="stylesheet" href="css/style-common.css"> -->
+
+
+</head>
+
+<body ng-controller="indexController" ng-class="{'moveToLeft': move,'normal' : !move}" >
+<div ng-controller="cartController">
+	<div ng-include="'html/cart.html'"></div>
+</div>
+	<div ng-controller="userPanelController">
+		<div ng-include="'html/userPanel.html'"></div>
+	</div>
+	<div ng-controller="menuController">
+		<div ng-include="'html/menu.html'"></div>
+	</div>
+		
+		<div ui-view class="main" style="position:relative"></div>
+
+
+<!-- <div class=""> -->
+<!--   <hr style="margin-bottom: 12px;"> -->
+<!--     <div class="col-md-4 col-centered" style="float: none; margin: 0 auto;"> -->
+<!--         <p class="muted">© 2017 Wirtualny gabinet fizjoterapii. All rights reserved</p> -->
+<!--     </div> -->
+<!--   </div> -->
+  
+	<script src="resources/js/app.js"></script>
+	<script src="resources/js/config.js"></script>
+	<script src="resources/js/run.js"></script>
+	<script src="resources/js/translate/translate-config.js"></script>
+	<script src="resources/js/translate/languages/polish.js"></script>
+	<script src="resources/js/translate/languages/english.js"></script>
+	
+<!-- 	<script src="resources/js/configuration/uibPaginationConfig.js"></script> -->
+	
+	<script src="resources/js/controllers/indexController.js"></script>
+	<script src="resources/js/controllers/homeController.js"></script>
+	<script src="resources/js/controllers/menuController.js"></script>
+	<script src="resources/js/controllers/loginController.js"></script>
+<!-- 	<script src="resources/js/controllers/user/logoutController.js"></script> -->
+	<script src="resources/js/controllers/registerController.js"></script>
+<!-- 	<script src="resources/js/controllers/user/accountController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/contactController.js"></script> -->
+	<script src="resources/js/controllers/medicineListController.js"></script>
+	<script src="resources/js/controllers/userPanelController.js"></script>
+	<script src="resources/js/controllers/cartController.js"></script>
+<!-- 	<script src="resources/js/controllers/patient/addPatientController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/patient/patientController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/visit/visitsController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/visit/visitController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/visit/addVisitController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/modal/interviewModalController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/modal/addVisitInCalendarModelController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/modal/addHolidayInCalendarModelController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/calendarController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/addServiceController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/addKindOfPainController.js"></script> -->
+<!-- 	<script src="resources/js/controllers/addBodyPlaceController.js"></script> -->
+
+	<script src="resources/js/models/productModel.js"></script>
+	
+	<script src="resources/js/services/categoryService.js"></script>
+	<script src="resources/js/services/userService.js"></script>
+	<script src="resources/js/services/cart/cartService.js"></script>
+	
+<!-- 	<script src="resources/js/services/authService.js"></script> -->
+<!-- 	<script src="resources/js/services/physiotherapistService.js"></script> -->
+<!-- 	<script src="resources/js/services/patientsService.js"></script> -->
+<!-- 	<script src="resources/js/services/visitService.js"></script> -->
+<!-- 	<script src="resources/js/services/patientPaginationService.js"></script> -->
+<!-- 	<script src="resources/js/services/allPatientsForPhysiotherapist.js"></script> -->
+<!-- 	<script src="resources/js/services/visitPaginationService.js"></script> -->
+<!-- 	<script src="resources/js/services/getVisitsService.js"></script> -->
+<!-- 	<script src="resources/js/services/getFileService.js"></script> -->
+<!-- 	<script src="resources/js/services/serviceService.js"></script> -->
+<!-- 	<script src="resources/js/services/kindOfPainService.js"></script> -->
+<!-- 	<script src="resources/js/services/bodyPlaceService.js"></script> -->
+<!-- 	<script src="resources/js/services/interviewService.js"></script> -->
+	
+	<script src="resources/js/directives/usernameAvailableDirective.js"></script>
+	<script src="resources/js/directives/compareToDirective.js"></script>
+<!-- 	<script src="resources/js/directives/newInterview/addNewInterviewDirective.js"></script> -->
+<!-- 	<script src="resources/js/directives/addService/addServiceDirective.js"></script> -->
+<!-- 	<script src="resources/js/directives/multipleBodyAndPlaceInInterview/multipleBodyAndPlaceDirective.js"></script> -->
+	
+<!-- 	<script src="resources/js/filters/searchPatientFilter.js"></script> -->
+<!-- 	<script src="resources/js/filters/telFilter.js"></script> -->
+	
+	<!-- Modals -->
+<!-- 	<div ng-include="'resources/template/interviewModal.html'"></div> -->
+<!-- 	<div ng-include="'resources/template/addHolidayInCalendarModal.html'"></div> -->
+<!-- 	<div ng-include="'resources/template/addVisitInCalendarModal.html'"></div> -->
+
+</body>
+<style>
+#nav {
+	width: 50px;
+	height: 50px;
+	float: right;
+	top: 75px;
+	text-align: center;
+	/* display:none; */
+}
+
+#nav:hover {
+	display: block;
+}
+
+#nav span {
+	display: none;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: #0F9;
+}
+
+.normal{
+	left: 0px;
+ 	position: relative; 
+	-webkit-transition-duration: .5s;
+}
+
+.moveToLeft {
+/* 	right:0px; */
+	left : -350px;
+	position: relative;
+	-webkit-transition-duration: .5s;
+}
+.cartToLeft{
+ 	display : block;
+	right : 0px;
+	position:relative;
+	-webkit-transition-duration: .5s;
+}
+
+.normalCart {
+ 	display : block; 
+	right: -350px;
+	position : relative;
+	-webkit-transition-duration: .5s;
+}
+
+</style>
+</html>

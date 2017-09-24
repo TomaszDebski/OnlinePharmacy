@@ -1,0 +1,78 @@
+<meta meta charset=utf-8>
+<!-- <app-cart [(rightPanelShow)]="rightPanelShow" #cartComponent></app-cart> -->
+		<div class="wrapper">
+			<div class="grid--full">
+				<div class="grid__item large--one-half">
+					<h1 class="site-header__logo large--left" itemscope="" itemtype="">
+						<a routerLink="/" routerLinkActive="active-link"> <img
+							src="https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/8c385b15-eee5-11e6-b255-0a6afe88c81b.png"
+							alt="The Family Pharmacy" itemprop="logo">
+						</a>
+					</h1>
+				</div>
+				<div
+					class="grid__item large--one-half large--text-right medium-down--hide">
+					<span [hidden]="!authenticationService.isAuthenticated" style="padding-left:15px;">
+						Witaj {{authenticationService.currentUserrrr}}
+					</span>
+					<a	 href="javascript:void(0)" ng-click="showRightPanel(true)"
+						class="js-drawer-open-right"> <span class="icon-fallback-text">
+							<span class="icon icon-cart" aria-hidden="true"></span>
+					</span> Koszyk (<span id="CartCount">{{cart.cartProducts.length}}</span>
+						przedmiotów <span id="CartCost">
+						{{(cart.totalPrice
+							| number:2) + " zł"}}
+							</span>)
+					</a>
+					<div>
+							<a 	routerLink="add-product" 
+								routerLinkActive="active-link"
+								[hidden]="!authenticationService.isAuthenticated">
+								Dodaj produkt |
+							</a>
+							<a 	routerLink="add-category" 
+								routerLinkActive="active-link"
+								[hidden]="!authenticationService.isAuthenticated">
+								Dodaj kategorię |
+							</a>
+							<a 	ui-sref="login">
+<!-- 								[hidden]="authenticationService.isAuthenticated"> -->
+								Zaloguj</a> |
+							<a 	href="javascript:void(0)"
+								[hidden]="!authenticationService.isAuthenticated"
+								(click)="logout()">
+								Wyloguj
+							</a> 
+							<a ui-sref="register">
+<!-- 								[hidden]="authenticationService.isAuthenticated"> -->
+								Stwórz nowe konto
+							</a>
+					</div>
+
+					<div class="site-header__search">
+						<form 
+							class="input-group search-bar"
+							novalidate
+							(ngSubmit)="search()" 
+        					#searchAll="ngForm">
+							<input 
+								name="searchWord" 
+								[(ngModel)]="searchWord" 
+								placeholder="Przeszukaj sklep" 
+								class="input-group-field" 
+								aria-label="Search our store"
+								type="search"
+							> 
+							<span class="input-group-btn">
+								<button 
+									type="submit" 
+									class="btn icon-fallback-text">
+									<span class="icon icon-search" aria-hidden="true"></span> 
+									<span class="fallback-text">Szukaj</span>
+								</button>
+							</span>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>

@@ -1,0 +1,81 @@
+<meta meta charset=utf-8>
+<div id="CartDrawer" class="drawer " ng-class="{'cartToLeft' : move, 'normalCart' : !move}"
+	style="position: fixed; top: 0;  width: 350px;"
+	>
+	<div class="drawer__header">
+		<div class="drawer__title h3">Koszyk zakupów</div>
+		<div class="drawer__close js-drawer-close">
+			<button type="button" class="glyphicon glyphicon-remove"
+				ng-click="showRightPanel(false)">
+<!-- 				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+				<span class="fallback-text">"Zamknij"</span>
+			</button>
+		</div>
+	</div>
+	<div id="CartContainer">
+
+		<!--- cart items begin -->
+		<form action="" method="post" novalidate="" class="cart">
+			<div class="ajaxcart__inner"
+				ng-repeat="product in cart.cartProducts">
+				<div class="ajaxcart__product">
+					<div class="ajaxcart__row">
+						<div class="grid">
+							<div class="grid__item one-quarter">
+								<a href="/products/nurofen-express-200mg-tablets"
+									class="ajaxcart__product-image"> <img
+									src="http://localhost:8080/api/product/img?number={{product.number}}"
+									alt=""></a>
+							</div>
+							<div class="grid__item three-quarters">
+								<p>
+									<a href="" class="ajaxcart__product-name">{{product.name}}</a>
+									      <span class="ajaxcart__product-meta">{{product.packages[0].name}}</span>
+								</p>
+
+							</div>
+						</div>
+						<div class="grid--full">
+							<div class="grid__item one-third">
+								<a href="javascript:void(0)"
+									ng-click="removeFromCart(product.id)" class="cart__remove"
+									data-id="1251"><small>Usuń</small></a>
+							</div>
+
+							<div class="grid__item one-third">
+								<div class="ajaxcart__qty">
+									<input name="items[1251][quantity]" id="updates_1251"
+											value="{{product.totalNumber}}"
+										ng-click="changeQuantity(product,$event)"
+										 min="0" data-id="1251"
+										type="number">
+								</div>
+							</div>
+							<div class="grid__item one-third text-right">
+								{{product.packages[0].price * product.totalNumber | number: 2}}</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ajaxcart__footer">
+				<div class="grid--full">
+					<div class="grid__item two-thirds">
+						<p>Całość</p>
+					</div>
+					<div class="grid__item one-third text-right">
+						<p>{{(cart.totalPrice | number:2) + " zł"}}</p>
+					</div>
+				</div>
+<!-- 				        <p class="text-center">Koszty przesyłki zostaną dodane przy podsumowaniu</p> -->
+
+<!-- 				        <button type="submit" class="btn btn--full btn--secondary update-cart" name="update" style="margin-bottom:10px;"> -->
+<!-- 				          Update Cart -->
+<!-- 				        </button> -->
+				<button type="submit" (click)="finaliseCart()"
+					class="btn btn--full cart__checkout" name="checkout"
+					[disabled]="cartService.karta.cartProducts.length == 0">
+					Zamów</button>
+			</div>
+		</form>
+	</div>
+</div>
