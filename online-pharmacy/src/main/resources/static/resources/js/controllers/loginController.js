@@ -3,11 +3,12 @@
  */
 
 angular.module('app.controller.login', [])
-.controller('loginController', function($scope,$http,$rootScope,$location,$window,$state,$cookies) {
+.controller('loginController', function($scope,$http,$rootScope,$location,$window,$state,$cookies,authenticationService) {
 	$rootScope.authenticated = $window.sessionStorage.authenticated;
 	var self = this;
 	$scope.error = false;
 	$scope.login = function(event) {
+		console.log('before $rootScope',$rootScope)
 		event.preventDefault();
 		if ($scope.loginForm.$valid) {      
 	    }
@@ -25,18 +26,20 @@ angular.module('app.controller.login', [])
         }
 		,
 //        xsrfHeaderName: 'X-XSRF-TOKEN'
-        }).success(function(data, status, headers, config){
+        }).then(function(data, status, headers, config){
         		$http({
         	        url: 'findUser',
         	        method: "GET",
         	    })
-        	    .success(function(response) {
+        	    .then(function(funcResponse) {
+        	    	var response = funcResponse.data;
         	    	if (response){
         	    		$http({
-        	    	        url: 'api/physiotherapist/byUsername/' + response.name,
+        	    	        url: 'api/user/byUsername/' + response.name,
         	    	        method: "GET",
         	    	    })
-        	    	    .success(function(result) {
+        	    	    .then(function(functResult) {
+        	    	    	var result = functResult.data;
         	    	    	if (result != null && result.username.length > 0){
         	    	    		$rootScope.id = result.id;
         	    	    		$window.sessionStorage.id = $rootScope.id;
@@ -48,21 +51,24 @@ angular.module('app.controller.login', [])
             	    		
             	    		$rootScope.user = $window.sessionStorage.user;
                             $window.sessionStorage.authenticated = true;
+                            authenticationService.setAuthenticated($window.sessionStorage.authenticated);
+                            console.log('authenticationService.getAuthenticated',authenticationService.getAuthenticated());
+                            $scope.$broadcast('parent', 'Some data');
         	    	    	}
                             
-            	    		$state.go("allPatients");
+//            	    		$state.go("allPatients");
         	    	    })
         	    		
         	    		
         	    	}else{
         	    		$scope.error = true;
         	    	}
-        	    }).error(function(response) {
+        	    }), function(response) {
         	    	$scope.error = true;
-        	    });
+        	    };
         	    
-        }).error(function(response){
+        }), function(response){
         	$scope.error = true;
-        })
+        }
 }
 })

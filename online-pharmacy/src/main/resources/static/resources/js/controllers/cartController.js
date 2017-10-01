@@ -4,7 +4,7 @@
 
 angular.module('app.controller.cart', [])
 .controller('cartController',
-		function($scope,cartService) { 
+		function($scope,$state,cartService) { 
 //	console.log('cart')
 	
 	$scope.cart = cartService.getCart();
@@ -15,4 +15,9 @@ angular.module('app.controller.cart', [])
 	$scope.removeFromCart = function(id){
         cartService.removeFromCart(id);
      }
+	
+	$scope.goToShoppingCart= function(){
+		$scope.$parent.move = false;
+		$state.go("shoppingCart");
+	}
 });

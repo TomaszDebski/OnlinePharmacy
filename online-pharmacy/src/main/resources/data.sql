@@ -8,23 +8,23 @@ insert into category_product (id,name,description,url,order_url,category_number,
 
 
 insert into product (id, name,description, category_product_id,product_number) values (1,'PERNATON JOINT MASSAGE Żel','Pernaton Gel zawiera wyciąg z zielonego Lippeda małży z naturalnie występującą glukozaminą. Początkowo ochładza skórę, a następnie łagodzi ciepło mięśni, ścięgien i stawów. Może być stosowany codziennie, aby złagodzić sztywność stawów od starości lub złagodzić bóle stawów i mięśni ze strony szczepu i zranienia. Jest wchłaniana szybko i ma świeży, przyjemny zapach.',21,'M_PR_1');
-insert into product_package (id,product_id,name,price) values (1,1,'duzy1',20.0);
-insert into product_package (id,product_id,name,price) values (2,1,'maly1',10.0);
+insert into product_package (id,product_id,name,price) values (1,1,'20',20.0);
+insert into product_package (id,product_id,name,price) values (2,1,'10',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (2,'NUROFEN EXPRESS 200MG TABLETKI','Tabletki Nurofen Express zawierają postać ibuprofenu, która działa szybciej niż standardowe tabletki powlekane. Dają szybką skuteczną pomoc: bóle głowy, bóle stomatologiczne, bóle mięśni, bóle okresowe, bóle pleców, gorączkę, uczucie zimna i grypę.',21,'M_PR_2');
-insert into product_package (id,product_id,name,price) values (3,2,'maly2',10.0);
-insert into product_package (id,product_id,name,price) values (4,2,'duzy2',20.0);
+insert into product_package (id,product_id,name,price) values (3,2,'12',12.0);
+insert into product_package (id,product_id,name,price) values (4,2,'24',20.0);
 insert into product (id, name,description, category_product_id,product_number) values (3,'DICLAC RELIEF ŻEL 1%','Diclac Relief 1% w / w Żel przeciwzapalny zawiera diklofenak sodu 1% wag./wag. Leczy ból i zapalenie ścięgien, więzadeł, mięśni i stawów, jak również reumatyzm tkanek miękkich.',21,'M_PR_3');
-insert into product_package (id,product_id,name,price) values (5,3,'maly2',10.0);
+insert into product_package (id,product_id,name,price) values (5,3,'12',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (4,'PANADOL TABLETKI 500MG','Tabletki Panadol zawierają 500 mg Paracetamolu. Mogą być stosowane w celu złagodzenia bólu głowy, bólu zęba, ból gardła, bóle kręgosłupa, ból reumatyczny, ból związany z zapaleniem kości i stawów, bóle mięśni i ból w okresie. Baracetamol skutecznie redukuje temperaturę i gorączkę.',21,'M_PR_4');
-insert into product_package (id,product_id,name,price) values (6,4,'maly2',10.0);
+insert into product_package (id,product_id,name,price) values (6,4,'12',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (5,'PANADOL EXTRA TABLETKI 24 SZ','Tabletki Panadol Extra zawierają dwa aktywne składniki. Paracetamol jest lekiem przeciwbólowym, który pomaga również obniżyć temperaturę podczas gorączki. Kofeina działa poprawiając skuteczność paracetamolu, zwiększając zdolność organizmu do jej absorpcji.',21,'M_PR_5');
-insert into product_package (id,product_id,name,price) values (7,5,'maly2',10.0);
+insert into product_package (id,product_id,name,price) values (7,5,'10',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (6,'EXCEDRIN TABLETKI 20 SZ','Tabletki leku Excedrin mają potężną potrójną formułę do ostrego leczenia migreny i bólów głowy, które są trudne do uderzenia i szybkiego działania. Są to tabletki powlekane zawierające Aspirynę 250 mg, Paracetamol 250 mg i kofeinę 65 mg.',21,'M_PR_6');
-insert into product_package (id,product_id,name,price) values (8,6,'maly2',10.0);
+insert into product_package (id,product_id,name,price) values (8,6,'5',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (7,'NUROFEN TABLETKI 200MG','Nurofen tabletki 200 mg są oryginalnym wyborem w gamie Nurofen. Tabletki są powleczone, więc można je połknąć. Zwalniają ból, zmniejszają stan zapalny i niższą temperaturę',21,'M_PR_7');
-insert into product_package (id,product_id,name,price) values (9,7,'maly2',10.0);
+insert into product_package (id,product_id,name,price) values (9,7,'3',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (8,'PANADOL NOC TABLETKI 20 SZ','Tabletki Panadol Night łączą skuteczną lekarstwę Paracetamolu z delikatnymi właściwościami uspokajającymi chlorowodorku anty-histaminy - difenhydraminy. Dają ulgę nocną w bólach mięśniowych, bólach pleców, bólach głowy, bólach głowy, bólach okresowych, zimnych i grypowych. .',21,'M_PR_8');
-insert into product_package (id,product_id,name,price) values (10,8,'maly2',10.0);
+insert into product_package (id,product_id,name,price) values (10,8,'8',10.0);
 
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(22,'menu.medicine.child.pain.relief','menu.medicine.child.pain.relief.description','child-pain-relief','002002','',20);
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(23,'menu.medicine.eye.conditions','menu.medicine.eye.conditions.description','eye-conditions','002003','',20);
@@ -32,8 +32,8 @@ insert into category_product (id,name,description,url,order_url,category_number)
 
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(31,'menu.vitamins.energy.vitality','menu.vitamins.energy.vitality.description','energy.vitality','003001','V_EV',30);
 insert into product (id, name,description, category_product_id,product_number) values (30,'Active Plast Energy na wzrost energii i dobre samopoczucie dla kobiet i mężczyzn','Plastry ENERGY zawierają naturalne składniki tradycyjnie stosowane na wzrost energii i dobre samopoczucie.',31,'V_EV_1');
-insert into product_package (id,product_id,name,price) values (30,30,'opakowanie 12',20.0);
-insert into product_package (id,product_id,name,price) values (31,30,'opakowanie 6',10.0);
+insert into product_package (id,product_id,name,price) values (30,30,'12',20.0);
+insert into product_package (id,product_id,name,price) values (31,30,'6',10.0);
 
 
 

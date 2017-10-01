@@ -1,0 +1,45 @@
+<meta meta charset=utf-8>
+<div class="mini-cart-summary col-md-4">
+	<div class="panel panel-default mini-cart">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="icon-sf-cart"></i> Twoje zamówienie <span
+					class="pull-right">{{cartService.totalPrice}}</span>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-condensed">
+				<tbody>
+					<tr class="no-top-border"
+						*ngFor="let product of cartService.karta.cartProducts let i = index">
+						<td class="col-md-2"><a
+							href="/p/panadol-actifast-500mg-tablets"> <img
+								class="cart-image"
+								src="http://localhost:8080/api/product/img?number={{product.number}}"
+								alt="Brak">
+						</a></td>
+						<td class="item item-quantity">{{product.totalNumber}}</td>
+						<td class="item" colspan="2">{{product.name}}
+							<ul class="list-unstyled">
+								<li class="text-muted text-small">{{product.packages[0].name}}</li>
+							</ul>
+						</td>
+						<td colspan="2" class="text-right item">{{product.packages[0].price *
+							product.totalNumber}}</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="no-top-border">
+						<td colspan="4"><span class="faded">Przesyłka:</span></td>
+						<td colspan="2" class="text-right"><span class="faded">{{cartService.karta.shippingPrice}}</span>
+						</td>
+					</tr>
+					<tr class="no-top-border">
+						<td colspan="4"><strong>Podsumowanie:</strong></td>
+						<td colspan="2" class="text-right"><strong>{{cartService.totalPrice}}</strong></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+</div>

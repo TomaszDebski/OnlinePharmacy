@@ -1,7 +1,13 @@
 angular.module('app.service.authentication',[])
     .factory('authenticationService',['$http','$log', function($http,$log) {
+    	var authenticated = false;
     	return {
-    		
+    		setAuthenticated : function(authenticatedVar){
+    			authenticated = authenticatedVar;
+    		},
+    		getAuthenticated : function(){
+    			return authenticated;
+    		}
     	}
 //    private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 //    
@@ -35,40 +41,40 @@ angular.module('app.service.authentication',[])
     
     
 
-    login(username: string, password: string) {
-//      let data2 = 'j_username=' + encodeURIComponent(username) +
-//        '&j_password=' + encodeURIComponent(password);
-//        console.log("data2 " ,data2);
-        let options = new RequestOptions({ headers: this.headers, withCredentials: true });
-      console.log("username " ,username);
-        let data = new URLSearchParams();
-        data.append('j_username', username);
-        data.append('j_password', password);
-//        let data = {j_username: 'dddd',j_password: 'dddd'};
-        const body = {name: 'Brad'};
-      console.log("data " ,data);
-        return this.http.post('http://localhost:8080/api/login',
-            data, 
-            options
-          )
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let user = response.json();
-                console.log("response " ,response);
-                console.log("user " ,user);
-//                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-//                    localStorage.setItem('currentUser', JSON.stringify(user));
-//                }
-
-                return user;
-            });
-    }
-
-    logout() {
-        this.currentUser = "";
-        this.isAuthenticated = false;
-        this._cookieService.put('username',null);
-        this._cookieService.put('isAuthenticated','false');
-    }
-}
+//    login(username: string, password: string) {
+////      let data2 = 'j_username=' + encodeURIComponent(username) +
+////        '&j_password=' + encodeURIComponent(password);
+////        console.log("data2 " ,data2);
+//        let options = new RequestOptions({ headers: this.headers, withCredentials: true });
+//      console.log("username " ,username);
+//        let data = new URLSearchParams();
+//        data.append('j_username', username);
+//        data.append('j_password', password);
+////        let data = {j_username: 'dddd',j_password: 'dddd'};
+//        const body = {name: 'Brad'};
+//      console.log("data " ,data);
+//        return this.http.post('http://localhost:8080/api/login',
+//            data, 
+//            options
+//          )
+//            .map((response: Response) => {
+//                // login successful if there's a jwt token in the response
+//                let user = response.json();
+//                console.log("response " ,response);
+//                console.log("user " ,user);
+////                if (user && user.token) {
+//                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+////                    localStorage.setItem('currentUser', JSON.stringify(user));
+////                }
+//
+//                return user;
+//            });
+//    }
+//
+//    logout() {
+//        this.currentUser = "";
+//        this.isAuthenticated = false;
+//        this._cookieService.put('username',null);
+//        this._cookieService.put('isAuthenticated','false');
+//    }
+}])

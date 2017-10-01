@@ -1,0 +1,115 @@
+<meta meta charset=utf-8>
+<main class="wrapper main-content" role="main">
+<hr>
+<form 
+	method="post" novalidate class="cart">
+	<h1>Koszyk</h1>
+	<div class="cart__row medium-down--hide cart__header-labels">
+		<div class="grid--full">
+			<div class="grid__item large--one-half">
+				<div class="grid">
+					<div class="grid__item two-thirds push--one-third">Produkt</div>
+				</div>
+			</div>
+			<div class="grid__item large--one-half">
+				<div class="grid--full">
+					<div class="grid__item one-third medium-down--one-third">
+						Cena</div>
+					<div
+						class="grid__item one-third medium-down--one-third text-center">
+						Ilość</div>
+					<div class="grid__item one-third medium-down--one-third text-right">
+						całość</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cart__row" data-id="1286"
+		ng-repeat="product in cart.cartProducts">
+		<div class="grid--full cart__row--table-large">
+			<div class="grid__item large--one-half">
+				<div class="grid">
+					<div class="grid__item one-third">
+						<a href="javascript:void(0)" class="cart__image"> <img
+							src="http://localhost:8080/api/product/img?number={{product.number}}"
+							alt="Problem">
+						</a>
+					</div>
+					<div class="grid__item two-thirds">
+						<a href="#" class="h4">
+							{{product.name}} </a> <small></small> <a href="javascript:void(0)"
+							class="cart__remove" data-id="1286"> <small>Usuń</small>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="grid__item large--one-half">
+				<div class="grid--full cart__row--table-large">
+					<div class="grid__item one-third">
+						<span class="cart__mini-labels">Cena</span> <span class="h3">{{product.packages[0].price | number:2}}</span>
+					</div>
+
+					<div class="grid__item one-third text-center">
+						<span class="cart__mini-labels">Ilość</span> <input
+							name="items[1286][quantity]" id="updates_1286"
+							value="{{product.totalNumber}}"
+							ng-click="changeQuantity(product,$event)" min="0" data-id="1286"
+							type="number">
+					</div>
+					<div class="grid__item one-third text-right">
+						<span class="cart__mini-labels">Razem</span> <span class="h3">{{product.packages[0].price
+							* product.totalNumber | number:2}}</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="grid cart__row">
+		<div class="grid__item seven-twelfths small--one-whole">
+			<button type="button" class="text-link cart__note-add"
+				ng-click="showNote = true" ng-class="{'hide' : showNote}">
+				Dodaj notatkę</button>
+			<div
+				ng-class="{'cart__note': !showNote,'cart__note.is-active': showNote}">
+				<label for="CartSpecialInstructions"
+					style="font-size: 14px; line-height: 1.6; font-family: 'Rubik', Rubik, Arial, sans-serif; color: #14501c; font-weight: 300;">Dodatkowe
+					informacje dla sprzedawcy</label>
+				<textarea name="note" class="input-full"
+					id="CartSpecialInstructions" [(ngModel)]="description"></textarea>
+			</div>
+		</div>
+
+		<div class="grid__item text-right five-twelfths">
+			<p ng-show="cart.totalPrice > 0">
+				<span class="cart__subtotal-title">Podsumowanie</span> <span
+					class="h3 cart__subtotal">{{cart.totalPrice |
+					number:2}}</span>
+			</p>
+			<!--         <p><em>Shipping &amp; taxes calculated at checkout</em></p> -->
+			<div class="cartQuestions">
+<!-- 				<div class="questionTitle"> -->
+<!-- 					<b>Dla celów bezpieczeństwa pacjentów musimy zadać kilka pytań -->
+<!-- 						związanych z zakupem:</b> -->
+<!-- 				</div> -->
+
+				Ten produkt zawiera Paracetamol, Proszę nie przyjmować żadnych
+				innych produktów zawierających Paracetamol podczas przyjmowania tego
+				leku. Na ten produkt obowiązuje 2-pakowe ograniczenie <br>
+
+			</div>
+			<div style="clear: both;"></div>
+			<!--           <input name="update" class="btn--secondary update-cart" value="Update Cart" type="submit"> -->
+			<input name="checkout" class="btn" value="Przejdź dalej"
+				ui-sref="order.delivery">
+		</div>
+	</div>
+
+</form>
+</main>
+<style>
+.hide {
+	display: none;
+}
+</style>

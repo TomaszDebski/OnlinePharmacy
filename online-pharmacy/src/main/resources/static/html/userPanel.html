@@ -10,10 +10,12 @@
 						</a>
 					</h1>
 				</div>
+						$authenticationService.getAuthenticated(); = {{authenticationService.getAuthenticated();}}
+						authenticated = {{authenticated}}
 				<div
 					class="grid__item large--one-half large--text-right medium-down--hide">
-					<span [hidden]="!authenticationService.isAuthenticated" style="padding-left:15px;">
-						Witaj {{authenticationService.currentUserrrr}}
+					<span ng-show="$rootscope.authenticated" style="padding-left:15px;">
+						Witaj {{loggedUserName}}
 					</span>
 					<a	 href="javascript:void(0)" ng-click="showRightPanel(true)"
 						class="js-drawer-open-right"> <span class="icon-fallback-text">
@@ -27,24 +29,24 @@
 					<div>
 							<a 	routerLink="add-product" 
 								routerLinkActive="active-link"
-								[hidden]="!authenticationService.isAuthenticated">
+								ng-show="authenticated">
 								Dodaj produkt |
 							</a>
 							<a 	routerLink="add-category" 
 								routerLinkActive="active-link"
-								[hidden]="!authenticationService.isAuthenticated">
+								ng-show="authenticated">
 								Dodaj kategorię |
 							</a>
-							<a 	ui-sref="login">
-<!-- 								[hidden]="authenticationService.isAuthenticated"> -->
+							<a 	ui-sref="login"
+								ng-show="!authenticated">
 								Zaloguj</a> |
 							<a 	href="javascript:void(0)"
-								[hidden]="!authenticationService.isAuthenticated"
+								ng-show="authenticated"
 								(click)="logout()">
 								Wyloguj
 							</a> 
-							<a ui-sref="register">
-<!-- 								[hidden]="authenticationService.isAuthenticated"> -->
+							<a ui-sref="register"
+								ng-show="!authenticated">
 								Stwórz nowe konto
 							</a>
 					</div>

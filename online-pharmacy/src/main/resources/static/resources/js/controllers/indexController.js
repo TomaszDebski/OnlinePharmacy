@@ -3,11 +3,22 @@
  */
 angular.module('app.controller.index', [])
 .controller('indexController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state
+		$state,cartService
 //		,authService
 		) {
-	console.log('index')
+//	console.log('index')
 	$scope.move = false;
+	$scope.authenticated = false;
+	
+	$scope.cart = cartService.getCart();
+	$scope.totalPrice = cartService.getTotalPrice();
+	
+	$scope.authenticated = $window.sessionStorage.authenticated;
+	$scope.loggedUserName = $window.sessionStorage.user;
+	
+	$scope.showRightPanel = function(isShow){
+	    $scope.move = !$scope.move;
+	  }
 	
 //	$scope.logout = function(authh){
 //		var logout = authService.logout();

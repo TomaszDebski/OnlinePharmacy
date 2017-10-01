@@ -15,7 +15,7 @@
 	<div id="CartContainer">
 
 		<!--- cart items begin -->
-		<form action="" method="post" novalidate="" class="cart">
+		<form novalidate class="cart">
 			<div class="ajaxcart__inner"
 				ng-repeat="product in cart.cartProducts">
 				<div class="ajaxcart__product">
@@ -71,7 +71,7 @@
 <!-- 				        <button type="submit" class="btn btn--full btn--secondary update-cart" name="update" style="margin-bottom:10px;"> -->
 <!-- 				          Update Cart -->
 <!-- 				        </button> -->
-				<button type="submit" (click)="finaliseCart()"
+				<button type="submit" ng-click="goToShoppingCart()"
 					class="btn btn--full cart__checkout" name="checkout"
 					[disabled]="cartService.karta.cartProducts.length == 0">
 					Zamów</button>

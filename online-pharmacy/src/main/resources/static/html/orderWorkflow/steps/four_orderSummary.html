@@ -1,0 +1,81 @@
+<meta meta charset=utf-8>
+<div class="container">
+	<div class="page-header">
+		<h1>Sprawdź i złóż zamówienia</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-4 shipping-info">
+			<div class="row">
+				<div class="col-md-12 col-sm-6">
+					<h4 class="address-border-bottom">Adres wysyłki</h4>
+					<address>
+						<strong>{{cart.firstName}} {{cart.lastName}}</strong><br> <br> {{cart.street}}<br> {{cart.city}}<br>
+						<br> <br> Telefon: {{cart.phone}}
+					</address>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="cart-image" colspan="3">Twoje zamówienie</th>
+						<th class="unit-price">Cena</th>
+						<th class="text-right">Razem</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr class="no-top-border" ng-repeat="product in cart.cartProducts">
+						<td class="cart-image"><img class="cart-image"
+							src="http://localhost:8080/api/product/img?number={{product.number}}"
+							alt=""></td>
+
+						<td class="quantity"><span>{{product.totaNumber}}</span></td>
+						<td class="item">{{product.name}}</td>
+						<td class="unit-price">{{product.packages[0].price}}</td>
+
+						<td class="totals text-right">{{product.packages[0].price * product.totalNumber}}</td>
+					</tr>
+
+				</tbody>
+
+				<tfoot>
+<!-- 					<tr class="dashed-border-top"> --	>
+<!-- 						<td colspan="3"></td> -->
+<!-- 						<td><span class="faded">Tax total</span> <span -->
+<!-- 							class="text-muted">(No taxes applied)</span></td> -->
+<!-- 						<td class="text-right totals "><span class="faded">€0.00</span></td> -->
+<!-- 					</tr> -->
+					<tr class="no-top-border">
+						<td colspan="3"></td>
+						<td><span class="faded">Przesyłka</span></td>
+						<td class="text-right totals "><span class="faded">{{cartService.karta.shippingPrice}}</span></td>
+					</tr>
+
+					<tr class="no-top-border table-row-emphasise">
+						<td colspan="3"></td>
+						<td>Razem</td>
+						<td colspan="2" class="text-right totals ">{{cartService.totalPrice}}</td>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+	</div>
+	<div class="row checkout-buttons">
+		<div class="col-sm-3 col-xs-12 pull-right">
+			<a href="#" ng-click="saveOrder()"
+				class="btn btn-lg btn-success btn-block"> Złóż zamówienie </a>
+		</div>
+		<div class="col-sm-3 col-xs-12 pull-left">
+			<a 
+				href="javascript:void(0)" 
+				ng-click="backToStep3()"
+				class="btn btn-lg btn-default btn-block">
+				Powrót </a>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,7 @@
 <main class="wrapper main-content" role="main">
 <hr>
 <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
-  <a href="javascript:void(0)" routerLink="" routerLinkActive="active-link" title="Wróć do strony głównej"
+  <a href="#" title="Wróć do strony głównej"
   >Strona główna</a>
     <span aria-hidden="true">›</span>
     <span>{{'submenu.'+category.name | translate}}</span>
@@ -64,7 +64,7 @@
 						class="change-view" data-view="grid"
 						ng-click="changeBetweenGridAndList(true)">
 						<span class="glyphicon glyphicon glyphicon-th-large"> <a
-							href="javascript:void(0)"><span
+							href="#"><span
 								class="icon icon-grid-view" aria-hidden="true"
 								></span></a> 
 <!-- 								<span class="fallback-text">Krata</span> -->
@@ -95,7 +95,7 @@
 						alt="Brak zdjęcia" title="">
 					</a>
 					<p class="h6">
-						<a href="javascript:void(0)" (click)="goToOneItem(product.id)">{{product.name}}</a>
+						<a ui-sref="product({id:{{product.id}}})">{{product.name}}</a>
 					</p>
 <!-- 					<p> -->
 <!-- 						Cena <span itemprop="price">{{product.price}}</span> -->
@@ -107,14 +107,15 @@
 		            <select 
 						id="package" 
 						name="package" 
-						class="form-control" 
+						class="form-control arrows" 
 						ng-model="packArray[$index]"
-						ng-options="package.name + ': ' + package.price + ' zł' for package in product.packages"
+						ng-options="package.name + ' - ' + package.price + ' zł' for package in product.packages"
 						ng-init="packArray[$index] = product.packages[0]" 
-						style="background: #f6f9fc;"
+						
 						>
 <!-- 						<option style="display:none" value="">{{'commons.select_hour' | translate}}</option> -->
 					</select>
+					
 <!-- 					<input id="packArray_{{$index}}" [(ngModel)]="packArray[$index]" type="hidden" /> -->
 <!-- 					packArray[i] = {{packArray[i]}} -->
 					<br> <br>
@@ -160,10 +161,18 @@
 	<div class="grid__item large--one-quarter">
 		<h3>Katalog</h3>
 		<ul>
-		  <li *ngFor="let item of menu let i = index">
+		  <li ng-repeat="item in menu">
 		  	<a routerLink="{{item.url}}" routerLinkActive="active-link">{{'menu.'+item.name | translate}}</a>
 		  </li>
 		</ul>
 	</div>
 </div>
 </main>
+
+<style>
+	.arrows {
+		background-image: url("https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/4f76952c-4218-11e7-a288-0a6afe88c81b.svg");
+		padding-right: 28px;
+		width: auto;
+	}
+</style>

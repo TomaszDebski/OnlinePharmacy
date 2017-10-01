@@ -1,0 +1,90 @@
+<meta meta charset=utf-8>
+<div class="grid product-single gallery mode-zoom">
+	<div class="grid__item large--one-half text-center">
+		<div class="product-single__photos main" id="ProductPhoto">
+			<img
+				src="http://localhost:8080/api/product/img?number={{product.number}}"
+				id="ProductPhotoImg" alt=""
+				title="">
+		</div>
+		<ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
+			<li class="grid__item one-quarter thumbs"><a class="thumb"
+				title="PERNATON JOINT MASSAGE GEL"
+				href="#">
+					<img
+					src="http://localhost:8080/api/product/img?number={{product.number}}"
+					alt="">
+			</a></li>
+<!-- 			<li class="grid__item one-quarter thumbs"><a class="thumb" -->
+<!-- 				title="PERNATON JOINT MASSAGE GEL" -->
+<!-- 				href="javascript:(void)"> -->
+<!-- 					<img -->
+<!-- 					src="http://localhost:8080/api/product/img?number={{product.number}}"  -->
+<!-- 					alt=""> -->
+<!-- 			</a></li> -->
+
+		</ul>
+	</div>
+
+	<div class="grid__item large--one-half">
+		<h1 itemprop="name">{{product.name}}</h1>
+		<div itemprop="offers" itemscope="" itemtype="">
+			<meta itemprop="priceCurrency" content="EUR">
+			<link itemprop="availability" href="http://schema.org/InStock">
+
+
+<!-- 				<form novalidate -->
+<!-- 					(ngSubmit)="addToCart()" -->
+<!-- 					 id="AddToCartForm" -->
+<!-- 					#addToCart="ngForm"> -->
+
+				<span id="ProductPrice" class="h2" itemprop="price">{{packagePrice}}</span> <label
+					for="option-6f6cb72d544962fa333e2e34ce64f719">Opakowanie</label> 
+					 
+<!-- 					<packages-select [product]="product" -->
+<!-- 						(selectedChange)="changePackage($event)"></packages-select> -->
+					<select 
+						id="package" 
+						name="package" 
+						class="form-control arrows" 
+						ng-model="package"
+						ng-options="package.name + ' - ' + package.price + ' zł' for package in product.packages"
+						ng-init="packArray[$index] = product.packages[0]" 
+						
+						>
+						<option style="display:none" value="">{{'commons.select_hour' | translate}}</option>
+					</select>	
+
+				<input name="id" value="" type="hidden"> <label
+					for="Quantity" class="quantity-selector">Ilość</label> <input
+					id="Quantity" name="quantity" value="1" min="1"
+					class="quantity-selector" style="width: 100%; margin-bottom: 10px;"
+					type="number">
+
+				<button ng-click="addToCart()" name="add" id="X_AddToCart" class="btn">
+					<span id="AddToCartText">Dodaj do koszyka</span>
+				</button>
+<!-- 			</form> -->
+		</div>
+		<hr>
+		<div class="product-description rte" itemprop="description">
+			<p>Pernaton Gel contains pure Green Lipped Mussel extract with
+				naturally occuring glucosamine. It initially cools the skin, then
+				provides a relieving warmth to muscles, tendons and joints. It
+				&nbsp;can be used daily to help relieve joint stiffness from old age
+				or ease joint and muscle irritation from strain and injury. It is
+				absorbed rapidly and has a fresh, pleasant aroma.</p>
+			<p style="display: none;">Use several times a day if required.</p>
+			<div class="read-more">Czytaj więcej/mniej</div>
+		</div>
+
+	</div>
+</div>
+
+<style>
+	.arrows {
+		background-image: url("https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/4f76952c-4218-11e7-a288-0a6afe88c81b.svg");
+		padding-right: 28px;
+		width: auto;
+	}
+</style>

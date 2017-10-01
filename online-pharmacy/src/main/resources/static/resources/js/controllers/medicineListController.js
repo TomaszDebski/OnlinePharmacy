@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 angular.module('app.controller.medicineList', [])
 .controller('medicineListController',
 		function($stateParams,categoryService,$scope,cartService,$filter,Product) { 
@@ -12,6 +11,7 @@ angular.module('app.controller.medicineList', [])
 		productByName.then(function(result){
 //			console.log('result.data ',result.data)
 			$scope.products = result.data.products;
+			$scope.category = result.data;
 		})
 	}
 	
@@ -49,4 +49,10 @@ angular.module('app.controller.medicineList', [])
 	 
 	 $scope.sortOptions = sortOptionsArray;
 	 //// Sort list/////
+	 
+//	 $scope.goToOneItem = function(id){
+//		 $state.go("visits",{patient_id:$scope.patient.id});
+//		 $state.go('product');
+//         this.router.navigate(['/product', id]);   
+//    }
 });

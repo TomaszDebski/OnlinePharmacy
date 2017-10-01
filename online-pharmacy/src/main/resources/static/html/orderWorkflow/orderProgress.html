@@ -1,0 +1,163 @@
+<meta meta charset=utf-8>
+<div class="container-fluid">
+	<div class="row">
+		<div class="page-content col-md-12">
+			<div class="row checkout-progress">
+				<div class="col-sm-2 checkout-container checkout">
+					<div class="checkout-container-inner">
+						<div class="checkout-container-content">Zamówienie</div>
+					</div>
+				</div>
+				<div class="col-sm-2 col-xs-6 checkout-container completed">
+					<div class="checkout-container-inner">
+						<div class="checkout-container-content">
+							<i class="glyphicon glyphicon-ok-circle" style="font-size: 1.2em;color: green;"
+							ng-if="cartService.karta.stages[0].isComplete"></i> <span
+								class="checkout-container--step">Rejestracja/Logowanie</span>
+						</div> 
+					</div>
+				</div>
+				<div class="col-sm-2 col-xs-6 checkout-container active   ">
+					<div class="checkout-container-inner">
+						<div class="checkout-container-content">
+							<i class="glyphicon glyphicon-ok-circle" style="font-size: 1.2em;color: green;"
+							ng-if="cartService.karta.stages[1].isComplete"></i>  <span class="checkout-container--step">Adres dostawy</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 col-xs-6 checkout-container  next ">
+					<div class="checkout-container-inner">
+						<div class="checkout-container-content">
+							<i class="glyphicon glyphicon-ok-circle" style="font-size: 1.2em;color: green;"
+							ng-if="cartService.karta.stages[2].isComplete"></i>  <span class="checkout-container--step">Sposób dostawy</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 col-xs-6 checkout-container   ">
+					<div class="checkout-container-inner">
+						<div class="checkout-container-content">
+							<i class="glyphicon glyphicon-ok-circle" style="font-size: 1.2em;color: green;"
+							ng-if="cartService.karta.stages[3].isComplete"></i>  <span class="checkout-container--step">Sposób zapłaty</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2 checkout-container  col-xs-12  ">
+					<div class="checkout-container-inner">
+						<div class="checkout-container-content">
+							<i class="glyphicon glyphicon-ok-circle" style="font-size: 1.2em;color: green;"
+							ng-if="cartService.karta.stages[4].isComplete"></i> 
+							<span class="checkout-container--step">
+								Złóż zamówienie
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row checkout-progress-bar">
+				<div class="col-xs-2 checkout-container checkout"></div>
+				<div class="col-xs-2 checkout-container "
+				ng-class="{'completed' : cartService.karta.stages[0].isBegin}"></div>
+				<div class="col-xs-2 checkout-container "
+				ng-class="{'completed' : cartService.karta.stages[1].isBegin}"></div>
+				<div class="col-xs-2 checkout-container"
+				ng-class="{'completed' : cartService.karta.stages[2].isBegin}"></div>
+				<div class="col-xs-2 checkout-container"
+				ng-class="{'completed' : cartService.karta.stages[3].isBegin}"></div>
+				<div class="col-xs-2 checkout-container"
+				ng-class="{'completed' : cartService.karta.stages[4].isBegin}"></div>
+			</div>
+<!-- 			<div class="container"> -->
+<!-- 				<div class="page-header"> -->
+<!-- 					<h1>Podaj adres dostawy</h1> -->
+<!-- 				</div> -->
+
+<!-- 				<div class="row"> -->
+						<div ui-view></div>
+<!-- 					<router-outlet></router-outlet> -->
+<!-- 					<app-summary-content></app-summary-content> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+</div>
+</div>
+</div>
+<style>
+	.checkout-progress-bar .checkout-container {
+ border-bottom:3px solid #E9E9E9
+}
+.checkout-progress-bar .checkout-container.active,.checkout-progress-bar .checkout-container.completed {
+ border-bottom:3px solid #009d12
+}
+.checkout-progress .checkout-container {
+ background-color:#FAFAFA;
+ border:1px solid #E9E9E9;
+ border-bottom:none;
+ border-left:none;
+ padding:0 15px;
+ text-align:center;
+ font-size:11px;
+ height:65px;
+ display:none
+}
+@media (min-width:768px) {
+ .checkout-progress .checkout-container {
+  display:block
+ }
+}
+@media (max-width:768px) {
+ .checkout-progress .checkout-container {
+  height:50px
+ }
+}
+.checkout-progress .checkout-container .icon-sf-completed {
+ color:#FAFAFA;
+ font-size:25px;
+ vertical-align:middle
+}
+.checkout-progress .checkout-container-inner {
+ height:100%;
+ width:100%;
+ display:table
+}
+.checkout-progress .checkout-container-content {
+ display:table-cell;
+ vertical-align:middle
+}
+.checkout-progress .checkout {
+ background-color:#EBEBEB;
+ color:#636566
+}
+.checkout-progress .checkout-container.active,.checkout-progress .checkout-container.next {
+ display:block;
+ border-right:none;
+ padding:0 20px
+}
+.checkout-progress .checkout-container.active {
+ background-color:#FAFAFA;
+ text-align:left
+}
+.checkout-progress .checkout-container.next {
+ text-align:right
+}
+.checkout-progress .checkout-container.next .checkout-container--step:before {
+ content:"Next: "
+}
+.checkout-progress .checkout-container.completed .icon-sf-completed {
+ color:#009d12
+}
+@media (min-width:768px) {
+ .checkout-progress .checkout-container.next .checkout-container--step:before {
+  content:""
+ }
+ .checkout-progress .checkout-container.active,.checkout-progress .checkout-container.next {
+  text-align:center;
+  padding:0 15px;
+  border-right:1px solid #E9E9E9
+ }
+}
+@media (min-width:768px) and (max-width:992px) {
+ .checkout-progress .checkout-container--step {
+  display:block
+ }
+}
+</style>

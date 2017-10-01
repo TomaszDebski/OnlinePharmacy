@@ -8,7 +8,7 @@ angular.module('app.controller.menu', [])
 	var aa = categoryService.getAll()
 	  	aa.then(function(data){
 	  		$scope.menus = data.data;
-			  console.log('data ',data.data);
+//			  console.log('data ',data.data);
 	  	})
-	console.log('menu controller')
+//	console.log('menu controller')
 });

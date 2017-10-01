@@ -5,7 +5,16 @@
 angular.module('app.service.cart', [])
 .factory("cartService", ['$resource','$filter', function($resource,$filter) {
 	self = this;
-	var karta = {id : 0,totalPrice : 0, cartProducts: []};
+	var karta = {
+			id : 0,
+			totalPrice : 0, 
+			cartProducts: [],
+			firstName : '',
+			lastName : '',
+			street : '',
+			city : '',
+    		postCode : '',
+	}
 	var totalPrice = 0;
 	return  {
 		getCart : function(){
@@ -39,28 +48,29 @@ angular.module('app.service.cart', [])
 //	    return this.karta; 
 //	  }
 //	    
-//	    updateCartStep1(order: any){
-//	        this.karta.firstName = order.firstName;
-//	        this.karta.lastName = order.lastName;
-//	        this.karta.street = order.street;
-//	        this.karta.city = order.city;
-//	        this.karta.postCode = order.postCode;
-////	        console.log('step1 karta ' , this.karta);
-//	    }
+	    updateCartStep1 : function(order){
+//	    	var cart = this.getCart();
+	    	karta.firstName = order.firstName;
+	    	karta.lastName = order.lastName;
+	    	karta.street = order.street;
+	    	karta.city = order.city;
+	    	karta.postCode = order.postCode;
+//	        console.log('step1 karta ' , this.karta);
+	    },
 //	    
-//	     updateCartStep2(shippingOption: any, shippingPrice: any){
-//	        this.karta.shippingOption = shippingOption;
-//	         this.karta.shippingPrice = shippingPrice;
-//	         this.refreshTotalPrice();
-////	        console.log('step2 karta ' , this.karta);
-//	    }
+	     updateCartStep2: function(shippingOption, shippingPrice){
+	        karta.shippingOption = shippingOption;
+	        karta.shippingPrice = shippingPrice;
+	        this.refreshTotalPrice();
+//	        console.log('step2 karta ' , this.karta);
+	    },
 //	    
-//	    updateCartStep3(paymentOption: any){
-//	        this.karta.paymentOption = paymentOption.id;
-//	        this.karta.paymentPrice = paymentOption.price;
-//	         this.refreshTotalPrice();
-////	        console.log('step2 karta ' , this.karta);
-//	    }
+	    updateCartStep3: function(paymentOption){
+	        karta.paymentOption = paymentOption.id;
+	        karta.paymentPrice = paymentOption.price;
+//	        this.refreshTotalPrice();
+//	        console.log('step2 karta ' , this.karta);
+	    },
 //	    
 //	    
 //	//   private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'}); 

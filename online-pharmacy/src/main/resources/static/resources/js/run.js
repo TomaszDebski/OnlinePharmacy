@@ -4,9 +4,11 @@
 
 angular.module('app.run', [])
 .run(function($rootScope,$state,$http,$window,$location){
-//	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {//event, toState, toParams, fromState, fromParams
-//		$rootScope.user = $window.sessionStorage.user;
-//		$rootScope.authenticated = $window.sessionStorage.authenticated;
+	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {//event, toState, toParams, fromState, fromParams
+//		console.log('$window.sessionStorage.user',$window.sessionStorage.user)
+//		console.log('$window.sessionStorage.authenticated',$window.sessionStorage.authenticated)
+		$rootScope.user = $window.sessionStorage.user;
+		$rootScope.authenticated = $window.sessionStorage.authenticated;
 //		var stateArray = ["register","login","contact","home"]
 //		var name = toState.name;
 //		if ($window.sessionStorage.user == undefined || $window.sessionStorage.user == ""){
@@ -15,7 +17,7 @@ angular.module('app.run', [])
 //				event.preventDefault();
 //			}
 //		}
-//	})
+	})
 //	$rootScope.$on('$stateChangeSuccess', 
 //					function(event, toState, toParams, fromState, fromParams){ 
 //		

@@ -32,6 +32,61 @@ angular.module('app.config', [])
 			name : 'pain-relief'
 		}
 	})
+	.state('product', {
+		url: '/product/:id',
+		templateUrl : 'html/product/product.html',
+		controller : 'productController',
+		resolve : {
+			productResolve : function($stateParams,productService){
+				return productService.get({id:$stateParams.id}).$promise.then(function(data){
+					return data;
+				});
+			}
+		}
+	})
+	.state('shoppingCart', {
+		url: '/shoppingCart',
+		templateUrl : 'html/orderWorkflow/shoppingCartSummary.html',
+		controller : 'shoppingCartSummaryController',
+		params : {
+//			name : 'pain-relief'
+		}
+	})
+	
+	.state('order', {
+		url: '/order',
+		abstract : true,
+		templateUrl : 'html/orderWorkflow/orderProgress.html',
+		controller : 'orderProgressController',
+	})
+	.state('order.delivery', {
+		url: '/delivery',
+		templateUrl : 'html/orderWorkflow/steps/one_orderDelivery.html',
+		controller : 'one_orderDeliveryController',
+	})
+	.state('order.shipping', {
+		url: '/shipping',
+		templateUrl : 'html/orderWorkflow/steps/two_orderShipping.html',
+		controller : 'two_orderShippingController',
+	})
+	.state('order.payment', {
+		url: '/payment',
+		templateUrl : 'html/orderWorkflow/steps/three_orderPayment.html',
+		controller : 'three_orderPaymentController',
+	})
+	.state('order.summary', {
+		url: '/summary',
+		templateUrl : 'html/orderWorkflow/steps/four_orderSummary.html',
+		controller : 'four_orderSummaryController',
+	})
+	
+	
+	
+	
+	
+	
+	
+	
 	.state('showAllPhysiotherapists', {
 		url: '/showAllPhysiotherapists',
 		templateUrl : 'html/allPhysiotherapists.html',

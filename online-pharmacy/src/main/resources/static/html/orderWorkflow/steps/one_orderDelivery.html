@@ -1,0 +1,179 @@
+<meta meta charset=utf-8>
+<div class="container">
+	<div class="page-header">
+		<h1>Podaj adres dostawy</h1>
+	</div>
+	<div class="row">
+
+		<div class="col-md-8">
+			<form class="form-horizontal" novalidate name="orderDeliveryForm"
+				id="orderDeliveryForm" ng-submit="goToNextStep(order)" novalidate>
+				<fieldset style="border: none;">
+					<div class="address-container">
+
+						<h4 class="address-details">Adres do wysyłki</h4>
+
+
+						<div class="form-group">
+							<div class="col-sm-6">
+								<input id="sylius_checkout_addressing_shippingAddress_firstName"
+									required name="firstName" ng-model="order.firstName"
+									ng-class="{submitted:orderDeliveryForm.submitted}"
+									class=" form-control" placeholder="Imię" type="text">
+								<div
+									ng-if="orderDeliveryForm.firstName.$error.required && orderDeliveryForm.submitted"
+									class="help-block" style="color: #f00;">Imię jest
+									wymagane</div>
+							</div>
+							<div class="col-sm-6">
+								<input id="sylius_checkout_addressing_shippingAddress_lastName"
+									required name="lastName" ng-model="order.lastName"
+									ng-class="{submitted:orderDeliveryForm.submitted}"
+									class=" form-control" placeholder="Nazwisko" type="text">
+								<div
+									ng-if="orderDeliveryForm.lastName.$error.required && orderDeliveryForm.submitted"
+									class="help-block" style="color: #f00;">Nazwisko jest
+									wymagane</div>
+							</div>
+						</div>
+
+						<div class="address-details">
+							<div class="form-group">
+								<div class="col-xs-12">
+									<input id="sylius_checkout_addressing_shippingAddress_street"
+										required="required" class=" form-control"
+										ng-model="order.street" name="street"
+										ng-class="{submitted:orderDeliveryForm.submitted}"
+										placeholder="Ulica" value="" type="text">
+									<div
+										ng-if="orderDeliveryForm.street.$error.required && orderDeliveryForm.submitted"
+										class="help-block" style="color: #f00;">Adres jest
+										wymagany</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-8">
+									<input id="sylius_checkout_addressing_shippingAddress_city"
+										required="required" class=" form-control"
+										ng-model="order.city" name="city"
+										ng-class="{submitted:orderDeliveryForm.submitted}"
+										placeholder="Miasto" value="" type="text">
+									<div
+										ng-if="orderDeliveryForm.city.$error.required && orderDeliveryForm.submitted"
+										style="color: #f00;">Miasto jest wymagane</div>
+								</div>
+
+								<div class="col-sm-4">
+									<input id="sylius_checkout_addressing_shippingAddress_postcode"
+										name="postCode" required="required" class=" form-control"
+										placeholder="Kod pocztowy" ng-model="order.postCode"
+										ng-class="{submitted:orderDeliveryForm.submitted}" type="text">
+									<div
+										ng-if="orderDeliveryForm.postCode.$error.required && orderDeliveryForm.submitted"
+										class="help-block" style="color: #f00;">Kod pocztowy
+										jest wymagany</div>
+								</div>
+							</div>
+
+							<!-- 					<div class="form-group"> -->
+							<!-- 						<div class="col-xs-12"> -->
+							<!-- 							<select id="sylius_checkout_addressing_shippingAddress_country" -->
+							<!-- 								name="sylius_checkout_addressing[shippingAddress][country]" -->
+							<!-- 								required="required" class="select2 country-select form-control" -->
+							<!-- 								placeholder="Country"><option value="">Wybierz</option> -->
+							<!-- 								<option value="1">Afghanistan</option> -->
+							<!-- 								<option value="2">Åland Islands</option> -->
+							<!-- 								<option value="3">Albania</option> -->
+							<!-- 								<option value="4">Algeria</option> -->
+							<!-- 								<option value="5">American Samoa</option> -->
+							<!-- 								<option value="6">Andorra</option> -->
+							<!-- 								<option value="7">Angola</option> -->
+							<!-- 								<option value="8">Anguilla</option> -->
+							<!-- 								<option value="9">Antarctica</option> -->
+							<!-- 								<option value="10">Antigua &amp; Barbuda</option> -->
+							<!-- 								<option value="11">Argentina</option> -->
+
+							<!-- 							</select> -->
+
+							<!-- 						</div> -->
+							<!-- 					</div> -->
+
+							<div class="province-container" data-url="/province/choice-form">
+								<div class="form-group">
+									<div class="col-xs-12">
+										<select
+											id="sylius_checkout_addressing_shippingAddress_province"
+											name="sylius_checkout_addressing[shippingAddress][province]"
+											required="required" class="select2 form-control"
+											placeholder="Province"><option value="">Wybierz</option>
+											<option value="0">Dolnoslaskie</option>
+											<option value="1">Kujawsko-Pomorskie</option>
+											<option value="2">Lodzkie</option>
+											<option value="3">Lubelskie</option>
+											<option value="4">Lubuskie</option>
+											<option value="5">Malopolskie</option>
+											<option value="6">Mazowieckie</option>
+											<option value="7">Opolskie</option>
+											<option value="8">Podkarpackie</option>
+											<option value="9">Podlaskie</option>
+											<option value="10">Pomorskie</option>
+											<option value="11">Slaskie</option>
+											<option value="12">Swietokrzyskie</option>
+											<option value="13">Warminsko-Mazurskie</option>
+											<option value="14">Wielkopolskie</option>
+											<option value="15">Zachodniopomorskie</option>
+										</select>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-12">
+								<input
+									id="sylius_checkout_addressing_shippingAddress_phoneNumber"
+									name="sylius_checkout_addressing[shippingAddress][phoneNumber]"
+									required="required" class=" form-control"
+									placeholder="Numer telefonu" type="text">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row checkout-buttons">
+						<div class="col-sm-3 col-xs-12 pull-right">
+							<button class="btn btn-success btn-lg btn-block">Przejdź
+								dalej</button>
+						</div>
+						<div class="col-sm-3 col-xs-12 pull-left">
+							<a href="javascript:void(0)"
+								class="btn btn-default btn-lg btn-block"
+								(click)="backToShipping()"> Wróć do koszyka </a>
+						</div>
+					</div>
+				</fieldset>
+				<input id="sylius_checkout_addressing__token"
+					name="sylius_checkout_addressing[_token]" class=" form-control"
+					value="ztWEQ7j5rDLxFetrkRmG7S0HLPJeceSnpJTvrYnLcKY" type="hidden">
+			</form>
+		</div>
+<!-- 		<app-summary-content></app-summary-content> -->
+		<div ng-controller="summaryBoxController">
+			<div ng-include="'html/orderWorkflow/steps/summaryBox/summaryBox.html'"></div>
+		</div>
+		
+	</div>
+</div>
+
+<style>
+.red-border-class {
+	border: 2px solid #f00;
+}
+
+input.submitted.ng-invalid {
+	border: 2px solid #f00;
+}
+</style>
+
