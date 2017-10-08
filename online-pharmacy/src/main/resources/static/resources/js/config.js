@@ -9,6 +9,16 @@ angular.module('app.config', [])
 		templateUrl : 'html/home.html',
 		controller : 'homeController',
 	})
+	.state('home.child', {
+		controller : 'menuController',
+		resolve : {
+			categoryResolve : function($stateParams,categoryService){
+				return categoryService.getAll().then(function(result){
+					return result.data;
+				});
+			}
+		}
+	})
 	.state('login', {
 		url: '/login',
 		templateUrl : 'html/login.html',
@@ -40,6 +50,37 @@ angular.module('app.config', [])
 			productResolve : function($stateParams,productService){
 				return productService.get({id:$stateParams.id}).$promise.then(function(data){
 					return data;
+				});
+			}
+		}
+	})
+	.state('addProduct', {
+		url: '/addProduct',
+		templateUrl : 'html/product/addProduct/addProduct.html',
+		controller : 'addProductController',
+		resolve : {
+			categoryResolve : function($stateParams,categoryService){
+				return categoryService.getAll().then(function(result){
+					return result.data;
+				});
+			}
+		}
+//		resolve : {
+//			productResolve : function($stateParams,productService){
+//				return productService.get({id:$stateParams.id}).$promise.then(function(data){
+//					return data;
+//				});
+//			}
+//		}
+	})
+	.state('addCategory', {
+		url: '/category/add',
+		templateUrl : 'html/category/addCategory.html',
+		controller : 'addCategoryController',
+		resolve : {
+			categoryResolve : function($stateParams,categoryService){
+				return categoryService.getAll().then(function(result){
+					return result.data;
 				});
 			}
 		}

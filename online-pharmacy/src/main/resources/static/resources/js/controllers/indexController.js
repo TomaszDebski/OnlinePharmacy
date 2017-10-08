@@ -3,9 +3,12 @@
  */
 angular.module('app.controller.index', [])
 .controller('indexController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService
+		$state,cartService,categoryService
 //		,authService
 		) {
+//	categoryService.resolveCategory();
+//	categoryService.setCategories(categoryResolve);
+//	console.log('index',categoryService.getCategories())
 //	console.log('index')
 	$scope.move = false;
 	$scope.authenticated = false;

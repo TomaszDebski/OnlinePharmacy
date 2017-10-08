@@ -14,7 +14,8 @@ angular.module('app.controller.product', [])
 //      
 //    }
 //    ngOnInit(){
-        $scope.product =  productResolve;
+        $scope.product = productResolve;
+        $scope.pack = {};
 //        console.log('product ' , this.productId);
 //        this.product = this.productService.getById(this.productId)
 //            .subscribe(
@@ -56,13 +57,14 @@ angular.module('app.controller.product', [])
     $scope.product.package = $scope.pack.id;
 //      console.log("packageId " ,packageId);
 //      var productCopy = this.deepCopy(this.product);
-      var productCopy = angular.copy(product);
+      var productCopy = angular.copy($scope.product);
       productCopy.packages = [];
       productCopy.packages.push(packVar);
 //    console.log("productCopy" , productCopy)  
-//      console.log("product" , product)
-    cartService.addToCart(productCopy);
-    $state.go('shoppingCart');
+      console.log("productCopy" , productCopy)
+      productCopy.number = $scope.quantity;
+	  cartService.addToCart(productCopy);
+	  $state.go('shoppingCart');
 //    this.router.navigate(['/shoppingCart']);
 //    console.log("addToCart.length " , this.cartService.karta.cartProducts.length)
   }
@@ -77,4 +79,11 @@ angular.module('app.controller.product', [])
 //        }
 //        return newObj;
 //    }
+    
+    $scope.changeQuantity = function(product,event){
+        product.totalNumber = event.target.value;
+        var refreshProduct = $filter('filter')(cartService.getCart().cartProducts, {'id':product.id})[0];
+        refreshProduct.totalNumber = event.target.value;
+        cartService.refreshTotalPrice();
+    }
 })

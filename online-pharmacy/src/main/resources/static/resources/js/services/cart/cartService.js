@@ -44,6 +44,22 @@ angular.module('app.service.cart', [])
 	      this.calculateTotalPrice(productAdded);    
 	  },
 	  
+	  addToCartFromOne: function(productAdd){
+//			console.log('productAdded ',productAdded);
+//			console.log('karta ', karta);
+			var findedProduct = $filter('filter')(karta.cartProducts, {'id':productAdded.id})[0];
+//			console.log('findedProduct ', findedProduct);
+	      if (findedProduct == undefined){
+	        productAdded.totalNumber = 1;
+	        karta.cartProducts.push(productAdded);           
+//			console.log('karta ', karta);
+	      }else{
+	          productAdded.totalNumber = findedProduct.totalNumber++;
+	      }
+	      console.log('karta ', karta);
+	      this.calculateTotalPrice(productAdded);  
+	  },
+	  
 //	  getCart() : Cart{
 //	    return this.karta; 
 //	  }

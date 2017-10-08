@@ -3,8 +3,16 @@
  */
 
 angular.module('app.run', [])
-.run(function($rootScope,$state,$http,$window,$location){
+.run(function($rootScope,$state,$http,$window,$location,categoryService){
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {//event, toState, toParams, fromState, fromParams
+		console.log('categoryService.getCategories().length',categoryService.getCategories().length)
+		if (categoryService.getCategories().length){
+			console.log('getCateogires from run')
+			var aa = categoryService.getAll()
+		  	aa.then(function(data){
+				  categoryService.setCategories(data.data);
+		  	})
+		}
 //		console.log('$window.sessionStorage.user',$window.sessionStorage.user)
 //		console.log('$window.sessionStorage.authenticated',$window.sessionStorage.authenticated)
 		$rootScope.user = $window.sessionStorage.user;

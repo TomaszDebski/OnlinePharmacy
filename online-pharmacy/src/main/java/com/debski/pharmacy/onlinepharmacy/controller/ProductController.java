@@ -121,7 +121,7 @@ public class ProductController {
 	@RequestMapping(value = "/upload", method = RequestMethod.POST,
 		    consumes = {"multipart/form-data"})
 		public String executeSampleService(
-		        @RequestPart("file[]") @Valid @NotNull @NotBlank MultipartFile file,
+		        @RequestPart("file") @Valid @NotNull @NotBlank MultipartFile file,
 		        @RequestParam("categoryNumber") String categoryNumber,
 		        HttpServletRequest request) {
 		String uploadsDir = "/my_uploads/";

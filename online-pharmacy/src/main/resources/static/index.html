@@ -122,11 +122,12 @@
 						number:2) + " zł"}} </span>)
 				</a>
 				<div>
-					<a routerLink="add-product" routerLinkActive="active-link"
+					<a ui-sref="addProduct"
 						ng-show="authenticated"> Dodaj produkt | </a> <a
-						routerLink="add-category" routerLinkActive="active-link"
-						ng-show="authenticated"> Dodaj kategorię | </a> <a ui-sref="login"
-						ng-show="!authenticated"> Zaloguj</a> | <a ng-show="authenticated"
+						ui-sref="addCategory"
+						ng-show="authenticated"> Dodaj kategorię | </a> 
+						<a ui-sref="login" ng-show="!authenticated"> Zaloguj |</a> 
+						<a ng-show="authenticated"
 						ui-sref="logout"> Wyloguj </a> <a ui-sref="register"
 						ng-show="!authenticated"> Stwórz nowe konto </a>
 				</div>
@@ -159,60 +160,56 @@
 
 	<div ui-view class="main" style="position: relative"></div>
 
-	<footer class="site-footer small--text-center" role="contentinfo">
+<!-- 	<footer class="site-footer small--text-center" role="contentinfo"> -->
 
-		<div class="wrapper">
+<!-- 		<div class="wrapper"> -->
 
-			<div class="grid-uniform">
-
-
-
-
-				<div class="grid__item large--one-half">
-					<h3>Linki</h3>
-					<ul>
-						<li><a href="/pages/blog">Blog</a></li>
-						<li><a href="/pages/contact-us">Kontakt</a></li>
-						<li><a href="/pages/shipping-returns-policy">Polityka zamówień
-								&amp; reklamacji</a></li>
-						<li><a href="http://www.ptfarm.pl/">Polskie Towarzystwo Farmaceutyczne</a></li>
-						<li><a href="http://www.wiif.waw.pl/">Wojewódzki Inspektorat Farmaceutyczny w Warszawie</a></li>
-					</ul>
-				</div>
-
-				<div class="grid__item large--one-half">
-					<h3>Znajdź nas</h3>
-
-					<ul class="inline-list social-icons">
-						<li><a class="icon-fallback-text" href="https://twitter.com"
-							title="The Family Pharmacy on Twitter"> <span
-								class="icon icon-twitter" aria-hidden="true"></span> <span
-								class="fallback-text">Twitter</span>
-						</a></li>
-						<li><a class="icon-fallback-text"
-							href="https://www.facebook.com/The-Family-Pharmacy-1750193391923282/"
-							title="The Family Pharmacy on Facebook"> <span
-								class="icon icon-facebook" aria-hidden="true"></span> <span
-								class="fallback-text">Facebook</span>
-						</a></li>
+<!-- 			<div class="grid-uniform"> -->
 
 
 
 
-					</ul>
-				</div>
+<!-- 				<div class="grid__item large--one-half"> -->
+<!-- 					<h3>Linki</h3> -->
+<!-- 					<ul> -->
+<!-- 						<li><a href="/pages/blog">Blog</a></li> -->
+<!-- 						<li><a href="/pages/contact-us">Kontakt</a></li> -->
+<!-- 						<li><a href="/pages/shipping-returns-policy">Polityka zamówień -->
+<!-- 								&amp; reklamacji</a></li> -->
+<!-- 						<li><a href="http://www.ptfarm.pl/">Polskie Towarzystwo Farmaceutyczne</a></li> -->
+<!-- 						<li><a href="http://www.wiif.waw.pl/">Wojewódzki Inspektorat Farmaceutyczny w Warszawie</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
 
-			</div>
-<!-- 			<a -->
-<!-- 				href="http://thepsi.ie/Libraries/Approved_companies/PSI_List_of_approved_companies_for_the_sale_of_non-prescription_medicines_online.sflb.ashx"><img -->
-<!-- 				src="https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/bc120734-e940-11e6-b255-0a6afe88c81b.png"<="" -->
-<!-- 				a=""> </a> -->
-		</div>
-		<a
-			href="http://thepsi.ie/Libraries/Approved_companies/PSI_List_of_approved_companies_for_the_sale_of_non-prescription_medicines_online.sflb.ashx">
+<!-- 				<div class="grid__item large--one-half"> -->
+<!-- 					<h3>Znajdź nas</h3> -->
 
-		</a>
-	</footer>
+<!-- 					<ul class="inline-list social-icons"> -->
+<!-- 						<li><a class="icon-fallback-text" href="https://twitter.com" -->
+<!-- 							title="The Family Pharmacy on Twitter"> <span -->
+<!-- 								class="icon icon-twitter" aria-hidden="true"></span> <span -->
+<!-- 								class="fallback-text">Twitter</span> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a class="icon-fallback-text" -->
+<!-- 							href="https://www.facebook.com/The-Family-Pharmacy-1750193391923282/" -->
+<!-- 							title="The Family Pharmacy on Facebook"> <span -->
+<!-- 								class="icon icon-facebook" aria-hidden="true"></span> <span -->
+<!-- 								class="fallback-text">Facebook</span> -->
+<!-- 						</a></li> -->
+
+
+
+
+<!-- 					</ul> -->
+<!-- 				</div> -->
+
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<a -->
+<!-- 			href="http://thepsi.ie/Libraries/Approved_companies/PSI_List_of_approved_companies_for_the_sale_of_non-prescription_medicines_online.sflb.ashx"> -->
+
+<!-- 		</a> -->
+<!-- 	</footer> -->
 
 
 	<!-- <div class=""> -->
@@ -241,6 +238,8 @@
 	<!-- 	<script src="resources/js/controllers/contactController.js"></script> -->
 	<script src="resources/js/controllers/medicineListController.js"></script>
 	<script src="resources/js/controllers/product/productController.js"></script>
+	<script src="resources/js/controllers/product/addProduct/addProductController.js"></script>
+	<script src="resources/js/controllers/category/addCategoryController.js"></script>
 	<script src="resources/js/controllers/userPanelController.js"></script>
 	<script src="resources/js/controllers/cartController.js"></script>
 
@@ -280,6 +279,8 @@
 	<script src="resources/js/models/productModel.js"></script>
 
 	<script src="resources/js/services/categoryService.js"></script>
+	<script src="resources/js/services/category/categoryResourceService.js"></script>
+	
 	<script src="resources/js/services/userService.js"></script>
 	<script src="resources/js/services/product/productService.js"></script>
 	<script src="resources/js/services/cart/cartService.js"></script>
@@ -303,6 +304,8 @@
 
 	<script src="resources/js/directives/usernameAvailableDirective.js"></script>
 	<script src="resources/js/directives/compareToDirective.js"></script>
+	<script src="resources/js/directives/addProductPackages/addProductPackagesDirective.js"></script>
+	
 	<!-- 	<script src="resources/js/directives/newInterview/addNewInterviewDirective.js"></script> -->
 	<!-- 	<script src="resources/js/directives/addService/addServiceDirective.js"></script> -->
 	<!-- 	<script src="resources/js/directives/multipleBodyAndPlaceInInterview/multipleBodyAndPlaceDirective.js"></script> -->

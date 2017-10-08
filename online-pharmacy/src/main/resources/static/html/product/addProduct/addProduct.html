@@ -1,0 +1,201 @@
+<meta meta charset=utf-8>
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1 style="text-align: center;">Dodaj produkt </h1>
+        </div>
+
+        <form 
+        	ng-submit="addProductFnc()" 
+        	id="addProductForm"
+        	name="addProductForm"
+        	class="form-horizontal" 
+        	novalidate
+        >
+        <div class="row">
+        	<div class="col-xs-4">
+        		<img ng-src="api/product/img?number={{imgNumber}}" alt="" 
+        		title="" style="height: 350px; width: 350px;">
+        	</div>
+        	<div class="col-xs-5 col-xs-offset-1">
+	            <div class="form-group">
+	                <div class="col-xs-12">
+	                <label for="firstname" >Nazwa produktu:<span class="required">*</span></label>
+	                        <input 
+	                        	id="name" 
+	                        	name="name" 
+	                        	ng-model="newProduct.name" 
+	                        	ng-class="{submitted:loginForm.submitted}"
+	                        	required
+	                        	class=" form-control" 
+	                        	placeholder="Nazwa" 
+	                        	type="text">
+<!-- 	                <div *ngIf="addProduct.submitted && !name.valid" class="help-block" style="color:#f00">Nazwa jest wymagana</div> -->
+	                	<span 
+							ng-show="addProductForm.name.$error.required && addProductForm.submitted" 
+							style="color : #f00; float:left;"
+							>{{'login.name_required' | translate}}
+						</span>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <div class="col-xs-12">
+	                <label for="firstname" >Opis:<span class="required">*</span></label>
+	    				<textarea 
+	    					class="form-control" 
+	    					id="description" 
+	    					name="description"
+	    					ng-class="{submitted:loginForm.submitted}" 
+	    					rows="3"
+	    					ng-model="newProduct.description"
+				            required
+				            placeholder="Opis" 
+				         ></textarea>
+<!-- 	                    <div *ngIf="addProduct.submitted && !description.valid" id="password-strength-text" style="color:#f00"><br>Opis jest wymagany</div> -->
+	                    <span 
+							ng-show="addProductForm.description.$error.required && addProductForm.submitted" 
+							style="color : #f00; float:left;"
+							>{{'login.description_required' | translate}}
+						</span>
+	<!--                     <p id="password-strength-text"><strong>Minimum 8 Characters</strong></p> -->
+	                </div>
+	            </div>
+	            <div class="form-group">
+		            <div class="col-xs-12">
+		            <label for="firstname" >Kategoria:<span class="required">*</span></label>
+		            	<select 
+						id="mainCategory" 
+						name="mainCategory" 
+						class="form-control arrows" 
+						ng-model="model.mainCategory"
+						ng-options="'menu.' + category.name | translate for category in categories"
+						ng-init="model.mainCategory = categories[1]; update();" 
+						ng-change="update()"
+						>
+						</select>
+						<br>
+<!-- 						<div *ngIf="addProduct.submitted && mainCategory == -1" id="password-strength-text" style="color:#f00">Wybierz kategorie</div> -->
+					</div>
+				</div>
+				
+				<div class="form-group">
+		            <div class="col-xs-12">
+		            <label for="firstname" >Podkategoria:<span class="required">*</span></label>
+		            	<select 
+							id="subCategory" 
+							name="subCategory" 
+							class="form-control arrows" 
+							ng-model="model.subcategory"
+							ng-options="'submenu.' + category.name | translate for category in model.mainCategory.subcategory"
+							
+						>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+		            <div class="col-xs-12">
+		            <label for="firstname" >Opakowania:<span class="required">*</span></label>
+		            	<div ng-repeat="pack in countOfPack">
+		            	<div class="row">
+<!-- 		            	<input-pack [id]="pack.id" (result)="changePack($event)"  -->
+<!-- 		            		[showError]="last && (!isShouldIncrease || addProduct.submitted)"></input-pack> -->
+							<add-product-packages-directive id="{{pack.id}}" count="countOfPack"
+								form="addProductForm"
+							></add-product-packages-directive>
+		            	</div>
+	                    </div>    	
+						<input 
+							type="button" ng-click="zwieksz()" value="Dodaj"/>
+					</div>
+				</div>
+			
+	            <div class="form-group">
+<!-- 	                <div class="col-xs-12"> -->
+	                <label for="firstname" >Dodaj zdjęcie:<span class="required">*</span></label>
+	                
+	                <div class="well"style="width:300px;height: 100px;">
+<!-- 			        	<form enctype="multipart/form-data" novalidate> -->
+			             <div>
+			                 <input type="file" id="file1"/>
+<!-- 			                 <br> -->
+			                 <div style="float:right;">
+			                     <button class="btn btn-xs btn-success" ng-disabled="disableBtnUpload" ng-click="btn_upload()">Upload</button>
+<!-- 			                     <button ng-click="btn_clean()">Remove all</button> -->
+			                 </div>
+			             </div>
+			             <div 
+			             	ng-repeat="file in files" 
+			             	style="margin-top: 20px;border-bottom-color: antiquewhite;border-bottom-style: double;"
+			             >
+			                 <div>
+			                 	<span>{{file.name}}</span>
+			                 	<div style="float:right;">
+<!-- 			                  	<span>{{file.humanSize}}</span> -->
+			                  	<button ng-click="btn_remove(file)" title="Remove from list to be uploaded">
+<!-- 			                  		<i class="icon-remove"></i> -->Usuń
+			                  	</button>
+			                 	</div>
+			                 </div>
+			                 <progress style="width:250px;" value="{{file.loaded}}" max="{{file.size}}"></progress>
+			             </div>
+<!-- 			             </form> -->
+					</div>
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+	                
+<!-- 	                <file-upload #fu (change)="fu.upload(categoryId.number)" (img)="changeImg($event)" [multiple]="true" -->
+<!-- 	                	[disableFile]="addProduct.invalid"></file-upload> -->
+<!-- 	                <div *ngIf="addProduct.submitted && imgNumber == ''" id="password-strength-text" style="color:#f00"><br>Dodaj zdjęcie</div> -->
+	<!--                         <input  -->
+	<!--                         	id="fos_user_registration_form_email"  -->
+	<!--                         	name="email"  -->
+	<!--                         	[(ngModel)]="model.email"  -->
+	<!--                         	#email="ngModel" -->
+	<!--                         	required -->
+	<!--                         	class=" form-control"  -->
+	<!--                         	placeholder="Email"  -->
+	<!--                         	type="email"> -->
+<!-- 	                </div> -->
+	            </div>
+			</div>
+		 </div>
+
+<!--                 <input  -->
+<!--                 	id="fos_user_registration_form__token"  -->
+<!--                 	name="fos_user_registration_form[_token]"  -->
+<!--                 	class=" form-control"  -->
+<!--                 	value="1Y9_bKNq7YrpKx-11O7S6NiXPOtgPc_fop6kIuTTzfY"  -->
+<!--                 	type="hidden"> -->
+
+            <div class="form-actions clearfix" style="text-align: right">
+
+                <button type="submit" class="btn btn-lg btn-success" style="background-color: #d68121;">
+                    Dodaj produkt
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+input.submitted.ng-invalid
+{
+  border:2px solid #f00;
+}
+	.red-border-class{
+		border:2px solid #f00;
+	}
+	span.required {
+    color: red;
+    margin-left: 3px;
+}
+</style>

@@ -4,6 +4,7 @@
 
 angular.module('app.controller.home', [])
 .controller('homeController',
-		function() { 
-	console.log('home')
+		function(categoryService) { 
+//	categoryService.setCategories(categoryResolve);
+//	console.log('home',categoryService.getCategories())
 });

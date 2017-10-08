@@ -2,8 +2,25 @@
  * 
  */
 angular.module('app.service.category',[])
-    .factory('categoryService',['$http','$log', function($http,$log) {
+    .factory('categoryService',['$http','$log','$resource', function($http,$log,$resource) {
+    	self = this;
+    	var categories = [];
+    	console.log('categoryService')
+//    	resolveFunction = function(){
+//    		var sss = $http.get('api/category').then(function(result){
+//    			console.log('result.data',result.data)
+//				categories = result.data;
+//			});
+//    		console.log('sss',sss)
+//    	}
+    	
     	return {
+    		setCategories : function(categoriesVar){
+    			categories = categoriesVar;
+    		},
+    		getCategories : function(){
+    			return categories;
+    		},
     	    getVisitsByPatientId: function(id) {
     	    	return $http.get("visit/byPatient",{params: { patientId: id }})
     	      .then(
@@ -14,6 +31,9 @@ angular.module('app.service.category',[])
 					}
 				)
     	    },
+//    	    resolveCategory: function(){
+//    	    	resolveFunction();
+//    	    },
 //
     	    getAll: function() {
     	        return $http.get('api/category');
@@ -21,6 +41,13 @@ angular.module('app.service.category',[])
     	  
     	     getByName(name) {
     	        return $http.get('api/category/one?name='+ name);
+    	    },
+    	    resourceCategory : function(){
+    	    	return  $resource('api/product/:id', {id : "@id"},
+    	    			{ 
+    	    		'query':  {method:'GET', isArray:true},
+    	    		'update' :{method: "PUT"} 
+    	    		  })
     	    }
 
 //    	    getById(id: number) {

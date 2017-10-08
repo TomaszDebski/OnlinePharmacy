@@ -4,7 +4,7 @@
 
 angular.module('app.controller.cart', [])
 .controller('cartController',
-		function($scope,$state,cartService) { 
+		function($scope,$state,$filter,cartService) { 
 //	console.log('cart')
 	
 	$scope.cart = cartService.getCart();
@@ -20,4 +20,11 @@ angular.module('app.controller.cart', [])
 		$scope.$parent.move = false;
 		$state.go("shoppingCart");
 	}
+	
+	$scope.changeQuantity = function(product,event){
+        product.totalNumber = event.target.value;
+        var refreshProduct = $filter('filter')(cartService.getCart().cartProducts, {'id':product.id})[0];
+        refreshProduct.totalNumber = event.target.value;
+        cartService.refreshTotalPrice();
+    }
 });

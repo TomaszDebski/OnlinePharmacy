@@ -1,0 +1,141 @@
+<meta meta charset=utf-8>
+<div class="container">
+	 <div class="col-xs-offset-3 col-xs-6">
+	    <div class="row">
+	        <div class="page-header">
+	            <h1>Dodaj kategorię </h1>
+	        </div>
+	        <form 
+	        	name="newCategoryForm"
+	        	id="newCategoryForm"
+	        	ng-submit="addCategory()" 
+	        	class="form-horizontal" 
+	        	novalidate
+	        >
+	        <div class="row">
+	<!--         	<div class="col-xs-4"> -->
+	<!--         		<img src="http://localhost:8080/api/product/img?number={{imgNumber}}" alt="" title="PERNATON JOINT MASSAGE GEL"> -->
+	<!--         	</div> -->
+	<!--         	<div class="col-xs-7 col-xs-offset-1"> -->
+	       
+		            <div class="form-group">
+		                <div class="col-xs-12">
+		                        <input 
+		                        	id="name" 
+		                        	name="name" 
+		                        	ng-model="newCategory.name" 
+		                        	ng-class="{submitted:newCategoryForm.submitted}"
+		                        	required
+		                        	class=" form-control" 
+		                        	placeholder="Nazwa" 
+		                        	type="text">
+<!-- 		                <div *ngIf="newCategoryForm.submitted && !name.valid" class="help-block" style="color:#f00">Nazwa jest wymagana</div> -->
+		                <span 
+							ng-show="newCategoryForm.name.$error.required && newCategoryForm.submitted" 
+							style="color : #f00; float:left;"
+							>{{'login.name_is_required' | translate}}
+						</span>
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <div class="col-xs-12">
+		                        <input 
+		                        	id="categoryNumber" 
+		                        	name="categoryNumber" 
+		                        	ng-model="newCategory.categoryNumber" 
+		                        	required
+		                        	ng-class="{submitted:newCategoryForm.submitted}"
+		                        	class=" form-control" 
+		                        	placeholder="Numer kategorii" 
+		                        	type="text">
+<!-- 		                <div *ngIf="newCategoryForm.submitted && !categoryNumber.valid" class="help-block" style="color:#f00">Numer kategorii jest wymagany</div> -->
+							<span 
+								ng-show="newCategoryForm.categoryNumber.$error.required && newCategoryForm.submitted" 
+								style="color : #f00; float:left;"
+								>{{'login.name_is_required' | translate}}
+							</span>
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <div class="col-xs-12">
+		                        <input 
+		                        	id="url" 
+		                        	name="url" 
+		                        	ng-model="newCategory.url" 
+		                        	required
+		                        	ng-class="{submitted:newCategoryForm.submitted}"
+		                        	class=" form-control" 
+		                        	placeholder="URL" 
+		                        	type="text">
+<!-- 		                <div *ngIf="newCategoryForm.submitted && !url.valid" class="help-block" style="color:#f00">URL jest wymagana</div> -->
+							<span 
+								ng-show="newCategoryForm.url.$error.required && newCategoryForm.submitted" 
+								style="color : #f00; float:left;"
+								>{{'login.name_is_required' | translate}}
+							</span>
+		                </div>
+		            </div>
+		            <div class="form-group">
+			            <div class="col-xs-12">
+				            <select id="categoryProduct" name="categoryProduct" 
+				            	ng-model="categoryId" 
+				            	 class="form-control"
+				            	 required
+				            	 ng-class="{submitted:newCategoryForm.submitted}"
+				            	 ng-options="category.id as category.name for category in categories"
+				            	>
+				            		<option value="">Wybierz</option>
+							</select>
+							categoryId = {{categoryId}}
+							<br>
+							<span 
+								ng-show="newCategoryForm.categoryProduct.$error.required && newCategoryForm.submitted" 
+								style="color : #f00; float:left;"
+								>{{'login.name_is_required' | translate}}
+							</span>
+<!-- 							<div *ngIf="newCategoryForm.submitted && categoryId == -1" id="password-strength-text" style="color:#f00">Wybierz kategorie</div> -->
+						</div>
+					</div>
+		            <div class="form-group">
+		                <div class="col-xs-12">
+		    				<textarea 
+		    					class="form-control" 
+		    					id="description" 
+		    					name="description" 
+		    					rows="3"
+		    					ng-model="newCategory.description"
+					            ng-class="{submitted:newCategoryForm.submitted}"
+					            required
+					            placeholder="Opis" 
+					         ></textarea>
+					         
+<!-- 		                    <div *ngIf="newCategoryForm.submitted && !description.valid"  -->
+<!-- 		                    id="password-strength-text" style="color:#f00"><br>Opis jest wymagany</div> -->
+		                    <span 
+								ng-show="newCategoryForm.description.$error.required && newCategoryForm.submitted" 
+								style="color : #f00; float:left;"
+								>{{'login.name_is_required' | translate}}
+							</span>
+		                </div>
+		            </div>
+		            
+			 </div>
+	            <div class="form-actions clearfix" style="text-align: right">
+	
+	                <button type="submit" class="btn btn-lg btn-success" style="background-color: #d68121;">
+	                    Dodaj kategorię
+	                </button>
+	            </div>
+	        </form>
+	    </div>
+	</div>
+</div>
+<style>
+input.submitted.ng-invalid
+{
+  border:2px solid #f00;
+}
+	.red-border-class{
+		border:2px solid #f00;
+	}
+</style>
