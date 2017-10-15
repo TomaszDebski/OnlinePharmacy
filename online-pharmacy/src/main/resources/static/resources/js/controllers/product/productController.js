@@ -3,7 +3,7 @@
  */
 angular.module('app.controller.product', [])
 .controller('productController',
-		function($scope,$state,$stateParams,$filter,cartService,productResolve) { 
+		function($scope,$state,$stateParams,$filter,cartService,productResolve,categoryResolve) { 
   
 //    productId : number;
 //    product : any;
@@ -13,10 +13,11 @@ angular.module('app.controller.product', [])
 //    private router: Router){
 //      
 //    }
-//    ngOnInit(){
+		console.log('categoryResolve ',categoryResolve);
         $scope.product = productResolve;
+        $scope.category = $filter('filter')(categoryResolve, {'id':$scope.product.id})[0];
         $scope.pack = {};
-//        console.log('product ' , this.productId);
+//        console.log('product ' , $scope.product);
 //        this.product = this.productService.getById(this.productId)
 //            .subscribe(
 //                data => {

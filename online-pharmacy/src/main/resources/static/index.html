@@ -88,35 +88,38 @@
 
 </head>
 
-<body ng-controller="indexController"
+<body ng-controller="indexController" style="font-family: 'Open Sans',Helvetica,Arial,sans-serif;"
 	ng-class="{'moveToLeft': move,'normal' : !move}">
 	<div ng-controller="cartController">
 		<div ng-include="'html/cart.html'"></div>
 	</div>
+	
+	authenticated: {{authenticated}}
 	<!-- 	<div ng-controller="userPanelController"> -->
 	<!-- 		<div ng-include="'html/userPanel.html'"></div> -->
 	<!-- 	</div> -->
 
-
+	
 
 	<!-- UserPanel -->
-	<div class="wrapper">
+	<div class="wrapper" style="padding-bottom:5px">
 		<div class="grid--full">
 			<div class="grid__item large--one-half">
 				<h1 class="site-header__logo large--left" itemscope="" itemtype="">
-					<a routerLink="/" routerLinkActive="active-link"> <img
-						src="https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/8c385b15-eee5-11e6-b255-0a6afe88c81b.png"
+					<a ui-sref="home"> <img
+						ng-src="../images/MMM.png"
 						alt="The Family Pharmacy" itemprop="logo">
 					</a>
+<!-- 						src="https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/8c385b15-eee5-11e6-b255-0a6afe88c81b.png" -->
 				</h1>
 			</div>
-			<div
-				class="grid__item large--one-half large--text-right medium-down--hide">
+			<div ng-show="showMenu" 
+				class="grid__item large--one-half large--text-right medium-down--hide" style="padding-top: 15px;">
 				<span ng-show="$rootscope.authenticated" style="padding-left: 15px;">
 					Witaj {{loggedUserName}} </span> <a href="javascript:void(0)"
 					ng-click="showRightPanel(true)" class="js-drawer-open-right"> <span
-					class="icon-fallback-text"> <span class="icon icon-cart"
-						aria-hidden="true"></span>
+					class="icon-fallback-text"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
 				</span> Koszyk (<span id="CartCount">{{cart.cartProducts.length}}</span>
 					przedmiotów <span id="CartCost"> {{(cart.totalPrice |
 						number:2) + " zł"}} </span>)
@@ -151,12 +154,9 @@
 	</div>
 	<!-- UserPanel -->
 
-
-
-	<div ng-controller="menuController">
+	<div ng-controller="menuController" ng-show="showMenu" >
 		<div ng-include="'html/menu.html'"></div>
 	</div>
-
 
 	<div ui-view class="main" style="position: relative"></div>
 
@@ -242,11 +242,15 @@
 	<script src="resources/js/controllers/category/addCategoryController.js"></script>
 	<script src="resources/js/controllers/userPanelController.js"></script>
 	<script src="resources/js/controllers/cartController.js"></script>
+	<script src="resources/js/controllers/password/forgotPassword/forgotPasswordController.js"></script>
+	
 
 	<script
 		src="resources/js/controllers/orderWorkflow/shoppingCartSummaryController.js"></script>
 	<script
 		src="resources/js/controllers/orderWorkflow/orderProgressController.js"></script>
+	<script
+		src="resources/js/controllers/orderWorkflow/steps/zero_stepController.js"></script>	
 	<script
 		src="resources/js/controllers/orderWorkflow/steps/one_orderDeliveryController.js"></script>
 	<script
@@ -265,15 +269,7 @@
 
 	<!-- 	<script src="resources/js/controllers/patient/addPatientController.js"></script> -->
 	<!-- 	<script src="resources/js/controllers/patient/patientController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/visit/visitsController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/visit/visitController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/visit/addVisitController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/modal/interviewModalController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/modal/addVisitInCalendarModelController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/modal/addHolidayInCalendarModelController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/calendarController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/addServiceController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/addKindOfPainController.js"></script> -->
+
 	<!-- 	<script src="resources/js/controllers/addBodyPlaceController.js"></script> -->
 
 	<script src="resources/js/models/productModel.js"></script>
@@ -286,21 +282,17 @@
 	<script src="resources/js/services/cart/cartService.js"></script>
 	<script
 		src="resources/js/services/authentication/authenticationService.js"></script>
+	<script
+		src="resources/js/services/authentication/register/registerService.js"></script>	
+	<script
+		src="resources/js/services/authentication/login/loginService.js"></script>	
+		
+	
 
 
 	<!-- 	<script src="resources/js/services/authService.js"></script> -->
 	<!-- 	<script src="resources/js/services/physiotherapistService.js"></script> -->
-	<!-- 	<script src="resources/js/services/patientsService.js"></script> -->
-	<!-- 	<script src="resources/js/services/visitService.js"></script> -->
-	<!-- 	<script src="resources/js/services/patientPaginationService.js"></script> -->
-	<!-- 	<script src="resources/js/services/allPatientsForPhysiotherapist.js"></script> -->
-	<!-- 	<script src="resources/js/services/visitPaginationService.js"></script> -->
-	<!-- 	<script src="resources/js/services/getVisitsService.js"></script> -->
-	<!-- 	<script src="resources/js/services/getFileService.js"></script> -->
-	<!-- 	<script src="resources/js/services/serviceService.js"></script> -->
-	<!-- 	<script src="resources/js/services/kindOfPainService.js"></script> -->
-	<!-- 	<script src="resources/js/services/bodyPlaceService.js"></script> -->
-	<!-- 	<script src="resources/js/services/interviewService.js"></script> -->
+
 
 	<script src="resources/js/directives/usernameAvailableDirective.js"></script>
 	<script src="resources/js/directives/compareToDirective.js"></script>

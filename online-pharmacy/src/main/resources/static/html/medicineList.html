@@ -88,7 +88,8 @@
 		<div class="grid-uniform" ng-show="isGrid">
 	
 <!-- 			<div *ngFor="let product of (products | sortList:sortBy1) let i = index " -->
-				<div class="grid__item large--one-third medium--one-half" ng-repeat="product in (products | orderBy:selectedOption)">
+				<div class="grid__item large--one-third medium--one-half" 
+				ng-repeat="product in (products | orderBy:selectedOption)">
 					<a href="#"
 						class="grid__image"> <img
 						ng-src="api/product/img?number={{product.number}}"
@@ -162,7 +163,7 @@
 		<h3>Katalog</h3>
 		<ul>
 		  <li ng-repeat="item in menu">
-		  	<a routerLink="{{item.url}}" routerLinkActive="active-link">{{'menu.'+item.name | translate}}</a>
+		  	<a ui-sref="medicineList({name:'{{submenu.url}}'})">{{'menu.'+item.name | translate}}</a>
 		  </li>
 		</ul>
 	</div>

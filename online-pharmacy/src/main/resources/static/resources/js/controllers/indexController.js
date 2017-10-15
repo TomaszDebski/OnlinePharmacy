@@ -6,6 +6,7 @@ angular.module('app.controller.index', [])
 		$state,cartService,categoryService
 //		,authService
 		) {
+	$scope.aaaaaaaaaaaaaa = "przykład"
 //	categoryService.resolveCategory();
 //	categoryService.setCategories(categoryResolve);
 //	console.log('index',categoryService.getCategories())
@@ -22,6 +23,19 @@ angular.module('app.controller.index', [])
 	$scope.showRightPanel = function(isShow){
 	    $scope.move = !$scope.move;
 	  }
+	
+	$scope.refreshMenu = function(){
+		$scope.$broadcast ('refreshMenu');
+//        return  $scope.msg;
+	}
+	
+	$rootScope.$on('status_updated', function(event, obj){
+//	    console.log('1111111111',obj.showMenu); // 10
+	    $scope.showMenu = obj.showMenu;
+	})
+	$rootScope.$on('parent', function(e) {  
+		$scope.authenticated = true;
+	})
 	
 //	$scope.logout = function(authh){
 //		var logout = authService.logout();

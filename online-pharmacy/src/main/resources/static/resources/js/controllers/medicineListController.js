@@ -3,17 +3,20 @@
  */
 angular.module('app.controller.medicineList', [])
 .controller('medicineListController',
-		function($stateParams,categoryService,$scope,cartService,$filter,Product) { 
+		function($stateParams,categoryService,$scope,cartService,$filter,Product,categoryResolve,oneCategoryResolve) { 
 //	console.log('medicineList',$stateParams.name)
 //	console.log('$stateParams',$stateParams)
-	if ($stateParams.name != null){
-		var productByName = categoryService.getByName($stateParams.name);
-		productByName.then(function(result){
-//			console.log('result.data ',result.data)
-			$scope.products = result.data.products;
-			$scope.category = result.data;
-		})
-	}
+//	if ($stateParams.name != null){
+//		var productByName = categoryService.getByName($stateParams.name);
+//		productByName.then(function(result){
+//			$scope.products = result.data.products;
+//			$scope.category = result.data;
+//		})
+//	}
+	$scope.menu = categoryResolve;
+	$scope.products = oneCategoryResolve.products;
+	$scope.category = oneCategoryResolve;
+	console.log('oneCategoryResolve',oneCategoryResolve)
 	
 	$scope.addToCart = function(product,packageId){
 		var pack = $filter('filter')(product.packages, {'id':packageId.id})[0];
@@ -28,7 +31,7 @@ angular.module('app.controller.medicineList', [])
 	  }
 		$scope.isGrid = true;
 	 $scope.changeBetweenGridAndList = function(changeToGrid){
-	        $scope.isGrid = !$scope.isGrid
+	        $scope.isGrid = changeToGrid;
 	    }
 	 
 	 ////// Sort list/////

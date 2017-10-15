@@ -1,0 +1,492 @@
+<meta meta charset=utf-8>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-3">
+			<div class="page-header" style="border-bottom: 0px;padding-bottom: 0px;">
+				<h1 style="font-family: 'Open Sans', Helvetica, Arial, sans-serif;">
+					Zaloguj się <small>lub stwórz nowe konto</small>
+				</h1>
+			</div>
+		</div>
+	</div>
+	authenticated: {{authenticated}}
+
+	<div class="row">
+
+		<div class="col-md-8 col-md-offset-3">
+
+			<div role="tabpanel" id="security-checkout-tabs">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist" style="margin-left: 0px;">
+					<li role="presentation" class="" ng-class="active == 'exist' ? 'active' :''"><a href="" 
+					ng-click="active = 'exist'"
+						aria-controls="existing" role="tab" data-toggle="tab">Istniejący użytkownik
+							</a></li>
+					<li role="presentation" class="" ng-class="active == 'guest' ? 'active' :''"><a href="" 
+					ng-click="active = 'guest'"
+						aria-controls="guest" role="tab" data-toggle="tab">Gość</a></li>
+					<li role="presentation" ng-class="active == 'new' ? 'active' :''"><a href="" aria-controls="new" 
+					ng-click="active = 'new'"
+						role="tab" data-toggle="tab">Nowy użytkownik</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade active in" id="existing"
+					 ng-class="active == 'exist' ? 'active in' :''">
+
+						<form  ng-submit="login()"
+							name="existingForm"
+							id="existingForm"
+							class="row form-horizontal"
+							novalidate>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input id="username" 
+										name="username"
+										class="form-control" 
+										required
+										ng-model="userLogin.username"
+										placeholder="Login" 
+										ng-class="{submitted:existingForm.submitted}"
+										type="text">
+									<span 
+										ng-show="existingForm.username.$error.required && existingForm.submitted" 
+										style="color : #f00; float:left;"
+										>{{'login.login_is_required' | translate}}
+									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input id="password" 
+										name="password"
+										class="form-control" 
+										placeholder="Hasło" 
+										ng-class="{submitted:existingForm.submitted}"
+										ng-model="userLogin.password"
+										required
+										type="password">
+									<span 
+										ng-show="existingForm.password.$error.required && existingForm.submitted" 
+										style="color : #f00; float:left;"
+										>{{'login.password_is_required' | translate}}
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group pull-right">
+								<div class="col-sm-4 col-xs-12">
+									<button type="submit" class="btn btn-success btn-block btn-lg"
+										name="login">Zaloguj</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div role="tabpanel" class="tab-pane fade" id="guest" ng-class="active == 'guest' ? 'active in' :''">
+
+						<form 
+							ng-submit="sendEmail()"
+							name="emailForm"
+							id="emailForm"
+							class="row form-horizontal"
+							novalidate>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<input id="email"
+										name="email" 
+										required
+										placeholder="Email" 
+										ng-class="{submitted:emailForm.submitted}"
+										ng-model="emailToSend"
+										class="form-control" 
+										type="email">
+									<span 
+										ng-show="emailForm.email.$error.required && emailForm.submitted" 
+										style="color : #f00; float:left;"
+										>{{'login.password_is_required' | translate}}
+									</span>
+								</div>
+								<input id="sylius_checkout_guest__token"
+									name="sylius_checkout_guest[_token]" class=" form-control"
+									value="7cpyCHJFp4hJzkTtMH9DeVKgdzn-0b_8A4zxiIs261I"
+									type="hidden">
+							</div>
+							<div class="form-group pull-right">
+								<div class="col-sm-4 col-xs-12">
+									<button type="submit" class="btn btn-success btn-lg btn-block"
+										name="login">Wyślij</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<div role="tabpanel" class="tab-pane fade" id="new" ng-class="active == 'new' ? 'active in' :''">
+
+						<form 
+							ng-submit="registerFunc()"
+							name="registerForm"
+							id="registerForm"
+							novalidate
+							class="row form-horizontal">
+							<div class="form-group form-group--joined-cols">
+								<div class="col-sm-6">
+									<input 
+										id="name" 
+										name="name"
+										ng-model="register.name"
+										ng-class="{submitted:registerForm.submitted}"
+										required
+										class=" form-control" placeholder="Imię" type="text">
+								
+				<!-- 				<div *ngIf="registerForm.submitted && !firstName.valid" class="help-block" style="color:#f00">Imię jest wymagane</div> -->
+										<span ng-show="registerForm.name.$error.required  && registerForm.submitted" 
+											style="color : #f00; float:left;"
+											>{{'commons.firstname_is_required' | translate}}
+										</span>	
+								</div>
+								<div class="col-sm-6">
+									<input 
+										placeholder="Nazwisko" 
+										class="form-control"
+										id="lastName"
+										name="lastName"
+										ng-class="{submitted:registerForm.submitted}"
+										ng-model="register.lastName"
+										required="required" 
+										type="text">
+									<span 
+										ng-show="registerForm.lastName.$error.required && registerForm.submitted" 
+										style="color : #f00; float:left;"
+										>{{'login.password_is_required' | translate}}
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group pull-right">
+								<div class="col-sm-12">
+									<input placeholder="E-mail"
+										id="email"
+										name="email" 
+										ng-class="{submitted:registerForm.submitted}"
+										ng-model="register.email"
+										required="required"
+										class="form-control" 
+										type="email">
+									<span 
+										ng-show="registerForm.email.$error.required && registerForm.submitted" 
+										style="color : #f00; float:left;"
+										>{{'login.password_is_required' | translate}}
+									</span>
+									<span 
+			        					ng-show="registerForm.email.$error.email && registerForm.submitted" 
+			        					style="color : #f00; float:left;"
+			        					>{{'commons.incorrect_email' | translate}}
+			        				</span>
+								</div>
+							</div>
+
+							<div class="form-group form-group--joined-cols">
+								<div class="col-sm-6">
+									<input 
+										placeholder="Hasło"
+										id="password"
+										name="password"
+										required="required" 
+										ng-class="{submitted:registerForm.submitted}"
+										ng-model="register.password"
+										class="form-control" 
+										type="password">
+									<span 
+										ng-show="registerForm.password.$error.required && registerForm.submitted"
+										style="color : #f00; float:left;"
+										>{{'login.password_is_required' | translate}}
+									</span>
+								</div>
+								<div class="col-sm-6">
+									<input 
+										placeholder="Powtórz hasło"
+										id="passwordConfirm"
+										name="passwordConfirm"
+										required="required" 
+										ng-class="{submitted:registerForm.submitted}"
+										ng-model="passwordConfirm"
+										class="form-control" 
+										type="password"
+										data-password-verify="register.password">
+									<span 
+										ng-show="registerForm.passwordConfirm.$error.required && registerForm.submitted"
+										style="color : #f00; float:left;"
+										>{{'login.password_is_required' | translate}}
+									</span>
+									<span 
+									 	ng-show="registerForm.passwordConfirm.$error.passwordVerify && registerForm.submitted"
+									 	style="color : #f00; float:left;"
+									 	>{{'registration.passwords_not_identical' | translate}}
+									 </span>
+								</div>
+							</div>
+
+<!-- 							<input id="fos_user_registration_form__token" -->
+<!-- 								name="fos_user_registration_form[_token]" class=" form-control" -->
+<!-- 								value="NjSWH94rh4obVrDfQosjdVTYruJGhPI5jJKss3nxoVI" -->
+<!-- 								type="hidden"> -->
+
+							<div class="form-actions row">
+								<div class="col-sm-4 col-xs-12">
+									<button type="submit" class="btn btn-success btn-lg btn-block">
+										Zarejestruj</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+input.submitted.ng-invalid
+{
+  border:2px solid #f00;
+}
+
+#security-checkout-tabs {
+	border: 1px solid #DBDBDB;
+	border-radius: 6px
+}
+
+#security-checkout-tabs .nav-tabs {
+	height: 75px;
+	border-bottom-width: 0
+}
+
+@media ( max-width :767px) {
+	#security-checkout-tabs .nav-tabs {
+		height: 60px
+	}
+}
+
+#security-checkout-tabs .nav-tabs li {
+	text-align: center;
+	width: 33.333333%;
+	height: 100%;
+	border-right: 1px solid #E3E3E3;
+	border-bottom: 1px solid #E3E3E3;
+	display: table
+}
+
+#security-checkout-tabs .nav-tabs li a {
+	margin-right: 0;
+	font-size: 16px;
+	background-color: #F2F2F2;
+	border-radius: 0;
+	border: 0;
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%
+}
+
+#security-checkout-tabs .nav-tabs li:last-child {
+	border-right: none
+}
+
+#security-checkout-tabs .nav-tabs li:last-child a {
+	border-radius: 0 6px 0 0
+}
+
+#security-checkout-tabs .nav-tabs li:first-child a {
+	border-radius: 6px 0 0
+}
+
+#security-checkout-tabs .nav-tabs li.active {
+	border-bottom: 1px solid #FFF
+}
+
+#security-checkout-tabs .nav-tabs li.active a, #security-checkout-tabs .nav-tabs li.active a:focus,
+	#security-checkout-tabs .nav-tabs li.active a:hover {
+	background-color: #FFF
+}
+
+#security-checkout-tabs .tab-content {
+	padding: 40px 25px 25px
+}
+
+#security-checkout-tabs .form-group .form-control {
+	padding: 6px 11px;
+	height: 52px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-appearance: none
+}
+
+@media ( max-width :767px) {
+	#security-checkout-tabs .nav-tabs li a {
+		font-size: 12px
+	}
+	[data-view=security] .page-header h1 {
+		line-height: 1;
+		font-size: 28px
+	}
+	[data-view=security] .page-header h1>small {
+		display: block;
+		padding-top: 10px
+	}
+}
+
+@media ( min-width :1199px) {
+	[data-view=addressing] .address-container .form-group .col-sm-6:first-child,
+		[data-view=addressing] .address-container .form-group .col-sm-8:first-child
+		{
+		padding-right: 0
+	}
+	[data-view=addressing] .address-container .form-group .col-sm-6:first-child input,
+		[data-view=addressing] .address-container .form-group .col-sm-8:first-child input
+		{
+		border-right: none
+	}
+	[data-view=addressing] .address-container .form-group .col-sm-4:last-child,
+		[data-view=addressing] .address-container .form-group .col-sm-6:last-child
+		{
+		padding-left: 0
+	}
+}
+
+[data-view=addressing] .address-container .form-group .form-control {
+	padding: 6px 11px;
+	height: 52px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-appearance: none
+}
+
+[data-view=addressing] h4 {
+	margin-bottom: 15px
+}
+
+[data-view=addressing] .province-container .form-group {
+	margin: 0
+}
+
+[data-view=addressing] .province-container .form-group .col-xs-12 {
+	margin: 0 0 15px;
+	padding: 0
+}
+
+[data-view=addressing] .delivery-options {
+	margin-bottom: 40px
+}
+
+[data-view=addressing] .delivery-options>div {
+	text-align: center
+}
+
+[data-view=addressing] .delivery-options a {
+	border: 1px solid #ccc;
+	line-height: 60px;
+	width: 100%;
+	text-decoration: none;
+	display: block;
+	font-size: 16px
+}
+
+[data-view=addressing] .delivery-options a.active {
+	background-color: #FAFAFA
+}
+
+[data-view=addressing] .delivery-options .shipping-option {
+	padding-right: 0
+}
+
+[data-view=addressing] .delivery-options .pickup-option {
+	padding-left: 0
+}
+
+[data-view=addressing] .pickup-location {
+	margin-top: 50px
+}
+
+@media ( max-width :991px) {
+	[data-view=addressing] .address-container .form-group .col-sm-6:first-child,
+		[data-view=addressing] .address-container .form-group .col-sm-8:first-child
+		{
+		padding-right: 10px
+	}
+	[data-view=addressing] .address-container .form-group .col-sm-4:last-child,
+		[data-view=addressing] .address-container .form-group .col-sm-6:last-child
+		{
+		padding-left: 10px
+	}
+	[data-view=addressing] .address-container .form-group .form-control {
+		padding: 6px 11px;
+		height: 52px;
+		box-shadow: none;
+		-moz-box-shadow: none;
+		-webkit-appearance: none
+	}
+}
+
+@media ( min-width :767px) {
+	[data-view=addressing] .form-group div[class*=col-]+div[class*=col-] .form-control
+		{
+		border-top-width: 1px
+	}
+}
+
+[data-view=account-login] .form-group .form-control {
+	padding: 6px 11px;
+	height: 52px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-appearance: none
+}
+
+[data-view=account-login] .form-group .no-top-border .form-control {
+	border-top: none
+}
+
+[data-view=account-login] h4 {
+	margin-bottom: 15px
+}
+
+[data-view=account-login] .checkbox input[type=checkbox] {
+	margin: 4px -20px 0
+}
+
+[data-view=account-login] .password-reset {
+	margin-top: -35px;
+	padding-right: 20px
+}
+
+[data-view=account-registration] .form-group .col-xs-6:first-child {
+	padding-right: 0
+}
+
+[data-view=account-registration] .form-group .col-xs-6:first-child input
+	{
+	border-right: none
+}
+
+[data-view=account-registration] .form-group .col-xs-6:last-child {
+	padding-left: 0
+}
+
+[data-view=account-registration] .form-group .form-control {
+	padding: 6px 11px;
+	height: 52px;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-appearance: none
+}
+
+[data-view=account-registration] h4 {
+	margin-bottom: 15px
+}
+
+.fos_user_resetting_request .form-group .form-control {
+	height: 50px;
+	padding: 10px 15px
+}
+</style>

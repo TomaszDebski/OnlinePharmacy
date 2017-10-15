@@ -34,7 +34,7 @@ public class CategoryProductController {
 //		physiotherapistService.addPhysiotherapist(physiotherapist);
 	}
 	
-	@JsonView(Views.User.class)
+	@JsonView(Views.CategoryProduct.class)
 	@RequestMapping(value="/{id}")
 	public User getCategoryById(@PathVariable("id") long id){
 //		return physiotherapistService.findOne(id);
@@ -59,6 +59,12 @@ public class CategoryProductController {
 	@RequestMapping
 	public List<CategoryProduct> getAllMenu(){
 		return (List<CategoryProduct>) categoryRepository.findAllWithChildren();
+	}
+	
+	@JsonView(Views.CategoryProductMenu.class)
+	@RequestMapping("/oneCategory")
+	public CategoryProduct getCategoryProductByProduct(@RequestParam("id") long id){
+		return categoryRepository.findByProductId(id);
 	}
 	
 //	@RequestMapping(value="/{id}",method=RequestMethod.PUT)

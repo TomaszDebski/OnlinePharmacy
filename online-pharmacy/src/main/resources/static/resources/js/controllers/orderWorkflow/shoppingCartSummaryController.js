@@ -23,4 +23,13 @@ angular.module('app.controller.shoppingCartSummary', [])
 	        refreshProduct.totalNumber = event.target.value;
 	        cartService.refreshTotalPrice();
 	    }
+	    
+	    $scope.goNext = function(){
+	    	if ($rootScope.authenticated == 'true'){
+	    		$state.go("order.delivery");
+	    	}else{
+	    		$state.go("order.recognize");
+	    	}
+	    	
+	    }
 })

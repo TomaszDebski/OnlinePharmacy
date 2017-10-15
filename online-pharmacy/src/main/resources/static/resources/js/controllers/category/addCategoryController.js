@@ -2,7 +2,7 @@
 
 angular.module('app.controller.addCateogry', [])
 .controller('addCategoryController',
-		function($scope,$state,$filter,cartService,categoryResolve,categoryResourceService) { 
+		function($scope,$state,$filter,$translate,cartService,categoryResolve,categoryResourceService) { 
     
     	$scope.categories = categoryResolve ;
     	console.log('$scope.categories',$scope.categories)
@@ -16,6 +16,8 @@ angular.module('app.controller.addCateogry', [])
 //  }
     
     $scope.addCategory = function(){
+    	console.log('$scope.$parent', $scope.$parent)
+    	
     	if ($scope.newCategoryForm.$valid) {      
 	    }
 	    else {
@@ -25,6 +27,10 @@ angular.module('app.controller.addCateogry', [])
 //        if (this.categoryId > -1){
 	    categoryResourceService.save({parentId:$scope.categoryId},$scope.newCategory,function(data){
 	    	console.log('dodana kategoria', data)
+	    	swal('Powodzenie', 'Dodanie kategorii zakończyło się powodzeniem', "success");
+	    	$scope.$parent.refreshMenu();
+	    	$scope.newCategory = {};
+	    	$scope.categoryId = "";
 	    })
 //        this.categoryService.saveCategory(this.newCategory,this.categoryId)
 //            .subscribe(

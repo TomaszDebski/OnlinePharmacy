@@ -8,7 +8,7 @@
 				</h1>
 			</div>
 	
-			<form ng-submit="createUser(user)" name="registerForm"
+			<form ng-submit="createUser()" name="registerForm"
 					id="registerForm"
 				 class="form-horizontal" novalidate>
 				 <div class="alert alert-success" ng-show="successAdd">
@@ -33,7 +33,9 @@
 						ng-model="user.lastName"
 						ng-class="{submitted:registerForm.submitted}"
 						required
-						class=" form-control" placeholder="Nazwisko" type="text">
+						class=" form-control" 
+						placeholder="Nazwisko" 
+						type="text">
 <!-- 					<div *ngIf="registerForm.submitted && !lastName.valid" class="help-block" style="color:#f00">Nazwisko jest wymagane</div>	 -->
 					<span 
 						ng-show="registerForm.lastName.$error.required && registerForm.submitted" 
@@ -46,7 +48,9 @@
 					<input id="fos_user_registration_form_plainPassword_first"
 						name="username" 
 						ng-model="user.username"
-						required class="zxcvbn-password form-control" placeholder="Login"
+						required 
+						class="zxcvbn-password form-control" 
+						placeholder="Login"
 						ng-class="{submitted:registerForm.submitted}"
 						username-available-directive
 						type="text">
@@ -63,10 +67,15 @@
 					<!--                     <p id="password-strength-text"><strong>Minimum 8 Characters</strong></p> -->
 				</div>
 				<div class="col-xs-6">
-					<input id="fos_user_registration_form_email" name="email"
-						ng-model="user.email" required
+					<input 
+						id="fos_user_registration_form_email" 
+						name="email"
+						ng-model="user.email" 
+						required
 						ng-class="{submitted:registerForm.submitted}"
-						class=" form-control" placeholder="Email" type="email">
+						class=" form-control" 
+						placeholder="Email" 
+						type="email">
 <!-- 					<div *ngIf="registerForm.submitted && !email.valid" class="help-block" style="color:#f00">E-mail jest wymagany</div> -->
 					<span 
 								ng-show="registerForm.email.$error.required && registerForm.submitted" 
@@ -87,7 +96,8 @@
 						ng-model="user.password"
 						ng-class="{submitted:registerForm.submitted}"
 						required 
-						class="zxcvbn-password form-control" placeholder="Hasło"
+						class="zxcvbn-password form-control" 
+						placeholder="Hasło"
 						type="password">
 <!-- 					<meter max="5" id="password-strength-meter"></meter> -->
 <!-- 					<div *ngIf="registerForm.submitted && !password.valid" class="help-block" style="color:#f00">Hasło jest wymagane</div> -->
@@ -108,7 +118,8 @@
                     class=" form-control" 
                     placeholder="Powtórz hasło" 
                   	type="password"
-                  	required data-password-verify="user.password">
+                  	required 
+                  	data-password-verify="user.password">
                   	<span 
 						ng-show="registerForm.passwordConfirm.$error.required && registerForm.submitted" 
 						 style="color : #f00; float:left;"

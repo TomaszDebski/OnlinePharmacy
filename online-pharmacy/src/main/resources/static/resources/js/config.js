@@ -40,6 +40,22 @@ angular.module('app.config', [])
 		controller : 'medicineListController',
 		params : {
 			name : 'pain-relief'
+		},
+		resolve : {
+			oneCategoryResolve : function($stateParams,categoryService){
+				return categoryService.getByName($stateParams.name).then(function(result){
+						console.log('result',result);
+						return result.data;
+//						$scope.products = result.data.products;
+//						$scope.category = result.data;
+					})
+//				}
+			},
+			categoryResolve : function($stateParams,categoryService){
+				return categoryService.getAll().then(function(result){
+					return result.data;
+				});
+			}
 		}
 	})
 	.state('product', {
@@ -50,6 +66,11 @@ angular.module('app.config', [])
 			productResolve : function($stateParams,productService){
 				return productService.get({id:$stateParams.id}).$promise.then(function(data){
 					return data;
+				});
+			},
+			categoryResolve : function($stateParams,categoryService){
+				return categoryService.getAll().then(function(result){
+					return result.data;
 				});
 			}
 		}
@@ -90,6 +111,7 @@ angular.module('app.config', [])
 		templateUrl : 'html/orderWorkflow/shoppingCartSummary.html',
 		controller : 'shoppingCartSummaryController',
 		params : {
+			
 //			name : 'pain-relief'
 		}
 	})
@@ -99,26 +121,57 @@ angular.module('app.config', [])
 		abstract : true,
 		templateUrl : 'html/orderWorkflow/orderProgress.html',
 		controller : 'orderProgressController',
+		params: {
+			showMenu : false,
+		}
+	})
+	.state('order.recognize', {
+		url: '/recognize',
+		templateUrl : 'html/orderWorkflow/steps/zero_step.html',
+		controller : 'zero_stepController',
+		params: {
+			showMenu : false,
+		}
 	})
 	.state('order.delivery', {
 		url: '/delivery',
 		templateUrl : 'html/orderWorkflow/steps/one_orderDelivery.html',
 		controller : 'one_orderDeliveryController',
+		params: {
+			showMenu : false,
+		}
 	})
 	.state('order.shipping', {
 		url: '/shipping',
 		templateUrl : 'html/orderWorkflow/steps/two_orderShipping.html',
 		controller : 'two_orderShippingController',
+		params: {
+			showMenu : false,
+		}
 	})
 	.state('order.payment', {
 		url: '/payment',
 		templateUrl : 'html/orderWorkflow/steps/three_orderPayment.html',
 		controller : 'three_orderPaymentController',
+		params: {
+			showMenu : false,
+		}
 	})
 	.state('order.summary', {
 		url: '/summary',
 		templateUrl : 'html/orderWorkflow/steps/four_orderSummary.html',
 		controller : 'four_orderSummaryController',
+		params: {
+			showMenu : false,
+		}
+	})
+	.state('forgotPassoword', {
+		url: '/password/forgot',
+		templateUrl : 'html/password/forgotPassword/forgotPassword.html',
+		controller : 'forgotPasswordController',
+		params : {
+//			name : 'pain-relief'
+		}
 	})
 	
 	

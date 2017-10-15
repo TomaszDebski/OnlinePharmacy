@@ -5,11 +5,18 @@
 angular.module('app.controller.menu', [])
 .controller('menuController',
 		function($scope,categoryService,$window,) { 
-	var aa = categoryService.getAll()
-	  	aa.then(function(data){
+	$scope.getAllCategories = function(){
+		var allCategories = categoryService.getAll()
+	  	allCategories.then(function(data){
 	  		$scope.menus = data.data;
 //			  console.log('menuController ');
 	  	})
+	};
+	$scope.getAllCategories();
+	  	$scope.$on('refreshMenu', function(e) {  
+//	        $scope.$emit("pingBack", $scope.get());        
+	  		$scope.getAllCategories();
+	    });
 //	console.log('menu controller')
 //	categoryService.setCategories(categoryResolve);
 //	console.log('menu',categoryService.getCategories())
