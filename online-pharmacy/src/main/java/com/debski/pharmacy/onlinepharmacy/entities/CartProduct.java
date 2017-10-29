@@ -64,10 +64,10 @@ public class CartProduct {
 //	private List<Visit> visits;
 	
 //	@JsonView(Views.CategoryProduct.class)
-//	@JsonProperty
-//	@ManyToOne(fetch=FetchType.LAZY)
-//	@JoinColumn(name = "categoryProduct_id")
-//	public CategoryProduct categoryProduct;
+	@JsonProperty
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "product_id")
+	public Product product;
 	
 	@JsonProperty
 	@ManyToOne(fetch=FetchType.LAZY)

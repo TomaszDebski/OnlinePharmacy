@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -117,6 +120,14 @@ public class ProductController {
 	public List<Product> getProductByName(@RequestParam("name") String name){
 		return productRepository.findByNameContaining(name);
 	}
+	
+	
+	@RequestMapping("/pagination")
+	public Page<List<Product>> getCategoryWithPagination(Pageable pageable,@RequestParam("categoryName") String url,
+			Principal principal){
+		return productRepository.findAllProductByCategoryName(pageable, url);
+	}
+	
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.POST,
 		    consumes = {"multipart/form-data"})

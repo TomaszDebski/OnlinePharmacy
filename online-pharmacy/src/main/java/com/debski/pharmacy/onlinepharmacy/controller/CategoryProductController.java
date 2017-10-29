@@ -1,8 +1,11 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +56,12 @@ public class CategoryProductController {
 	public CategoryProduct getUserByUsername(@RequestParam("name") String url){
 		return categoryRepository.findTop1ByUrl(url);
 //		return null;
+	}
+	
+	@RequestMapping("/pagination")
+	public Page<CategoryProduct> getCategoryWithPagination(Pageable pageable,@RequestParam("name") String url,
+			Principal principal){
+		return categoryRepository.findTop1ByUrl(pageable, url);
 	}
 	
 	@JsonView(Views.CategoryProductMenu.class)

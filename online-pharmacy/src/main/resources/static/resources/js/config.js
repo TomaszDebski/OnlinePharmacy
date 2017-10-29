@@ -44,13 +44,22 @@ angular.module('app.config', [])
 		resolve : {
 			oneCategoryResolve : function($stateParams,categoryService){
 				return categoryService.getByName($stateParams.name).then(function(result){
-						console.log('result',result);
+						console.log('result111',result);
 						return result.data;
 //						$scope.products = result.data.products;
 //						$scope.category = result.data;
 					})
 //				}
 			},
+			productsResolve : function($stateParams,productPaginationService){
+				return productPaginationService.getProductByCategory(0,10,$stateParams.name)
+				.then(function(result){
+			    	return result;
+			    })
+//				}
+			},
+			
+			
 			categoryResolve : function($stateParams,categoryService){
 				return categoryService.getAll().then(function(result){
 					return result.data;

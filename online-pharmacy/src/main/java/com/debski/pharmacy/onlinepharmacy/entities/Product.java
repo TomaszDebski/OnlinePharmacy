@@ -91,6 +91,12 @@ public class Product {
 //			  generator = ObjectIdGenerators.PropertyGenerator.class, 
 //			  property = "id")
 	private List<ProductPackage> packages;
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "product",fetch=FetchType.LAZY,orphanRemoval=true)
+	@JsonIdentityInfo(
+			  generator = ObjectIdGenerators.PropertyGenerator.class, 
+			  property = "id")
+	private List<CartProduct> cartProduct;
 
 	/* Relations */
 	

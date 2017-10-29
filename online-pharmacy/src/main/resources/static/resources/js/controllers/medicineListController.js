@@ -3,7 +3,8 @@
  */
 angular.module('app.controller.medicineList', [])
 .controller('medicineListController',
-		function($stateParams,categoryService,$scope,cartService,$filter,Product,categoryResolve,oneCategoryResolve) { 
+		function($stateParams,categoryService,$scope,cartService,$filter,Product,categoryResolve,oneCategoryResolve,
+				productsResolve,productPaginationService ) { 
 //	console.log('medicineList',$stateParams.name)
 //	console.log('$stateParams',$stateParams)
 //	if ($stateParams.name != null){
@@ -13,10 +14,33 @@ angular.module('app.controller.medicineList', [])
 //			$scope.category = result.data;
 //		})
 //	}
+	
+	$scope.totalItems = productsResolve.totalElements;
+	$scope.currentPage = productsResolve.number;
+	
+	$scope.pageChanged = function() {
+		console.log('ssss')
+		refreshProducts(($scope.currentPage-1),10);
+	}
+	
+	 $scope.setPage = function (pageNo) {
+		    $scope.currentPage = pageNo;
+		  };
+		  
+	refreshProducts = function(page,size){
+		var vis = productPaginationService.getProductByCategory(page,size,$stateParams.name);
+		vis.then(function(result){
+	    	$scope.products = result.content;
+	    	$scope.totalItems = result.totalElements;
+	    	$scope.currentPage = result.number+1;
+	    })
+	}
+	
 	$scope.menu = categoryResolve;
-	$scope.products = oneCategoryResolve.products;
+	$scope.products = productsResolve.content;
 	$scope.category = oneCategoryResolve;
 	console.log('oneCategoryResolve',oneCategoryResolve)
+	console.log('productsResolve',productsResolve)
 	
 	$scope.addToCart = function(product,packageId){
 		var pack = $filter('filter')(product.packages, {'id':packageId.id})[0];

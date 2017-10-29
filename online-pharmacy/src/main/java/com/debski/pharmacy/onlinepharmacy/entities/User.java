@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
@@ -45,37 +48,37 @@ public class User {
 	@Column(name="lastName")
 	public String lastname;
 	
-	@JsonView(Views.User.class)
-	@Column(name="phone")
-	public String phone;
-	
-	@JsonView(Views.User.class)
-	@Column(name="pesel")
-	public String pesel;
-	
-	@JsonView(Views.User.class)
-	@Column(name="secondPhone")
-	public String secondPhone;
-	
-	@JsonView(Views.User.class)
-	@Column(name="email")
-	public String email;
-	
-	@JsonView(Views.User.class)
-	@Column(name="city")
-	public String city;
-	
-	@JsonView(Views.User.class)
-	@Column(name="postCode")
-	public String postCode;
-	
-	@JsonView(Views.User.class)
-	@Column(name="address")
-	public String address;
-	
-	@JsonView(Views.User.class)
-	@Column(name="number")
-	public String number;
+//	@JsonView(Views.User.class)
+//	@Column(name="phone")
+//	public String phone;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="pesel")
+//	public String pesel;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="secondPhone")
+//	public String secondPhone;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="email")
+//	public String email;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="city")
+//	public String city;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="postCode")
+//	public String postCode;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="address")
+//	public String address;
+//	
+//	@JsonView(Views.User.class)
+//	@Column(name="number")
+//	public String number;
 	
 	@Column(name="insertedDate")
 	public Date insertedDate;
@@ -88,22 +91,23 @@ public class User {
 	public User(){
 	}
 
-	public User(String username, String password,String firstname, String lastname, String phone, String secondPhone, String email,
-			String city, String postCode, String address, String role) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phone = phone;
-		this.secondPhone = secondPhone;
-		this.email = email;
-		this.city = city;
-		this.postCode = postCode;
-		this.address = address;
-		this.role = role;
-	}
 	
+	
+	public User(String username, String password, String role, String firstname, String lastname, Date insertedDate,
+		List<Cart> carts, UserDetails userDetails) {
+	super();
+	this.username = username;
+	this.password = password;
+	this.role = role;
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.insertedDate = insertedDate;
+	this.carts = carts;
+	this.userDetails = userDetails;
+}
+
+
+
 	/* Relations */
 	
 	@JsonView(Views.UserCart.class)
@@ -112,7 +116,13 @@ public class User {
 			  generator = ObjectIdGenerators.PropertyGenerator.class, 
 			  property = "id")
 	private List<Cart> carts;
+//	
+	@OneToOne(fetch=FetchType.LAZY)
+//	@JoinColumn(name="details_id")
+	private UserDetails userDetails;
 
+//	@OneToOne @MapsId
+//	private UserDetails userDetails;
 	/* Relations */
 
 	public Long getId() {
@@ -151,53 +161,53 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getSecondPhone() {
-		return secondPhone;
-	}
-
-	public void setSecondPhone(String secondPhone) {
-		this.secondPhone = secondPhone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
+//	public String getPhone() {
+//		return phone;
+//	}
+//
+//	public void setPhone(String phone) {
+//		this.phone = phone;
+//	}
+//
+//	public String getSecondPhone() {
+//		return secondPhone;
+//	}
+//
+//	public void setSecondPhone(String secondPhone) {
+//		this.secondPhone = secondPhone;
+//	}
+//
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//
+//	public String getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//
+//	public String getPostCode() {
+//		return postCode;
+//	}
+//
+//	public void setPostCode(String postCode) {
+//		this.postCode = postCode;
+//	}
+//
+//	public String getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
 
 	public Date getInsertedDate() {
 		return insertedDate;
@@ -215,21 +225,21 @@ public class User {
 		this.role = role;
 	}
 
-	public String getPesel() {
-		return pesel;
-	}
-
-	public void setPesel(String pesel) {
-		this.pesel = pesel;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
+//	public String getPesel() {
+//		return pesel;
+//	}
+//
+//	public void setPesel(String pesel) {
+//		this.pesel = pesel;
+//	}
+//
+//	public String getNumber() {
+//		return number;
+//	}
+//
+//	public void setNumber(String number) {
+//		this.number = number;
+//	}
 
 	public List<Cart> getCarts() {
 		return carts;
@@ -238,6 +248,16 @@ public class User {
 	public void setCarts(List<Cart> carts) {
 		this.carts = carts;
 	}
+
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserDetails userDetails) {
+		this.userDetails = userDetails;
+	}
+	
+	
 	
 	
 

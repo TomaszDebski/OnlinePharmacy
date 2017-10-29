@@ -15,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RequestMapping("/api/menu")
 public class MenuController {
 
-	@Autowired
-	MenuRepository menuRepository;
+//	@Autowired
+//	MenuRepository menuRepository;
 //	
 //	@Autowired
 //	IPhysiotherapistService physiotherapistService;
@@ -37,11 +37,11 @@ public class MenuController {
 //		return null;
 //	}
 	
-	@JsonView(Views.Menu.class)
-	@RequestMapping
-	public List<Menu> getAllMenu(){
-		return (List<Menu>) menuRepository.findAllWithChildren();
-	}
+//	@JsonView(Views.Menu.class)
+//	@RequestMapping
+//	public List<Menu> getAllMenu(){
+//		return (List<Menu>) menuRepository.findAllWithChildren();
+//	}
 
 //	@JsonView(Views.User.class)
 //	@RequestMapping("/byUsername/{name}")

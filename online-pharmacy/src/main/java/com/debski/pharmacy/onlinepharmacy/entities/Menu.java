@@ -17,8 +17,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@Entity
-@Table(name="Menu")
+//@Entity
+//@Table(name="Menu")
 public class Menu {
 	
 	@Id
