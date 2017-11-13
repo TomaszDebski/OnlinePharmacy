@@ -5,11 +5,13 @@ angular.module('app.service.register',[])
 //    	var authenticated = false;
     	return {
     		register : function(registerForm,user,passwordConfirm,notEqual){
+    			console.log('user register',user)
     			notEqual = false;
     			var isPasswordEqual = user.password == passwordConfirm;
     			if (!isPasswordEqual){
     				notEqual = true;
     				console.log("hasła nie są równe")
+    				$rootScope.$emit('registerSuccess', false);
     			}
     			if (registerForm.$valid && isPasswordEqual) {
     				$http({
@@ -27,30 +29,32 @@ angular.module('app.service.register',[])
 //    	    	 					$window.scrollTo(0, 0);
     	    	 					user = {};
     	    	 					passwordConfirm = "";
+    	    	 					$rootScope.$emit('registerSuccess', true);
 //    	    	 					$scope.registerForm.$setPristine();
 //    	    	 					$scope.registerForm.$setUntouched();
 //    	    	 					$window.scrollTo(0, 0);
 //    	    	 					$timeout(function(){$state.go("login");},1000);
-    	    	 					swal({
-    	    	 						  title: $translate('patients.remove_patient'),
-    	    	 						  text: $translate('patients.are_you_sure_remove_patient'),
-    	    	 						  type: "success",
-    	    	 						  showCancelButton: false,
-    	    	 						  confirmButtonClass: "btn-success",
-    	    	 						  confirmButtonText: $translate('patients.remove'),
-//    	    	 						  cancelButtonText: $translate('commons.cancel'),
-    	    	 						  closeOnConfirm: true,
-    	    	 						},
-    	    	 						function(){
-    	    	 							$state.go("login")
-    	    	 						});
+//    	    	 					swal({
+//    	    	 						  title: $translate('patients.remove_patient'),
+//    	    	 						  text: $translate('patients.are_you_sure_remove_patient'),
+//    	    	 						  type: "success",
+//    	    	 						  showCancelButton: false,
+//    	    	 						  confirmButtonClass: "btn-success",
+//    	    	 						  confirmButtonText: $translate('patients.remove'),
+////    	    	 						  cancelButtonText: $translate('commons.cancel'),
+//    	    	 						  closeOnConfirm: true,
+//    	    	 						},
+//    	    	 						function(){
+//    	    	 							$state.go("login")
+//    	    	 						});
     	    	 				});
     	    	     	    }
     	    	    	}
     	    	    })
     		    }
     		    else {
-    		        registerForm.submitted=true;    
+    		        registerForm.submitted=true;   
+    		        $rootScope.$emit('registerSuccess', false);
     		    	return;
     		    };
     		}

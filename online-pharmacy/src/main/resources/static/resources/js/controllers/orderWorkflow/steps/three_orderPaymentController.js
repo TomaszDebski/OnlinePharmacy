@@ -10,20 +10,21 @@ angular.module('app.controller.three_orderPayment', [])
     $scope.model = {};
     $scope.paymentOptions = [
                             {id:1,name:"paypall",price:10},
-                            {id:2,name:"casual",price:20},
+                            {id:2,name:"bank",price:5},
+                            {id:3,name:"self",price:0},
                                 ];
     
-//          this.paymentOption = this.cartService.karta.paymentOption;
-//          this.cartService.karta.stages[3].isBegin = true;
+          $scope.model.payment = cartService.getCart().paymentOption != undefined ? cartService.getCart().paymentOption : 1;
+    cartService.getCart().stages[3].isBegin = true;
     
-    $scope.goToNextStep = function(value){
+    $scope.goToNextStep = function(){
     	if ($scope.paymentForm.$valid) {      
 	    }
 	    else {
 	        $scope.paymentForm.submitted=true;    
 	    	return;
 	    };
-        var paymentOption = $scope.setPaymentOption(value);
+        var paymentOption = $scope.setPaymentOption($scope.model.payment);
         cartService.updateCartStep3(paymentOption);
         cartService.getCart().stages[3].isComplete = true;
         $state.go('order.summary');

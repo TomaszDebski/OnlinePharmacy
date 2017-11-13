@@ -15,7 +15,7 @@ angular.module('app.translate-config-pl', ['pascalprecht.translate'])
 		  	"menu.gifts" : "Prezenty",
 		  	"menu" : ""
 		  },"submenu":{
-		  	"menu.medicine.pain.relief" : "Leki przeciwb\u00F3lowe",
+		  	"menu.medicine.pain-relief" : "Leki przeciwb\u00F3lowe",
 		  	"menu.medicine.child.pain.relief" : "Leki przeciwb\u00F3lowe dla dzieci",
 		  	"menu.medicine.eye.conditions" : "Ochrona oczu",
 		  	"menu.vitamins.energy.vitality" : "Energia i Witalno\u015B\u0107",
@@ -27,6 +27,16 @@ angular.module('app.translate-config-pl', ['pascalprecht.translate'])
 		  	"menu.suplements" : "Suplementy",
 		  	"menu.gifts" : "Prezenty",
 		  	"menu" : ""
+		},
+		"delivery" :{
+			"curier":"Kurier",
+			"postOffice":"Poczta",
+			"self":"Odbiór osobisty",
+		},
+		"payment" : {
+			"paypall":"Przelew PayPall",
+			"bank":"Przelew bankowy",
+			"self":"Przy odbiorze osobistym",
 		},
 	    "index": {
 	    	"login": "Zaloguj",

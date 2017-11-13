@@ -8,15 +8,17 @@ angular.module('app.controller.two_orderShipping', [])
 		) {
   
     	$scope.deliveryOptions = [
-                            {id:0,name:"curier",price:10},
-                            {id:1,name:"postOffice",price:20},
-                            {id:2,name:"self",price:30},
+                            {id:0,name:"curier",price:20},
+                            {id:1,name:"postOffice",price:10},
+                            {id:2,name:"self",price:0},
                                 ];
-    	$scope.deliveryOption = 0;
-//        this.deliveryOption = this.cartService.karta.shippingOption;
-//        this.cartService.karta.stages[2].isBegin = true;
+    	$scope.data = 
+    		{deliveryOption: 
+    				cartService.getCart().shippingOption != undefined ? cartService.getCart().shippingOption : 1};
+    cartService.getCart().stages[2].isBegin = true;
     
-    $scope.goToNextStep = function(value){
+    $scope.goToNextStep = function(){
+//		console.log('value',value)
     	if ($scope.deliveryForm.$valid) {      
 	    }
 	    else {
@@ -24,7 +26,7 @@ angular.module('app.controller.two_orderShipping', [])
 	    	return;
 	    };
         //this.saveCart(order);
-	    var deliveryOption = $scope.setDeliveryOption(value);
+	    var deliveryOption = $scope.setDeliveryOption($scope.data.deliveryOption);
         cartService.updateCartStep2(deliveryOption.id,deliveryOption.price);
         cartService.getCart().stages[2].isComplete = true;
         $state.go('order.payment');

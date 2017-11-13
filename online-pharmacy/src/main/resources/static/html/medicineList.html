@@ -53,9 +53,9 @@
 <!-- 						<option value="created-descending">Date, new to old</option> -->
 <!-- 					</select> -->
 <!-- 					<sort-list-select (selectedChange)="sortBy1 = changeSort($event)"></sort-list-select> -->
-					<select ng-model="selectedOption" name="SortBy" id="SortBy" ng-click="onChange($event)"
-					ng-init="selectedOption = sortOptions[0].key">
-			           <option ng-repeat="sort in sortOptions" value="{{sort.key}}">{{sort.text}} 
+					<select ng-model="selectedOption" name="SortBy" id="SortBy" ng-change="sortBy(selectedOption)"
+					ng-init="selectedOption =sortOptions[0].key">
+			           <option ng-repeat="sort in sortOptions" value="{{sort.key}}" >{{sort.text}} 
 			               </option>
 			    	</select>
 				</div>
@@ -89,14 +89,14 @@
 	
 <!-- 			<div *ngFor="let product of (products | sortList:sortBy1) let i = index " -->
 				<div class="grid__item large--one-third medium--one-half" 
-				ng-repeat="product in (products | orderBy:selectedOption)">
+				ng-repeat="product in (products | orderBy:propertyName:reverse)">
 					<a href="#"
 						class="grid__image"> <img
 						ng-src="api/product/img?number={{product.number}}"
 						alt="Brak zdjęcia" title="">
 					</a>
 					<p class="h6">
-						<a ui-sref="product({id:{{product.id}}})">{{product.name}}</a>
+						<a ui-sref="product({id:{{product.id}},categoryName:'{{categoryName}}'})">{{product.name}}</a>
 					</p>
 <!-- 					<p> -->
 <!-- 						Cena <span itemprop="price">{{product.price}}</span> -->
@@ -109,19 +109,20 @@
 						id="package" 
 						name="package" 
 						class="form-control arrows" 
-						ng-model="packArray[$index]"
+						ng-model="packArray"
 						ng-options="package.name + ' - ' + package.price + ' zł' for package in product.packages"
-						ng-init="packArray[$index] = product.packages[0]" 
+						ng-init="packArray = product.packages[0];" 
 						
 						>
-<!-- 						<option style="display:none" value="">{{'commons.select_hour' | translate}}</option> -->
+						<option value="" ng-show="false" ng-selected="true"></option>
 					</select>
+<!-- 					packArray[$index] {{packArray[$index]}} -->
 					
 <!-- 					<input id="packArray_{{$index}}" [(ngModel)]="packArray[$index]" type="hidden" /> -->
 <!-- 					packArray[i] = {{packArray[i]}} -->
 					<br> <br>
 					<button class="btn" type="submit"
-						ng-click="addToCart(product,packArray[$index])">
+						ng-click="addToCart(product,packArray)">
 						<span id="AddToCartText">Dodaj do koszyka</span>
 					</button>
 				</div>

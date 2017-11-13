@@ -36,8 +36,8 @@
 						</a>
 					</div>
 					<div class="grid__item two-thirds">
-						<a href="#" class="h4">
-							{{product.name}} </a> <small></small> <a href="javascript:void(0)"
+						<a href="javascript:void(0)" class="h4">
+							{{product.name}} </a> <small></small> <a href="javascript:void(0)" ng-click="removeFromCart(product.id)"
 							class="cart__remove" data-id="1286"> <small>Usuń</small>
 						</a>
 					</div>
@@ -53,7 +53,7 @@
 					<div class="grid__item one-third text-center">
 						<span class="cart__mini-labels">Ilość</span> <input
 							name="items[1286][quantity]" id="updates_1286"
-							value="{{product.totalNumber}}"
+							ng-model="product.totalNumber"
 							ng-click="changeQuantity(product,$event)" min="0" data-id="1286"
 							type="number">
 					</div>

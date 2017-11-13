@@ -44,7 +44,7 @@ angular.module('app.config', [])
 		resolve : {
 			oneCategoryResolve : function($stateParams,categoryService){
 				return categoryService.getByName($stateParams.name).then(function(result){
-						console.log('result111',result);
+//						console.log('result111',result);
 						return result.data;
 //						$scope.products = result.data.products;
 //						$scope.category = result.data;
@@ -52,7 +52,7 @@ angular.module('app.config', [])
 //				}
 			},
 			productsResolve : function($stateParams,productPaginationService){
-				return productPaginationService.getProductByCategory(0,10,$stateParams.name)
+				return productPaginationService.getProductByCategory(0,9,$stateParams.name)
 				.then(function(result){
 			    	return result;
 			    })
@@ -81,7 +81,20 @@ angular.module('app.config', [])
 				return categoryService.getAll().then(function(result){
 					return result.data;
 				});
-			}
+			},
+			oneCategoryResolve : function($stateParams,categoryService){
+				return categoryService.getCategoryByProductId($stateParams.id).then(function(result){
+//						console.log('getCategoryByProductId',result);
+						return result.data;
+//						$scope.products = result.data.products;
+//						$scope.category = result.data;
+					})
+//				}
+			},
+			
+		},
+		params : {
+			categoryName : ''
 		}
 	})
 	.state('addProduct', {
@@ -148,6 +161,21 @@ angular.module('app.config', [])
 		controller : 'one_orderDeliveryController',
 		params: {
 			showMenu : false,
+		},
+		resolve : {
+			loginUserResolve : function($rootScope,$window,userService,$http){
+				if ($rootScope.authenticated == 'true' && $window.sessionStorage != undefined){
+					return $http({
+			            method: 'GET',
+			            url: '/api/user/'+$window.sessionStorage.id})
+			           .then(function(result){
+//						console.log('result.data',result.data)
+						return result.data;
+					})
+				}else{
+					return null;
+				}
+			}
 		}
 	})
 	.state('order.shipping', {
@@ -180,6 +208,23 @@ angular.module('app.config', [])
 		controller : 'forgotPasswordController',
 		params : {
 //			name : 'pain-relief'
+		}
+	})
+	.state('users', {
+		url: '/users',
+		templateUrl : 'html/admin/users.html',
+		controller : 'usersController',
+		params : {
+//			name : 'pain-relief'
+		},
+		resolve : {
+			usersResolve : function($stateParams,userPaginationService){
+//				console.log('usersResolve')
+				return userPaginationService.getAllUser(0,10).then(function(result){
+//					console.log('usersResolve.content',result.content)
+					return result.content;
+				});
+			}
 		}
 	})
 	

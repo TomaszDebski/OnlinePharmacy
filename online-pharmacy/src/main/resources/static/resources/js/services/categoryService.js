@@ -5,7 +5,7 @@ angular.module('app.service.category',[])
     .factory('categoryService',['$http','$log','$resource', function($http,$log,$resource) {
     	self = this;
     	var categories = [];
-    	console.log('categoryService')
+//    	console.log('categoryService')
 //    	resolveFunction = function(){
 //    		var sss = $http.get('api/category').then(function(result){
 //    			console.log('result.data',result.data)
@@ -48,6 +48,12 @@ angular.module('app.service.category',[])
     	    		'query':  {method:'GET', isArray:true},
     	    		'update' :{method: "PUT"} 
     	    		  })
+    	    },
+    	    getCategoryByProductId : function(id){
+    	    	return $http.get('api/category/oneCategory?id='+id).then(function(result){
+//    	    		console.log('getCategoryByProductId',result);
+    	    		return result;
+    	    	})
     	    }
 
 //    	    getById(id: number) {

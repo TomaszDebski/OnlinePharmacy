@@ -62,6 +62,7 @@ public class CategoryProduct {
 	 Relations
 	 */
 	
+	@JsonView(Views.CategoryProductMenu.class)
 	@ManyToOne
 	@JsonIdentityInfo(
 			  generator = ObjectIdGenerators.PropertyGenerator.class, 

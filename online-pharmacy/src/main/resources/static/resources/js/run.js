@@ -15,7 +15,7 @@ angular.module('app.run', [])
 //			$rootScope.showMenu = true;
 		}
 //		console.log('$window.sessionStorage.user',$window.sessionStorage.user)
-		console.log('$window.sessionStorage.authenticated',$window.sessionStorage.authenticated)
+//		console.log('$window.sessionStorage.authenticated',$window.sessionStorage.authenticated)
 		$rootScope.user = $window.sessionStorage.user;
 		$rootScope.authenticated = $window.sessionStorage.authenticated;
 //		var stateArray = ["register","login","contact","home"]

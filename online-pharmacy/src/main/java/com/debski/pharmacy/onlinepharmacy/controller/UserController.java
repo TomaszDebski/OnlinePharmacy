@@ -1,16 +1,21 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
+import com.debski.pharmacy.onlinepharmacy.entities.Product;
 import com.debski.pharmacy.onlinepharmacy.entities.User;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -37,15 +42,16 @@ public class UserController {
 	@JsonView(Views.User.class)
 	@RequestMapping(value="/{id}")
 	public User getUserById(@PathVariable("id") long id){
-//		return physiotherapistService.findOne(id);
-		return null;
+		User user = userRepository.findOne(id);
+		return user;
+//		return null;
 	}
 	
-//	@JsonView(Views.VisitsPhysiotherapist.class)
+	@JsonView(Views.User.class)
 	@RequestMapping
-	public List<User> getAllPhysiotherapists(){
+	public List<User> getAllUser(){
 //		return physiotherapistService.getAllPhysiotherapists();
-		return null;
+		return (List<User>)userRepository.findAll();
 	}
 
 	@JsonView(Views.User.class)
@@ -61,5 +67,12 @@ public class UserController {
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public void deleteUser(@PathVariable("id") long id){
+	}
+	
+//	@JsonView(Views.User.class)
+	@RequestMapping("/pagination")
+	public Page<User> getUserWithPagination(Pageable pageable){
+		Page<User> users = userRepository.findd(pageable);
+		return users ; 
 	}
 }

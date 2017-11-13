@@ -13,4 +13,6 @@ angular.module('app.controller.orderProgress', [])
         { stageNumber : 4 ,isComplete : false,isBegin : false, description : ''},
         { stageNumber : 5 ,isComplete : false,isBegin : false, description : ''}
         ]
+		$scope.stages = cartService.getCart().stages;
+		console.log('orderProgressController')
 })

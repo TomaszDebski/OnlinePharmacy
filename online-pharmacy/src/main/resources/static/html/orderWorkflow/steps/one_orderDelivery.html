@@ -17,7 +17,7 @@
 						<div class="form-group">
 							<div class="col-sm-6">
 								<input id="sylius_checkout_addressing_shippingAddress_firstName"
-									required name="firstName" ng-model="order.firstName"
+									required name="firstName" ng-model="order.firstname"
 									ng-class="{submitted:orderDeliveryForm.submitted}"
 									class=" form-control" placeholder="Imię" type="text">
 								<div
@@ -27,7 +27,7 @@
 							</div>
 							<div class="col-sm-6">
 								<input id="sylius_checkout_addressing_shippingAddress_lastName"
-									required name="lastName" ng-model="order.lastName"
+									required name="lastName" ng-model="order.lastname"
 									ng-class="{submitted:orderDeliveryForm.submitted}"
 									class=" form-control" placeholder="Nazwisko" type="text">
 								<div
@@ -99,36 +99,36 @@
 							<!-- 						</div> -->
 							<!-- 					</div> -->
 
-							<div class="province-container" data-url="/province/choice-form">
-								<div class="form-group">
-									<div class="col-xs-12">
-										<select
-											id="sylius_checkout_addressing_shippingAddress_province"
-											name="sylius_checkout_addressing[shippingAddress][province]"
-											required="required" class="select2 form-control"
-											placeholder="Province"><option value="">Wybierz</option>
-											<option value="0">Dolnoslaskie</option>
-											<option value="1">Kujawsko-Pomorskie</option>
-											<option value="2">Lodzkie</option>
-											<option value="3">Lubelskie</option>
-											<option value="4">Lubuskie</option>
-											<option value="5">Malopolskie</option>
-											<option value="6">Mazowieckie</option>
-											<option value="7">Opolskie</option>
-											<option value="8">Podkarpackie</option>
-											<option value="9">Podlaskie</option>
-											<option value="10">Pomorskie</option>
-											<option value="11">Slaskie</option>
-											<option value="12">Swietokrzyskie</option>
-											<option value="13">Warminsko-Mazurskie</option>
-											<option value="14">Wielkopolskie</option>
-											<option value="15">Zachodniopomorskie</option>
-										</select>
+<!-- 							<div class="province-container" data-url="/province/choice-form"> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<div class="col-xs-12"> -->
+<!-- 										<select -->
+<!-- 											id="sylius_checkout_addressing_shippingAddress_province" -->
+<!-- 											name="sylius_checkout_addressing[shippingAddress][province]" -->
+<!-- 											required="required" class="select2 form-control" -->
+<!-- 											placeholder="Province"><option value="">Wybierz</option> -->
+<!-- 											<option value="0">Dolnoslaskie</option> -->
+<!-- 											<option value="1">Kujawsko-Pomorskie</option> -->
+<!-- 											<option value="2">Lodzkie</option> -->
+<!-- 											<option value="3">Lubelskie</option> -->
+<!-- 											<option value="4">Lubuskie</option> -->
+<!-- 											<option value="5">Malopolskie</option> -->
+<!-- 											<option value="6">Mazowieckie</option> -->
+<!-- 											<option value="7">Opolskie</option> -->
+<!-- 											<option value="8">Podkarpackie</option> -->
+<!-- 											<option value="9">Podlaskie</option> -->
+<!-- 											<option value="10">Pomorskie</option> -->
+<!-- 											<option value="11">Slaskie</option> -->
+<!-- 											<option value="12">Swietokrzyskie</option> -->
+<!-- 											<option value="13">Warminsko-Mazurskie</option> -->
+<!-- 											<option value="14">Wielkopolskie</option> -->
+<!-- 											<option value="15">Zachodniopomorskie</option> -->
+<!-- 										</select> -->
 
-									</div>
-								</div>
-							</div>
-						</div>
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 
 						<div class="form-group">
 							<div class="col-sm-12">
@@ -136,7 +136,10 @@
 									id="sylius_checkout_addressing_shippingAddress_phoneNumber"
 									name="sylius_checkout_addressing[shippingAddress][phoneNumber]"
 									required="required" class=" form-control"
-									placeholder="Numer telefonu" type="text">
+									placeholder="Numer telefonu" 
+									ng-model="order.phone"
+									ng-class="{submitted:orderDeliveryForm.submitted}"
+									type="text">
 							</div>
 						</div>
 

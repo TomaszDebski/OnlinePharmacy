@@ -33,8 +33,12 @@
 
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade active in" id="existing"
-					 ng-class="active == 'exist' ? 'active in' :''">
-
+					 	ng-class="active == 'exist' ? 'active in' :''">
+					 	errorLogin:{{errorLogin}}
+					 	error:{{error}}
+						<div class="alert alert-danger" ng-show="errorLogin" style="text-align:center;">
+						  <strong>{{'login.error' | translate}}!</strong> <span>{{'login.incorrect_login_or_password' | translate}}. <br>{{'login.try_again' | translate}}.</span>
+						</div>
 						<form  ng-submit="login()"
 							name="existingForm"
 							id="existingForm"
@@ -82,6 +86,11 @@
 								</div>
 							</div>
 						</form>
+						<span 
+					 		ng-show="existingForm.passwordConfirm.$error.passwordVerify && registerForm.submitted"
+					 		style="color : #f00; float:left;"
+					 		>{{'registration.passwords_not_identical' | translate}}
+					 	</span>
 					</div>
 
 					<div role="tabpanel" class="tab-pane fade" id="guest" ng-class="active == 'guest' ? 'active in' :''">
@@ -135,7 +144,7 @@
 									<input 
 										id="name" 
 										name="name"
-										ng-model="register.name"
+										ng-model="register.firstname"
 										ng-class="{submitted:registerForm.submitted}"
 										required
 										class=" form-control" placeholder="Imię" type="text">
@@ -153,7 +162,7 @@
 										id="lastName"
 										name="lastName"
 										ng-class="{submitted:registerForm.submitted}"
-										ng-model="register.lastName"
+										ng-model="register.lastname"
 										required="required" 
 										type="text">
 									<span 
@@ -170,7 +179,7 @@
 										id="email"
 										name="email" 
 										ng-class="{submitted:registerForm.submitted}"
-										ng-model="register.email"
+										ng-model="register.username"
 										required="required"
 										class="form-control" 
 										type="email">

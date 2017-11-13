@@ -3,7 +3,7 @@
  */
 angular.module('app.controller.product', [])
 .controller('productController',
-		function($scope,$state,$stateParams,$filter,cartService,productResolve,categoryResolve) { 
+		function($scope,$state,$stateParams,$filter,cartService,productResolve,categoryResolve,oneCategoryResolve) { 
   
 //    productId : number;
 //    product : any;
@@ -13,9 +13,15 @@ angular.module('app.controller.product', [])
 //    private router: Router){
 //      
 //    }
-		console.log('categoryResolve ',categoryResolve);
+//		console.log('categoryResolve ',categoryResolve);
+//		console.log('$stateParams ',$stateParams);
+		$scope.categoryName = oneCategoryResolve.url;
+		$scope.category = oneCategoryResolve;
         $scope.product = productResolve;
-        $scope.category = $filter('filter')(categoryResolve, {'id':$scope.product.id})[0];
+        console.log('oneCategoryResolve',oneCategoryResolve)
+//        console.log('$scope.product',$scope.product)
+//        $scope.category = $filter('filter')(categoryResolve, {'id':$scope.product.id})[0];
+//        console.log('$scope.category',$scope.category)
         $scope.pack = {};
 //        console.log('product ' , $scope.product);
 //        this.product = this.productService.getById(this.productId)
@@ -46,13 +52,13 @@ angular.module('app.controller.product', [])
             $scope.packagePrice = pack.price;
             $scope.pack = pack;
         }
-        console.log('$scope.packagePrice',$scope.packagePrice)
-        console.log('$scope.pack',$scope.pack)
+//        console.log('$scope.packagePrice',$scope.packagePrice)
+//        console.log('$scope.pack',$scope.pack)
 //        return event;
     }
     
     $scope.addToCart = function(){
-    console.log("addToCart")
+//    console.log("addToCart")
 //    var packVar = this.product.packages.filter(x => x.id == this.pack.id)[0];
     var packVar =  $filter('filter')($scope.product.packages, {'id':$scope.pack.id})[0];
     $scope.product.package = $scope.pack.id;
@@ -62,10 +68,11 @@ angular.module('app.controller.product', [])
       productCopy.packages = [];
       productCopy.packages.push(packVar);
 //    console.log("productCopy" , productCopy)  
-      console.log("productCopy" , productCopy)
-      productCopy.number = $scope.quantity;
+//      console.log("productCopy" , productCopy)
+      productCopy.totalNumber = $scope.quantity;
+//      console.log('productCopy.totalNumber',productCopy.totalNumber);
 	  cartService.addToCart(productCopy);
-	  $state.go('shoppingCart');
+//	  $state.go('shoppingCart');
 //    this.router.navigate(['/shoppingCart']);
 //    console.log("addToCart.length " , this.cartService.karta.cartProducts.length)
   }

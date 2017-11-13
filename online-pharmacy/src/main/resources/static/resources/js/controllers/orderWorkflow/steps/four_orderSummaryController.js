@@ -10,6 +10,13 @@ angular.module('app.controller.four_orderSummary', [])
 //    productId : number;
 //    product : any; 
     $scope.cart =cartService.getCart();
+    $scope.tatalPrice = cartService.getTotalPrice();
+    cartService.getCart().stages[4].isBegin = true;
+//    console.log('cartService.getTotalPrice()',cartService.getTotalPrice());	
+    $scope.shippingPrice = cartService.getShippingPrice();
+//    console.log('cartService.shippingPrice',cartService.getShippingPrice());
+    console.log('$scope.cart',$scope.cart)
+    console.log('$scope.cart totalNumber	',$scope.cart.cartProducts[0])
 //    swal: any;
 //    paymentOption : string = "";
 //    paymentOptions: string[] = ["send by courier","Personal collection"];

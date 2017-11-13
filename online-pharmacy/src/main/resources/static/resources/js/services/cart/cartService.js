@@ -8,12 +8,14 @@ angular.module('app.service.cart', [])
 	var karta = {
 			id : 0,
 			totalPrice : 0, 
+			shippingPrice : 0,
 			cartProducts: [],
-			firstName : '',
-			lastName : '',
+			firstname : '',
+			lastname : '',
 			street : '',
 			city : '',
     		postCode : '',
+    		phone : '',
 	}
 	var totalPrice = 0;
 	return  {
@@ -21,12 +23,16 @@ angular.module('app.service.cart', [])
 			return karta;
 		},
 		getTotalPrice : function(){
-			console.log('totalPrice',totalPrice)
-			return totalPrice;
+//			console.log('totalPrice',totalPrice)
+			return karta.totalPrice;
 		},
 		setTotalPrice : function(totalPriceVar){
-			console.log('totalPriceVar',totalPriceVar)
+//			console.log('totalPriceVar',totalPriceVar)
 			totalPrice = totalPriceVar;
+		},
+		getShippingPrice : function(){
+//			console.log('totalPrice',totalPrice)
+			return karta.shippingPrice;
 		},
 		addToCart: function(productAdded){
 //			console.log('productAdded ',productAdded);
@@ -38,9 +44,13 @@ angular.module('app.service.cart', [])
 	        karta.cartProducts.push(productAdded);           
 //			console.log('karta ', karta);
 	      }else{
-	          productAdded.totalNumber = findedProduct.totalNumber++;
+//	    	  console.log('productAdded.totalNumber',productAdded.totalNumber)
+//	    	  console.log('findedProduct.totalNumber',findedProduct.totalNumber)
+	          findedProduct.totalNumber = parseInt(findedProduct.totalNumber) + parseInt(productAdded.totalNumber);
+//	    	  productAdded.totalNumber
+//	    	  console.log('productAdded.totalNumber',productAdded.totalNumber)
 	      }
-	      console.log('karta ', karta);
+//	      console.log('karta ', karta);
 	      this.calculateTotalPrice(productAdded);    
 	  },
 	  
@@ -65,12 +75,14 @@ angular.module('app.service.cart', [])
 //	  }
 //	    
 	    updateCartStep1 : function(order){
+//	    	console.log('order',order)
 //	    	var cart = this.getCart();
-	    	karta.firstName = order.firstName;
-	    	karta.lastName = order.lastName;
+	    	karta.firstname = order.firstname;
+	    	karta.lastname = order.lastname;
 	    	karta.street = order.street;
 	    	karta.city = order.city;
 	    	karta.postCode = order.postCode;
+	    	karta.phone = order.phone;
 //	        console.log('step1 karta ' , this.karta);
 	    },
 //	    
@@ -112,8 +124,11 @@ angular.module('app.service.cart', [])
 	    calculateTotalPrice: function(productVar) {
 //	        let calcPackage : any = productVar.packages.filter(packId => packId.id == productVar.package)[0];
 //	    	this.setTotalPrice(productVar.packages[0].price);
-	        karta.totalPrice += productVar.packages[0].price; 
-	        console.log(" karta.totalPrice " ,  karta.totalPrice);
+//	    	console.log('productVar.packages[0].price',productVar.packages[0].price)
+//	    	console.log('productVar.number',productVar.totalNumber)
+//	    	console.log('productVar.number',angular.isUndefined(productVar.number))
+	        karta.totalPrice += (productVar.packages[0].price * productVar.totalNumber); 
+//	        console.log(" karta.totalPrice " ,  karta.totalPrice);
 	    },
 //	    
 	    refreshTotalPrice : function(){

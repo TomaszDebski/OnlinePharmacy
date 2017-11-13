@@ -8,7 +8,7 @@
 			<form class="form-horizontal sylius_checkout_shipping" novalidate
 				id="paymentForm"
 				name="paymentForm"
-				ng-submit="goToNextStep(paymentOption)">
+				ng-submit="goToNextStep()">
 				<fieldset style="border: none;">
 					<div class="form-group">
 						<div class="col-xs-12">
@@ -23,10 +23,12 @@
 									      	required
 									      	>
 									<label style="font-weight: 400;font-size: medium;font-family: Open Sans;">
-										{{payment.name}} 
+										{{'payment.'+payment.name | translate}} 
 <!-- 										<span -->
 <!-- 										class="pull-right text-muted"></span> -->
 									</label>
+									<span class="pull-right text-muted"
+										style="font-weight: 400;font-size: medium;font-family: Open Sans;">{{(payment.price | number:2) + " zł"}}</span></label>
 								</div>
 								<div ng-if="paymentForm.paymentOption.$error.required && paymentForm.submitted"
 									class="help-block" style="color: #f00;">Wybierz sposób

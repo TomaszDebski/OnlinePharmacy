@@ -20,12 +20,14 @@ angular.module('app.service.login',[])
     	        }
     			,
 //    	        xsrfHeaderName: 'X-XSRF-TOKEN'
-    	        }).then(function(data, status, headers, config){
+    	        }).then(
+    	        		function(data, status, headers, config){
     	        		$http({
     	        	        url: 'findUser',
     	        	        method: "GET",
     	        	    })
     	        	    .then(function(funcResponse) {
+    	        	    	console.log('after findUser')
     	        	    	var response = funcResponse.data;
     	        	    	if (response){
     	        	    		$http({
@@ -35,6 +37,7 @@ angular.module('app.service.login',[])
     	        	    	    .then(function(functResult) {
     	        	    	    	var result = functResult.data;
     	        	    	    	if (result != null && result.username.length > 0){
+    	        	    	    		console.log('functResult');
     	        	    	    		$rootScope.id = result.id;
     	        	    	    		$window.sessionStorage.id = $rootScope.id;
 //    		        	    	    	$scope.$parent.authenticated = true;
@@ -47,7 +50,8 @@ angular.module('app.service.login',[])
     		                            $window.sessionStorage.authenticated = true;
 //    		                            authenticationService.setAuthenticated($window.sessionStorage.authenticated);
 //    		                            console.log('authenticationService.getAuthenticated',authenticationService.getAuthenticated());
-    		                            $rootScope.$emit('parent', 'Siema');
+    		                            $rootScope.$emit('parent', '1111');
+    		                            $rootScope.$emit('errorLogin', false);
 //    		                            $state.go("home");
     	        	    	    	}
     	                            
@@ -56,14 +60,21 @@ angular.module('app.service.login',[])
     	        	    		
     	        	    	}else{
     	        	    		error = true;
+//    	        	    		console.log('false1')
+//    	        	    		errorLogin =  true;
     	        	    	}
     	        	    }), function(response) {
     	        	    	error = true;
+//    	        	    	console.log('false2')
+//    	        	    	errorLogin =  true;
     	        	    };
     	        	    
-    	        }), function(response){
+    	        }, function(response){
     	        	error = true;
-    	        }
+//    	        	console.log('false3')
+//    	        	errorLogin =  true;
+    	        	$rootScope.$emit('errorLogin', true);
+    	        })
     		}
     }
 }])

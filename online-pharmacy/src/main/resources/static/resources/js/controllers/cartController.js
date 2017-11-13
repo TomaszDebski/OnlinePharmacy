@@ -22,9 +22,10 @@ angular.module('app.controller.cart', [])
 	}
 	
 	$scope.changeQuantity = function(product,event){
-        product.totalNumber = event.target.value;
+        product.totalNumber = parseInt(event.target.value);
+        console.log('event.target.value',angular.isNumber(parseInt(event.target.value)))
         var refreshProduct = $filter('filter')(cartService.getCart().cartProducts, {'id':product.id})[0];
-        refreshProduct.totalNumber = event.target.value;
+        refreshProduct.totalNumber = parseInt(event.target.value);
         cartService.refreshTotalPrice();
     }
 });

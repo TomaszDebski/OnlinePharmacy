@@ -1,0 +1,119 @@
+<meta meta charset=utf-8>
+<br>
+<div class="main-header">
+    <div id="" class="container">
+        <div class="row vertical-align">
+        	<div class="col-md-1">
+        <span class="page-title" translate="patients.patients"></span>
+            </div>
+            <div class="col-md-offset-1 col-md-4">
+            	<input type="text" name="search" ng-model="patient" style="margin-right: 20px; padding: 5px;"
+            	placeholder="{{'patients.search_user' | translate}}">
+            	<button 
+            		id="search_patient_btn" 
+            		class="btn icon-fallback-text" 
+            		ng-click="searchPatient(patient)">{{'commons.search' | translate}}
+            	</button>
+            </div>
+<!-- 			<div class="col-md-offset-4 col-md-2"> -->
+<!-- 				<div class="pull-right"> -->
+<!--          <a id="add_patient_btn" class="btn btn-primary active" href="#/addPatient">{{'patients.add_patient' | translate}}</a> -->
+<!--          </div> -->
+         	</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">
+        <div class="col-lg-12">
+             <table id="mytable" class="table table-bordred table-striped table-hover">
+             	<thead>
+                   	<tr>
+	                    <th>{{'users.login' | translate}}</th>
+	                    <th>{{'firstname' | translate}}</th>
+	                    <th>{{'lastname' | translate}}</th>
+<!-- 				        <th>{{'users.date_of_birth' | translate}}</th> -->
+<!-- 				        <th>{{'patients.phone' | translate}}</th> -->
+				        <th>E-mail</th>
+<!-- 				        <th>{{'patients.last_visit' | translate}}</th> -->
+<!-- 				        <th>{{'patients.actions' | translate}}</th> -->
+                   </tr>
+                </thead>
+    			<tbody>
+    				<tr ng-repeat="user in users">
+<!-- 				      	<td><span class="table_span"> -->
+<!-- 					      	<a ui-sref="patient({id:{{patient.id}}})">{{patient.firstname}} {{patient.lastname}}</a> -->
+<!-- 					      	</span> -->
+<!-- 				      	</td> -->
+				      	<td><span class="table_span">{{user.username}}</span></td>
+				      	<td><span class="table_span">{{user.firstname}}</span></td>
+				      	<td><span class="table_span">{{user.lastname}}</span></td>
+<!-- 				         <td><span class="table_span">{{user.birthDate |  date:'yyyy-MM-dd' }}</span></td> -->
+<!-- 				         <td><span class="table_span">{{patient.phone | tel}}</span></td> -->
+				         <td><span class="table_span">{{user.email}}</span></td>
+<!-- 				         <td><span class="table_span">{{patient.lastVisit | date:'yyyy-MM-dd, HH:mm' }}</span></td> -->
+				             <td class="actions-col">
+				               <span class="masterTooltip table_span" title="{{'patients.add_a_visit' | translate}}"> 
+<!-- 					               <a ui-sref="addVisit({patientId:{{patient.id}}})" title="{{'patients.add_a_visit' | translate}}" class="icon"> -->
+<!-- 					               		<img src="/pics/terminarz_szary.svg" -->
+<!-- 					               		> -->
+<!-- 					               </a> -->
+				               </span>
+				                <span class="masterTooltip table_span" title="{{'patients.remove_the_patient'| translate}}">
+				                	<a ng-click="deletePatient(patient)" 
+					                	href="" 
+					                	class="icon">
+				                			<img src="/pics/usun_szary.svg">
+				                	</a>
+				                </span> 
+				                <span class="maste-rTooltip table_span" title="{{'patients.send_email' | translate}}">
+				                	<a href="#myModal" 
+				                		onclick="addData(event)" 
+				                		role="button" 
+				                		class="icon" 
+				                		data-toggle="modal" 
+				                		attr.item-patient="11111 22222" 
+				                		attr.item-email="1111@o2.pl">
+				                			<img src="/pics/email.svg">
+				                	</a>
+				                </span>           
+				            </td>
+				            <script type="text/javascript">
+				                   function confirm_click(){
+				                   return confirm("{{'patients.want_to_remove_the_patient' | translate}}");
+				               }
+				            </script>
+	        		</tr>
+    			</tbody>
+			</table>
+            <hr>
+        </div>
+    </div>
+	<div class="row">
+	    <div class="col-md-5 col-md-offset-5">
+	    	<ul  uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+	    </div>
+	</div>
+</div>
+
+
+<style>
+
+.ht-pagination ul a, .ht-pagination ul span, form button, form input[type="reset"], form input[type="submit"], a.button {
+    font-size: 13px;
+    padding: 4px 23px 3px;
+    letter-spacing: 0;
+}
+
+.actions-col .icon img {
+    height: 20px;
+    width: auto;
+    max-width: 20px;
+}
+
+th, td {
+	text-align: center;
+}
+
+</style>

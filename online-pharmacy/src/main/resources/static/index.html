@@ -243,6 +243,7 @@
 	<script src="resources/js/controllers/userPanelController.js"></script>
 	<script src="resources/js/controllers/cartController.js"></script>
 	<script src="resources/js/controllers/password/forgotPassword/forgotPasswordController.js"></script>
+	<script src="resources/js/controllers/admin/usersController.js"></script>
 	
 
 	<script
@@ -281,6 +282,8 @@
 	<script src="resources/js/services/product/productService.js"></script>
 	<script src="resources/js/services/cart/cartService.js"></script>
 	<script src="resources/js/services/product/pagination/productPaginationService.js"></script>
+	<script src="resources/js/services/user/pagination/userPaginationService.js"></script>
+	
 	
 	
 	<script
@@ -315,6 +318,10 @@
 
 </body>
 <style>
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color :#14501c;
+
+}
 #nav {
 	width: 50px;
 	height: 50px;
@@ -353,14 +360,31 @@
 	display: block;
 	right: 0px;
 	position: relative;
-	-webkit-transition-duration: .5s;
+	-webkit-transition-duration: .3s;
 }
 
 .normalCart {
 	display: block;
 	right: -350px;
 	position: relative;
-	-webkit-transition-duration: .5s;
+	-webkit-transition-duration: .3s;
 }
+.main.ng-enter {
+		  transition: 1.0s;
+		  opacity: 0; }
+		.main.ng-enter-active {
+		  opacity: 1; }
+			[ui-view] {
+		    position: inherit;
+		    }
+	  	html,body{
+			height:100%;
+			min-height: 100%;
+		}
+		
+		#main{
+			overflow:auto;
+			padding-bottom:150px; /* this needs to be bigger than footer height*/
+		}
 </style>
 </html>

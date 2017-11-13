@@ -5,7 +5,11 @@
   <a href="#" title="Wróć do strony głównej"
   >Strona główna</a>
     <span aria-hidden="true">›</span>
-    <span>{{'submenu.'+category.name | translate}}</span>
+    <span>{{'menu.menu.'+category.parent.url | translate}} </span>
+    <span aria-hidden="true">›</span>
+    <span><a class="" href="javascript:void(0)" 
+				ui-sref="medicineList({name:'{{category.url}}'})">
+				{{'submenu.menu.' + category.parent.url + '.' + category.url | translate}}</a></span>
      <span aria-hidden="true">›</span>
      <span>{{product.name}}</span>
 </nav>
@@ -68,14 +72,17 @@
 					<label
 					for="Quantity" class="quantity-selector">Ilość</label> 
 					<input
-					id="quantity" 
-					name="quantity" 
-					value="1"
-					class="quantity-selector" 
-					ng-model="quantity"
-					style="width: 100%; 
-					margin-bottom: 10px;"
-					type="number">
+						id="quantity" 
+						name="quantity" 
+						value="1"
+						class="quantity-selector" 
+						ng-model="quantity"
+						style="width: 100%; 
+						margin-bottom: 10px;"
+						ng-init="quantity = 1"
+						min="1"
+						max="20"
+						type="number">
 
 				<button ng-click="addToCart()" name="add" id="X_AddToCart" class="btn">
 					<span id="AddToCartText">Dodaj do koszyka</span>

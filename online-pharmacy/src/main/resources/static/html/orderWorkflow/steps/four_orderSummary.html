@@ -1,7 +1,7 @@
 <meta meta charset=utf-8>
 <div class="container">
 	<div class="page-header">
-		<h1>Sprawdź i złóż zamówienia</h1>
+		<h1>Sprawdź i ostatecznie złóż zamówienie</h1>
 	</div>
 	<div class="row">
 		<div class="col-md-4 shipping-info">
@@ -9,8 +9,8 @@
 				<div class="col-md-12 col-sm-6">
 					<h4 class="address-border-bottom">Adres wysyłki</h4>
 					<address>
-						<strong>{{cart.firstName}} {{cart.lastName}}</strong><br> <br> {{cart.street}}<br> {{cart.city}}<br>
-						<br> <br> Telefon: {{cart.phone}}
+						<strong>{{cart.firstname}} {{cart.lastname}}</strong><br> <br> {{cart.street}}<br> {{cart.city}}<br>
+						<br> <br> Telefon: {{cart.phone	}}
 					</address>
 				</div>
 			</div>
@@ -20,7 +20,13 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="cart-image" colspan="3">Twoje zamówienie</th>
+						<th class="cart-image" colspan="5" style="border-left:0px;border-right:0px;">Twoje zamówienie</th>
+					</tr>
+					<tr>
+						<th class="cart-image" ></th>
+						<th class="unit-price">Nazwa</th>
+						<th class="unit-price">Ilość</th>
+						<th class="unit-price">Opakowanie</th>
 						<th class="unit-price">Cena</th>
 						<th class="text-right">Razem</th>
 					</tr>
@@ -33,8 +39,9 @@
 							src="http://localhost:8080/api/product/img?number={{product.number}}"
 							alt=""></td>
 
-						<td class="quantity"><span>{{product.totaNumber}}</span></td>
 						<td class="item">{{product.name}}</td>
+						<td class="quantity"><span>{{product.totalNumber}}</span></td>
+						<td class="quantity"><span>{{product.packages[0].name}}</span></td>
 						<td class="unit-price">{{product.packages[0].price}}</td>
 
 						<td class="totals text-right">{{product.packages[0].price * product.totalNumber}}</td>
@@ -42,7 +49,7 @@
 
 				</tbody>
 
-				<tfoot>
+				<tfoot style="border-top: 2px solid #9cbfb2;">
 <!-- 					<tr class="dashed-border-top"> --	>
 <!-- 						<td colspan="3"></td> -->
 <!-- 						<td><span class="faded">Tax total</span> <span -->
@@ -51,14 +58,14 @@
 <!-- 					</tr> -->
 					<tr class="no-top-border">
 						<td colspan="3"></td>
-						<td><span class="faded">Przesyłka</span></td>
-						<td class="text-right totals "><span class="faded">{{cartService.karta.shippingPrice}}</span></td>
+						<td colspan="2"><span class="faded"><b>Przesyłka</b></span></td>
+						<td class="text-right totals "><span class="faded">{{shippingPrice}}</span></td>
 					</tr>
 
 					<tr class="no-top-border table-row-emphasise">
 						<td colspan="3"></td>
-						<td>Razem</td>
-						<td colspan="2" class="text-right totals ">{{cartService.totalPrice}}</td>
+						<td colspan="2"><b>Razem</b></td>
+						<td colspan="2" class="text-right totals "><b>{{tatalPrice + shippingPrice}}</b></td>
 					</tr>
 				</tfoot>
 			</table>

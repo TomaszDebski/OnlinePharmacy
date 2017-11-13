@@ -14,22 +14,27 @@ angular.module('app.controller.shoppingCartSummary', [])
 //	    }
 	    
 	    $scope.changeQuantity = function(product,event){
-	        console.log('value ' ,event.target.value);
-	        console.log('product ' ,product);
+//	        console.log('value ' ,event.target.value);
+//	        console.log('product ' ,product);
 	    	
-	        product.totalNumber = event.target.value;
+	        product.totalNumber = parseInt(event.target.value);
 //	        let refreshProduct = this.cartService.karta.cartProducts.filter(item => item.id == product.id)[0];
 	        var refreshProduct = $filter('filter')(cartService.getCart().cartProducts, {'id':product.id})[0];
-	        refreshProduct.totalNumber = event.target.value;
+	        refreshProduct.totalNumber = parseInt(event.target.value);
 	        cartService.refreshTotalPrice();
 	    }
 	    
 	    $scope.goNext = function(){
+	    		console.log('$rootScope.authenticated',$rootScope.authenticated);
 	    	if ($rootScope.authenticated == 'true'){
 	    		$state.go("order.delivery");
 	    	}else{
 	    		$state.go("order.recognize");
 	    	}
 	    	
+	    }
+	    
+	    $scope.removeFromCart = function(id){
+	    	cartService.removeFromCart(id);
 	    }
 })

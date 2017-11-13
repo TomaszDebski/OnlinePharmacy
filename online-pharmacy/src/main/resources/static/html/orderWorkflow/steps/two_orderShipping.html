@@ -8,7 +8,7 @@
 			<form class="form-horizontal sylius_checkout_shipping" novalidate
 				name="deliveryForm"
 				id="deliveryForm"
-				ng-submit="goToNextStep(deliveryOption)">
+				ng-submit="goToNextStep()">
 				<fieldset style="border: none;">
 					<div class="form-group">
 						<div class="col-xs-12">
@@ -16,16 +16,16 @@
 								<div  ng-repeat="delivery in deliveryOptions">
 										<input 
 									      	type="radio" 
-									      	name="deliveryOption" 
-									      	id="deliveryOption" 
-									      	value="{{delivery.id}}" 
+									      	name="deliveryOptions" 
+									      	id="deliveryOptions" 
+									      	ng-value="{{delivery.id}}" 
 									      	required
-									      	ng-model="deliveryOption"
+									      	ng-model="data.deliveryOption"
 									      	>
 <!-- 									      	{{delivery.name}} -->
 <!-- 									      {{'commons.man' | translate}} -->
 										<label style="font-weight: 400;font-size: medium;font-family: Open Sans;"> 
-										{{delivery.name}} 
+										{{'delivery.'+delivery.name | translate}} 
 									    </label> 
 										<span class="pull-right text-muted"
 										style="font-weight: 400;font-size: medium;font-family: Open Sans;">{{(delivery.price | number:2) + " zł"}}</span></label>
@@ -56,7 +56,7 @@
 							Przejdź dalej</button>
 					</div>
 					<div class="col-sm-3 col-xs-12 pull-left">
-						<a href="#" ng-click="backToStep1()"
+						<a href="javascript:void(0)" ng-click="backToStep1()"
 							class="btn btn-default btn-lg btn-block"> Cofnij </a>
 					</div>
 				</div>

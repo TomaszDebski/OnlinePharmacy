@@ -85,8 +85,8 @@ public class UserDetails {
 
 	
 	
-//	@OneToOne(fetch=FetchType.LAZY, mappedBy="userDetails")
-//	  private User user;
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="userDetails")
+	  private User user;
 
 	/* Relations */
 
@@ -166,13 +166,13 @@ public class UserDetails {
 		this.number = number;
 	}
 
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 
