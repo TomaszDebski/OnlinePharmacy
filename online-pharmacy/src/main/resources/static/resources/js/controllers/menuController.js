@@ -9,7 +9,7 @@ angular.module('app.controller.menu', [])
 		var allCategories = categoryService.getAll()
 	  	allCategories.then(function(data){
 	  		$scope.menus = data.data;
-//			  console.log('menuController ');
+			  console.log('menuController ',data.data);
 	  	})
 	};
 	$scope.getAllCategories();

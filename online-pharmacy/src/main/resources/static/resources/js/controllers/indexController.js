@@ -19,6 +19,7 @@ angular.module('app.controller.index', [])
 	
 	$scope.authenticated = $window.sessionStorage.authenticated;
 	$scope.loggedUserName = $window.sessionStorage.user;
+	$scope.userId = $window.sessionStorage.id;
 	
 	$scope.showRightPanel = function(isShow){
 	    $scope.move = !$scope.move;
@@ -33,8 +34,11 @@ angular.module('app.controller.index', [])
 //	    console.log('1111111111',obj.showMenu); // 10
 	    $scope.showMenu = obj.showMenu;
 	})
-	$rootScope.$on('parent', function(e) {  
-		$scope.authenticated = true;
+	$rootScope.$on('parent', function(e,bool) {  
+//		console.log('bool',bool)
+		$scope.authenticated = bool;
+		$scope.loggedUserName = bool ? $window.sessionStorage.user : '';
+		$scope.userId = bool ? $window.sessionStorage.id : -1;
 	})
 	
 //	$scope.logout = function(authh){
@@ -60,5 +64,9 @@ angular.module('app.controller.index', [])
 	  
 	$scope.showCurrentLanguage = function (){
 		return $translate.use();
+	}
+	
+	$scope.showCarts = function(){
+		$state.go("carts",{id:$scope.userId});
 	}
 })

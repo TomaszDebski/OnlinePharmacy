@@ -20,7 +20,6 @@ angular.module('app.controller.medicineList', [])
 	$scope.currentPage = productsResolve.number;
 	
 	$scope.pageChanged = function() {
-		console.log('ssss')
 		refreshProducts(($scope.currentPage-1),9);
 	}
 	
@@ -44,12 +43,12 @@ angular.module('app.controller.medicineList', [])
 //	console.log('productsResolve',productsResolve)
 	
 	$scope.addToCart = function(product,packageId){
-		console.log('product ' +product+' packageId ' +packageId)
+//		console.log('product ' +product.packages+' packageId ' +packageId.id)
 		var pack = $filter('filter')(product.packages, {'id':packageId.id})[0];
 	    var productCopy = angular.copy(product);
 	      productCopy.packages = [];
 	      productCopy.packages.push(pack);
-//	      console.log('productCopy',productCopy)
+	      console.log('productCopy',productCopy)
 //	      console.log('product',product)
 	    cartService.setTotalPrice(100);
 		cartService.addToCart(productCopy);

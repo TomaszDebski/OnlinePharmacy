@@ -70,7 +70,7 @@ public class CategoryProductController {
 		return (List<CategoryProduct>) categoryRepository.findAllWithChildren();
 	}
 	
-	@JsonView(Views.CategoryProductMenu.class)
+	@JsonView(Views.ParentMenu.class)
 	@RequestMapping("/oneCategory")
 	public CategoryProduct getCategoryProductByProduct(@RequestParam("id") long id){
 		return categoryRepository.findByProductId(id);

@@ -22,28 +22,36 @@ public class CartProduct {
 
 	@Id
 	@GeneratedValue
-	@JsonView(Views.Product.class)
+	@JsonView(Views.CartDetails.class)
 	public Long id;
 	
-	@JsonView(Views.Product.class)
+	@JsonView(Views.CartDetails.class)
 	@Column(name="name")
 	public String name;
 	
-	@JsonView(Views.Product.class)
+	@JsonView(Views.CartDetails.class)
 	@Column(name="price",columnDefinition="Decimal(10,2) default '100.00'")
 	public Double price;
+	
+	@JsonView(Views.CartDetails.class)
+	@Column(name="unit_price",columnDefinition="Decimal(10,2) default '100.00'")
+	public Double unitPrice;
 	
 	@Column(name="insertedDate")
 	public Date insertedDate;
 	
-	@JsonView(Views.Product.class)
+	@JsonView(Views.CartDetails.class)
 	@Column(name="productNumber")
 	public String number;
 	
-	@Lob
-	@JsonView(Views.Product.class)
-	@Column(name="file",length=100000)
-	private byte[] file;
+	@JsonView(Views.CartDetails.class)
+	@Column(name="total_number")
+	public int totalNumber;
+	
+//	@Lob
+//	@JsonView(Views.CartDetails.class)
+//	@Column(name="file",length=100000)
+//	private byte[] file;
 //
 //    private String mimeType;
 	
@@ -64,6 +72,7 @@ public class CartProduct {
 //	private List<Visit> visits;
 	
 //	@JsonView(Views.CategoryProduct.class)
+	@JsonView(Views.CartDetails.class)
 	@JsonProperty
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "product_id")
@@ -106,14 +115,6 @@ public class CartProduct {
 		this.insertedDate = insertedDate;
 	}
 
-	public byte[] getFile() {
-		return file;
-	}
-
-	public void setFile(byte[] file) {
-		this.file = file;
-	}
-
 	public void setPrice(Double price) {
 		this.price = price;
 	}
@@ -136,6 +137,22 @@ public class CartProduct {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getTotalNumber() {
+		return totalNumber;
+	}
+
+	public void setTotalNumber(int totalNumber) {
+		this.totalNumber = totalNumber;
+	}
+
+	public Double getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	

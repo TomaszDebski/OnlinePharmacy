@@ -3,8 +3,8 @@
 <hr>
 <form 
 	method="post" novalidate class="cart">
-	<h1>Koszyk</h1>
-	<div class="cart__row medium-down--hide cart__header-labels">
+	<h1 style="margin: 0px;">Koszyk<div class="pull-right">{{cart.cartDate | date:'yyyy-MM-dd' }}</div></h1> 
+	<div class="cart__row medium-down--hide cart__header-labels" style="margin-top: 0px;padding-top: 0px;">
 		<div class="grid--full">
 			<div class="grid__item large--one-half">
 				<div class="grid">
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="cart__row" data-id="1286"
+	<div class="cart__row" data-id="1286" style="margin-top: 0px;padding-top: 0px;"
 		ng-repeat="product in cart.cartProducts">
 		<div class="grid--full cart__row--table-large">
 			<div class="grid__item large--one-half">
@@ -32,14 +32,12 @@
 					<div class="grid__item one-third">
 						<a href="javascript:void(0)" class="cart__image"> <img
 							src="http://localhost:8080/api/product/img?number={{product.number}}"
-							alt="Problem">
+							alt="Problem" style="max-width: 50%;">
 						</a>
 					</div>
 					<div class="grid__item two-thirds">
 						<a href="javascript:void(0)" class="h4">
-							{{product.name}} </a> <small></small> <a href="javascript:void(0)" ng-click="removeFromCart(product.id)"
-							class="cart__remove" data-id="1286"> <small>Usuń</small>
-						</a>
+							{{product.name}} </a> 
 					</div>
 				</div>
 			</div>
@@ -47,19 +45,20 @@
 			<div class="grid__item large--one-half">
 				<div class="grid--full cart__row--table-large">
 					<div class="grid__item one-third">
-						<span class="cart__mini-labels">Cena</span> <span class="h3">{{product.packages[0].price | number:2}}</span>
+						<span class="cart__mini-labels">Cena</span> <span class="h3">{{product.unitPrice | number:2}}</span>
 					</div>
 
 					<div class="grid__item one-third text-center">
-						<span class="cart__mini-labels">Ilość</span> <input
-							name="items[1286][quantity]" id="updates_1286"
-							ng-model="product.totalNumber"
-							ng-click="changeQuantity(product,$event)" min="0" data-id="1286"
-							type="number">
+						<span class="cart__mini-labels">Ilość</span>
+						{{product.totalNumber}}
+<!-- 						 <input -->
+<!-- 							name="items[1286][quantity]" id="updates_1286" -->
+<!-- 							ng-model="product.totalNumber" -->
+<!-- 							ng-click="changeQuantity(product,$event)" min="0" data-id="1286" -->
+<!-- 							type="number"> -->
 					</div>
 					<div class="grid__item one-third text-right">
-						<span class="cart__mini-labels">Razem</span> <span class="h3">{{product.packages[0].price
-							* product.totalNumber | number:2}}</span>
+						<span class="cart__mini-labels">Razem</span> <span class="h3">{{product.price | number:2}}</span>
 					</div>
 				</div>
 			</div>
@@ -68,9 +67,9 @@
 	</div>
 	<div class="grid cart__row">
 		<div class="grid__item seven-twelfths small--one-whole">
-			<button type="button" class="text-link cart__note-add"
-				ng-click="showNote = true" ng-class="{'hide' : showNote}">
-				Dodaj notatkę</button>
+<!-- 			<button type="button" class="text-link cart__note-add" -->
+<!-- 				ng-click="showNote = true" ng-class="{'hide' : showNote}"> -->
+<!-- 				Dodaj notatkę</button> -->
 			<div
 				ng-class="{'cart__note': !showNote,'cart__note.is-active': showNote}">
 				<label for="CartSpecialInstructions"
@@ -82,9 +81,9 @@
 		</div>
 
 		<div class="grid__item text-right five-twelfths">
-			<p ng-show="cart.totalPrice > 0">
+			<p >
 				<span class="cart__subtotal-title"><b>Podsumowanie</b></span> <span
-					class="h3 cart__subtotal">{{cart.totalPrice |
+					class="h3 cart__subtotal">{{cart.price |
 					number:2}}</span>
 			</p>
 			<!--         <p><em>Shipping &amp; taxes calculated at checkout</em></p> -->
@@ -99,10 +98,11 @@
 <!-- 				leku. Na ten produkt obowiązuje 2-pakowe ograniczenie <br> -->
 
 			</div>
-			<div style="clear: both;"></div>
-			<!--           <input name="update" class="btn--secondary update-cart" value="Update Cart" type="submit"> -->
-			<input name="checkout" class="btn" value="Przejdź dalej"
-				ng-click="goNext()">
+				<div style="clear: both;">
+<!-- 				          <input name="update" class="btn--secondary update-cart" value="Update Cart" type="submit"> -->
+					<input name="checkout" class="btn" value="Powrót"
+						ng-click="">
+				</div>
 		</div>
 	</div>
 

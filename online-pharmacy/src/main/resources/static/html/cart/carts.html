@@ -4,7 +4,7 @@
     <div id="" class="container">
         <div class="row vertical-align">
         	<div class="col-md-1">
-        		<span class="page-title" style="font-size:30px;" translate="users.users"></span>
+        		<span class="page-title" style="font-size:30px;" translate="carts.cart_history"></span>
             </div>
             <div class="col-md-offset-1 col-md-8 ">
             	<div class="pull-right">
@@ -12,7 +12,7 @@
             	<input  style="padding: 7px 10px; border-radius:0px"
 					name="searchWord" 
 					[(ngModel)]="searchWord" 
-					placeholder="Znajdź użytkownika" 
+					placeholder="Znajdź zamówienie" 
 					class="input-group-field" 
 					aria-label="Search our store"
 					type="search"
@@ -54,8 +54,8 @@
              <table id="mytable" class="table borderless table-bordred table-striped table-hover">
              	<thead>
                    	<tr>
-	                    <th>{{'users.login' | translate}}</th>
-	                    <th>{{'firstname' | translate}}</th>
+	                    <th>{{'carts.cart_date' | translate}}</th>
+	                    <th>{{'carts.price' | translate}}</th>
 	                    <th>{{'lastname' | translate}}</th>
 <!-- 				        <th>{{'users.date_of_birth' | translate}}</th> -->
 <!-- 				        <th>{{'patients.phone' | translate}}</th> -->
@@ -65,13 +65,13 @@
                    </tr>
                 </thead>
     			<tbody>
-    				<tr ng-repeat="user in users">
+    				<tr ng-repeat="cart in carts">
 <!-- 				      	<td><span class="table_span"> -->
 <!-- 					      	<a ui-sref="patient({id:{{patient.id}}})">{{patient.firstname}} {{patient.lastname}}</a> -->
 <!-- 					      	</span> -->
-<!-- 				      	</td> -->
-				      	<td><span class="table_span">{{user.username}}</span></td>
-				      	<td><span class="table_span">{{user.firstname}}</span></td>
+<!-- 				      	</td> --> 
+				      	<td><span class="table_span">{{cart.cartDate | date:'yyyy-MM-dd' }}</span></td>
+				      	<td><span class="table_span">{{cart.price}}</span></td>
 				      	<td><span class="table_span">{{user.lastname}}</span></td>
 <!-- 				         <td><span class="table_span">{{user.birthDate |  date:'yyyy-MM-dd' }}</span></td> -->
 <!-- 				         <td><span class="table_span">{{patient.phone | tel}}</span></td> -->
@@ -84,11 +84,12 @@
 <!-- 					               		> -->
 <!-- 					               </a> -->
 				               </span>
-				                <span class="masterTooltip table_span" title="{{'users.remove_the_user'| translate}}">
-				                	<a ng-click="deleteUser(user)" 
+				                <span class="masterTooltip table_span" title="{{'carts.show_details'| translate}}">
+				                	<a ng-click="cartDetails(cart.id)" 
 					                	href="" 
 					                	class="icon">
-				                			<img src="/images/bin.png">
+				                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+<!-- 				                			<img src="/images/bin.png"> -->
 				                	</a>
 				                </span> 
 <!-- 				                <span class="maste-rTooltip table_span" title="{{'patients.send_email' | translate}}"> -->

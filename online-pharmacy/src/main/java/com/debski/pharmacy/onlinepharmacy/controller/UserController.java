@@ -67,6 +67,7 @@ public class UserController {
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public void deleteUser(@PathVariable("id") long id){
+		userRepository.delete(id);
 	}
 	
 //	@JsonView(Views.User.class)

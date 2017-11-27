@@ -222,8 +222,40 @@ angular.module('app.config', [])
 //				console.log('usersResolve')
 				return userPaginationService.getAllUser(0,10).then(function(result){
 //					console.log('usersResolve.content',result.content)
-					return result.content;
+					return result;
 				});
+			}
+		}
+	})
+	.state('carts', {
+		url: '/user/:id/carts',
+		templateUrl : 'html/cart/carts.html',
+		controller : 'cartsController',
+		params : {
+//			name : 'pain-relief'
+		},
+		resolve : {
+			cartResolve : function(cartPaginationService,$stateParams){
+				return cartPaginationService.getCartByUser($stateParams.id,0).then(function(result){
+					return result;
+				})
+			}
+		}
+	})
+	.state('cartDetails', {
+		url: '/user/:userId/cartDetails/:id',
+		templateUrl : 'html/cart/cartDetails.html',
+		controller : 'cartDetailsController',
+		params : {
+//			name : 'pain-relief'
+		},
+		resolve : {
+			cartDetailsResolve : function(cartDetailsService,$stateParams){
+//				console.log('config $stateParams id',$stateParams.id)
+				return cartDetailsService.getCartDetails($stateParams.id).then(function(result){
+					console.log('config result',result)
+					return result;
+				})
 			}
 		}
 	})

@@ -37,9 +37,19 @@ angular.module('app.service.login',[])
     	        	    	    .then(function(functResult) {
     	        	    	    	var result = functResult.data;
     	        	    	    	if (result != null && result.username.length > 0){
-    	        	    	    		console.log('functResult');
+    	        	    	    		console.log('functResult',result);
     	        	    	    		$rootScope.id = result.id;
-    	        	    	    		$window.sessionStorage.id = $rootScope.id;
+    	        	    	    		$window.sessionStorage.id = result.id;
+    	        	    	    		console.log('$window.sessionStorage.id',$window.sessionStorage.id)
+    	        	    	    		if (result.role == 'ROLE_ADMIN'){
+    	        	    	    			$window.sessionStorage.isAdmin = true;
+    	        	    	    		}else if (result.role == 'ROLE_USER'){
+    	        	    	    			$window.sessionStorage.isAdmin = false;
+    	        	    	    		}else{
+    	        	    	    			$window.sessionStorage.isAdmin = false;
+    	        	    	    		}
+//    	        	    	    		$rootScope.role = result.role;
+    	        	    	    		$window.sessionStorage.role = result.role;
 //    		        	    	    	$scope.$parent.authenticated = true;
     		        	    	    	$rootScope.authenticated = true;
 //    		            	    		$scope.error = false;
@@ -50,7 +60,7 @@ angular.module('app.service.login',[])
     		                            $window.sessionStorage.authenticated = true;
 //    		                            authenticationService.setAuthenticated($window.sessionStorage.authenticated);
 //    		                            console.log('authenticationService.getAuthenticated',authenticationService.getAuthenticated());
-    		                            $rootScope.$emit('parent', '1111');
+    		                            $rootScope.$emit('parent', true);
     		                            $rootScope.$emit('errorLogin', false);
 //    		                            $state.go("home");
     	        	    	    	}

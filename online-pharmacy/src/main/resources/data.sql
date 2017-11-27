@@ -1,7 +1,18 @@
  insert into user_details (id, address , city , email , number , pesel , phone , post_code , second_phone ) values(1,'Koszykowa','Warszawa','email@o2.pl','10','828282828','731712712','01-111','789789789');
 insert into user (id,username,password,first_name,last_name,role,user_details_id) values (1,'user','$2a$06$/zpn1QuDr6QmJMnNm/oXyuQoKxmRkE3qhlKGAywFRtK03FelDd3AW','Tomasz','Dębski','ROLE_USER',1);
-insert into user (id,username,password,first_name,last_name,role) values (2,'admin','$2a$04$9NUQszd97BkpRjb9KaP62OivCd0BTcUg3zHWZdRC1CtGXLMJhXbRu','Tomasz','Dębski','ROLE_USER');
+insert into user_details (id, address , city , email , number , pesel , phone , post_code , second_phone ) values(2,'Koszykowa','Warszawa','email@o2.pl','10','828282828','731712712','01-111','789789789');
+insert into user (id,username,password,first_name,last_name,role,user_details_id) values (2,'admin','$2a$04$9NUQszd97BkpRjb9KaP62OivCd0BTcUg3zHWZdRC1CtGXLMJhXbRu','Tomasz','Dębski','ROLE_ADMIN',2);
 insert into user (id,username,password,first_name,last_name,role) values (3,'admin2','$2a$04$9NUQszd97BkpRjb9KaP62OivCd0BTcUg3zHWZdRC1CtGXLMJhXbRu','Tomasz','Dębski','ROLE_USER');
+
+insert into user (id,username,password,first_name,last_name,role) values (4,'admin2','','Tomasz','Dębski','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (5,'Ania','','Ania','Ania','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (6,'Wiola','','Wiola','Wiola','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (7,'Kasia','','Kasia','Kasia','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (8,'Mieczysław','','Mieczysław','Mieczysław','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (9,'Ferdynand','','Ferdynand','Ferdynand','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (10,'Paweł','','Paweł','Paweł','ROLE_USER');
+insert into user (id,username,password,first_name,last_name,role) values (11,'Katarzyna','','Katarzyna','Katarzyna','ROLE_USER');
+
 
 --insert into user (id,username,password,first_name,last_name,phone,second_phone,email,city,post_code,address,role,pesel) values (1,'user','$2a$06$/zpn1QuDr6QmJMnNm/oXyuQoKxmRkE3qhlKGAywFRtK03FelDd3AW','Tomasz','Dębski','787361182','222222','tomaszdebski@o2.pl','Lublin','20-765','Lublinowo','ROLE_USER',28080803742);
 --insert into user (id,username,password,first_name,last_name,phone,second_phone,email,city,post_code,address,role,pesel) values (2,'admin','$2a$04$9NUQszd97BkpRjb9KaP62OivCd0BTcUg3zHWZdRC1CtGXLMJhXbRu','Tomasz','Dębski','787361182','222222','tomaszdebski@o2.pl','Lublin','20-765','Lublinowo','ROLE_USER',28080803742);
@@ -11,7 +22,8 @@ insert into category_product (id,name,description,url,order_url,category_number)
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(21,'menu.medicine.pain-relief','Lekkie lub umiarkowane nasilenie bólu może być leczone lekami przeciwciałami przeciwgrzydłowymi (OTC) lub lekami wydawanymi bez recepty, które są dostępne w aptece pod nadzorem Farmaceuty lub Online z TheFamilyPharmacy.ie. Najczęstszymi skargami, które słyszymy w liczbie OTC są bóle głowy, bóle okresowe, ból zęba, bóle pleców, bóle mięśni i stawów, zapalenie kości i stawów oraz przez cały rok bóle zimna i bólowa.','pain-relief','002001','M_PR',20);
 
 
-insert into product (id, name,description, category_product_id,product_number) values (1,'PERNATON JOINT MASSAGE Żel','Pernaton Gel zawiera wyciąg z zielonego Lippeda małży z naturalnie występującą glukozaminą. Początkowo ochładza skórę, a następnie łagodzi ciepło mięśni, ścięgien i stawów. Może być stosowany codziennie, aby złagodzić sztywność stawów od starości lub złagodzić bóle stawów i mięśni ze strony szczepu i zranienia. Jest wchłaniana szybko i ma świeży, przyjemny zapach.',21,'M_PR_1');
+insert into product (id, name,description, category_product_id,product_number) 
+values (1,'PERNATON JOINT MASSAGE Żel','Pernaton Gel zawiera wyciąg z zielonego Lippeda małży z naturalnie występującą glukozaminą. Początkowo ochładza skórę, a następnie łagodzi ciepło mięśni, ścięgien i stawów. Może być stosowany codziennie, aby złagodzić sztywność stawów od starości lub złagodzić bóle stawów i mięśni ze strony szczepu i zranienia. Jest wchłaniana szybko i ma świeży, przyjemny zapach.',21,'M_PR_1');
 insert into product_package (id,product_id,name,price) values (10,1,'20',20.0);
 insert into product_package (id,product_id,name,price) values (20,1,'10',10.0);
 insert into product (id, name,description, category_product_id,product_number) values (2,'NUROFEN EXPRESS 200MG TABLETKI','Tabletki Nurofen Express zawierają postać ibuprofenu, która działa szybciej niż standardowe tabletki powlekane. Dają szybką skuteczną pomoc: bóle głowy, bóle stomatologiczne, bóle mięśni, bóle okresowe, bóle pleców, gorączkę, uczucie zimna i grypę.',21,'M_PR_2');
@@ -48,12 +60,32 @@ insert into product_package (id,product_id,name,price) values (1001,101,'12',20.
 insert into product_package (id,product_id,name,price) values (1002,101,'6',10.0);
 
 
-
-
 insert into category_product (id,name,description,url,order_url,category_number) values(40,'menu.child','','','004','');
 insert into category_product (id,name,description,url,order_url,category_number) values(50,'menu.beauty','','','005','');
 insert into category_product (id,name,description,url,order_url,category_number) values(60,'menu.men','','','006','');
 insert into category_product (id,name,description,url,order_url,category_number) values(70,'menu.suplements','','','007','');
 insert into category_product (id,name,description,url,order_url,category_number) values(80,'menu.gifts','','','008','');
+
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) 
+values (1,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',120,1);
+
+insert into cart_product (id,name,product_number,price,unit_price,cart_id,product_id,total_number)
+	values(1,'pierwszy','M_PR_1',30,10,1,1,3);
+insert into cart_product (id,name,product_number,price,unit_price,cart_id,product_id,total_number)
+	values(2,'drugi','M_PR_1',40,10,1,1,4);
+insert into cart_product (id,name,product_number,price,unit_price,cart_id,product_id,total_number)
+	values(3,'trzeci','M_PR_1',50,10,1,1,5);
+
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (2,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (3,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',10.01,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (4,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (5,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',10.01,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (6,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (7,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',10.01,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (8,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (9,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',10.01,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (10,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (11,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
+insert into cart (id,cart_date,city,delivery_option,username,last_name,phone,post_code,street,price,user_id) values (12,STR_TO_DATE('1-01-2012', '%d-%m-%Y'),'Lublin','delivery','username','lastName',11111,'20-888','street',20.02,1);
 
 

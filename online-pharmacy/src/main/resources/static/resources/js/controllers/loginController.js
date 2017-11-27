@@ -9,10 +9,19 @@ angular.module('app.controller.login', [])
 	var self = this;
 	$scope.error = false;
 	$scope.login = function(event) {
-//		console.log('before $rootScope',$rootScope)
-		loginService.login($scope.loginForm,$scope.data.credentials);
 //		event.preventDefault();
 //		if ($scope.loginForm.$valid) {      
+			loginService.login($scope.loginForm,$scope.data.credentials);
+			$rootScope.$on('errorLogin', function(e,data) {  
+				$scope.error = data;
+				$scope.loginForm.submitted=data; 
+//				console.log('$scope.loginForm.submitted',$scope.loginForm.submitted)
+				if (!data){
+//					console.log('elseeeeeee')
+//					$state.go('order.delivery');
+					$state.go("medicineList",{name:'pain-relief'});
+				}
+			})
 //	    }
 //	    else {
 //	        $scope.loginForm.submitted=true;    

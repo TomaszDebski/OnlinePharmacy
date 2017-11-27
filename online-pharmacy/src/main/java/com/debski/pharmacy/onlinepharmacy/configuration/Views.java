@@ -2,11 +2,15 @@ package com.debski.pharmacy.onlinepharmacy.configuration;
 
 public class Views {
 
-	public interface UserCart extends User{};
+	public interface UserCart extends CartDetails{};
+	
+	public interface CartDetails{};
 //	public interface Visits{}
 //	
 //	public interface Patient {}
-//	
+	
+	
+	
 	public interface User {}
 	
 	public interface CategoryProduct extends Product,CategoryProductMenu {}
@@ -16,6 +20,8 @@ public class Views {
 	public interface Product {}
 	
 	public interface Menu {}
+	
+	public interface ParentMenu extends CategoryProductMenu {}
 //	
 //	public interface Interview{}
 //	

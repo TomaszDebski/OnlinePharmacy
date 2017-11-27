@@ -95,6 +95,9 @@
 	</div>
 	
 	authenticated: {{authenticated}}
+	 ,user : {{loggedUserName}}<br>
+	role: {{role}}
+	,id: {{id}}
 	<!-- 	<div ng-controller="userPanelController"> -->
 	<!-- 		<div ng-include="'html/userPanel.html'"></div> -->
 	<!-- 	</div> -->
@@ -126,9 +129,14 @@
 				</a>
 				<div>
 					<a ui-sref="addProduct"
-						ng-show="authenticated"> Dodaj produkt | </a> <a
+						ng-show="authenticated && role === 'ROLE_ADMIN'"> Dodaj produkt | </a> <a
 						ui-sref="addCategory"
-						ng-show="authenticated"> Dodaj kategorię | </a> 
+						ng-show="authenticated && role === 'ROLE_ADMIN'"> Dodaj kategorię | </a> 
+						<a
+						href="" ng-click="showCarts()"
+						ng-show="authenticated && role === 'ROLE_USER'"> Historia zakupów | </a>
+						<a ui-sref="users"
+						ng-show="authenticated && role === 'ROLE_ADMIN'"> Użytkownicy | </a> 
 						<a ui-sref="login" ng-show="!authenticated"> Zaloguj |</a> 
 						<a ng-show="authenticated"
 						ui-sref="logout"> Wyloguj </a> <a ui-sref="register"
@@ -244,6 +252,8 @@
 	<script src="resources/js/controllers/cartController.js"></script>
 	<script src="resources/js/controllers/password/forgotPassword/forgotPasswordController.js"></script>
 	<script src="resources/js/controllers/admin/usersController.js"></script>
+	<script src="resources/js/controllers/cart/cartsController.js"></script>
+	<script src="resources/js/controllers/cart/cartDetailsController.js"></script>
 	
 
 	<script
@@ -282,9 +292,10 @@
 	<script src="resources/js/services/product/productService.js"></script>
 	<script src="resources/js/services/cart/cartService.js"></script>
 	<script src="resources/js/services/product/pagination/productPaginationService.js"></script>
+	<script src="resources/js/services/cart/pagination/cartPaginationService.js"></script>
 	<script src="resources/js/services/user/pagination/userPaginationService.js"></script>
-	
-	
+	<script src="resources/js/services/cart/cartDetailsService.js"></script>
+	<script src="resources/js/services/cart/cartResourceService.js"></script>
 	
 	<script
 		src="resources/js/services/authentication/authenticationService.js"></script>

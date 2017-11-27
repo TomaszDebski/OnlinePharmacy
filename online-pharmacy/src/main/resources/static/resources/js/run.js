@@ -15,9 +15,12 @@ angular.module('app.run', [])
 //			$rootScope.showMenu = true;
 		}
 //		console.log('$window.sessionStorage.user',$window.sessionStorage.user)
-//		console.log('$window.sessionStorage.authenticated',$window.sessionStorage.authenticated)
+		console.log('$window.sessionStorage.authenticated',$window.sessionStorage.authenticated)
 		$rootScope.user = $window.sessionStorage.user;
 		$rootScope.authenticated = $window.sessionStorage.authenticated;
+		$rootScope.role = $window.sessionStorage.role;
+		$rootScope.isAdmin = $window.sessionStorage.isAdmin;
+		$rootScope.id = $window.sessionStorage.id;
 //		var stateArray = ["register","login","contact","home"]
 //		var name = toState.name;
 //		if ($window.sessionStorage.user == undefined || $window.sessionStorage.user == ""){

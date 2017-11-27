@@ -1,12 +1,13 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
@@ -42,6 +43,7 @@ public class CartController {
 			cartRepository.save(cart);
 			if (cart.getCartProducts() != null){
 				for(CartProduct product : cart.getCartProducts()){
+//					product.setId(null);
 					product.setCart(cart);
 					cartProductRepository.save(product);
 				}
@@ -54,17 +56,16 @@ public class CartController {
 //		
 //	}
 	
-	@JsonView(Views.User.class)
+	@JsonView(Views.UserCart.class)
 	@RequestMapping(value="/{id}")
 	public Cart getCartById(@PathVariable("id") long id){
 		return cartRepository.findOne(id);
 	}
 	
-//	@JsonView(Views.VisitsPhysiotherapist.class)
-	@RequestMapping
-	public List<User> getAllPhysiotherapists(){
-//		return physiotherapistService.getAllPhysiotherapists();
-		return null;
+//	@JsonView(Views.UserCart.class)
+	@RequestMapping("/pagination")
+	public Page<Cart> getAllCartForUser(Pageable pageable,@RequestParam("userId") Long id){
+		return cartRepository.findCartByUser(pageable, id);
 	}
 
 //	@JsonView(Views.User.class)

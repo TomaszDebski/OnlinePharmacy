@@ -6,7 +6,7 @@ angular.module('app.service.cart', [])
 .factory("cartService", ['$resource','$filter', function($resource,$filter) {
 	self = this;
 	var karta = {
-			id : 0,
+//			id : 0,
 			totalPrice : 0, 
 			shippingPrice : 0,
 			cartProducts: [],
@@ -16,6 +16,8 @@ angular.module('app.service.cart', [])
 			city : '',
     		postCode : '',
     		phone : '',
+    		
+    		shippingPrice : '',
 	}
 	var totalPrice = 0;
 	return  {
@@ -39,13 +41,16 @@ angular.module('app.service.cart', [])
 //			console.log('karta ', karta);
 			var findedProduct = $filter('filter')(karta.cartProducts, {'id':productAdded.id})[0];
 //			console.log('findedProduct ', findedProduct);
+		  if (productAdded.totalNumber == undefined) productAdded.totalNumber = 1;
 	      if (findedProduct == undefined){
-	        productAdded.totalNumber = 1;
+	        
 	        karta.cartProducts.push(productAdded);           
 //			console.log('karta ', karta);
 	      }else{
 //	    	  console.log('productAdded.totalNumber',productAdded.totalNumber)
 //	    	  console.log('findedProduct.totalNumber',findedProduct.totalNumber)
+//	    	  console.log('productAdded.totalNumber',productAdded.totalNumber == undefined)
+//	    	  console.log('productAdded.totalNumber is nan',is(productAdded.totalNumber))
 	          findedProduct.totalNumber = parseInt(findedProduct.totalNumber) + parseInt(productAdded.totalNumber);
 //	    	  productAdded.totalNumber
 //	    	  console.log('productAdded.totalNumber',productAdded.totalNumber)

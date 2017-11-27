@@ -58,14 +58,41 @@ public class Cart {
 	@Column(name="phone")
 	public int phone;
 	
+	
+	@JsonView(Views.UserCart.class)
+	@Column(name="cart_date")
+	public Date cartDate;
+	
+	@JsonView(Views.UserCart.class)
+	@Column(name="price")
+	public double price;
+	
+	
+	
 	/////////////////////
 	//////Sposób wysyłki/////////
 	
 	@JsonView(Views.UserCart.class)
-	@Column(name="deliveryOption")
+	@Column(name="delivery_option")
 	public String deliveryOption;
 	
+	@JsonView(Views.UserCart.class)
+	@Column(name="delivery_price")
+	public double deliveryPrice;
+	
+	
 	//////////////////////////
+	//////Sposób zapłaty/////////
+	
+	@JsonView(Views.UserCart.class)
+	@Column(name="payment_option")
+	public String paymentOption;
+	
+	@JsonView(Views.UserCart.class)
+	@Column(name="payment_price")
+	public String paymentPrice;
+	//////////////////////////
+	
 	
 //	@Lob
 //	private byte[] file;
@@ -78,7 +105,7 @@ public class Cart {
 	
 	/* Relations */
 	
-	@JsonView(Views.UserCart.class)
+//	@JsonView(Views.UserCart.class)
 	@JsonProperty
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
@@ -214,11 +241,59 @@ public class Cart {
 	public void setDeliveryOption(String deliveryOption) {
 		this.deliveryOption = deliveryOption;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+	public Date getCartDate() {
+		return cartDate;
+	}
+
+
+
+	public void setCartDate(Date cartDate) {
+		this.cartDate = cartDate;
+	}
+
+
+
+	public double getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+
+
+	public double getDeliveryPrice() {
+		return deliveryPrice;
+	}
+
+
+
+	public void setDeliveryPrice(double deliveryPrice) {
+		this.deliveryPrice = deliveryPrice;
+	}
+
+
+
+	public String getPaymentOption() {
+		return paymentOption;
+	}
+
+	public void setPaymentOption(String paymentOption) {
+		this.paymentOption = paymentOption;
+	}
+
+	public String getPaymentPrice() {
+		return paymentPrice;
+	}
+
+	public void setPaymentPrice(String paymentPrice) {
+		this.paymentPrice = paymentPrice;
+	}
 	
 }

@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -84,7 +84,7 @@ public class UserDetails {
 	/* Relations */
 
 	
-	
+	@JsonIgnore
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="userDetails")
 	  private User user;
 

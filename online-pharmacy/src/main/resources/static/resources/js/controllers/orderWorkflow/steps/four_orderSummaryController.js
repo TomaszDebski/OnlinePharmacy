@@ -3,7 +3,7 @@
  */
 angular.module('app.controller.four_orderSummary', [])
 .controller('four_orderSummaryController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter
+		$state,cartService,$filter,cartResourceService
 //		,authService
 		) {
 
@@ -22,11 +22,21 @@ angular.module('app.controller.four_orderSummary', [])
 //    paymentOptions: string[] = ["send by courier","Personal collection"];
     
     
-//    $scope.saveOrder(){
+    $scope.saveOrder = function(){
+    	 console.log('cartService.getCart()',cartService.getCart());
+    	 angular.forEach(cartService.getCart().cartProducts, function(key,value){
+    		 key.id = null;
+    		 key.categoryProduct = null;
+    		 console.log('key',key.id)
+    		 console.log('value',value)
+    	 })
+    	 cartResourceService.save(cartService.getCart(),function(data){
+         	console.log('dodano Cart',data)
+         })
 //        this.saveCart();
 //        this._cookieService.put('pierwszy','wartosc');
        
-//    }
+    }
     
     $scope.backToStep3 = function(){
 //        let deliveryOption : string = this.setDeliveryOption(value);
@@ -34,16 +44,9 @@ angular.module('app.controller.four_orderSummary', [])
     	$state.go('order.payment');
     }
     
-     function saveCart(){
-//        cartService.saveCart(this.cart).subscribe(
-//                data => {
-//                  console.log("udało się zapisać karte ");
-////                    swal('Oops...', 'Something went wrong!', 'error')
-//                },
-//                error => {
-//                    console.log("nie udało się " ,error);
-//                });;
-    }
+//     function saveCart(){
+//       
+//    }
     
 //    private setDeliveryOption(value : number){
 //        return this.paymentOptions[value];
