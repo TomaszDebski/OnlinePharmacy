@@ -1,10 +1,10 @@
 angular.module('app.service.register',[])
-    .factory('registerService',['$http','$log','$window','userService','$timeout','$filter' ,'$state',
-    	function($http,$log,$window,userService,$timeout,$filter,$state) {
+    .factory('registerService',['$http','$log','$window','userService','$timeout','$filter' ,'$state','$rootScope','$timeout',
+    	function($http,$log,$window,userService,$timeout,$filter,$state,$rootScope,$timeout) {
     	var $translate = $filter('translate');
 //    	var authenticated = false;
     	return {
-    		register : function(registerForm,user,passwordConfirm,notEqual){
+    		register : function(registerForm,user,passwordConfirm,notEqual,withLogin){
     			console.log('user register',user)
     			notEqual = false;
     			var isPasswordEqual = user.password == passwordConfirm;
@@ -19,17 +19,25 @@ angular.module('app.service.register',[])
     	    	        method: "GET",
     	    	    })
     	    	    .then(function(response) {
-    	    	    	if (response.data != null && response.data.username.length > 0){
+    	    	    	if (response.data != null && response.data.username != undefined && response.data.username.length > 0){
     	    	    		console.log("istnieje już taki użytkownik")
     	    	    	}else{
     	    	    		 if (isPasswordEqual){
     	    	    			 userService.save(user,function(){
 //    	    	 					$scope.successAdd = true;
     	    	 					registerForm.submitted=false;
+    	    	 					console.log('user register',user)
+    	    	 					if (withLogin){
+    	    	 						loginService.login(null,{username:user.username,password:user.password})
+    	    	 					}
 //    	    	 					$window.scrollTo(0, 0);
     	    	 					user = {};
     	    	 					passwordConfirm = "";
-    	    	 					$rootScope.$emit('registerSuccess', true);
+    	    	 					//10 seconds delay
+    	    	 					//10 seconds delay
+    	    	 					$timeout( function(){
+    	    	 			            $rootScope.$emit('registerSuccess', true);
+    	    	 			        }, 1000 );
 //    	    	 					$scope.registerForm.$setPristine();
 //    	    	 					$scope.registerForm.$setUntouched();
 //    	    	 					$window.scrollTo(0, 0);

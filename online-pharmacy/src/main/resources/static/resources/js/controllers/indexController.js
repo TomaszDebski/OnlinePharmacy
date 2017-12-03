@@ -58,7 +58,9 @@ angular.module('app.controller.index', [])
 //		})
 //	}
 //	
+	$rootScope.currentLanguage = 'pl';
 	$scope.changeLanguage = function (key) {
+		$rootScope.currentLanguage = key;
 	    $translate.use(key);
 	  };
 	  
@@ -68,5 +70,10 @@ angular.module('app.controller.index', [])
 	
 	$scope.showCarts = function(){
 		$state.go("carts",{id:$scope.userId});
+	}
+	
+	$scope.search = function(){
+		console.log('jestem w search w userPanelController',$scope.searchWord)
+		$state.go("searchAll",{name:$scope.searchWord});
 	}
 })

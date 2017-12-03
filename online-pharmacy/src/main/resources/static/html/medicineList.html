@@ -33,7 +33,7 @@
 <!-- 					may have or other medicines you take, can influence the analgesic we -->
 <!-- 					would recommend so please use the live chat facility below to get -->
 <!-- 					more information.</p> -->
-				<div class="read-more">Czytaj więcej/mniej</div>
+<!-- 				<div class="read-more">Czytaj więcej/mniej</div> -->
 			</div>
 		</header>
 		<hr>
@@ -90,7 +90,7 @@
 <!-- 			<div *ngFor="let product of (products | sortList:sortBy1) let i = index " -->
 				<div class="grid__item large--one-third medium--one-half" 
 				ng-repeat="product in (products | orderBy:propertyName:reverse)">
-					<a href="#"
+					<a href="" ui-sref="product({id:{{product.id}},categoryName:'{{categoryName}}'})"
 						class="grid__image"> <img
 						ng-src="api/product/img?number={{product.number}}"
 						alt="Brak zdjęcia" title="">
@@ -136,7 +136,7 @@
 						<div class="grid large--display-table">
 							<div
 								class="grid__item large--one-fifth large--display-table-cell medium--one-third">
-								<a href="/adult-pain-relief/products/pernaton-joint-massage-gel"
+								<a href="" ui-sref="product({id:{{product.id}},categoryName:'{{categoryName}}'})"
 									class="grid__image"> <img
 									src="http://localhost:8080/api/product/img?number={{product.number}}"
 									alt="Brak zdjęcia" title="">
@@ -145,7 +145,8 @@
 							<div
 								class="grid__item large--three-fifths large--display-table-cell medium--two-thirds">
 								<p class="h6">
-									<a href="javascript:void(0)">{{product.name}}</a>
+									<a href="" ui-sref="product({id:{{product.id}},categoryName:'{{categoryName}}'})">
+									{{product.name}}</a>
 								</p>
 								<div class="rte">
 									<p>{{product.description}}</p>

@@ -2,6 +2,7 @@ package com.debski.pharmacy.onlinepharmacy.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -85,7 +86,7 @@ public class UserDetails {
 
 	
 	@JsonIgnore
-	@OneToOne(fetch=FetchType.LAZY, mappedBy="userDetails")
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="userDetails",cascade=CascadeType.ALL)
 	  private User user;
 
 	/* Relations */

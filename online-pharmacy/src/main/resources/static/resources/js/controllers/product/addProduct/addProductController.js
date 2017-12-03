@@ -53,13 +53,14 @@ angular.module('app.controller.addProduct', [])
 	        $scope.addProductForm.submitted=true;    
 	    	return;
 	    };
-//        console.log('this.newProduct ' , this.newProduct)
+        console.log('this.newProduct ' , this.newProduct)
         $scope.newProduct.packages = [];
         for(let i =0 ; i<$scope.countOfPack.length; i++){
             $scope.newProduct.packages.push($scope.countOfPack[i]);
         }
         productService.save({categoryId:$scope.model.subcategory.id},$scope.newProduct,function(data){
         	console.log('dodano product',data)
+        	swal('Powodzenie', 'Dodanie produktu zakończyło się powodzeniem', "success");
         })
     }
     
@@ -144,7 +145,7 @@ angular.module('app.controller.addProduct', [])
             
             onProgress: function(file) {
             	
-//                $log.info('11111111'+file.name + '=' + file.humanSize);
+                $log.info('onProgress ' +file.name + '=' + file.humanSize);
                 $scope.$apply();
             },
             onCompleted: function(file, response) {

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -43,6 +44,10 @@ public class Cart {
 	public String lastName;
 	
 	@JsonView(Views.UserCart.class)
+	@Column(name="email")
+	public String email;
+	
+	@JsonView(Views.UserCart.class)
 	@Column(name="street")
 	public String street;
 	
@@ -64,8 +69,8 @@ public class Cart {
 	public Date cartDate;
 	
 	@JsonView(Views.UserCart.class)
-	@Column(name="price")
-	public double price;
+	@Column(name="total_price")
+	public double totalPrice;
 	
 	
 	
@@ -106,7 +111,8 @@ public class Cart {
 	/* Relations */
 	
 //	@JsonView(Views.UserCart.class)
-	@JsonProperty
+//	@JsonProperty
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	public User user;
@@ -255,15 +261,16 @@ public class Cart {
 	}
 
 
+	
 
-	public double getPrice() {
-		return price;
+	public double getTotalPrice() {
+		return totalPrice;
 	}
 
 
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 
@@ -294,6 +301,13 @@ public class Cart {
 
 	public void setPaymentPrice(String paymentPrice) {
 		this.paymentPrice = paymentPrice;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

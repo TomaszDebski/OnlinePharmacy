@@ -123,8 +123,8 @@
 					ng-click="showRightPanel(true)" class="js-drawer-open-right"> <span
 					class="icon-fallback-text"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
-				</span> Koszyk (<span id="CartCount">{{cart.cartProducts.length}}</span>
-					przedmiotów <span id="CartCost"> {{(cart.totalPrice |
+				</span> {{'index.cart' | translate}} (<span id="CartCount">{{cart.cartProducts.length}}</span>
+					{{'index.items' | translate}} <span id="CartCost"> {{(cart.totalPrice |
 						number:2) + " zł"}} </span>)
 				</a>
 				<div>
@@ -145,8 +145,8 @@
 
 				<div class="site-header__search">
 					<form class="input-group search-bar" novalidate
-						(ngSubmit)="search()" #searchAll="ngForm">
-						<input name="searchWord" [(ngModel)]="searchWord"
+						ng-submit="search()">
+						<input name="searchWord" ng-model="searchWord"
 							placeholder="Przeszukaj sklep" class="input-group-field"
 							aria-label="Search our store" type="search"> <span
 							class="input-group-btn">
@@ -156,6 +156,25 @@
 							</button>
 						</span>
 					</form>
+<!-- 					searchWord = {{searchWord}} -->
+				</div>
+				<div ng-if="showCurrentLanguage() == 'en'">
+					<a href="" 
+						class="language-link active" 
+						xml:lang="en-CA" lang="en-CA" 
+						ng-click="changeLanguage('pl')"
+					>
+						<span translate="index.language_PL"></span>
+					</a>
+				</div>
+				<div ng-if="showCurrentLanguage() == 'pl'">
+					<a href="" 
+						class="language-link active" 
+						xml:lang="en-CA" lang="en-CA" 
+						ng-click="changeLanguage('en')"
+					>
+						<span translate="index.language_EN"></span>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -254,6 +273,7 @@
 	<script src="resources/js/controllers/admin/usersController.js"></script>
 	<script src="resources/js/controllers/cart/cartsController.js"></script>
 	<script src="resources/js/controllers/cart/cartDetailsController.js"></script>
+	<script src="resources/js/controllers/search/searchAllController.js"></script>
 	
 
 	<script
@@ -296,6 +316,7 @@
 	<script src="resources/js/services/user/pagination/userPaginationService.js"></script>
 	<script src="resources/js/services/cart/cartDetailsService.js"></script>
 	<script src="resources/js/services/cart/cartResourceService.js"></script>
+	<script src="resources/js/services/product/productUtilsService.js"></script>
 	
 	<script
 		src="resources/js/services/authentication/authenticationService.js"></script>

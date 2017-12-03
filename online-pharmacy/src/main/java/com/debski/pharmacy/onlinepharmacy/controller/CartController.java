@@ -1,5 +1,8 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
+import java.security.Principal;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +21,7 @@ import com.debski.pharmacy.onlinepharmacy.repository.CartProductRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.CartRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.CategoryProductRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.ProductRepository;
+import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -36,10 +40,23 @@ public class CartController {
 	@Autowired
 	CategoryProductRepository categoryRepository;
 	
+	@Autowired
+	UserRepository userRepository;
+	
 	@RequestMapping(method= RequestMethod.POST)
-	public void addCart(@RequestBody Cart cart){
+	public void addCart(@RequestBody Cart cart,Principal principal){
 		if (cart.getId() == null || cart.id == 0){
-			System.out.println("cart.getProducts " + cart);
+			String userName = principal.getName();
+			System.out.println("userName " + userName);
+			if (userName != null){
+				User user = userRepository.findTop1ByUsername(userName);
+				cart.setUser(user);
+				cart.setLastName(user.getLastname());
+				cart.setFirstName(user.getFirstname());
+				cart.setEmail(user.getUserDetails().getEmail());
+			}
+			cart.setCartDate(new Date());
+			cart.setInsertedDate(new Date());
 			cartRepository.save(cart);
 			if (cart.getCartProducts() != null){
 				for(CartProduct product : cart.getCartProducts()){

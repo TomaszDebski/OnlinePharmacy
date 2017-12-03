@@ -4,12 +4,14 @@ angular.module('app.service.login',[])
     	var $translate = $filter('translate');
     	return {
     		login : function(loginForm,credentials){
-    			if (loginForm.$valid) {      
-    		    }
-    		    else {
-    		        loginForm.submitted=true;    
-    		    	return;
-    		    };
+    			if (loginForm != null){
+    				if (loginForm.$valid) {      
+    				}
+    				else {
+    					loginForm.submitted=true;    
+    					return;
+    				};
+    			}
     			
     			var data2 = 'j_username=' + encodeURIComponent(credentials.username) +
     	        '&j_password=' + encodeURIComponent(credentials.password);

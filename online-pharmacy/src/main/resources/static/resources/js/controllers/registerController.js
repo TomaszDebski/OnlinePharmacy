@@ -8,7 +8,7 @@ angular.module('app.controller.register', [])
 	$scope.successAdd = false;
 	$scope.user = {};
 	$scope.createUser = function(){
-		registerService.register($scope.registerForm,$scope.user,$scope.passwordConfirm,$scope.notEqual);
+		registerService.register($scope.registerForm,$scope.user,$scope.passwordConfirm,$scope.notEqual,false);
 		
 		
 //		$scope.notEqual = false;

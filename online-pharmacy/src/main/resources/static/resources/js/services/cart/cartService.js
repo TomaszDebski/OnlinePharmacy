@@ -37,10 +37,10 @@ angular.module('app.service.cart', [])
 			return karta.shippingPrice;
 		},
 		addToCart: function(productAdded){
-//			console.log('productAdded ',productAdded);
+			console.log('productAdded ',productAdded);
 //			console.log('karta ', karta);
 			var findedProduct = $filter('filter')(karta.cartProducts, {'id':productAdded.id})[0];
-//			console.log('findedProduct ', findedProduct);
+			console.log('findedProduct ', findedProduct);
 		  if (productAdded.totalNumber == undefined) productAdded.totalNumber = 1;
 	      if (findedProduct == undefined){
 	        
@@ -55,7 +55,7 @@ angular.module('app.service.cart', [])
 //	    	  productAdded.totalNumber
 //	    	  console.log('productAdded.totalNumber',productAdded.totalNumber)
 	      }
-//	      console.log('karta ', karta);
+	      console.log('karta ', karta);
 	      this.calculateTotalPrice(productAdded);    
 	  },
 	  

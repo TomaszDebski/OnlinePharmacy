@@ -6,7 +6,7 @@ angular.module('app.controller.four_orderSummary', [])
 		$state,cartService,$filter,cartResourceService
 //		,authService
 		) {
-
+	var $translate = $filter('translate');
 //    productId : number;
 //    product : any; 
     $scope.cart =cartService.getCart();
@@ -25,13 +25,18 @@ angular.module('app.controller.four_orderSummary', [])
     $scope.saveOrder = function(){
     	 console.log('cartService.getCart()',cartService.getCart());
     	 angular.forEach(cartService.getCart().cartProducts, function(key,value){
+//    		 console.log('prodct key',key);
+    		 if (key.price == undefined || key.price == null){
+    			 key.price = key.packages[0].price;
+    		 }
     		 key.id = null;
     		 key.categoryProduct = null;
-    		 console.log('key',key.id)
-    		 console.log('value',value)
+//    		 console.log('key',key.id)
+//    		 console.log('value',value)
     	 })
     	 cartResourceService.save(cartService.getCart(),function(data){
          	console.log('dodano Cart',data)
+         	swal($translate('cart.added'), $translate('cart.cart_was_added'), "success");
          })
 //        this.saveCart();
 //        this._cookieService.put('pierwszy','wartosc');

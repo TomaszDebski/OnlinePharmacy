@@ -55,11 +55,10 @@
 						<form 
 							class="input-group search-bar"
 							novalidate
-							(ngSubmit)="search()" 
-        					#searchAll="ngForm">
+							ng-submit="search()">
 							<input 
 								name="searchWord" 
-								[(ngModel)]="searchWord" 
+								ng-model="searchWord" 
 								placeholder="Przeszukaj sklep" 
 								class="input-group-field" 
 								aria-label="Search our store"
@@ -76,5 +75,6 @@
 						</form>
 					</div>
 				</div>
+<!-- 						searchWord = {{searchWord}}						 -->
 			</div>
 		</div>

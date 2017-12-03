@@ -59,6 +59,8 @@ angular.module('app.translate-config-pl', ['pascalprecht.translate'])
 	    	"management" : "Zarządzaj",
 	    	"add_kindOfPain" : "Dodaj dolegliwość",
 	    	"add_bodyPlace" : "Dodaj obszar ciała",
+	    	"cart" : "Koszyk",
+	    	"items" : "przedmiotów",
 	    },
 	    "main":{
 	    	"use_online_tools" : "Wykorzystuj narzędzia online do pracy z pacjentem",

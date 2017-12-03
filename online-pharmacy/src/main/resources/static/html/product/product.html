@@ -91,14 +91,10 @@
 		</div>
 		<hr>
 		<div class="product-description rte" itemprop="description">
-			<p>Pernaton Gel contains pure Green Lipped Mussel extract with
-				naturally occuring glucosamine. It initially cools the skin, then
-				provides a relieving warmth to muscles, tendons and joints. It
-				&nbsp;can be used daily to help relieve joint stiffness from old age
-				or ease joint and muscle irritation from strain and injury. It is
-				absorbed rapidly and has a fresh, pleasant aroma.</p>
-			<p style="display: none;">Use several times a day if required.</p>
-			<div class="read-more">Czytaj więcej/mniej</div>
+			currentLanguage = {{currentLanguage}}
+			<p>{{currentLanguage == 'pl' ? product.description : product.description_en}}</p>
+<!-- 			<p style="display: none;">Use several times a day if required.</p> -->
+<!-- 			<div class="read-more">Czytaj więcej/mniej</div> -->
 		</div>
 
 	</div>

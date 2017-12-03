@@ -1,0 +1,79 @@
+<meta meta charset=utf-8>
+<main class="wrapper main-content" role="main">
+
+<hr>
+
+<div class="grid">
+	<div class="grid__item large--three-quarters push--large--one-eighth">
+
+		<h1 class="text-center">Wyniki dla słowa "{{searchWordToDisplay}}" :</h1>
+
+		<form class="input-group search-bar" ng-submit="search(searchWord)" >
+
+			<input 
+				placeholder="Przeszukaj sklep"
+				name="searchWord" 
+				ng-model="searchWord" 
+				class="input-group-field" 
+				aria-label="Search our store"
+				type="search"> <span class="input-group-btn">
+				<button type="submit" class="btn icon-fallback-text">
+					<span class="icon icon-search" aria-hidden="true"></span> <span
+						class="fallback-text">Szukaj</span>
+				</button>
+			</span>
+		</form>
+		<hr class="hr--clear">
+		<div class="section-header">
+			<div class="section-header__right">
+				<div class="form-horizontal">
+					<select ng-model="selectedOption" name="SortBy" id="SortBy" ng-change="sortBy(selectedOption)"
+					ng-init="selectedOption =sortOptions[0].key">
+			           <option ng-repeat="sort in sortOptions" value="{{sort.key}}" >{{sort.text}} 
+			               </option>
+			    	</select>
+<!-- 					<select name="SortBy" id="SortBy"> -->
+<!-- 						<option value="">Sort by</option> -->
+<!-- 						<option value="">---------------</option> -->
+<!-- 						<option value="relevance">Most Relevant</option> -->
+<!-- 						<option value="title-ascending">Alphabetically, A-Z</option> -->
+<!-- 						<option value="title-descending">Alphabetically, Z-A</option> -->
+<!-- <!-- 						<option value="created-descending">Date, new to old</option> --> 
+<!-- <!-- 						<option value="created-ascending">Date, old to new</option> -->
+<!-- 					</select> -->
+				</div>
+
+			</div>
+		</div>
+
+		<div class="grid-uniform">
+			<div class="grid__item" ng-repeat="product in (findedProducts | orderBy:propertyName:reverse)">
+				<div class="grid">
+					<div class="grid__item one-third">
+						<a href="" 
+							ui-sref="product({id:{{product.id}}})"
+							title=""> 
+							<img
+							src="http://localhost:8080/api/product/img?number={{product.number}}"
+							alt="">
+						</a>
+					</div>
+					<div class="grid__item two-thirds ">
+						<h3>
+							<a href="" ui-sref="product({id:{{product.id}}})">{{product.name}}</a>
+						</h3>
+						<p>
+							<span itemprop="price">From {{product.price}}</span>
+						</p>
+						<p>{{product.description}}</p>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+</main>

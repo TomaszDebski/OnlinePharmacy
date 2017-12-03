@@ -57,6 +57,9 @@ public class ProductController {
 
     	byte[] data = null;
     	URL url = ClassLoader.getSystemResource("static/images/" +number +".png");
+    	if (url == null){
+    		url = ClassLoader.getSystemResource("static/images/" +number +".jpg");
+    	}
     	try{
     		if(StringUtils.isNotEmpty(number) && url != null){
     			Path path = Paths.get(url.toURI());

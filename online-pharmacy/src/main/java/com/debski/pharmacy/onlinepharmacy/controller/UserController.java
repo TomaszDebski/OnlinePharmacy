@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
 import com.debski.pharmacy.onlinepharmacy.entities.Product;
 import com.debski.pharmacy.onlinepharmacy.entities.User;
+import com.debski.pharmacy.onlinepharmacy.entities.UserDetails;
+import com.debski.pharmacy.onlinepharmacy.repository.UserDetailsRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -27,15 +29,20 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 //	
-//	@Autowired
-//	IPhysiotherapistService physiotherapistService;
+	@Autowired
+	UserDetailsRepository userDetailsRepository;
 
 	@RequestMapping(method= RequestMethod.POST)
 	public void addPhysiotherapist(@RequestBody User user){
 		System.out.println(user.getFirstname());
 		BCryptPasswordEncoder encode = new BCryptPasswordEncoder();
+		UserDetails userDetails = new UserDetails();
 		user.setPassword(encode.encode(user.getPassword()));
+		user.setRole("ROLE_USER");
+		user.setUserDetails(userDetails);
+		userDetails.setUser(user);
 		userRepository.save(user);
+		userDetailsRepository.save(userDetails);
 //		physiotherapistService.addPhysiotherapist(physiotherapist);
 	}
 	

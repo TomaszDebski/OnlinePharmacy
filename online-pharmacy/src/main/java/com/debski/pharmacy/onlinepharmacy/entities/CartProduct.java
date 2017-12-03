@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -72,13 +73,14 @@ public class CartProduct {
 //	private List<Visit> visits;
 	
 //	@JsonView(Views.CategoryProduct.class)
-	@JsonView(Views.CartDetails.class)
-	@JsonProperty
+//	@JsonView(Views.CartDetails.class)
+//	@JsonProperty
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "product_id")
 	public Product product;
 	
-	@JsonProperty
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "cart_id")
 	public Cart cart;

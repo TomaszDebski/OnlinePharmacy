@@ -16,4 +16,9 @@ angular.module('app.controller.userPanel', [])
 	    $scope.$parent.move = !$scope.$parent.move;
 	  }
 	
+	$scope.search = function(){
+		console.log('jestem w search w userPanelController')
+		$state.go("cartDetails",{name:$scope.searchWord});
+	}
+	
 });

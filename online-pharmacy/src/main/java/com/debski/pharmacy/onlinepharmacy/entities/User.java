@@ -118,7 +118,7 @@ public class User {
 	private List<Cart> carts;
 //	
 	@JsonView(Views.User.class)
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 //	@JoinColumn(name="details_id")
 	private UserDetails userDetails;
 

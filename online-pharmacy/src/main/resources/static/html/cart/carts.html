@@ -71,11 +71,11 @@
 <!-- 					      	</span> -->
 <!-- 				      	</td> --> 
 				      	<td><span class="table_span">{{cart.cartDate | date:'yyyy-MM-dd' }}</span></td>
-				      	<td><span class="table_span">{{cart.price}}</span></td>
-				      	<td><span class="table_span">{{user.lastname}}</span></td>
+				      	<td><span class="table_span">{{cart.totalPrice}}</span></td>
+				      	<td><span class="table_span">{{cart.lastName}}</span></td>
 <!-- 				         <td><span class="table_span">{{user.birthDate |  date:'yyyy-MM-dd' }}</span></td> -->
 <!-- 				         <td><span class="table_span">{{patient.phone | tel}}</span></td> -->
-				         <td><span class="table_span">{{user.userDetails.email}}</span></td>
+				         <td><span class="table_span">{{cart.email}}</span></td>
 <!-- 				         <td><span class="table_span">{{patient.lastVisit | date:'yyyy-MM-dd, HH:mm' }}</span></td> -->
 				             <td class="actions-col">
 				               <span class="masterTooltip table_span" title="{{'patients.add_a_visit' | translate}}"> 

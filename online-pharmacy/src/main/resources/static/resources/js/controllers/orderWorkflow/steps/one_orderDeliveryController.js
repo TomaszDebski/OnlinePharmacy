@@ -12,12 +12,14 @@ angular.module('app.controller.one_orderDelivery', [])
 	console.log('cartService.getCart().stages[1].isComplete',cartService.getCart().stages[0].isComplete)
 	console.log('cartService.getCart().stages[1].isBegin',cartService.getCart().stages[0].isBegin)
 	$scope.order = {};
-	$scope.order.firstname = loginUserResolve.firstname;
-	$scope.order.lastname = loginUserResolve.lastname;
-	$scope.order.street = loginUserResolve.userDetails.address;
-	$scope.order.city = loginUserResolve.userDetails.city;
-	$scope.order.postCode = loginUserResolve.userDetails.postCode;
-	$scope.order.phone = loginUserResolve.userDetails.phone;
+	if(loginUserResolve !== undefined && loginUserResolve != null){
+		$scope.order.firstname = loginUserResolve.firstname;
+		$scope.order.lastname = loginUserResolve.lastname;
+		$scope.order.street = loginUserResolve.userDetails.address;
+		$scope.order.city = loginUserResolve.userDetails.city;
+		$scope.order.postCode = loginUserResolve.userDetails.postCode;
+		$scope.order.phone = loginUserResolve.userDetails.phone;
+	}
 //	var loginUserResolveVar = loginUserResolve.then(function(data){
 //		console.log('data',data)
 //		

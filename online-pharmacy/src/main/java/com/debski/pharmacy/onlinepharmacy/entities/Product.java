@@ -44,6 +44,10 @@ public class Product {
 	@Column(name="description",length=1000)
 	public String description;
 	
+	@JsonView(Views.Product.class)
+	@Column(name="description_en",length=1000)
+	public String description_en;
+	
 //	@JsonView(Views.Product.class)
 //	@Column(name="price",columnDefinition="Decimal(10,2) default '100.00'")
 //	public Double price;

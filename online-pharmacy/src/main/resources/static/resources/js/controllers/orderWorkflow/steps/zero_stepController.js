@@ -67,7 +67,7 @@ angular.module('app.controller.zero_step', [])
 	
 	$scope.registerFunc = function(){
 		if ($scope.registerForm.$valid) { 
-			registerService.register($scope.registerForm,$scope.register,$scope.passwordConfirm);
+			registerService.register($scope.registerForm,$scope.register,$scope.passwordConfirm,true);
 			$rootScope.$on('registerSuccess', function(e,data) {  
 				if(data){
 					$state.go('order.delivery');

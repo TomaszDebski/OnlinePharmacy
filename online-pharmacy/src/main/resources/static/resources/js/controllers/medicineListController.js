@@ -50,6 +50,7 @@ angular.module('app.controller.medicineList', [])
 	      productCopy.packages.push(pack);
 	      console.log('productCopy',productCopy)
 //	      console.log('product',product)
+	      productCopy.price = pack.price;
 	    cartService.setTotalPrice(100);
 		cartService.addToCart(productCopy);
 		$scope.cart = cartService.getCart();
