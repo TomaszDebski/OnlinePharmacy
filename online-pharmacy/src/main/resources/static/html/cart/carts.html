@@ -25,27 +25,14 @@
 					</button>
 				</span>
 				</div>
-<!--             	<input type="text" name="search" ng-model="patient" style="margin-right: 20px; padding: 5px;" -->
-<!--             	placeholder="{{'patients.search_user' | translate}}"> -->
-<!--             	<button  -->
-<!--             		id="search_patient_btn"  -->
-<!--             		class="btn icon-fallback-text"  -->
-<!--             		ng-click="searchPatient(patient)">{{'commons.search' | translate}} -->
-<!--             	</button> -->
             </div>
-<!-- 			<div class="col-md-offset-4 col-md-2"> -->
-<!-- 				<div class="pull-right"> -->
-<!--          <a id="add_patient_btn" class="btn btn-primary active" href="#/addPatient">{{'patients.add_patient' | translate}}</a> -->
-<!--          </div> -->
          	</div>
         </div>
     </div>
-</div>
 <style>
 .borderless th, td {
     border-left: none !important;
     border-right: none !important;
-/*     padding: 0px !important; */
 }
 </style>
 <div class="container">
@@ -57,68 +44,35 @@
 	                    <th>{{'carts.cart_date' | translate}}</th>
 	                    <th>{{'carts.price' | translate}}</th>
 	                    <th>{{'lastname' | translate}}</th>
-<!-- 				        <th>{{'users.date_of_birth' | translate}}</th> -->
-<!-- 				        <th>{{'patients.phone' | translate}}</th> -->
 				        <th>E-mail</th>
-<!-- 				        <th>{{'patients.last_visit' | translate}}</th> -->
 				        <th>{{'patients.actions' | translate}}</th>
                    </tr>
                 </thead>
     			<tbody>
     				<tr ng-repeat="cart in carts">
-<!-- 				      	<td><span class="table_span"> -->
-<!-- 					      	<a ui-sref="patient({id:{{patient.id}}})">{{patient.firstname}} {{patient.lastname}}</a> -->
-<!-- 					      	</span> -->
-<!-- 				      	</td> --> 
 				      	<td><span class="table_span">{{cart.cartDate | date:'yyyy-MM-dd' }}</span></td>
 				      	<td><span class="table_span">{{cart.totalPrice}}</span></td>
 				      	<td><span class="table_span">{{cart.lastName}}</span></td>
-<!-- 				         <td><span class="table_span">{{user.birthDate |  date:'yyyy-MM-dd' }}</span></td> -->
-<!-- 				         <td><span class="table_span">{{patient.phone | tel}}</span></td> -->
 				         <td><span class="table_span">{{cart.email}}</span></td>
-<!-- 				         <td><span class="table_span">{{patient.lastVisit | date:'yyyy-MM-dd, HH:mm' }}</span></td> -->
 				             <td class="actions-col">
 				               <span class="masterTooltip table_span" title="{{'patients.add_a_visit' | translate}}"> 
-<!-- 					               <a ui-sref="addVisit({patientId:{{patient.id}}})" title="{{'patients.add_a_visit' | translate}}" class="icon"> -->
-<!-- 					               		<img src="/pics/terminarz_szary.svg" -->
-<!-- 					               		> -->
-<!-- 					               </a> -->
 				               </span>
 				                <span class="masterTooltip table_span" title="{{'carts.show_details'| translate}}">
 				                	<a ng-click="cartDetails(cart.id)" 
 					                	href="" 
 					                	class="icon">
 				                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-<!-- 				                			<img src="/images/bin.png"> -->
 				                	</a>
 				                </span> 
-<!-- 				                <span class="maste-rTooltip table_span" title="{{'patients.send_email' | translate}}"> -->
-<!-- 				                	<a href="#myModal"  -->
-<!-- 				                		onclick="addData(event)"  -->
-<!-- 				                		role="button"  -->
-<!-- 				                		class="icon"  -->
-<!-- 				                		data-toggle="modal"  -->
-<!-- 				                		attr.item-patient="11111 22222"  -->
-<!-- 				                		attr.item-email="1111@o2.pl"> -->
-<!-- 				                			<img src="/pics/email.svg"> -->
-<!-- 				                	</a> -->
-<!-- 				                </span>            -->
 				            </td>
-				            <script type="text/javascript">
-				                   function confirm_click(){
-				                   return confirm("{{'patients.want_to_remove_the_patient' | translate}}");
-				               }
-				            </script>
 	        		</tr>
     			</tbody>
 			</table>
-<!--             <hr> -->
         </div>
     </div>
 	<div class="row">
 	    <div class="col-md-5 col-md-offset-5">
 	    	<ul  uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
-	    	currentPage : {{currentPage}}
 	    </div>
 	</div>
 </div>

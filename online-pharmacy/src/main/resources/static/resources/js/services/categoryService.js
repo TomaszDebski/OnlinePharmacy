@@ -5,14 +5,6 @@ angular.module('app.service.category',[])
     .factory('categoryService',['$http','$log','$resource', function($http,$log,$resource) {
     	self = this;
     	var categories = [];
-//    	console.log('categoryService')
-//    	resolveFunction = function(){
-//    		var sss = $http.get('api/category').then(function(result){
-//    			console.log('result.data',result.data)
-//				categories = result.data;
-//			});
-//    		console.log('sss',sss)
-//    	}
     	
     	return {
     		setCategories : function(categoriesVar){
@@ -31,10 +23,7 @@ angular.module('app.service.category',[])
 					}
 				)
     	    },
-//    	    resolveCategory: function(){
-//    	    	resolveFunction();
-//    	    },
-//
+    	    
     	    getAll: function() {
     	        return $http.get('api/category');
     	    },
@@ -56,32 +45,5 @@ angular.module('app.service.category',[])
     	    	})
     	    }
 
-//    	    getById(id: number) {
-//    	        return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-//    	    }
-//
-//    	    saveCategory(category: any,parentId: string ) {
-//    	        console.log("user " ,category)
-//    	        return this.http.post('http://localhost:8080/api/category?parentId='+parentId, category);
-//    	    }
-//
-//    	    update(user: User) {
-//    	        return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
-//    	    }
-//
-//    	    delete(id: number) {
-//    	        return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
-//    	    }
-//
-//    	    // private helper methods
-//
-//    	    private jwt() {
-//    	        // create authorization header with jwt token
-//    	        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-//    	        if (currentUser && currentUser.token) {
-//    	            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-//    	            return new RequestOptions({ headers: headers });
-//    	        }
-//    	    }
     	}
 }]);

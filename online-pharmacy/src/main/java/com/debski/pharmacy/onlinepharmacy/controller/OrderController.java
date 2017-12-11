@@ -1,13 +1,12 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.debski.pharmacy.onlinepharmacy.DTO.OrderDTO;
-
-
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
@@ -24,18 +23,18 @@ public class OrderController {
 //	@Autowired
 //	CategoryProductRepository categoryRepository;
 	
-	OrderDTO orderDTO = new OrderDTO();
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public void ToDTO(@RequestBody OrderDTO order){
-		if (order != null){
-			orderDTO.setFirstName(order.getFirstName());
-			orderDTO.setLastName(order.getLastName());
-			orderDTO.setAddress(order.getAddress());
-		}else{
-			System.out.println("Order jest nullem (ToDTO)");
-		}
-	}
+//	OrderDTO orderDTO = new OrderDTO();
+//	
+//	@RequestMapping(method = RequestMethod.POST)
+//	public void ToDTO(@RequestBody OrderDTO order){
+//		if (order != null){
+//			orderDTO.setFirstName(order.getFirstName());
+//			orderDTO.setLastName(order.getLastName());
+//			orderDTO.setAddress(order.getAddress());
+//		}else{
+//			System.out.println("Order jest nullem (ToDTO)");
+//		}
+//	}
 	
 	
 //	@RequestMapping(method= RequestMethod.POST)

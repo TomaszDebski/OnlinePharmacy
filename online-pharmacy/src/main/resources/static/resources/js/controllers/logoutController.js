@@ -1,5 +1,6 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.controller.logout', []).controller(
 		'logoutController',

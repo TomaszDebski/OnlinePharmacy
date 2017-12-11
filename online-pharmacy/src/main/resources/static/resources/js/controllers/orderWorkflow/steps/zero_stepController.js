@@ -1,11 +1,10 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.controller.zero_step', [])
 .controller('zero_stepController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter,registerService,loginService
-//		,authService
-		) {
+		$state,cartService,$filter,registerService,loginService) {
 	$scope.active = 'exist';
 	$scope.cart = cartService.getCart();
 	$scope.userLogin = {};
@@ -19,7 +18,6 @@ angular.module('app.controller.zero_step', [])
 	        $scope.orderDeliveryForm.submitted=true;    
 	    	return;
 	    };
-        //this.saveCart(order);
         cartService.updateCartStep1(order);
         cartService.getCart().stages[1].isComplete = true;
         $state.go('order.delivery');
@@ -40,13 +38,6 @@ angular.module('app.controller.zero_step', [])
 					$state.go('order.delivery');
 				}
 			})
-//			console.log('authenticated',$scope.authenticated)
-//			console.log('$window.sessionStorage.authenticated',$scope.$parent.authenticated)
-//			console.log('authenticated',$rootScope.authenticated)
-//			console.log('authenticated isString',angular.isString($rootScope.authenticated))
-//			if ($rootScope.authenticated == 'true'){
-//				$state.go('order.delivery');
-//			}
 	    }
 	    else {
 	        $scope.existingForm.submitted=true;    
@@ -67,7 +58,7 @@ angular.module('app.controller.zero_step', [])
 	
 	$scope.registerFunc = function(){
 		if ($scope.registerForm.$valid) { 
-			registerService.register($scope.registerForm,$scope.register,$scope.passwordConfirm,true);
+			registerService.register($scope.registerForm,$scope.register,$scope.passwordConfirm,$scope.notEqual,true);
 			$rootScope.$on('registerSuccess', function(e,data) {  
 				if(data){
 					$state.go('order.delivery');

@@ -1,6 +1,5 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +10,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
-import com.debski.pharmacy.onlinepharmacy.entities.Product;
 import com.debski.pharmacy.onlinepharmacy.entities.User;
 import com.debski.pharmacy.onlinepharmacy.entities.UserDetails;
 import com.debski.pharmacy.onlinepharmacy.repository.UserDetailsRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
+
+/**
+ * @author Tomasz Dębski
+ *
+ */
 
 @RestController
 @RequestMapping("/api/user")
@@ -77,7 +79,6 @@ public class UserController {
 		userRepository.delete(id);
 	}
 	
-//	@JsonView(Views.User.class)
 	@RequestMapping("/pagination")
 	public Page<User> getUserWithPagination(Pageable pageable){
 		Page<User> users = userRepository.findd(pageable);

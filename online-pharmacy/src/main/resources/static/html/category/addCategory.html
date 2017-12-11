@@ -13,11 +13,6 @@
 	        	novalidate
 	        >
 	        <div class="row">
-	<!--         	<div class="col-xs-4"> -->
-	<!--         		<img src="http://localhost:8080/api/product/img?number={{imgNumber}}" alt="" title="PERNATON JOINT MASSAGE GEL"> -->
-	<!--         	</div> -->
-	<!--         	<div class="col-xs-7 col-xs-offset-1"> -->
-	       
 		            <div class="form-group">
 		                <div class="col-xs-12">
 		                        <input 
@@ -29,7 +24,6 @@
 		                        	class=" form-control" 
 		                        	placeholder="Nazwa" 
 		                        	type="text">
-<!-- 		                <div *ngIf="newCategoryForm.submitted && !name.valid" class="help-block" style="color:#f00">Nazwa jest wymagana</div> -->
 		                <span 
 							ng-show="newCategoryForm.name.$error.required && newCategoryForm.submitted" 
 							style="color : #f00; float:left;"
@@ -48,7 +42,6 @@
 		                        	class=" form-control" 
 		                        	placeholder="Numer kategorii" 
 		                        	type="text">
-<!-- 		                <div *ngIf="newCategoryForm.submitted && !categoryNumber.valid" class="help-block" style="color:#f00">Numer kategorii jest wymagany</div> -->
 							<span 
 								ng-show="newCategoryForm.categoryNumber.$error.required && newCategoryForm.submitted" 
 								style="color : #f00; float:left;"
@@ -67,7 +60,6 @@
 		                        	class=" form-control" 
 		                        	placeholder="URL" 
 		                        	type="text">
-<!-- 		                <div *ngIf="newCategoryForm.submitted && !url.valid" class="help-block" style="color:#f00">URL jest wymagana</div> -->
 							<span 
 								ng-show="newCategoryForm.url.$error.required && newCategoryForm.submitted" 
 								style="color : #f00; float:left;"
@@ -92,7 +84,6 @@
 								style="color : #f00; float:left;"
 								>{{'login.name_is_required' | translate}}
 							</span>
-<!-- 							<div *ngIf="newCategoryForm.submitted && categoryId == -1" id="password-strength-text" style="color:#f00">Wybierz kategorie</div> -->
 						</div>
 					</div>
 		            <div class="form-group">
@@ -107,9 +98,6 @@
 					            required
 					            placeholder="Opis" 
 					         ></textarea>
-					         
-<!-- 		                    <div *ngIf="newCategoryForm.submitted && !description.valid"  -->
-<!-- 		                    id="password-strength-text" style="color:#f00"><br>Opis jest wymagany</div> -->
 		                    <span 
 								ng-show="newCategoryForm.description.$error.required && newCategoryForm.submitted" 
 								style="color : #f00; float:left;"
@@ -129,6 +117,7 @@
 	    </div>
 	</div>
 </div>
+
 <style>
 input.submitted.ng-invalid
 {
@@ -140,6 +129,5 @@ input.submitted.ng-invalid
 .arrows {
 		background-image: url("https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/4f76952c-4218-11e7-a288-0a6afe88c81b.svg");
 		padding-right: 28px;
-/* 		width: auto; */
 	}
 </style>

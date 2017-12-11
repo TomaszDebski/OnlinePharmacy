@@ -19,6 +19,10 @@ import com.debski.pharmacy.onlinepharmacy.entities.User;
 import com.debski.pharmacy.onlinepharmacy.repository.CategoryProductRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @RestController
 @RequestMapping("/api/category")
 public class CategoryProductController {
@@ -44,13 +48,6 @@ public class CategoryProductController {
 		return null;
 	}
 	
-//	@JsonView(Views.CategoryProduct.class)
-//	@RequestMapping
-//	public List<CategoryProduct> getAllCategory(){
-////		return physiotherapistService.getAllPhysiotherapists();
-//		return (List<CategoryProduct>) categoryRepository.findAll();
-//	}
-
 	@JsonView(Views.CategoryProduct.class)
 	@RequestMapping("/one")
 	public CategoryProduct getUserByUsername(@RequestParam("name") String url){
@@ -76,12 +73,4 @@ public class CategoryProductController {
 		return categoryRepository.findByProductId(id);
 	}
 	
-//	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
-//	public void updateUser(@PathVariable("id") long id,@RequestBody User user){
-////		physiotherapistService.updatePhysiotherapist(id, physiotherapist);
-//	}
-	
-//	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-//	public void deleteUser(@PathVariable("id") long id){
-//	}
 }

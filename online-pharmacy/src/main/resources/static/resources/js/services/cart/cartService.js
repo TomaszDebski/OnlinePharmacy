@@ -6,7 +6,6 @@ angular.module('app.service.cart', [])
 .factory("cartService", ['$resource','$filter', function($resource,$filter) {
 	self = this;
 	var karta = {
-//			id : 0,
 			totalPrice : 0, 
 			shippingPrice : 0,
 			cartProducts: [],
@@ -104,21 +103,7 @@ angular.module('app.service.cart', [])
 //	        this.refreshTotalPrice();
 //	        console.log('step2 karta ' , this.karta);
 	    },
-//	    
-//	    
-//	//   private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'}); 
-//	    createCart() {
-//	        let cart : Cart = this.getCart();
-////	        console.log('przesyłąm Cart' , cart);
-//	        return this.http.post('http://localhost:8080/api/cart',cart); 
-//	    }
-//	    
-//	     saveCart(cart : Cart) {
-////	        let cart : Cart = this.getCart();
-////	        console.log('przesyłąm Cart' , cart);
-//	        return this.http.post('http://localhost:8080/api/cart',cart); 
-//	    }
-//	    
+	    
 	    removeFromCart : function(id){
 	  		var product = $filter('filter')(karta.cartProducts, {'id':id})[0];
 	      var index= karta.cartProducts.indexOf(product);
@@ -143,9 +128,6 @@ angular.module('app.service.cart', [])
 	        angular.forEach(karta.cartProducts, function(arrayItem) {
 	        	sum += arrayItem.totalNumber == 1 ? arrayItem.packages[0].price : arrayItem.packages[0].price * arrayItem.totalNumber;
 	        })
-//	        this.karta.cartProducts.forEach( function (arrayItem){
-//	                sum += arrayItem.totalNumber == 1 ? Number(arrayItem.packages[0].price) : Number(arrayItem.packages[0].price) * arrayItem.totalNumber;
-//	        });
 	        console.log('sum',sum);
 	        karta.totalPrice = sum;
 	    }

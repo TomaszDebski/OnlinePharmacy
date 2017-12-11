@@ -50,8 +50,4 @@ public class ProductPackage {
 		this.name = name;
 	}
 
-	
-	
-	
-	
 }

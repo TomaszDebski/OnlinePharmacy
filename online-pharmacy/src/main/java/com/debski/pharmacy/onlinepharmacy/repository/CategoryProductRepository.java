@@ -11,7 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.debski.pharmacy.onlinepharmacy.entities.CategoryProduct;
 
-
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Repository
 public interface CategoryProductRepository extends CrudRepository<CategoryProduct,Long> {
 	

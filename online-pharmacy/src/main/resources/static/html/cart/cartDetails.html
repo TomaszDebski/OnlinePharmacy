@@ -51,11 +51,6 @@
 					<div class="grid__item one-third text-center">
 						<span class="cart__mini-labels">Ilość</span>
 						{{product.totalNumber}}
-<!-- 						 <input -->
-<!-- 							name="items[1286][quantity]" id="updates_1286" -->
-<!-- 							ng-model="product.totalNumber" -->
-<!-- 							ng-click="changeQuantity(product,$event)" min="0" data-id="1286" -->
-<!-- 							type="number"> -->
 					</div>
 					<div class="grid__item one-third text-right">
 						<span class="cart__mini-labels">Razem</span> <span class="h3">{{product.price | number:2}}</span>
@@ -67,9 +62,6 @@
 	</div>
 	<div class="grid cart__row">
 		<div class="grid__item seven-twelfths small--one-whole">
-<!-- 			<button type="button" class="text-link cart__note-add" -->
-<!-- 				ng-click="showNote = true" ng-class="{'hide' : showNote}"> -->
-<!-- 				Dodaj notatkę</button> -->
 			<div
 				ng-class="{'cart__note': !showNote,'cart__note.is-active': showNote}">
 				<label for="CartSpecialInstructions"
@@ -86,20 +78,9 @@
 					class="h3 cart__subtotal">{{cart.totalPrice |
 					number:2}}</span>
 			</p>
-			<!--         <p><em>Shipping &amp; taxes calculated at checkout</em></p> -->
 			<div class="cartQuestions">
-<!-- 				<div class="questionTitle"> -->
-<!-- 					<b>Dla celów bezpieczeństwa pacjentów musimy zadać kilka pytań -->
-<!-- 						związanych z zakupem:</b> -->
-<!-- 				</div> -->
-
-<!-- 				Ten produkt zawiera Paracetamol, Proszę nie przyjmować żadnych -->
-<!-- 				innych produktów zawierających Paracetamol podczas przyjmowania tego -->
-<!-- 				leku. Na ten produkt obowiązuje 2-pakowe ograniczenie <br> -->
-
 			</div>
 				<div style="clear: both;">
-<!-- 				          <input name="update" class="btn--secondary update-cart" value="Update Cart" type="submit"> -->
 					<input name="checkout" class="btn" value="Powrót"
 						ng-click="">
 				</div>

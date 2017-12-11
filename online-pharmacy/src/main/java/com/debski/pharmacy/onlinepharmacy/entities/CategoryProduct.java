@@ -18,6 +18,10 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Entity
 @Table(name="categoryProduct")
 public class CategoryProduct {
@@ -95,64 +99,37 @@ public class CategoryProduct {
 		return id;
 	}
 
-
-	
-
 	public String getDescription() {
 		return description;
 	}
 
-
-
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-
-
-
+	
 	public String getUrl() {
 		return url;
 	}
-
-
-
-
+	
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
-
-
 
 	public String getOrder() {
 		return order;
 	}
 
-
-
-
 	public void setOrder(String order) {
 		this.order = order;
 	}
-
-
-
 
 	public Date getInsertedDate() {
 		return insertedDate;
 	}
 
-
-
-
 	public void setInsertedDate(Date insertedDate) {
 		this.insertedDate = insertedDate;
 	}
-
-
-
 
 	public String getName() {
 		return name;
@@ -162,71 +139,43 @@ public class CategoryProduct {
 		this.name = name;
 	}
 
-
-
 	public List<Product> getProducts() {
 		return products;
 	}
-
-
-
+	
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-
-
-
+	
 	public String getNumber() {
 		return number;
 	}
-
-
 
 	public void setNumber(String number) {
 		this.number = number;
 	}
 
-
-
 	public CategoryProduct getParent() {
 		return parent;
 	}
-
-
 
 	public void setParent(CategoryProduct parent) {
 		this.parent = parent;
 	}
 
-
-
 	public List<CategoryProduct> getSubcategory() {
 		return subcategory;
 	}
 
-
-
 	public void setSubcategory(List<CategoryProduct> subcategory) {
 		this.subcategory = subcategory;
 	}
-
-
-
-
+	
 	public String getDescription_en() {
 		return description_en;
 	}
 
-
-
-
 	public void setDescription_en(String description_en) {
 		this.description_en = description_en;
 	}
-	
-	
-	
-	
-	
-	
 }

@@ -22,8 +22,7 @@
 							<span class="icon icon-cart" aria-hidden="true"></span>
 					</span> Koszyk (<span id="CartCount">{{cart.cartProducts.length}}</span>
 						przedmiotów <span id="CartCost">
-						{{(cart.totalPrice
-							| number:2) + " zł"}}
+						{{(cart.totalPrice | number:2) + " zł"}}
 							</span>)
 					</a>
 					<div>
@@ -75,6 +74,5 @@
 						</form>
 					</div>
 				</div>
-<!-- 						searchWord = {{searchWord}}						 -->
 			</div>
 		</div>

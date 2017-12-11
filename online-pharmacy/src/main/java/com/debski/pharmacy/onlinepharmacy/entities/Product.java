@@ -27,6 +27,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Entity
 @Table(name="product")
 public class Product {
@@ -48,10 +52,6 @@ public class Product {
 	@Column(name="description_en",length=1000)
 	public String description_en;
 	
-//	@JsonView(Views.Product.class)
-//	@Column(name="price",columnDefinition="Decimal(10,2) default '100.00'")
-//	public Double price;
-	
 	@Column(name="insertedDate")
 	public Date insertedDate;
 	
@@ -63,26 +63,12 @@ public class Product {
 	@JsonView(Views.Product.class)
 	@Column(name="file",length=100000)
 	private byte[] file;
-//
-//    private String mimeType;
 	
 	public Product(){
 	}
 
-//	public Product() {
-//		super();
-//	}
-	
 	/* Relations */
 	
-//	@JsonView(Views.VisitsPhysiotherapist.class)
-//	@OneToMany(cascade=CascadeType.ALL,mappedBy = "physiotherapist",fetch=FetchType.LAZY,orphanRemoval=true)
-//	@JsonIdentityInfo(
-//			  generator = ObjectIdGenerators.PropertyGenerator.class, 
-//			  property = "id")
-//	private List<Visit> visits;
-	
-//	@JsonView(Views.CategoryProduct.class)
 	@JsonProperty
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "categoryProduct_id")
@@ -91,9 +77,6 @@ public class Product {
 	@JsonView(Views.Product.class)
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=true)
 	@JoinColumn(name="product_id")
-//	@JsonIdentityInfo(
-//			  generator = ObjectIdGenerators.PropertyGenerator.class, 
-//			  property = "id")
 	private List<ProductPackage> packages;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy = "product",fetch=FetchType.LAZY,orphanRemoval=true)
@@ -103,9 +86,6 @@ public class Product {
 	private List<CartProduct> cartProduct;
 
 	/* Relations */
-	
-	
-
 	public Long getId() {
 		return id;
 	}

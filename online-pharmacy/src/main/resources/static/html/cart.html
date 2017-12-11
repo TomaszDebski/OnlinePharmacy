@@ -7,14 +7,11 @@
 		<div class="drawer__close js-drawer-close">
 			<button type="button" class="glyphicon glyphicon-remove"
 				ng-click="showRightPanel(false)">
-<!-- 				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
-<!-- 				<span class="fallback-text">"Zamknij"</span> -->
 			</button>
 		</div>
 	</div>
 	<div id="CartContainer">
 
-		<!--- cart items begin -->
 		<form novalidate class="cart">
 			<div class="ajaxcart__inner"
 				ng-repeat="product in cart.cartProducts">
@@ -66,11 +63,6 @@
 						<p>{{(cart.totalPrice | number:2) + " zł"}}</p>
 					</div>
 				</div>
-<!-- 				        <p class="text-center">Koszty przesyłki zostaną dodane przy podsumowaniu</p> -->
-
-<!-- 				        <button type="submit" class="btn btn--full btn--secondary update-cart" name="update" style="margin-bottom:10px;"> -->
-<!-- 				          Update Cart -->
-<!-- 				        </button> -->
 				<button type="submit" ng-click="goToShoppingCart()"
 					class="btn btn--full cart__checkout" name="checkout"
 					[disabled]="cartService.karta.cartProducts.length == 0">

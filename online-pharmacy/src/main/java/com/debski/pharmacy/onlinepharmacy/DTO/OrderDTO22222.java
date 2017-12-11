@@ -1,6 +1,6 @@
 package com.debski.pharmacy.onlinepharmacy.DTO;
 
-public class OrderDTO {
+public class OrderDTO22222 {
 
 	private String firstName;
 	

@@ -24,6 +24,10 @@ import com.debski.pharmacy.onlinepharmacy.repository.ProductRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @RestController
 @RequestMapping("/api/cart")
 public class CartController {
@@ -68,11 +72,6 @@ public class CartController {
 		}
 	}
 	
-//	@RequestMapping(method= RequestMethod.POST)
-//	public void saveOrder(@RequestBody Cart cart){
-//		
-//	}
-	
 	@JsonView(Views.UserCart.class)
 	@RequestMapping(value="/{id}")
 	public Cart getCartById(@PathVariable("id") long id){
@@ -85,12 +84,6 @@ public class CartController {
 		return cartRepository.findCartByUser(pageable, id);
 	}
 
-//	@JsonView(Views.User.class)
-//	@RequestMapping("/byUsername/{name}")
-//	public User getUserByUsername(@PathVariable("name") String name){
-////		return physiotherapistService.getPhysiotherapistByUsername(name);
-//		return null;
-//	}
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
 	public void updateUser(@PathVariable("id") long id,@RequestBody User user){

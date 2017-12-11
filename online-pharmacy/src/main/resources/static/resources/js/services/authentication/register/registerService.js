@@ -1,8 +1,8 @@
 angular.module('app.service.register',[])
     .factory('registerService',['$http','$log','$window','userService','$timeout','$filter' ,'$state','$rootScope','$timeout',
-    	function($http,$log,$window,userService,$timeout,$filter,$state,$rootScope,$timeout) {
+    	'loginService',
+    	function($http,$log,$window,userService,$timeout,$filter,$state,$rootScope,$timeout,loginService) {
     	var $translate = $filter('translate');
-//    	var authenticated = false;
     	return {
     		register : function(registerForm,user,passwordConfirm,notEqual,withLogin){
     			console.log('user register',user)
@@ -26,22 +26,16 @@ angular.module('app.service.register',[])
     	    	    			 userService.save(user,function(){
 //    	    	 					$scope.successAdd = true;
     	    	 					registerForm.submitted=false;
-    	    	 					console.log('user register',user)
     	    	 					if (withLogin){
-    	    	 						loginService.login(null,{username:user.username,password:user.password})
+    	    	 						$timeout( function(){
+    	    	 							console.log('user.username',user)
+    	    	 							loginService.login(null,{username:user.username,password:user.password})
+    	    	 							$rootScope.$emit('registerSuccess', true);
+    	    	 						}, 1000 );
     	    	 					}
 //    	    	 					$window.scrollTo(0, 0);
-    	    	 					user = {};
+//    	    	 					user = {};
     	    	 					passwordConfirm = "";
-    	    	 					//10 seconds delay
-    	    	 					//10 seconds delay
-    	    	 					$timeout( function(){
-    	    	 			            $rootScope.$emit('registerSuccess', true);
-    	    	 			        }, 1000 );
-//    	    	 					$scope.registerForm.$setPristine();
-//    	    	 					$scope.registerForm.$setUntouched();
-//    	    	 					$window.scrollTo(0, 0);
-//    	    	 					$timeout(function(){$state.go("login");},1000);
 //    	    	 					swal({
 //    	    	 						  title: $translate('patients.remove_patient'),
 //    	    	 						  text: $translate('patients.are_you_sure_remove_patient'),
@@ -66,35 +60,5 @@ angular.module('app.service.register',[])
     		    	return;
     		    };
     		}
-    	
-//    private headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-//    
-//    public currentUser: string = null;
-//    public isAuthenticated: boolean = false;
-//    
-//    constructor(private http: Http,public _cookieService :CookieService) { 
-//        this.currentUser = this._cookieService.get('username');
-//        this.isAuthenticated = this._cookieService.get('isAuthenticated') == 'true';
     }
-    
-    
-//    login2(username : string , password : string){
-//        let data : string = '?username='+username + '&password='+password;
-//        return this.http.get('http://localhost:8080/login' + data
-//          )
-//            .map((response: Response) => {
-//                // login successful if there's a jwt token in the response
-//                let user = response;
-//                this._cookieService.put('username',user.json().username);
-//                this._cookieService.put('isAuthenticated', String(user.json().username != null || user.json().username != "" ));
-//                console.log("user.json().username " ,user.json().username);
-//                console.log("user " ,user);
-////                if (user && user.token) {
-////                    localStorage.setItem('currentUser', JSON.stringify(user));
-////                }
-//                
-//                return user;
-//            });
-//    }
-    
 }])

@@ -144,12 +144,10 @@
 									<input 
 										id="name" 
 										name="name"
-										ng-model="register.username"
+										ng-model="register.firstname"
 										ng-class="{submitted:registerForm.submitted}"
 										required
 										class=" form-control" placeholder="Imię" type="text">
-								
-				<!-- 				<div *ngIf="registerForm.submitted && !firstName.valid" class="help-block" style="color:#f00">Imię jest wymagane</div> -->
 										<span ng-show="registerForm.name.$error.required  && registerForm.submitted" 
 											style="color : #f00; float:left;"
 											>{{'commons.firstname_is_required' | translate}}
@@ -173,8 +171,24 @@
 								</div>
 							</div>
 
-							<div class="form-group pull-right">
-								<div class="col-sm-12">
+							<div class="form-group form-group--joined-cols">
+								<div class="col-sm-6">
+									<input 
+										placeholder="Login" 
+										class="form-control"
+										id="login"
+										name="login"
+										ng-class="{submitted:registerForm.submitted}"
+										ng-model="register.username"
+										required="required" 
+										type="text">
+									<span 
+										ng-show="registerForm.login.$error.required && registerForm.submitted" 
+										style="color : #f00; float:left;"
+										>{{'login.login_is_required' | translate}}
+									</span>
+								</div>
+								<div class="col-sm-6">
 									<input placeholder="E-mail"
 										id="email"
 										name="email" 
@@ -236,12 +250,6 @@
 									 </span>
 								</div>
 							</div>
-
-<!-- 							<input id="fos_user_registration_form__token" -->
-<!-- 								name="fos_user_registration_form[_token]" class=" form-control" -->
-<!-- 								value="NjSWH94rh4obVrDfQosjdVTYruJGhPI5jJKss3nxoVI" -->
-<!-- 								type="hidden"> -->
-
 							<div class="form-actions row">
 								<div class="col-sm-4 col-xs-12">
 									<button type="submit" class="btn btn-success btn-lg btn-block">

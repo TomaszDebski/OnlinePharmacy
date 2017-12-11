@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.debski.pharmacy.onlinepharmacy.entities.User;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @RestController
 @RequestMapping("/login")
 public class loginController {

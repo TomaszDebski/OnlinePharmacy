@@ -15,13 +15,16 @@ import com.debski.pharmacy.onlinepharmacy.configuration.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Entity
 @Table(name="user_details")
 public class UserDetails {
 
 	@Id
 	@GeneratedValue
-//	@JsonView(Views.User.class)
 	public Long id;
 	
 	@JsonView(Views.User.class)
@@ -58,11 +61,6 @@ public class UserDetails {
 	
 	@Column(name="insertedDate")
 	public Date insertedDate;
-	
-//	@Lob
-//	private byte[] file;
-//
-//    private String mimeType;
 	
 	public UserDetails(){
 	}
@@ -174,7 +172,5 @@ public class UserDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 
 }

@@ -11,9 +11,13 @@ import com.debski.pharmacy.onlinepharmacy.entities.Menu;
 import com.debski.pharmacy.onlinepharmacy.repository.MenuRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @RestController
 @RequestMapping("/api/menu")
-public class MenuController {
+public class MenuController222222222 {
 
 //	@Autowired
 //	MenuRepository menuRepository;

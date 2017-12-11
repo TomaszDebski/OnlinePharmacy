@@ -39,6 +39,10 @@ import com.debski.pharmacy.onlinepharmacy.repository.CategoryProductRepository;
 import com.debski.pharmacy.onlinepharmacy.repository.ProductRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
@@ -52,7 +56,6 @@ public class ProductController {
 	@RequestMapping("/img")
     public HttpEntity<byte[]> getCarPhoto(
             @RequestParam("number") String number,
-//            @RequestParam(UrlParameters.PHOTO_TYPE) String photoType
             HttpServletRequest request) {
 
     	byte[] data = null;
@@ -75,13 +78,12 @@ public class ProductController {
 			        		Path path1 = fileEntry.toPath();
 			        		data = Files.readAllBytes(path1);
 			            }
-//			        }
 			}
     	} catch (URISyntaxException | IOException e) {
 			e.printStackTrace();
 		}
     	HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG); //or what ever type it is
+        headers.setContentType(MediaType.IMAGE_JPEG); 
         return new HttpEntity<byte[]>(data, headers);
     }
     
@@ -151,12 +153,9 @@ public class ProductController {
         try {
 			file.transferTo(dest);
 		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return productNumer;
-//    }
-//}
 		}
 	
 	private int findMaxNumberOfCategoryForProduct(String categoryNumber){

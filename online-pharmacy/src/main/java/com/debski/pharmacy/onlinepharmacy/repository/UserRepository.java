@@ -12,6 +12,10 @@ import org.springframework.stereotype.Repository;
 
 import com.debski.pharmacy.onlinepharmacy.entities.User;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Repository
 public interface UserRepository extends CrudRepository<User,Long>,PagingAndSortingRepository<User,Long> {
 	

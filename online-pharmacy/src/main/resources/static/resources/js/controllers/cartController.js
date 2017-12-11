@@ -1,11 +1,10 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
-
 angular.module('app.controller.cart', [])
 .controller('cartController',
 		function($scope,$state,$filter,cartService) { 
-//	console.log('cart')
 	
 	$scope.cart = cartService.getCart();
 	$scope.showRightPanel = function(isShow2){
@@ -23,7 +22,6 @@ angular.module('app.controller.cart', [])
 	
 	$scope.changeQuantity = function(product,event){
         product.totalNumber = parseInt(event.target.value);
-        console.log('event.target.value',angular.isNumber(parseInt(event.target.value)))
         var refreshProduct = $filter('filter')(cartService.getCart().cartProducts, {'id':product.id})[0];
         refreshProduct.totalNumber = parseInt(event.target.value);
         cartService.refreshTotalPrice();

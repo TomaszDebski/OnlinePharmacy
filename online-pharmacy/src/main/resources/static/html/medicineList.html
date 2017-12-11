@@ -1,4 +1,4 @@
-<!-- <meta meta charset=utf-8> -->
+<meta meta charset=utf-8>
 <main class="wrapper main-content" role="main">
 <hr>
 <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
@@ -12,47 +12,13 @@
 		<header class="section-header">
 			<h1 class="section-header__title">{{'submenu.'+category.name | translate}}</h1>
 			<div class="rte rte--header">
-<!-- 				<h3>{{category.name}}</h3> -->
 				<p>{{category.description}}</p>
-<!-- 				<p>Lekkie lub umiarkowane nasilenie bólu może być leczone lekami -->
-<!-- 					przeciwgryźnymi (OTC) lub lekami wydawanymi bez recepty, które są -->
-<!-- 					dostępne w aptece pod nadzorem Farmaceuty lub Online z -->
-<!-- 					TheFamilyPharmacy.ie. Najczęstsze skargi, które słyszymy na liczniku -->
-<!-- 					OTC to bóle głowy, bóle okresowe, bóle zębów, bóle pleców, bóle -->
-<!-- 					mięśni i stawów, zapalenie kości i stawów oraz przez cały rok bóle -->
-<!-- 					zimna i bólowa.</p> -->
-<!-- 				<p style="display: none;">Pain management can be a complex and -->
-<!-- 					multi-disciplinary process to bring about maximum relief and -->
-<!-- 					involves pain medication or analgesics, physical or occupational -->
-<!-- 					therapy and complementary therapies such as massage and acupuncture. -->
-<!-- 					Pain can range from a dull ache to a sharp stab and the pain scale -->
-<!-- 					can go from mild to extreme. Analgesics we recommend contain -->
-<!-- 					paracetamol, aspirin, ibuprofen or other non-steroidal -->
-<!-- 					anti-inflammatories or opioid analgesics such as codeine which is -->
-<!-- 					used to treat moderate to severe pain. Any medical conditions you -->
-<!-- 					may have or other medicines you take, can influence the analgesic we -->
-<!-- 					would recommend so please use the live chat facility below to get -->
-<!-- 					more information.</p> -->
-<!-- 				<div class="read-more">Czytaj więcej/mniej</div> -->
 			</div>
 		</header>
 		<hr>
 		<div class="section-header">
 			<div class="section-header__right">
-				<!-- /snippets/collection-sorting.liquid -->
 				<div class="form-horizontal">
-				
-<!-- 					<select name="SortBy" id="SortBy" > -->
-<!-- 						<option value="">Sort by</option> -->
-<!-- 						<option value="">---------------</option> -->
-<!-- 						<option value="name-ascending">Alfabetycznie, A-Z</option> -->
-<!-- 						<option value="name-descending">Alfabetycznie, Z-A</option> -->
-<!-- 						<option value="price-ascending">Cena, Najniższa do najwyższej</option> -->
-<!-- 						<option value="price-descending">Cena, Najwyższa do najniższej</option> -->
-<!-- 						<option value="created-ascending">Date, old to new</option> -->
-<!-- 						<option value="created-descending">Date, new to old</option> -->
-<!-- 					</select> -->
-<!-- 					<sort-list-select (selectedChange)="sortBy1 = changeSort($event)"></sort-list-select> -->
 					<select ng-model="selectedOption" name="SortBy" id="SortBy" ng-change="sortBy(selectedOption)"
 					ng-init="selectedOption =sortOptions[0].key">
 			           <option ng-repeat="sort in sortOptions" value="{{sort.key}}" >{{sort.text}} 
@@ -67,7 +33,6 @@
 							href="#"><span
 								class="icon icon-grid-view" aria-hidden="true"
 								></span></a> 
-<!-- 								<span class="fallback-text">Krata</span> -->
 						</span>
 					</button>
 					
@@ -78,7 +43,6 @@
 						<a href="javascript:void(0)"><span
 								class="icon icon-list-view" aria-hidden="true"
 								></span></a> 
-<!-- 								<span class="fallback-text">Lista</span> -->
 						</span>
 					</button>
 				</div>
@@ -87,7 +51,6 @@
 	
 		<div class="grid-uniform" ng-show="isGrid">
 	
-<!-- 			<div *ngFor="let product of (products | sortList:sortBy1) let i = index " -->
 				<div class="grid__item large--one-third medium--one-half" 
 				ng-repeat="product in (products | orderBy:propertyName:reverse)">
 					<a href="" ui-sref="product({id:{{product.id}},categoryName:'{{categoryName}}'})"
@@ -98,12 +61,6 @@
 					<p class="h6">
 						<a ui-sref="product({id:{{product.id}},categoryName:'{{categoryName}}'})">{{product.name}}</a>
 					</p>
-<!-- 					<p> -->
-<!-- 						Cena <span itemprop="price">{{product.price}}</span> -->
-<!-- 					</p> -->
-	
-<!-- 					<packages-select [product]="product" -->
-<!-- 						(selectedChange)="packArray[i] = changePackage($event);"></packages-select> -->
 		            
 		            <select 
 						id="package" 
@@ -116,10 +73,6 @@
 						>
 						<option value="" ng-show="false" ng-selected="true"></option>
 					</select>
-<!-- 					packArray[$index] {{packArray[$index]}} -->
-					
-<!-- 					<input id="packArray_{{$index}}" [(ngModel)]="packArray[$index]" type="hidden" /> -->
-<!-- 					packArray[i] = {{packArray[i]}} -->
 					<br> <br>
 					<button class="btn" type="submit"
 						ng-click="addToCart(product,packArray)">

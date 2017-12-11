@@ -3,9 +3,7 @@
  */
 angular.module('app.controller.three_orderPayment', [])
 .controller('three_orderPaymentController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter
-//		,authService
-		) {
+		$state,cartService,$filter) {
   
     $scope.model = {};
     $scope.paymentOptions = [
@@ -14,7 +12,7 @@ angular.module('app.controller.three_orderPayment', [])
                             {id:3,name:"self",price:0},
                                 ];
     
-          $scope.model.payment = cartService.getCart().paymentOption != undefined ? cartService.getCart().paymentOption : 1;
+    $scope.model.payment = cartService.getCart().paymentOption != undefined ? cartService.getCart().paymentOption : 1;
     cartService.getCart().stages[3].isBegin = true;
     
     $scope.goToNextStep = function(){
@@ -37,7 +35,5 @@ angular.module('app.controller.three_orderPayment', [])
     $scope.setPaymentOption = function(value){
     	return $filter('filter')($scope.paymentOptions, {'id':value})[0];
     }
-    
-    
   
 })

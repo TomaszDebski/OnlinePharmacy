@@ -17,6 +17,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Entity
 @Table(name="cart_product")
 public class CartProduct {
@@ -49,32 +53,11 @@ public class CartProduct {
 	@Column(name="total_number")
 	public int totalNumber;
 	
-//	@Lob
-//	@JsonView(Views.CartDetails.class)
-//	@Column(name="file",length=100000)
-//	private byte[] file;
-//
-//    private String mimeType;
-	
 	public CartProduct(){
 	}
 
-//	public Product() {
-//		super();
-//	}
-	
 	/* Relations */
 	
-//	@JsonView(Views.VisitsPhysiotherapist.class)
-//	@OneToMany(cascade=CascadeType.ALL,mappedBy = "physiotherapist",fetch=FetchType.LAZY,orphanRemoval=true)
-//	@JsonIdentityInfo(
-//			  generator = ObjectIdGenerators.PropertyGenerator.class, 
-//			  property = "id")
-//	private List<Visit> visits;
-	
-//	@JsonView(Views.CategoryProduct.class)
-//	@JsonView(Views.CartDetails.class)
-//	@JsonProperty
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "product_id")
@@ -156,9 +139,5 @@ public class CartProduct {
 	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-	
-	
-	
-	
 	
 }

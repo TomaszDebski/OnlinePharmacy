@@ -130,8 +130,6 @@ public class Cart {
 		return id;
 	}
 
-	
-
 	public Date getInsertedDate() {
 		return insertedDate;
 	}
@@ -140,8 +138,6 @@ public class Cart {
 		this.insertedDate = insertedDate;
 	}
 
-	
-
 	public User getUser() {
 		return user;
 	}
@@ -149,8 +145,6 @@ public class Cart {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	
 
 	public List<CartProduct> getCartProducts() {
 		return cartProducts;
@@ -164,128 +158,85 @@ public class Cart {
 		this.id = id;
 	}
 
-
-
 	public String getFirstName() {
 		return firstName;
 	}
-
-
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-
-
 	public String getLastName() {
 		return lastName;
 	}
-
-
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-
-
 	public String getStreet() {
 		return street;
 	}
-
-
 
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
-
-
 	public String getCity() {
 		return city;
 	}
-
-
 
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-
-
 	public String getPostCode() {
 		return postCode;
 	}
-
-
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
 
-
-
 	public int getPhone() {
 		return phone;
 	}
-
-
 
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
-
-
 	public String getDeliveryOption() {
 		return deliveryOption;
 	}
-
-
 
 	public void setDeliveryOption(String deliveryOption) {
 		this.deliveryOption = deliveryOption;
 	}
 
-
-
 	public Date getCartDate() {
 		return cartDate;
 	}
-
-
 
 	public void setCartDate(Date cartDate) {
 		this.cartDate = cartDate;
 	}
 
-
-	
-
 	public double getTotalPrice() {
 		return totalPrice;
 	}
-
-
 
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
-
-
 	public double getDeliveryPrice() {
 		return deliveryPrice;
 	}
 
-
-
 	public void setDeliveryPrice(double deliveryPrice) {
 		this.deliveryPrice = deliveryPrice;
 	}
-
-
 
 	public String getPaymentOption() {
 		return paymentOption;

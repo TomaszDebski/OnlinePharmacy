@@ -1,5 +1,6 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.filter.searchPatient', [])
 .filter('searchPatientFilter', function () {

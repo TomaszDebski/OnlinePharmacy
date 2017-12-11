@@ -11,10 +11,13 @@ import org.springframework.stereotype.Repository;
 
 import com.debski.pharmacy.onlinepharmacy.entities.Product;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Repository
 public interface ProductRepository extends CrudRepository<Product,Long> {
 	
-//	User findTop1ByUsername(String name);
 	List<Product> findByNameContaining(String name);
 	
 	@Query( "from Product p where p.number like %:categoryNumber%" )
