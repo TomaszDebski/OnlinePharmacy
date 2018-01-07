@@ -5,9 +5,6 @@
 angular.module('app.controller.carts', [])
 .controller('cartsController',
 		function($scope,$state,$filter,cartService,$stateParams,cartResolve,cartPaginationService,$window) { 
-//	console.log('cart $stateParams.id',$stateParams.id)
-//	console.log('cartResolve',cartResolve);
-	
 	$scope.carts = cartResolve.content;
 	$scope.totalItems = cartResolve.totalElements;
 	$scope.currentPage = cartResolve.number;
@@ -17,7 +14,6 @@ angular.module('app.controller.carts', [])
 	}
 	
 	function refreshCarts(page) {
-//		console.log('page',page)
 		cartPaginationService.getCartByUser($stateParams.id,page).then(function(result){
 			$scope.totalItems = result.totalElements;
 			$scope.carts = result.content;
@@ -25,7 +21,6 @@ angular.module('app.controller.carts', [])
 	}
 	
 	$scope.setPage = function (pageNo) {
-//		console.log('pageNo',pageNo)
 	    $scope.currentPage = pageNo;
 	  };
 	

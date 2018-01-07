@@ -2,7 +2,6 @@
  * @author Tomasz Dębski
  *
  */
-
 angular.module('app.service.login',[])
     .factory('loginService',['$http','$log','$window','userService','$timeout','$filter' ,'$state','$window','$rootScope',
     	function($http,$log,$window,userService,$timeout,$filter,$state,$window,$rootScope) {
@@ -43,10 +42,8 @@ angular.module('app.service.login',[])
     	        	    	    .then(function(functResult) {
     	        	    	    	var result = functResult.data;
     	        	    	    	if (result != null && result.username.length > 0){
-//    	        	    	    		console.log('functResult',result);
     	        	    	    		$rootScope.id = result.id;
     	        	    	    		$window.sessionStorage.id = result.id;
-//    	        	    	    		console.log('$window.sessionStorage.id',$window.sessionStorage.id)
     	        	    	    		if (result.role == 'ROLE_ADMIN'){
     	        	    	    			$window.sessionStorage.isAdmin = true;
     	        	    	    		}else if (result.role == 'ROLE_USER'){

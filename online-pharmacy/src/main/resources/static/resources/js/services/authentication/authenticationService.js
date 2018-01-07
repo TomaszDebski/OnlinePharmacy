@@ -1,3 +1,7 @@
+/**
+ * @author Tomasz Dębski
+ *
+ */
 angular.module('app.service.authentication',[])
     .factory('authenticationService',['$http','$log', function($http,$log) {
     	var authenticated = false;

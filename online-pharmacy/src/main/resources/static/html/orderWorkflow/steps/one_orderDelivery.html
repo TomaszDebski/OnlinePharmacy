@@ -40,13 +40,13 @@
 						<div class="address-details">
 							<div class="form-group">
 								<div class="col-xs-12">
-									<input id="sylius_checkout_addressing_shippingAddress_street"
+									<input id="address"
 										required="required" class=" form-control"
-										ng-model="order.street" name="street"
+										ng-model="order.address" name="address"
 										ng-class="{submitted:orderDeliveryForm.submitted}"
 										placeholder="Ulica" value="" type="text">
 									<div
-										ng-if="orderDeliveryForm.street.$error.required && orderDeliveryForm.submitted"
+										ng-if="orderDeliveryForm.address.$error.required && orderDeliveryForm.submitted"
 										class="help-block" style="color: #f00;">Adres jest
 										wymagany</div>
 								</div>
@@ -68,11 +68,15 @@
 									<input id="sylius_checkout_addressing_shippingAddress_postcode"
 										name="postCode" required="required" class=" form-control"
 										placeholder="Kod pocztowy" ng-model="order.postCode"
-										ng-class="{submitted:orderDeliveryForm.submitted}" type="text">
+										ng-class="{submitted:orderDeliveryForm.submitted}" type="text"
+										ng-pattern="/^(\d{2}-\d{3})$/">
 									<div
 										ng-if="orderDeliveryForm.postCode.$error.required && orderDeliveryForm.submitted"
 										class="help-block" style="color: #f00;">Kod pocztowy
 										jest wymagany</div>
+									<div
+										ng-if="orderDeliveryForm.postCode.$error.pattern && orderDeliveryForm.submitted"
+										class="help-block" style="color: #f00;">Nieprawidłowy format kodu pocztowego</div>
 								</div>
 							</div>
 
@@ -133,13 +137,20 @@
 						<div class="form-group">
 							<div class="col-sm-12">
 								<input
-									id="sylius_checkout_addressing_shippingAddress_phoneNumber"
-									name="sylius_checkout_addressing[shippingAddress][phoneNumber]"
+									id="phone"
+									name="phone"
 									required="required" class=" form-control"
 									placeholder="Numer telefonu" 
 									ng-model="order.phone"
 									ng-class="{submitted:orderDeliveryForm.submitted}"
-									type="text">
+									type="text"
+									ng-pattern="onlyNumbers">
+									<div
+										ng-if="orderDeliveryForm.phone.$error.required && orderDeliveryForm.submitted"
+										class="help-block" style="color: #f00;">Telefon jest wymagany</div>
+									<div
+										ng-if="orderDeliveryForm.phone.$error.pattern && orderDeliveryForm.submitted"
+										class="help-block" style="color: #f00;">Nieprawidłowy format telefonu</div>
 							</div>
 						</div>
 

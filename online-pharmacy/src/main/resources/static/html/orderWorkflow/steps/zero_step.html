@@ -9,7 +9,6 @@
 			</div>
 		</div>
 	</div>
-	authenticated: {{authenticated}}
 
 	<div class="row">
 
@@ -23,9 +22,9 @@
 					ng-click="active = 'exist'"
 						aria-controls="existing" role="tab" data-toggle="tab">Istniejący użytkownik
 							</a></li>
-					<li role="presentation" class="" ng-class="active == 'guest' ? 'active' :''"><a href="" 
-					ng-click="active = 'guest'"
-						aria-controls="guest" role="tab" data-toggle="tab">Gość</a></li>
+<!-- 					<li role="presentation" class="" ng-class="active == 'guest' ? 'active' :''"><a href=""  -->
+<!-- 					ng-click="active = 'guest'" -->
+<!-- 						aria-controls="guest" role="tab" data-toggle="tab">Gość</a></li> -->
 					<li role="presentation" ng-class="active == 'new' ? 'active' :''"><a href="" aria-controls="new" 
 					ng-click="active = 'new'"
 						role="tab" data-toggle="tab">Nowy użytkownik</a></li>
@@ -34,8 +33,6 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade active in" id="existing"
 					 	ng-class="active == 'exist' ? 'active in' :''">
-					 	errorLogin:{{errorLogin}}
-					 	error:{{error}}
 						<div class="alert alert-danger" ng-show="errorLogin" style="text-align:center;">
 						  <strong>{{'login.error' | translate}}!</strong> <span>{{'login.incorrect_login_or_password' | translate}}. <br>{{'login.try_again' | translate}}.</span>
 						</div>
@@ -287,7 +284,7 @@ input.submitted.ng-invalid
 
 #security-checkout-tabs .nav-tabs li {
 	text-align: center;
-	width: 33.333333%;
+	width: 50%;
 	height: 100%;
 	border-right: 1px solid #E3E3E3;
 	border-bottom: 1px solid #E3E3E3;

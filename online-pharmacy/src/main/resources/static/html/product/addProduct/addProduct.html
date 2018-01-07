@@ -4,7 +4,7 @@
         <div class="page-header">
             <h1 style="text-align: center;">Dodaj produkt </h1>
         </div>
-
+{{imgNumber}}
         <form 
         	
         	id="addProductForm"
@@ -30,7 +30,6 @@
 	                        	class=" form-control" 
 	                        	placeholder="Nazwa" 
 	                        	type="text">
-<!-- 	                <div *ngIf="addProduct.submitted && !name.valid" class="help-block" style="color:#f00">Nazwa jest wymagana</div> -->
 	                	<span 
 							ng-show="addProductForm.name.$error.required && addProductForm.submitted" 
 							style="color : #f00; float:left;"
@@ -51,13 +50,11 @@
 				            required
 				            placeholder="Opis" 
 				         ></textarea>
-<!-- 	                    <div *ngIf="addProduct.submitted && !description.valid" id="password-strength-text" style="color:#f00"><br>Opis jest wymagany</div> -->
 	                    <span 
 							ng-show="addProductForm.description.$error.required && addProductForm.submitted" 
 							style="color : #f00; float:left;"
 							>{{'login.description_required' | translate}}
 						</span>
-	<!--                     <p id="password-strength-text"><strong>Minimum 8 Characters</strong></p> -->
 	                </div>
 	            </div>
 	            <div class="form-group">
@@ -74,7 +71,6 @@
 						>
 						</select>
 						<br>
-<!-- 						<div *ngIf="addProduct.submitted && mainCategory == -1" id="password-strength-text" style="color:#f00">Wybierz kategorie</div> -->
 					</div>
 				</div>
 				
@@ -98,8 +94,6 @@
 		            <label for="firstname" >Opakowania:<span class="required">*</span></label>
 		            	<div ng-repeat="pack in countOfPack">
 		            	<div class="row">
-<!-- 		            	<input-pack [id]="pack.id" (result)="changePack($event)"  -->
-<!-- 		            		[showError]="last && (!isShouldIncrease || addProduct.submitted)"></input-pack> -->
 							<add-product-packages-directive id="{{pack.id}}" count="countOfPack"
 								form="addProductForm"
 							></add-product-packages-directive>
@@ -111,17 +105,13 @@
 				</div>
 			
 	            <div class="form-group">
-<!-- 	                <div class="col-xs-12"> -->
 	                <label for="firstname" >Dodaj zdjęcie:<span class="required">*</span></label>
 	                
 	                <div class="well"style="width:300px;height: 100px;">
-<!-- 			        	<form enctype="multipart/form-data" novalidate> -->
 			             <div>
 			                 <input type="file" id="file1"/>
-<!-- 			                 <br> -->
 			                 <div style="float:right;">
 			                     <button class="btn btn-xs btn-success" ng-disabled="disableBtnUpload" ng-click="btn_upload()">Upload</button>
-<!-- 			                     <button ng-click="btn_clean()">Remove all</button> -->
 			                 </div>
 			             </div>
 			             <div 
@@ -131,52 +121,17 @@
 			                 <div>
 			                 	<span>{{file.name}}</span>
 			                 	<div style="float:right;">
-<!-- 			                  	<span>{{file.humanSize}}</span> -->
 			                  	<button ng-click="btn_remove(file)" title="Remove from list to be uploaded">
-<!-- 			                  		<i class="icon-remove"></i> -->Usuń
+									Usuń
 			                  	</button>
 			                 	</div>
 			                 </div>
 			                 <progress style="width:250px;" value="{{file.loaded}}" max="{{file.size}}"></progress>
 			             </div>
-<!-- 			             </form> -->
 					</div>
-	                
-	                
-	                
-	                
-	                
-	                
-	                
-	                
-	                
-	                
-	                
-	                
-<!-- 	                <file-upload #fu (change)="fu.upload(categoryId.number)" (img)="changeImg($event)" [multiple]="true" -->
-<!-- 	                	[disableFile]="addProduct.invalid"></file-upload> -->
-<!-- 	                <div *ngIf="addProduct.submitted && imgNumber == ''" id="password-strength-text" style="color:#f00"><br>Dodaj zdjęcie</div> -->
-	<!--                         <input  -->
-	<!--                         	id="fos_user_registration_form_email"  -->
-	<!--                         	name="email"  -->
-	<!--                         	[(ngModel)]="model.email"  -->
-	<!--                         	#email="ngModel" -->
-	<!--                         	required -->
-	<!--                         	class=" form-control"  -->
-	<!--                         	placeholder="Email"  -->
-	<!--                         	type="email"> -->
-<!-- 	                </div> -->
 	            </div>
 			</div>
 		 </div>
-
-<!--                 <input  -->
-<!--                 	id="fos_user_registration_form__token"  -->
-<!--                 	name="fos_user_registration_form[_token]"  -->
-<!--                 	class=" form-control"  -->
-<!--                 	value="1Y9_bKNq7YrpKx-11O7S6NiXPOtgPc_fop6kIuTTzfY"  -->
-<!--                 	type="hidden"> -->
-
             <div class="form-actions clearfix" style="text-align: right">
 
                 <button type="button" ng-click="addProductFnc()" class="btn btn-lg btn-success" style="background-color: #d68121;">
@@ -201,6 +156,5 @@ input.submitted.ng-invalid
 	.arrows {
 		background-image: url("https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/4f76952c-4218-11e7-a288-0a6afe88c81b.svg");
 		padding-right: 28px;
-/* 		width: auto; */
 	}
 </style>

@@ -1,7 +1,7 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
-
 angular.module('app.service.product', [])
 .factory("productService", ['$resource', function($resource) {
 	return  $resource('api/product/:id', {id : "@id"},

@@ -1,5 +1,6 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.service.category',[])
     .factory('categoryService',['$http','$log','$resource', function($http,$log,$resource) {
@@ -19,7 +20,6 @@ angular.module('app.service.category',[])
 					function success(data){
 						return data.data;
 					},function error(data){
-						console.log("nie udało się");
 					}
 				)
     	    },
@@ -40,7 +40,6 @@ angular.module('app.service.category',[])
     	    },
     	    getCategoryByProductId : function(id){
     	    	return $http.get('api/category/oneCategory?id='+id).then(function(result){
-//    	    		console.log('getCategoryByProductId',result);
     	    		return result;
     	    	})
     	    }

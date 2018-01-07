@@ -1,5 +1,6 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.translate-config-pl', ['pascalprecht.translate'])
 .config(function ($translateProvider) {
@@ -22,10 +23,18 @@ angular.module('app.translate-config-pl', ['pascalprecht.translate'])
 		  	"menu.medicine" : "Lekarstwa",
 		  	"menu.vitamins" : "Witaminy",
 		  	"menu.child" : "Dziecko",
+		  	"menu.child.bottles" : "Butelki i smoczki",
+		  	"menu.child.baby_food" : "Pokarm dla dzieci",
 		  	"menu.beauty" : "Uroda",
+		  	"menu.beauty.hair" : "Pielęgnacja włosów",
+		  	"menu.beauty.sun_car" : "Opalanie",
 		  	"menu.men" : "M\u0119\u017cczyzna",
+		  	"menu.men.deodorants" : "Dezodoranty",
+		  	"menu.men.after_shave" : "Po goleniu",
 		  	"menu.suplements" : "Suplementy",
 		  	"menu.gifts" : "Prezenty",
+		  	"menu.gifts.for_her" : "Dla niej",
+		  	"menu.gifts.for_him" : "Dla niego",
 		  	"menu" : ""
 		},
 		"delivery" :{
@@ -288,6 +297,10 @@ angular.module('app.translate-config-pl', ['pascalprecht.translate'])
 			"Search" : "Wyszukaj",
 			"search" : "wyszukaj",
 			"remove" : "Usuń",
+		},
+		"cart" : {
+			"added" : "Zakończono",
+			"cart_was_added" : "Koszyk został dodany"
 		}
 	 })
 })

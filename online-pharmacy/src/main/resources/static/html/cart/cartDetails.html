@@ -19,7 +19,7 @@
 						class="grid__item one-third medium-down--one-third text-center">
 						Ilość</div>
 					<div class="grid__item one-third medium-down--one-third text-right">
-						całość</div>
+						Razem</div>
 				</div>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 			<div class="grid__item large--one-half">
 				<div class="grid--full cart__row--table-large">
 					<div class="grid__item one-third">
-						<span class="cart__mini-labels">Cena</span> <span class="h3">{{product.unitPrice | number:2}}</span>
+						<span class="cart__mini-labels">Cena</span> <span class="h3">{{product.price | number:2}}</span>
 					</div>
 
 					<div class="grid__item one-third text-center">
@@ -53,7 +53,7 @@
 						{{product.totalNumber}}
 					</div>
 					<div class="grid__item one-third text-right">
-						<span class="cart__mini-labels">Razem</span> <span class="h3">{{product.price | number:2}}</span>
+						<span class="cart__mini-labels"></span> <span class="h3">{{product.price * product.totalNumber | number:2}}</span>
 					</div>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 			</div>
 				<div style="clear: both;">
 					<input name="checkout" class="btn" value="Powrót"
-						ng-click="">
+						ng-click="returnToCartList()">
 				</div>
 		</div>
 	</div>

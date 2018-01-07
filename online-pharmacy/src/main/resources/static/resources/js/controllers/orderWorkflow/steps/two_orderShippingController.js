@@ -2,8 +2,7 @@
  * New typescript file
  */
 angular.module('app.controller.two_orderShipping', [])
-.controller('two_orderShippingController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter) {
+.controller('two_orderShippingController',function($scope,$translate,$state,cartService,$filter) {
   
 	$scope.model = {};
     $scope.deliveryOptions = [

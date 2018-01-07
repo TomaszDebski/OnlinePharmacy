@@ -65,7 +65,7 @@
 				</div>
 				<button type="submit" ng-click="goToShoppingCart()"
 					class="btn btn--full cart__checkout" name="checkout"
-					[disabled]="cartService.karta.cartProducts.length == 0">
+					ng-disabled="cartService.karta.cartProducts.length == 0">
 					Zamów</button>
 			</div>
 		</form>

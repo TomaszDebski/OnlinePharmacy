@@ -2,8 +2,7 @@
  * New typescript file
  */
 angular.module('app.controller.three_orderPayment', [])
-.controller('three_orderPaymentController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter) {
+.controller('three_orderPaymentController',function($scope,$state,cartService,$filter) {
   
     $scope.model = {};
     $scope.paymentOptions = [

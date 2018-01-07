@@ -1,20 +1,16 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
-
 angular.module('app',
 		[ 
 		  'app.run',
 		  'ngResource',
 		  'ngAnimate',
-//		  'ngTouch',
 		  'ngSanitize',
 		  'ngCookies',
-		  
 		  'ui.bootstrap',
 		  'ui.router',
-//		  'ui.calendar',
-//		  'ui.select',
 		  'ui.uploader',
 		  
 		  'app.config',
@@ -23,10 +19,8 @@ angular.module('app',
 		  'app.translate-config',
 		  'app.translate-config-pl',
 		  'app.translate-config-en',
-//		  
+		  
 		  'app.controller.index',
-//		  'app.controller.interviewModal',
-//		  'app.controller.calendar',
 		  'app.controller.home',
 		  'app.controller.menu',
 		  'app.controller.medicineList',
@@ -52,15 +46,6 @@ angular.module('app',
 		  'app.controller.forgotPassword',
 		  'app.controller.searchAll',
 		  
-//		  'app.controller.visits',
-//		  'app.controller.visit',
-//		  'app.controller.addVisit',
-//		  'app.controller.patient',
-//		  'app.controller.account',
-//		  'app.controller.addService',
-//		  'app.controller.addKindOfPain',
-//		  'app.controller.addBodyPlace',
-//		  
 		  'app.model.product',
 		  
 		  'app.service.category',
@@ -77,36 +62,10 @@ angular.module('app',
 		  'app.service.cartDetails',
 		  'app.service.cartResource',
 		  'app.service.productUtils',
-//		  'app.service.userResource',
-//		  'app.service.auth',
-//		  'app.service.physiotherapist',
-//		  'app.service.patient',
-//		  'app.service.patientPagination',
-//		  'app.service.visit',
-//		  'app.service.service',
-//		  'app.service.kindOfPain',
-//		  'app.service.bodyPlace',
-//		  'app.service.allPatientsForPhysiotherapist',
-//		  'app.service.visitPagination',
-//		  'app.service.getVisits',
-//		  'app.service.getFile',
-//		  'app.service.interview',
-//		  
-//		  'app.controller.interviewModal',
-//		  'app.controller.addVisitInCalendarModel',
-//		  'app.controller.addHolidayInCalendarModel',
 //		  
 		  'app.directive.usernameAvailable',
 		  'app.directive.equals',
 		  'app.directive.addProductPackages',
-//		  'app.directive.addNewInterview',
-//		  'app.directive.addService',
-//		  'app.directive.multipleBodyAndPlace',
-//		  'directives.customvalidation.customValidationTypes',
-//		  
-//		  'app.filter.searchPatient',
-//		  'app.filter.tel',
 //		  
 		  'anim-in-out',
-//		  'oitozero.ngSweetAlert',
 ]);

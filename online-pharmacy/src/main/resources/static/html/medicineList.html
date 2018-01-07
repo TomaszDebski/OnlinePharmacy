@@ -123,7 +123,7 @@
 		<h3>Katalog</h3>
 		<ul>
 		  <li ng-repeat="item in menu">
-		  	<a ui-sref="medicineList({name:'{{submenu.url}}'})">{{'menu.'+item.name | translate}}</a>
+		  	<a ui-sref="medicineList({name:'{{item.subcategory[0].url}}'})">{{'menu.'+item.name | translate}}</a>
 		  </li>
 		</ul>
 	</div>

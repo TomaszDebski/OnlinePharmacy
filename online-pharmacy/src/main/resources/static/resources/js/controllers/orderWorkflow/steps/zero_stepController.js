@@ -3,8 +3,7 @@
  *
  */
 angular.module('app.controller.zero_step', [])
-.controller('zero_stepController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter,registerService,loginService) {
+.controller('zero_stepController',function($scope,$rootScope,$state,cartService,$filter,registerService,loginService) {
 	$scope.active = 'exist';
 	$scope.cart = cartService.getCart();
 	$scope.userLogin = {};

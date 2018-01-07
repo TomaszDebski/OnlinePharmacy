@@ -3,15 +3,15 @@
 <div class="main-header">
     <div id="" class="container">
         <div class="row vertical-align">
-        	<div class="col-md-1">
-        		<span class="page-title" style="font-size:30px;" translate="carts.cart_history"></span>
+        	<div class="col-md-3">
+        		<span class="page-title" style="font-size:30px;">Historia zamówień</span>
             </div>
             <div class="col-md-offset-1 col-md-8 ">
             	<div class="pull-right">
 				<span class="input-group-btn ">
             	<input  style="padding: 7px 10px; border-radius:0px"
 					name="searchWord" 
-					[(ngModel)]="searchWord" 
+					ng-model="searchWord" 
 					placeholder="Znajdź zamówienie" 
 					class="input-group-field" 
 					aria-label="Search our store"
@@ -41,18 +41,18 @@
              <table id="mytable" class="table borderless table-bordred table-striped table-hover">
              	<thead>
                    	<tr>
-	                    <th>{{'carts.cart_date' | translate}}</th>
-	                    <th>{{'carts.price' | translate}}</th>
-	                    <th>{{'lastname' | translate}}</th>
+	                    <th>Data</th>
+	                    <th>Cena</th>
+	                    <th>Imię i nazwisko</th>
 				        <th>E-mail</th>
-				        <th>{{'patients.actions' | translate}}</th>
+				        <th>Akcje</th>
                    </tr>
                 </thead>
     			<tbody>
     				<tr ng-repeat="cart in carts">
 				      	<td><span class="table_span">{{cart.cartDate | date:'yyyy-MM-dd' }}</span></td>
 				      	<td><span class="table_span">{{cart.totalPrice}}</span></td>
-				      	<td><span class="table_span">{{cart.lastName}}</span></td>
+				      	<td><span class="table_span">{{cart.firstName}} {{cart.lastName}}</span></td>
 				         <td><span class="table_span">{{cart.email}}</span></td>
 				             <td class="actions-col">
 				               <span class="masterTooltip table_span" title="{{'patients.add_a_visit' | translate}}"> 

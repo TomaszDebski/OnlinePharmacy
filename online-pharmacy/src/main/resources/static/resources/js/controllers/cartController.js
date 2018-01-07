@@ -26,4 +26,5 @@ angular.module('app.controller.cart', [])
         refreshProduct.totalNumber = parseInt(event.target.value);
         cartService.refreshTotalPrice();
     }
+	
 });

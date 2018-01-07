@@ -4,7 +4,7 @@
  */
 angular.module('app.controller.product', [])
 .controller('productController',
-		function($scope,$state,$stateParams,$filter,cartService,productResolve,categoryResolve,oneCategoryResolve) { 
+		function($scope,$filter,cartService,productResolve,categoryResolve,oneCategoryResolve) { 
   
 	$scope.categoryName = oneCategoryResolve.url;
 	$scope.category = oneCategoryResolve;

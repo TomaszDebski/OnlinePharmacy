@@ -3,9 +3,7 @@
  *
  */
 angular.module('app.controller.index', [])
-.controller('indexController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,categoryService
-		) {
+.controller('indexController',function($scope,$window,$rootScope,$translate,$state,cartService,categoryService) {
 	$scope.move = false;
 	$scope.authenticated = false;
 	$scope.cart = cartService.getCart();

@@ -98,11 +98,6 @@
 	 ,user : {{loggedUserName}}<br>
 	role: {{role}}
 	,id: {{id}}
-	<!-- 	<div ng-controller="userPanelController"> -->
-	<!-- 		<div ng-include="'html/userPanel.html'"></div> -->
-	<!-- 	</div> -->
-
-	
 
 	<!-- UserPanel -->
 	<div class="wrapper" style="padding-bottom:5px">
@@ -113,7 +108,6 @@
 						ng-src="../images/MMM.png"
 						alt="The Family Pharmacy" itemprop="logo">
 					</a>
-<!-- 						src="https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/8c385b15-eee5-11e6-b255-0a6afe88c81b.png" -->
 				</h1>
 			</div>
 			<div ng-show="showMenu" 
@@ -128,18 +122,24 @@
 						number:2) + " zł"}} </span>)
 				</a>
 				<div>
-					<a ui-sref="addProduct"
-						ng-show="authenticated && role === 'ROLE_ADMIN'"> Dodaj produkt | </a> <a
-						ui-sref="addCategory"
-						ng-show="authenticated && role === 'ROLE_ADMIN'"> Dodaj kategorię | </a> 
-						<a
-						href="" ng-click="showCarts()"
-						ng-show="authenticated && role === 'ROLE_USER'"> Historia zakupów | </a>
-						<a ui-sref="users"
-						ng-show="authenticated && role === 'ROLE_ADMIN'"> Użytkownicy | </a> 
-						<a ui-sref="login" ng-show="!authenticated"> Zaloguj |</a> 
-						<a ng-show="authenticated"
-						ui-sref="logout"> Wyloguj </a> <a ui-sref="register"
+					<span ng-show="authenticated && role === 'ROLE_ADMIN'">
+						<a ui-sref="addProduct"> Dodaj produkt</a> | 
+					</span>
+					<span ng-show="authenticated && role === 'ROLE_ADMIN'">
+						<a ui-sref="addCategory"> Dodaj kategorię</a> | 
+					</span>
+					<span ng-show="authenticated && role === 'ROLE_USER'">
+						<a href="" ng-click="showCarts()"> Historia zakupów</a> | 
+					</span>
+					<span ng-show="authenticated && role === 'ROLE_ADMIN'">
+						<a ui-sref="users"> Użytkownicy</a> | 
+					</span> 
+					<span ng-show="!authenticated">
+						<a ui-sref="login"> Zaloguj</a> | 
+					</span>
+					<a ng-show="authenticated"
+						ui-sref="logout"> Wyloguj </a> 
+					<a ui-sref="register"
 						ng-show="!authenticated"> Stwórz nowe konto </a>
 				</div>
 
@@ -158,24 +158,24 @@
 					</form>
 <!-- 					searchWord = {{searchWord}} -->
 				</div>
-				<div ng-if="showCurrentLanguage() == 'en'">
-					<a href="" 
-						class="language-link active" 
-						xml:lang="en-CA" lang="en-CA" 
-						ng-click="changeLanguage('pl')"
-					>
-						<span translate="index.language_PL"></span>
-					</a>
-				</div>
-				<div ng-if="showCurrentLanguage() == 'pl'">
-					<a href="" 
-						class="language-link active" 
-						xml:lang="en-CA" lang="en-CA" 
-						ng-click="changeLanguage('en')"
-					>
-						<span translate="index.language_EN"></span>
-					</a>
-				</div>
+<!-- 				<div ng-if="showCurrentLanguage() == 'en'"> -->
+<!-- 					<a href=""  -->
+<!-- 						class="language-link active"  -->
+<!-- 						xml:lang="en-CA" lang="en-CA"  -->
+<!-- 						ng-click="changeLanguage('pl')" -->
+<!-- 					> -->
+<!-- 						<span translate="index.language_PL"></span> -->
+<!-- 					</a> -->
+<!-- 				</div> -->
+<!-- 				<div ng-if="showCurrentLanguage() == 'pl'"> -->
+<!-- 					<a href=""  -->
+<!-- 						class="language-link active"  -->
+<!-- 						xml:lang="en-CA" lang="en-CA"  -->
+<!-- 						ng-click="changeLanguage('en')" -->
+<!-- 					> -->
+<!-- 						<span translate="index.language_EN"></span> -->
+<!-- 					</a> -->
+<!-- 				</div> -->
 			</div>
 		</div>
 	</div>
@@ -186,65 +186,6 @@
 	</div>
 
 	<div ui-view class="main" style="position: relative"></div>
-
-<!-- 	<footer class="site-footer small--text-center" role="contentinfo"> -->
-
-<!-- 		<div class="wrapper"> -->
-
-<!-- 			<div class="grid-uniform"> -->
-
-
-
-
-<!-- 				<div class="grid__item large--one-half"> -->
-<!-- 					<h3>Linki</h3> -->
-<!-- 					<ul> -->
-<!-- 						<li><a href="/pages/blog">Blog</a></li> -->
-<!-- 						<li><a href="/pages/contact-us">Kontakt</a></li> -->
-<!-- 						<li><a href="/pages/shipping-returns-policy">Polityka zamówień -->
-<!-- 								&amp; reklamacji</a></li> -->
-<!-- 						<li><a href="http://www.ptfarm.pl/">Polskie Towarzystwo Farmaceutyczne</a></li> -->
-<!-- 						<li><a href="http://www.wiif.waw.pl/">Wojewódzki Inspektorat Farmaceutyczny w Warszawie</a></li> -->
-<!-- 					</ul> -->
-<!-- 				</div> -->
-
-<!-- 				<div class="grid__item large--one-half"> -->
-<!-- 					<h3>Znajdź nas</h3> -->
-
-<!-- 					<ul class="inline-list social-icons"> -->
-<!-- 						<li><a class="icon-fallback-text" href="https://twitter.com" -->
-<!-- 							title="The Family Pharmacy on Twitter"> <span -->
-<!-- 								class="icon icon-twitter" aria-hidden="true"></span> <span -->
-<!-- 								class="fallback-text">Twitter</span> -->
-<!-- 						</a></li> -->
-<!-- 						<li><a class="icon-fallback-text" -->
-<!-- 							href="https://www.facebook.com/The-Family-Pharmacy-1750193391923282/" -->
-<!-- 							title="The Family Pharmacy on Facebook"> <span -->
-<!-- 								class="icon icon-facebook" aria-hidden="true"></span> <span -->
-<!-- 								class="fallback-text">Facebook</span> -->
-<!-- 						</a></li> -->
-
-
-
-
-<!-- 					</ul> -->
-<!-- 				</div> -->
-
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<a -->
-<!-- 			href="http://thepsi.ie/Libraries/Approved_companies/PSI_List_of_approved_companies_for_the_sale_of_non-prescription_medicines_online.sflb.ashx"> -->
-
-<!-- 		</a> -->
-<!-- 	</footer> -->
-
-
-	<!-- <div class=""> -->
-	<!--   <hr style="margin-bottom: 12px;"> -->
-	<!--     <div class="col-md-4 col-centered" style="float: none; margin: 0 auto;"> -->
-	<!--         <p class="muted">© 2017 Wirtualny gabinet fizjoterapii. All rights reserved</p> -->
-	<!--     </div> -->
-	<!--   </div> -->
 
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/config.js"></script>
@@ -261,8 +202,6 @@
 	<script src="resources/js/controllers/loginController.js"></script>
 	<script src="resources/js/controllers/logoutController.js"></script>
 	<script src="resources/js/controllers/registerController.js"></script>
-	<!-- 	<script src="resources/js/controllers/user/accountController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/contactController.js"></script> -->
 	<script src="resources/js/controllers/medicineListController.js"></script>
 	<script src="resources/js/controllers/product/productController.js"></script>
 	<script src="resources/js/controllers/product/addProduct/addProductController.js"></script>
@@ -296,13 +235,6 @@
 		src="resources/js/controllers/orderWorkflow/steps/summaryBox/summaryBoxController.js"></script>
 
 
-
-
-	<!-- 	<script src="resources/js/controllers/patient/addPatientController.js"></script> -->
-	<!-- 	<script src="resources/js/controllers/patient/patientController.js"></script> -->
-
-	<!-- 	<script src="resources/js/controllers/addBodyPlaceController.js"></script> -->
-
 	<script src="resources/js/models/productModel.js"></script>
 
 	<script src="resources/js/services/categoryService.js"></script>
@@ -325,23 +257,11 @@
 	<script
 		src="resources/js/services/authentication/login/loginService.js"></script>	
 		
-	
-
-
-	<!-- 	<script src="resources/js/services/authService.js"></script> -->
-	<!-- 	<script src="resources/js/services/physiotherapistService.js"></script> -->
-
 
 	<script src="resources/js/directives/usernameAvailableDirective.js"></script>
 	<script src="resources/js/directives/compareToDirective.js"></script>
 	<script src="resources/js/directives/addProductPackages/addProductPackagesDirective.js"></script>
 	
-	<!-- 	<script src="resources/js/directives/newInterview/addNewInterviewDirective.js"></script> -->
-	<!-- 	<script src="resources/js/directives/addService/addServiceDirective.js"></script> -->
-	<!-- 	<script src="resources/js/directives/multipleBodyAndPlaceInInterview/multipleBodyAndPlaceDirective.js"></script> -->
-
-	<!-- 	<script src="resources/js/filters/searchPatientFilter.js"></script> -->
-	<!-- 	<script src="resources/js/filters/telFilter.js"></script> -->
 
 	<!-- Modals -->
 	<!-- 	<div ng-include="'resources/template/interviewModal.html'"></div> -->

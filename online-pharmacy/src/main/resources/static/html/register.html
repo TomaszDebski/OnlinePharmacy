@@ -17,7 +17,7 @@
 			<div class="form-group">
 				<div class="col-xs-6">
 					<input id="name" name="name"
-						ng-model="user.firstnwame"
+						ng-model="user.firstname"
 						ng-class="{submitted:registerForm.submitted}"
 						required
 						class=" form-control" placeholder="Imię" type="text">
@@ -65,7 +65,7 @@
 					<input 
 						id="fos_user_registration_form_email" 
 						name="email"
-						ng-model="user.email" 
+						ng-model="user.userDetails.email" 
 						required
 						ng-class="{submitted:registerForm.submitted}"
 						class=" form-control" 

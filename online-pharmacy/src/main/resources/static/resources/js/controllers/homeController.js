@@ -4,6 +4,5 @@
  */
 
 angular.module('app.controller.home', [])
-.controller('homeController',
-		function() { 
+.controller('homeController',function() { 
 });

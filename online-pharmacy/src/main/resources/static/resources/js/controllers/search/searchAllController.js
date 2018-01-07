@@ -5,7 +5,6 @@
 angular.module('app.controller.searchAll', [])
 .controller('searchAllController',
 		function($scope,productByNameResolve,productUtilsService,$state,$filter) { 
-//	console.log('$scope.$parent',$scope.$parent.searchWord);
 	$scope.findedProducts = productByNameResolve;
 	$scope.searchWordToDisplay = $scope.$parent.searchWord;
 	$scope.search = function(searchWord){
@@ -44,7 +43,6 @@ angular.module('app.controller.searchAll', [])
 	 $scope.propertyName = $scope.sortOptions[0].value; 
 	 $scope.sortBy = function(propertyName) {
 		 	var sortElement = $filter('filter')(sortOptionsArray, {'key':propertyName})[0];
-//		 	console.log('ddddddddd');
 		    $scope.reverse = sortElement.direction;
 		    $scope.propertyName = sortElement.value;
 	

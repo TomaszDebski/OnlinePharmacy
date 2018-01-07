@@ -12,6 +12,8 @@ public class Views {
 	
 	public interface User {}
 	
+	public interface UserDetails extends User {}
+	
 	public interface CategoryProduct extends Product,CategoryProductMenu {}
 	
 	public interface CategoryProductMenu{}

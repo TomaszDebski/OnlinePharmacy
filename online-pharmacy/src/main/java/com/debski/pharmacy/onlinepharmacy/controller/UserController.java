@@ -1,7 +1,11 @@
 package com.debski.pharmacy.onlinepharmacy.controller;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,21 +42,27 @@ public class UserController {
 	public void addPhysiotherapist(@RequestBody User user){
 		System.out.println(user.getFirstname());
 		BCryptPasswordEncoder encode = new BCryptPasswordEncoder();
-		UserDetails userDetails = new UserDetails();
+		UserDetails userDetails = null;
+		if (user.getUserDetails() == null){
+			userDetails = new UserDetails();
+			user.setUserDetails(userDetails);
+			userDetails.setUser(user);
+		}
+		user.getUserDetails().setInsertedDate(new Date());
 		user.setPassword(encode.encode(user.getPassword()));
 		user.setRole("ROLE_USER");
-		user.setUserDetails(userDetails);
-		userDetails.setUser(user);
 		userRepository.save(user);
-		userDetailsRepository.save(userDetails);
+		userDetailsRepository.save(user.getUserDetails());
 //		physiotherapistService.addPhysiotherapist(physiotherapist);
 	}
 	
-	@JsonView(Views.User.class)
+	@JsonView(Views.UserDetails.class)
 	@RequestMapping(value="/{id}")
+	@Transactional
 	public User getUserById(@PathVariable("id") long id){
 		User user = userRepository.findOne(id);
-		return user;
+		Hibernate.initialize(user.getUserDetails());
+		return user; 
 //		return null;
 	}
 	

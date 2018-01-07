@@ -24,41 +24,33 @@ angular.module('app.controller.addProduct', [])
 	        $scope.addProductForm.submitted=true;    
 	    	return;
 	    };
-//        console.log('this.newProduct ' , this.newProduct)
         $scope.newProduct.packages = [];
         for(let i =0 ; i<$scope.countOfPack.length; i++){
             $scope.newProduct.packages.push($scope.countOfPack[i]);
         }
         productService.save({categoryId:$scope.model.subcategory.id},$scope.newProduct,function(data){
-//        	console.log('dodano product',data)
         	swal('Powodzenie', 'Dodanie produktu zakończyło się powodzeniem', "success");
         })
     }
     
     $scope.zwieksz = function(){
-//    	console.log('$scope.countOfPack.length',$scope.countOfPack.length)
     	var length = $scope.countOfPack.length;
-//    	console.log("length ",length)
         $scope.countOfPack.push({id:++length,name:"",price:''})
-//        console.log('this.countOfPack',$scope.countOfPack);
     }
     
     uiUploader.removeAll();
     $scope.btn_upload = function() {
-//        $log.info('subCategory...',$scope.model.subcategory.number);
+    	console.log('$scope.model.subcategory.number',$scope.model.subcategory.number);
         uiUploader.startUpload({
             url: '/api/product/upload' + '?categoryNumber=' + $scope.model.subcategory.number,
             concurrency: 1,
             onProgress: function(file) {
-            	
-//                $log.info('onProgress ' +file.name + '=' + file.humanSize);
+            	console.log('onProgress')
                 $scope.$apply();
             },
             onCompleted: function(file, response) {
-//                $log.info('response ' + response);
-//                $log.info('$scope.imgNumber ' + $scope.imgNumber);
+            	console.log('onCompleted',response)
                 $scope.imgNumber = response;
-//                $log.info('$scope.imgNumber ' + $scope.imgNumber);
                 $scope.$apply();
                 
             }
@@ -68,6 +60,7 @@ angular.module('app.controller.addProduct', [])
     $scope.files = {};
     var element = document.getElementById('file1');
     element.addEventListener('change', function(e) {
+    	console.log('change')
         var files = e.target.files;
         uiUploader.addFiles(files);
         $scope.files = uiUploader.getFiles();

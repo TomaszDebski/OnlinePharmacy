@@ -25,17 +25,17 @@ angular.module('app.controller.medicineList', [])
 	    	$scope.currentPage = result.number+1;
 	    })
 	}
-	
+	console.log('categoryResolve',categoryResolve[1].subcategory[0].url);
 	$scope.menu = categoryResolve;
 	$scope.products = productsResolve.content;
 	$scope.category = oneCategoryResolve;
 	
 	$scope.addToCart = function(product,packageId){
 		var pack = $filter('filter')(product.packages, {'id':packageId.id})[0];
-	    var productCopy = angular.copy(product);
-	      productCopy.packages = [];
-	      productCopy.packages.push(pack);
-	      productCopy.price = pack.price;
+		var productCopy = angular.copy(product);
+	    productCopy.packages = [];
+	    productCopy.packages.push(pack);
+	    productCopy.price = pack.price;
 	    cartService.setTotalPrice(100);
 		cartService.addToCart(productCopy);
 		$scope.cart = cartService.getCart();

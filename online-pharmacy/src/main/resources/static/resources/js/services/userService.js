@@ -1,7 +1,7 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
-
 angular.module('app.service.user', [])
 .factory("userService", ['$resource', function($resource) {
 	return  $resource('api/user/:id', {id : "@id"},

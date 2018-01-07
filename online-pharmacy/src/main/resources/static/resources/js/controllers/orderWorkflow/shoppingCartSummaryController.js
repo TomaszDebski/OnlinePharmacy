@@ -1,9 +1,9 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.controller.shoppingCartSummary', [])
-.controller('shoppingCartSummaryController',function($scope,$http,$rootScope,$location,$window,$translate,
-		$state,cartService,$filter) {
+.controller('shoppingCartSummaryController',function($scope,$rootScope,$state,cartService,$filter) {
 		$scope.cart = cartService.getCart();
 		$scope.showNote = false;
 	    
@@ -15,7 +15,6 @@ angular.module('app.controller.shoppingCartSummary', [])
 	    }
 	    
 	    $scope.goNext = function(){
-//	    		console.log('$rootScope.authenticated',$rootScope.authenticated);
 	    	if ($rootScope.authenticated == 'true'){
 	    		$state.go("order.delivery");
 	    	}else{

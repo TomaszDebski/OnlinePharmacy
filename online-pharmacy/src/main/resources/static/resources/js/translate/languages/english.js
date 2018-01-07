@@ -1,5 +1,6 @@
 /**
- * 
+ * @author Tomasz Dębski
+ *
  */
 angular.module('app.translate-config-en', ['pascalprecht.translate'])
 .config(function ($translateProvider) {

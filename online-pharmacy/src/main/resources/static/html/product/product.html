@@ -7,10 +7,10 @@
     <span aria-hidden="true">›</span>
     <span>{{'menu.menu.'+category.parent.url | translate}} </span>
     <span aria-hidden="true">›</span>
-    <span><a class="" href="javascript:void(0)" 
+    <span><a class="" href=""  style="padding-right: 0px;margin-right: 0px;"
 				ui-sref="medicineList({name:'{{category.url}}'})">
 				{{'submenu.menu.' + category.parent.url + '.' + category.url | translate}}</a></span>
-     <span aria-hidden="true">›</span>
+				<span aria-hidden="true">›</span>
      <span>{{product.name}}</span>
 </nav>
 <div class="grid product-single gallery mode-zoom">
@@ -29,14 +29,6 @@
 					src="http://localhost:8080/api/product/img?number={{product.number}}"
 					alt="">
 			</a></li>
-<!-- 			<li class="grid__item one-quarter thumbs"><a class="thumb" -->
-<!-- 				title="PERNATON JOINT MASSAGE GEL" -->
-<!-- 				href="javascript:(void)"> -->
-<!-- 					<img -->
-<!-- 					src="http://localhost:8080/api/product/img?number={{product.number}}"  -->
-<!-- 					alt=""> -->
-<!-- 			</a></li> -->
-
 		</ul>
 	</div>
 
@@ -44,19 +36,9 @@
 		<h1 itemprop="name">{{product.name}}</h1>
 		<div itemprop="offers" itemscope="" itemtype="">
 			<meta itemprop="priceCurrency" content="EUR">
-			<link itemprop="availability" href="http://schema.org/InStock">
-
-
-<!-- 				<form novalidate -->
-<!-- 					(ngSubmit)="addToCart()" -->
-<!-- 					 id="AddToCartForm" -->
-<!-- 					#addToCart="ngForm"> -->
-
+			<link itemprop="availability" href="">
 				<span id="ProductPrice" class="h2" itemprop="price">{{packagePrice}}</span> <label
-					for="option-6f6cb72d544962fa333e2e34ce64f719">Opakowanie</label> 
-					 
-<!-- 					<packages-select [product]="product" -->
-<!-- 						(selectedChange)="changePackage($event)"></packages-select> -->
+					for="">Opakowanie</label> 
 					<select 
 						id="package" 
 						name="package" 
@@ -65,10 +47,7 @@
 						ng-options="package.name + ' - ' + package.price + ' zł' for package in product.packages"
 						ng-init="package = product.packages[0]"
 						>
-<!-- 						<option style="display:none" value="">{{'commons.select_' | translate}}</option> -->
 					</select>	
-
-<!-- 				<input name="id" value="" type="hidden">  -->
 					<label
 					for="Quantity" class="quantity-selector">Ilość</label> 
 					<input
@@ -87,16 +66,11 @@
 				<button ng-click="addToCart()" name="add" id="X_AddToCart" class="btn">
 					<span id="AddToCartText">Dodaj do koszyka</span>
 				</button>
-<!-- 			</form> -->
 		</div>
 		<hr>
 		<div class="product-description rte" itemprop="description">
-			currentLanguage = {{currentLanguage}}
 			<p>{{currentLanguage == 'pl' ? product.description : product.description_en}}</p>
-<!-- 			<p style="display: none;">Use several times a day if required.</p> -->
-<!-- 			<div class="read-more">Czytaj więcej/mniej</div> -->
 		</div>
-
 	</div>
 </div>
 </main>
@@ -104,6 +78,5 @@
 	.arrows {
 		background-image: url("https://vend-ecom-prod-assets.s3.amazonaws.com/storefront-assets/9db84236-6fac-4959-8f42-5d131090356c/22e21992-e3eb-11e6-b255-0a6afe88c81b/4f76952c-4218-11e7-a288-0a6afe88c81b.svg");
 		padding-right: 28px;
-/* 		width: auto; */
 	}
 </style>

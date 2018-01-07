@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.debski.pharmacy.onlinepharmacy.entities.User;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
+import com.debski.pharmacy.onlinepharmacy.service.ILoginService;
 
 /**
  * @author Tomasz Dębski
@@ -19,22 +20,24 @@ import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 @RequestMapping("/login")
 public class loginController {
 	
+//	@Autowired
+//	UserRepository userRepository;
 	@Autowired
-	UserRepository userRepository;
+	ILoginService loginService;
 
 	@RequestMapping(method= RequestMethod.GET)
 	public User login(@RequestParam("username") String username,@RequestParam("password") String password){
-		BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
-		String encodePassword = crypt.encode(password);
-		User user = userRepository.findTop1ByUsername(username);
-		if(user != null){
-			if (BCrypt.checkpw(password, user.getPassword())){
-				return user;
-			}else{
-				return null;
-			}
-		}else{
-			return null;
-		}
+		return loginService.login(username, password);
+//		BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
+//		String encodePassword = crypt.encode(password);
+//		User user = userRepository.findTop1ByUsername(username);
+//		if(user != null){
+//			if (BCrypt.checkpw(password, user.getPassword())){
+//				return user;
+//			}else{
+//				return null;
+//			}
+//		}
+//		return user;
 	}
 }
