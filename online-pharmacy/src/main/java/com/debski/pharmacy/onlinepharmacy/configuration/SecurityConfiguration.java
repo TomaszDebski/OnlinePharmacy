@@ -75,16 +75,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	        .antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
 	        .antMatchers("/register").permitAll()
 	        .antMatchers("/login").permitAll()
-//	        .antMatchers("/physiotherapist/byUsername/**").permitAll()
-//	        .antMatchers("/physiotherapist").permitAll()
-//	        .antMatchers("/physiotherapist/**").access("hasRole('ROLE_USER')")
-//	        .antMatchers("/visit/**").access("hasRole('ROLE_USER')")
-//	        .antMatchers("/patient/**").authenticated()
-//	        .antMatchers("/#/patient/**").access("hasRole('ROLE_USER')")
-//	        .antMatchers("/interview/**").access("hasRole('ROLE_USER')")
-//	        .antMatchers("/kindOfPain/**").access("hasRole('ROLE_USER')")
-//	        .antMatchers("/findUser/**").access("hasRole('ROLE_USER')")
-//	        .antMatchers("/service/**").access("hasRole('ROLE_USER')")
 	        	.and()
 	        .formLogin()
 	        	.loginProcessingUrl("/api/login")
@@ -108,7 +98,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    
 	    @Override
 		public void configure(WebSecurity web) throws Exception {
-//	    	web.debug(true); 
 			super.configure(web);
 		}
 

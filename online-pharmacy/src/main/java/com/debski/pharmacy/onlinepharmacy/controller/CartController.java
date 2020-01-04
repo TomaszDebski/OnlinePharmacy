@@ -33,20 +33,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RequestMapping("/api/cart")
 public class CartController {
 
-//	@Autowired
-//	CartRepository cartRepository;
-//	
-//	@Autowired
-//	ProductRepository productRepository; 
-//	
-//	@Autowired
-//	CartProductRepository cartProductRepository;
-//	
-//	@Autowired
-//	CategoryProductRepository categoryRepository;
-//	
-//	@Autowired
-//	UserRepository userRepository;
 	
 	@Autowired
 	ICartService cartService;
@@ -54,49 +40,18 @@ public class CartController {
 	@RequestMapping(method= RequestMethod.POST)
 	public void addCart(@RequestBody Cart cart,Principal principal){
 		cartService.addCart(cart, principal.getName());
-//		if (cart.getId() == null || cart.id == 0){
-//			String userName = principal.getName();
-//			if (userName != null){
-//				User user = userRepository.findTop1ByUsername(userName);
-//				cart.setUser(user);
-//				cart.setLastName(user.getLastname());
-//				cart.setFirstName(user.getFirstname());
-//				cart.setEmail(user.getUserDetails().getEmail());
-//			}
-//			cart.setCartDate(new Date());
-//			cart.setInsertedDate(new Date());
-//			cartRepository.save(cart);
-//			if (cart.getCartProducts() != null){
-//				for(CartProduct product : cart.getCartProducts()){
-//					product.setCart(cart);
-//					cartProductRepository.save(product);
-//				}
-//			}
-//		}
 	}
 	
 	@JsonView(Views.UserCart.class)
 	@RequestMapping(value="/{id}")
 	public Cart getCartById(@PathVariable("id") long id){
 		return cartService.getCartById(id);
-//		return cartRepository.findOne(id);
 	}
 	
-//	@JsonView(Views.UserCart.class)
 	@RequestMapping("/pagination")
 	public Page<Cart> getAllCartForUser(Pageable pageable,@RequestParam("userId") Long id){
 		return cartService.getAllCartForUser(pageable, id);
-//		return cartRepository.findCartByUser(pageable, id);
 		
 	}
 
-	
-//	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
-//	public void updateUser(@PathVariable("id") long id,@RequestBody User user){
-////		physiotherapistService.updatePhysiotherapist(id, physiotherapist);
-//	}
-	
-//	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-//	public void deleteUser(@PathVariable("id") long id){
-//	}
 }

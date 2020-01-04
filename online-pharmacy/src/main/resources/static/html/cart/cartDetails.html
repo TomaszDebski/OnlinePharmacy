@@ -74,8 +74,13 @@
 
 		<div class="grid__item text-right five-twelfths">
 			<p >
-				<span class="cart__subtotal-title"><b>Podsumowanie</b></span> <span
-					class="h3 cart__subtotal">{{cart.totalPrice |
+				<span class="cart__subtotal-title" style="padding-right: 16px;">Przesyłka:</span> <span 
+					class="h4 cart__subtotal">{{cart.shippingPrice + cart.paymentPrice |
+					number:2}}</span>
+			</p>
+			<p >
+				<span class="cart__subtotal-title"><b>Podsumowanie:</b></span> <span
+					class="h3 cart__subtotal">{{cart.totalPrice + cart.shippingPrice + cart.paymentPrice |
 					number:2}}</span>
 			</p>
 			<div class="cartQuestions">

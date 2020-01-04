@@ -141,7 +141,6 @@ angular.module('app.config', [])
 		},
 		resolve : {
 			loginUserResolve : function($rootScope,$window,userService,$http){
-				console.log('$rootScope.authenticated',$rootScope.authenticated);
 				if ($rootScope.authenticated == 'true' && $window.sessionStorage != undefined){
 					return $http({
 			            method: 'GET',

@@ -51,7 +51,7 @@
     			<tbody>
     				<tr ng-repeat="cart in carts">
 				      	<td><span class="table_span">{{cart.cartDate | date:'yyyy-MM-dd' }}</span></td>
-				      	<td><span class="table_span">{{cart.totalPrice}}</span></td>
+				      	<td><span class="table_span">{{cart.totalPrice + cart.shippingPrice + cart.paymentPrice}}</span></td>
 				      	<td><span class="table_span">{{cart.firstName}} {{cart.lastName}}</span></td>
 				         <td><span class="table_span">{{cart.email}}</span></td>
 				             <td class="actions-col">

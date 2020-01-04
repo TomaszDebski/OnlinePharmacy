@@ -16,9 +16,10 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-//@Entity
-//@Table(name="Menu")
+/**
+ * @author Tomasz Dębski
+ *
+ */
 public class Menu {
 	
 	@Id
@@ -45,7 +46,6 @@ public class Menu {
 	@Column(name="insertedDate")
 	public Date insertedDate;
 	
-//	@JsonView(Views.Menu.class)
 	@ManyToOne
 	@JsonIdentityInfo(
 			  generator = ObjectIdGenerators.PropertyGenerator.class, 

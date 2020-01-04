@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Entity
 @Table(name="cart")
 public class Cart {
@@ -82,8 +86,8 @@ public class Cart {
 	public String deliveryOption;
 	
 	@JsonView(Views.UserCart.class)
-	@Column(name="delivery_price")
-	public double deliveryPrice;
+	@Column(name="shipping_price")
+	public double shippingPrice;
 	
 	
 	//////////////////////////
@@ -95,7 +99,7 @@ public class Cart {
 	
 	@JsonView(Views.UserCart.class)
 	@Column(name="payment_price")
-	public String paymentPrice;
+	public double paymentPrice;
 	//////////////////////////
 	
 	
@@ -230,12 +234,12 @@ public class Cart {
 		this.totalPrice = totalPrice;
 	}
 
-	public double getDeliveryPrice() {
-		return deliveryPrice;
+	public double getShippingPrice() {
+		return shippingPrice;
 	}
 
-	public void setDeliveryPrice(double deliveryPrice) {
-		this.deliveryPrice = deliveryPrice;
+	public void setShippingPrice(double shippingPrice) {
+		this.shippingPrice = shippingPrice;
 	}
 
 	public String getPaymentOption() {
@@ -245,14 +249,15 @@ public class Cart {
 	public void setPaymentOption(String paymentOption) {
 		this.paymentOption = paymentOption;
 	}
-
-	public String getPaymentPrice() {
+	
+	public double getPaymentPrice() {
 		return paymentPrice;
 	}
 
-	public void setPaymentPrice(String paymentPrice) {
+	public void setPaymentPrice(double paymentPrice) {
 		this.paymentPrice = paymentPrice;
 	}
+
 	public String getEmail() {
 		return email;
 	}

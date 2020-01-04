@@ -5,10 +5,11 @@
 angular.module('app.controller.medicineList', [])
 .controller('medicineListController',
 		function($stateParams,categoryService,$scope,cartService,$filter,Product,categoryResolve,oneCategoryResolve,
-				productsResolve,productPaginationService ) { 
+				productsResolve,productPaginationService,$timeout ) { 
 	$scope.categoryName = $stateParams.name;
 	$scope.totalItems = productsResolve.totalElements;
 	$scope.currentPage = productsResolve.number;
+	$scope.numberOfProduct = 0;
 	$scope.pageChanged = function() {
 		refreshProducts(($scope.currentPage-1),9);
 	}
@@ -25,7 +26,6 @@ angular.module('app.controller.medicineList', [])
 	    	$scope.currentPage = result.number+1;
 	    })
 	}
-	console.log('categoryResolve',categoryResolve[1].subcategory[0].url);
 	$scope.menu = categoryResolve;
 	$scope.products = productsResolve.content;
 	$scope.category = oneCategoryResolve;
@@ -56,8 +56,6 @@ angular.module('app.controller.medicineList', [])
 	 sortOptionsArray = [];
 	 sortOptionsArray.push(new SortOption('name-ascending','name',false,'Alfabetycznie, A-Z'));
 	 sortOptionsArray.push(new SortOption('name-descending','name',true,'Alfabetycznie, Z-A'));
-	 sortOptionsArray.push(new SortOption('price-ascending','price',false,'Cena, Najniższa do najwyższej'));
-	 sortOptionsArray.push(new SortOption('price-descending','price',true,'Cena, Najwyższa do najniższej'));
 	 $scope.sortOptions = sortOptionsArray;
 	 $scope.selectedOption = $scope.sortOptions[0];
 	 //// Sort list/////
@@ -70,4 +68,10 @@ angular.module('app.controller.medicineList', [])
 		    $scope.reverse = sortElement.direction;
 		    $scope.propertyName = sortElement.value;
 		  };
+		  
+	$scope.sth = function(value){
+		$timeout( function(){
+            return true;
+        }, 2000 );
+	}	  
 });

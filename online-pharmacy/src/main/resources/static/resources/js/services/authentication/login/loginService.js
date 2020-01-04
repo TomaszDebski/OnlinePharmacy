@@ -32,7 +32,6 @@ angular.module('app.service.login',[])
     	        	        method: "GET",
     	        	    })
     	        	    .then(function(funcResponse) {
-    	        	    	console.log('after findUser')
     	        	    	var response = funcResponse.data;
     	        	    	if (response){
     	        	    		$http({

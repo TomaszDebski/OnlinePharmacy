@@ -20,24 +20,11 @@ import com.debski.pharmacy.onlinepharmacy.service.ILoginService;
 @RequestMapping("/login")
 public class loginController {
 	
-//	@Autowired
-//	UserRepository userRepository;
 	@Autowired
 	ILoginService loginService;
 
 	@RequestMapping(method= RequestMethod.GET)
 	public User login(@RequestParam("username") String username,@RequestParam("password") String password){
 		return loginService.login(username, password);
-//		BCryptPasswordEncoder crypt = new BCryptPasswordEncoder();
-//		String encodePassword = crypt.encode(password);
-//		User user = userRepository.findTop1ByUsername(username);
-//		if(user != null){
-//			if (BCrypt.checkpw(password, user.getPassword())){
-//				return user;
-//			}else{
-//				return null;
-//			}
-//		}
-//		return user;
 	}
 }

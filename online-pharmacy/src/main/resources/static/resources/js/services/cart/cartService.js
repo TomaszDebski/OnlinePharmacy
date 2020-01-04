@@ -41,7 +41,6 @@ angular.module('app.service.cart', [])
 	      }else{
 	          findedProduct.totalNumber = parseInt(findedProduct.totalNumber) + parseInt(productAdded.totalNumber);
 	      }
-	      console.log('karta ', karta);
 	      this.calculateTotalPrice(productAdded);    
 	  },
 	  

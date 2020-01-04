@@ -40,16 +40,13 @@ angular.module('app.controller.addProduct', [])
     
     uiUploader.removeAll();
     $scope.btn_upload = function() {
-    	console.log('$scope.model.subcategory.number',$scope.model.subcategory.number);
         uiUploader.startUpload({
             url: '/api/product/upload' + '?categoryNumber=' + $scope.model.subcategory.number,
             concurrency: 1,
             onProgress: function(file) {
-            	console.log('onProgress')
                 $scope.$apply();
             },
             onCompleted: function(file, response) {
-            	console.log('onCompleted',response)
                 $scope.imgNumber = response;
                 $scope.$apply();
                 
@@ -60,7 +57,6 @@ angular.module('app.controller.addProduct', [])
     $scope.files = {};
     var element = document.getElementById('file1');
     element.addEventListener('change', function(e) {
-    	console.log('change')
         var files = e.target.files;
         uiUploader.addFiles(files);
         $scope.files = uiUploader.getFiles();

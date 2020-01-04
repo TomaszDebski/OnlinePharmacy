@@ -45,29 +45,7 @@ public class ProductController {
             HttpServletRequest request) {
 
     	byte[] data = null;
-//    	URL url = ClassLoader.getSystemResource("static/images/" +number +".png");
-//    	if (url == null){
-//    		url = ClassLoader.getSystemResource("static/images/" +number +".jpg");
-//    	}
-//    	try{
-//    		if(StringUtils.isNotEmpty(number) && url != null){
-//    			Path path = Paths.get(url.toURI());
-//    			data = Files.readAllBytes(path);
-//    		}
-//			if (data == null && StringUtils.isNotEmpty(number)){
-				String uploadsDir = "/my_uploads/";
-//				String realPathtoUploads =  request.getServletContext().getRealPath(uploadsDir); 
-//				File dest = new File(realPathtoUploads);
-//				  for (final File fileEntry : dest.listFiles()) {
-//			        	if (fileEntry.exists() && fileEntry.isFile())
-//			                System.out.println(fileEntry.getName());
-//			        		Path path1 = fileEntry.toPath();
-//			        		data = Files.readAllBytes(path1);
-//			            }
-//			}
-//    	} catch (URISyntaxException | IOException e) {
-//			e.printStackTrace();
-//		}
+		String uploadsDir = "/my_uploads/";
     	data = productService.getCarPhoto(number, request.getServletContext().getRealPath(uploadsDir));
     	HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG); 
@@ -77,19 +55,6 @@ public class ProductController {
 	@RequestMapping(method= RequestMethod.POST)
 	public void addProduct(@RequestBody Product product,@RequestParam("categoryId") Long categoryId){
 		productService.addProduct(product, categoryId);
-//		System.out.println("product packages " + product.getPackages().get(0).getName());
-//		CategoryProduct cp = categoryRepository.findOne(categoryId);
-//		if (cp != null){
-//			product.setNumber(cp.getNumber() + "_" + (findMaxNumberOfCategoryForProduct(cp.getNumber())+1));
-//			product.setCategoryProduct(cp);
-//			product.setId(null);
-//			for (ProductPackage pack : product.getPackages()) {
-//				pack.setId(null);
-//			}
-//			productRepository.save(product);			
-//		}else{
-//			System.out.println("Brak kategorii");
-//		}
 	}
 	
 	@JsonView(Views.Product.class)
@@ -112,27 +77,10 @@ public class ProductController {
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.POST,
 		    consumes = {"multipart/form-data"})
-		public String executeSampleService(
+	public String executeSampleService(
 		        @RequestPart("file") @Valid @NotNull @NotBlank MultipartFile file,
 		        @RequestParam("categoryNumber") String categoryNumber,
 		        HttpServletRequest request) {
-			System.out.println("categoryNumber " + categoryNumber);
-//		String uploadsDir = "/my_uploads/";
-//		String realPathtoUploads =  request.getServletContext().getRealPath(uploadsDir); 
-//        if(! new File(realPathtoUploads).exists())
-//        {
-//            new File(realPathtoUploads).mkdir();
-//        }
-//
-//        String productNumer = categoryNumber + "_" + (findMaxNumberOfCategoryForProduct(categoryNumber) + 1);
-//        String filePath = realPathtoUploads + productNumer;
-//        File dest = new File(filePath);
-//        try {
-//			file.transferTo(dest);
-//		} catch (IllegalStateException | IOException e) {
-//			e.printStackTrace();
-//		}
-//        return productNumer;
-		return productService.getNameForFile(file, categoryNumber, request);
+	return productService.getNameForFile(file, categoryNumber, request);
 		}
 }

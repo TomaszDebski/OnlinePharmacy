@@ -21,7 +21,6 @@ angular.module('app.controller.logout', []).controller(
 					$rootScope.$emit('parent', false);
 					$state.go("login");
 				}).error(function(data, status, headers, config) {
-					console.log('Problem z wylogowaniem');
 			})
 			
 			

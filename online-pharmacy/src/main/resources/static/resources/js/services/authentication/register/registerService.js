@@ -14,7 +14,6 @@ angular.module('app.service.register',[])
     			var isPasswordEqual = user.password == passwordConfirm;
     			if (!isPasswordEqual){
     				notEqual = true;
-    				console.log("passwords not equal")
     				$rootScope.$emit('registerSuccess', false);
     			}
     			if (registerForm.$valid && isPasswordEqual) {
@@ -24,7 +23,6 @@ angular.module('app.service.register',[])
     	    	    })
     	    	    .then(function(response) {
     	    	    	if (response.data != null && response.data.username != undefined && response.data.username.length > 0){
-    	    	    		console.log("istnieje już taki użytkownik")
     	    	    	}else{
     	    	    		 if (isPasswordEqual){
     	    	    			 userService.save(user,function(){

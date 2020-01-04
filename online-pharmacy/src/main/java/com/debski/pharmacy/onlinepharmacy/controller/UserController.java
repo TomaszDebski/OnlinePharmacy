@@ -34,13 +34,12 @@ public class UserController {
 
 	@Autowired
 	UserRepository userRepository;
-//	
+
 	@Autowired
 	UserDetailsRepository userDetailsRepository;
 
 	@RequestMapping(method= RequestMethod.POST)
 	public void addPhysiotherapist(@RequestBody User user){
-		System.out.println(user.getFirstname());
 		BCryptPasswordEncoder encode = new BCryptPasswordEncoder();
 		UserDetails userDetails = null;
 		if (user.getUserDetails() == null){
@@ -53,7 +52,6 @@ public class UserController {
 		user.setRole("ROLE_USER");
 		userRepository.save(user);
 		userDetailsRepository.save(user.getUserDetails());
-//		physiotherapistService.addPhysiotherapist(physiotherapist);
 	}
 	
 	@JsonView(Views.UserDetails.class)
@@ -63,13 +61,11 @@ public class UserController {
 		User user = userRepository.findOne(id);
 		Hibernate.initialize(user.getUserDetails());
 		return user; 
-//		return null;
 	}
 	
 	@JsonView(Views.User.class)
 	@RequestMapping
 	public List<User> getAllUser(){
-//		return physiotherapistService.getAllPhysiotherapists();
 		return (List<User>)userRepository.findAll();
 	}
 
@@ -81,7 +77,6 @@ public class UserController {
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
 	public void updateUser(@PathVariable("id") long id,@RequestBody User user){
-//		physiotherapistService.updatePhysiotherapist(id, physiotherapist);
 	}
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)

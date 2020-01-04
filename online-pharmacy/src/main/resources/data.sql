@@ -13,7 +13,7 @@ insert into user (id,username,password,first_name,last_name,role,user_details_id
 --insert into user (id,username,password,first_name,last_name,phone,second_phone,email,city,post_code,address,role,pesel) values (1,'user','$2a$06$/zpn1QuDr6QmJMnNm/oXyuQoKxmRkE3qhlKGAywFRtK03FelDd3AW','Tomasz','Dębski','787361182','222222','tomaszdebski@o2.pl','Lublin','20-765','Lublinowo','ROLE_USER',28080803742);
 --insert into user (id,username,password,first_name,last_name,phone,second_phone,email,city,post_code,address,role,pesel) values (2,'admin','$2a$04$9NUQszd97BkpRjb9KaP62OivCd0BTcUg3zHWZdRC1CtGXLMJhXbRu','Tomasz','Dębski','787361182','222222','tomaszdebski@o2.pl','Lublin','20-765','Lublinowo','ROLE_USER',28080803742);
 
-insert into category_product (id,name,description,url,order_url,category_number) values(10,'menu.home','menu.home.description','/','001',''); 
+--insert into category_product (id,name,description,url,order_url,category_number) values(10,'menu.home','menu.home.description','/','001',''); 
 
 ---------------------- MEDICINE ------------------
 insert into category_product (id,name,description,url,order_url,category_number) values(20,'menu.medicine','menu.medicine.description','medicine','002','M_PR');
@@ -23,44 +23,42 @@ insert into category_product (id,name,description,url,order_url,category_number,
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (1,'PERNATON JOINT MASSAGE Żel','Pernaton Gel zawiera wyciąg z zielonego Lippeda małży z naturalnie występującą glukozaminą. Początkowo ochładza skórę, a następnie łagodzi ciepło mięśni, ścięgien i stawów. Może być stosowany codziennie, aby złagodzić sztywność stawów od starości lub złagodzić bóle stawów i mięśni ze strony szczepu i zranienia. Jest wchłaniana szybko i ma świeży, przyjemny zapach.',
 'Pernaton Gel contains pure Green Lipped Mussel extract with naturally occuring glucosamine. It initially cools the skin, then provides a relieving warmth to muscles, tendons and joints. It  can be used daily to help relieve joint stiffness from old age or ease joint and muscle irritation from strain and injury. It is absorbed rapidly and has a fresh, pleasant aroma.',21,'M_PR_1');
-insert into product_package (id,product_id,name,price) values (10,1,'20',20.0);
-insert into product_package (id,product_id,name,price) values (20,1,'10',10.0);
+insert into product_package (id,product_id,name,price) values (10,1,'50ml',20.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
-	(2,'NUROFEN EXPRESS 200MG TABLETKI','Tabletki Nurofen Express zawierają postać ibuprofenu, która działa szybciej niż standardowe tabletki powlekane. Dają szybką skuteczną pomoc: bóle głowy, bóle stomatologiczne, bóle mięśni, bóle okresowe, bóle pleców, gorączkę, uczucie zimna i grypę.',
+	(2,'NUROFEN EXPRESS','Tabletki Nurofen Express zawierają postać ibuprofenu, która działa szybciej niż standardowe tabletki powlekane. Dają szybką skuteczną pomoc: bóle głowy, bóle stomatologiczne, bóle mięśni, bóle okresowe, bóle pleców, gorączkę, uczucie zimna i grypę.',
 	'Nurofen Express tablets contain a form of ibuprofen which works faster than standard film coated tablets. They give fast effective relief from: headache,dental pain, muscular pain, period pain, back pain, fever and cold and flu symptoms.',21,'M_PR_2');
-insert into product_package (id,product_id,name,price) values (30,2,'12',12.0);
-insert into product_package (id,product_id,name,price) values (40,2,'24',20.0);
+insert into product_package (id,product_id,name,price) values (30,2,'200MG',12.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 	(3,'DICLAC RELIEF ŻEL 1%','Diclac Relief 1% w / w Żel przeciwzapalny zawiera diklofenak sodu 1% wag./wag. Leczy ból i zapalenie ścięgien, więzadeł, mięśni i stawów, jak również reumatyzm tkanek miękkich.',
 	'Diclac Relief 1% w/w Anti-Inflammatory Gel contains Diclofenac sodium 1% w/w. It treats pain and inflammation of tendons, ligaments, muscles and joints aswell as soft tissue rheumatism.',21,'M_PR_3');
-insert into product_package (id,product_id,name,price) values (50,3,'12',10.0);
+insert into product_package (id,product_id,name,price) values (50,3,'120ml',20.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
-		(4,'PANADOL TABLETKI 500MG','Tabletki Panadol zawierają 500 mg Paracetamolu. Mogą być stosowane w celu złagodzenia bólu głowy, bólu zęba, ból gardła, bóle kręgosłupa, ból reumatyczny, ból związany z zapaleniem kości i stawów, bóle mięśni i ból w okresie. Baracetamol skutecznie redukuje temperaturę i gorączkę.',
+		(4,'PANADOL TABLETKI ','Tabletki Panadol zawierają 500 mg Paracetamolu. Mogą być stosowane w celu złagodzenia bólu głowy, bólu zęba, ból gardła, bóle kręgosłupa, ból reumatyczny, ból związany z zapaleniem kości i stawów, bóle mięśni i ból w okresie. Baracetamol skutecznie redukuje temperaturę i gorączkę.',
 		'Panadol tablets contain 500mg Paracetamol. They can be used to relieve headache, toothache, sore throat, backache, rheumatic pain, osteoarthritis pain, muscle pain and period pain.Paracetamol is effective in reducing temperatures and fever.',21,'M_PR_4');
-insert into product_package (id,product_id,name,price) values (60,4,'12',10.0);
+insert into product_package (id,product_id,name,price) values (60,4,'500MG',30.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
-	(5,'PANADOL EXTRA TABLETKI 24 SZ','Tabletki Panadol Extra zawierają dwa aktywne składniki. Paracetamol jest lekiem przeciwbólowym, który pomaga również obniżyć temperaturę podczas gorączki. Kofeina działa poprawiając skuteczność paracetamolu, zwiększając zdolność organizmu do jej absorpcji.',
+	(5,'PANADOL EXTRA TABLETKI ','Tabletki Panadol Extra zawierają dwa aktywne składniki. Paracetamol jest lekiem przeciwbólowym, który pomaga również obniżyć temperaturę podczas gorączki. Kofeina działa poprawiając skuteczność paracetamolu, zwiększając zdolność organizmu do jej absorpcji.',
 	'Panadol Extra tablets contain two active ingredients. Paracetamol is a painkiller which also helps reduce your temperature when you have a fever. Caffeine works to improve the effectiveness of the paracetamol by increasing the body ability to absorb it.',21,'M_PR_5');
-insert into product_package (id,product_id,name,price) values (70,5,'10',10.0);
+insert into product_package (id,product_id,name,price) values (70,5,'24 SZ',15.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
-		(6,'EXCEDRIN TABLETKI 20 SZ','Tabletki leku Excedrin mają potężną potrójną formułę do ostrego leczenia migreny i bólów głowy, które są trudne do uderzenia i szybkiego działania. Są to tabletki powlekane zawierające Aspirynę 250 mg, Paracetamol 250 mg i kofeinę 65 mg.',
+		(6,'EXCEDRIN TABLETKI','Tabletki leku Excedrin mają potężną potrójną formułę do ostrego leczenia migreny i bólów głowy, które są trudne do uderzenia i szybkiego działania. Są to tabletki powlekane zawierające Aspirynę 250 mg, Paracetamol 250 mg i kofeinę 65 mg.',
 		'Excedrin tablets boast a powerful triple action formula for the acute treatment of migraine and headaches that is hard hitting and fast acting. They are film coated tablets containing Aspirin 250mg, Paracetamol 250mg and Caffeine 65mg.',21,'M_PR_6');
-insert into product_package (id,product_id,name,price) values (80,6,'5',10.0);
+insert into product_package (id,product_id,name,price) values (80,6,'20 SZ',22.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
-	(7,'NUROFEN TABLETKI 200MG','Nurofen tabletki 200 mg są oryginalnym wyborem w gamie Nurofen. Tabletki są powleczone, więc można je połknąć. Zwalniają ból, zmniejszają stan zapalny i niższą temperaturę',
+	(7,'NUROFEN TABLETKI ','Nurofen tabletki 200 mg są oryginalnym wyborem w gamie Nurofen. Tabletki są powleczone, więc można je połknąć. Zwalniają ból, zmniejszają stan zapalny i niższą temperaturę',
 	'Nurofen Express tablets contain a form of ibuprofen which works faster than standard film coated tablets. They give fast effective relief from: headache,dental pain, muscular pain, period pain, back pain, fever and cold and flu symptoms.',21,'M_PR_7');
-insert into product_package (id,product_id,name,price) values (90,7,'3',10.0);
+insert into product_package (id,product_id,name,price) values (90,7,'200MG',8.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 	(8,'PANADOL NOC TABLETKI1 20 SZ','Tabletki Panadol Night łączą skuteczną lekarstwę Paracetamolu z delikatnymi właściwościami uspokajającymi chlorowodorku anty-histaminy - difenhydraminy. Dają ulgę nocną w bólach mięśniowych, bólach pleców, bólach głowy, bólach głowy, bólach okresowych, zimnych i grypowych. .',
 	'Panadol Night tablets combine the effective pain relieving power of Paracetamol with the gentle sedating properties of an anti-histamine -  Diphenhydramine Hydrochloride. They give night- time relief from muscular aches and pains, backache, toothache, headache ,period pain aswell as cold and flu symptoms. ',21,'M_PR_8');
-insert into product_package (id,product_id,name,price) values (100,8,'8',10.0);
+insert into product_package (id,product_id,name,price) values (100,8,'8 tab',14.0);
 	--------child.pain.relief
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(22,'menu.medicine.child.pain.relief','Diagnozowanie źródła bólu lub dyskomfortu małego dziecka może być trudne w najlepszym momencie. Kiedy twój maluch jest ranny lub cierpi, sygnały bólu docierają do mózgu, ale często nie wiedzą, jak interpretować tę wiadomość i nie mogą wyrazić tego, co się dzieje. Często dają nam różne znaki, że źle się czują, a kiedy poznajesz swojego maleństwa, zrozumiesz, co próbują ci powiedzieć.','child.pain.relief','002002','',20);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 	(23,'NUROFEN DLA DZIECI',
 	'Ten poręczny dodatek do gamy Nurofen nadaje się od 7 roku życia. Są łatwe do żucia i nie ma potrzeby, aby woda była tak dobra w podróży.',
 	'',22,'M_CP_1');
-insert into product_package (id,product_id,name,price) values (201,23,'10',10.0);
+insert into product_package (id,product_id,name,price) values (201,23,'10 tab',10.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 	(24,'BONJELA Pasta do zębów',
 	'Bonjela jest przezroczystym żelem, aplikowanym do wnętrza jamy ustnej lub dziąseł, aby uśmierzyć ból z powodu ząbkowania i bólów dziąseł. Zawiera salicylan choliny, środek przeciwbólowy i przeciwzapalny, który łagodzi bolesny obszar i chlorek cetalkoniowy, który zabija bakterie i pomaga zapobiegać infekcjom.',
@@ -84,19 +82,17 @@ insert into category_product (id,name,description,url,order_url,category_number,
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (101,'Active Plast Energy','Active Plast Energy na wzrost energii i dobre samopoczucie dla kobiet i mężczyzn. Plastry ENERGY zawierają naturalne składniki tradycyjnie stosowane na wzrost energii i dobre samopoczucie.',
 '',31,'V_EV_1');
-insert into product_package (id,product_id,name,price) values (1001,101,'12',20.0);
-insert into product_package (id,product_id,name,price) values (1002,101,'6',10.0);
+insert into product_package (id,product_id,name,price) values (1001,101,'10 tab',10.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (102,'FLORADIX Tabletki 84 tab','Floradix płynne żelazo i witamina formuła zawiera organiczne żelazo (II) z glukonianu żelaza, witaminy B2, B6, B13 i C, które przyczyniają się do zmniejszenia zmęczenia i zmęczenia.Iron przyczynia się do normalnego tworzenia czerwonych krwinek i hemoglobiny. Witamina C zwiększa wchłanianie żelaza. Płyn zawiera wybrane zioła i kilka koncentratów soków owocowych o przyjemnym smaku. Nie ma alkoholu, konserwantów, barwników ani sztucznych aromatów. Nie zawiera laktozy, glutenu i drożdży.',
 'Floradix liquid iron and vitamin formula contains organic iron(II) from ferrous gluconate,vitamin B2,B6,B13 and C which contribute to the reduction of tiredness and fatigue.Iron contributes to normal red blood cell and haemoglobin formation. Vitamin C increases iron absorption.The liquid contains selected herbs and several fruit juice concentrates for a pleasant taste. There is no alcohol,preservatives,colourings or artifical flavourings. It is also free from lactose,gluten and yeast.',31,'V_EV_2');
-insert into product_package (id,product_id,name,price) values (1010,102,'12',20.0);
-insert into product_package (id,product_id,name,price) values (1011,102,'6',10.0);
+insert into product_package (id,product_id,name,price) values (1010,102,'12 tab',20.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (103,'SONA VITAMIN B COMPLEX TIME RELEASE','Kompleks SONA B zawiera 11 witamin z grupy B, które przyczyniają się do wielu funkcji w organizmie, takich jak metabolizm energetyczny, normalne funkcjonowanie układu nerwowego, funkcja psychiczna, normalne włosy i wzrost skóry, zdrowy układ odpornościowy i pomaga zmniejszyć zmęczenie i zmęczenie. Ta formuła o czasowym uwalnianiu uwalnia składniki odżywcze przez dłuższy czas, co pozwala organizmowi na dłuższy okres wchłaniania i wykorzystywania tych składników odżywczych.',
 '',31,'V_EV_3');
-insert into product_package (id,product_id,name,price) values (1012,103,'12',20.0);
+insert into product_package (id,product_id,name,price) values (1012,103,'24 tab',25.0);
 
 
 
@@ -107,12 +103,12 @@ insert into category_product (id,name,description,url,order_url,category_number,
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (201,'DR BROWNS','Te butelki od Dr Browns zmniejszają problemy z karmieniem, udowodniono, że zachowują składniki odżywcze mleka i są pozbawione próżni, aby wspomóc trawienie.',
 'These  bottles from Dr Browns reduce feeding problems, they are proven to preserve the milks nutrients and are vacuum-free to aid digestion. ',41,'C_BO_1');
-insert into product_package (id,product_id,name,price) values (2010,201,'12',10.0);
+insert into product_package (id,product_id,name,price) values (2010,201,'120ml',10.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (202,'NUK PERFECT START','Ten zestaw startowy NUK Perfect Start został opracowany z naturalnym kształtem NUK dla smoczków i smoczków, aby pomóc w prawidłowym rozwoju szczęki. Dzięki temu matka może w dowolnym momencie przełączać się między klatką piersiową a butelką. Kątowe, spłaszczone torebka zapewnia naturalnemu wysunięciu języka i żuchwy podczas ssania, podczas gdy łukowaty szczyt dopasowuje się do kształtu i rozwoju podniebienia dziecka. Te smoczki i smoczki zostały zatwierdzone przez specjalistów ortodontycznych w celu zmniejszenia ryzyka niewspółliniowania zębów. system przeciwkolizyjnego powietrza zapewnia naturalny przepływ płynu, pozwalając dziecku na łatwe picie bez połykania powietrza.',
 '',41,'C_BO_2');
-insert into product_package (id,product_id,name,price) values (2011,202,'32',10.0);
+insert into product_package (id,product_id,name,price) values (2011,202,'320ml',10.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (203,'BUTELKA Z SZEROKĄ SZYJKĄ DR BROWN',
@@ -231,15 +227,15 @@ insert into category_product (id,name,description,url,order_url,category_number,
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (400,'DEZODORANT LYNX BODY SPRAY AFRICA TWIN ','Spray do ciała LYNX ma egzotyczną kombinację ciepłych afrykańskich przypraw i aromatów. Jest to najbardziej popularny zapach LYNX. Ten dezodorant w sprayu został zaprojektowany, aby zapewnić Ci chłód nawet w najgorętszych sytuacjach!','',61,'E_DE_1');
-insert into product_package (id,product_id,name,price) values (2200,400,'150ML',25.0);
+insert into product_package (id,product_id,name,price) values (2200,400,'150ML',35.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (401,'DEZODORANT BRUT ORIGINAL ','Dezodorant Brut original to niepowtarzalny i klasyczny zapach dla mężczyzn. Australijski produkt, który został stworzony przez mężczyzn dla mężczyzn. Ten klasyczny zapach pomoże Ci dłużej czuć się świeżo.','',61,'E_DE_2');
-insert into product_package (id,product_id,name,price) values (2201,401,'200ML',25.0);
+insert into product_package (id,product_id,name,price) values (2201,401,'200ML',15.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (402,'ANTYPERSPIRANT MITCHUM SPORT DLA MĘŻCZYZN ','Antyperspirant Mitchum zapewnia ochronę przez 48 godzin. Ekskluzywna formuła uwalnia czysty tlen, jest to silna substancja neutralizująca brzydki zapach powodowany przez bakterie przez cały dzień. Zawiera aloes i witaminę E, które łagodzą i kondycjonują skórę.','',61,'E_DE_3');
-insert into product_package (id,product_id,name,price) values (2202,402,'150ML',25.0);
+insert into product_package (id,product_id,name,price) values (2202,402,'150ML',45.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (403,'ANTYPERSPIRANT RIGHT GUARD XTREME STRESS 72HR ','Antyperspiracyjny sztyft Right Guard zapewnia dodatkową ochronę w sytuacjach stresowych i fizycznych dzięki neutralizatorowi zapachów ciała. Pomaga zwalczać brzydki zapach ciała u źródła i zapewnia długotrwałą świeżość.','',61,'E_DE_4');
@@ -247,13 +243,13 @@ insert into product_package (id,product_id,name,price) values (2203,403,'50ML',2
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (404,'ANTYPERSPIRANT RIGHT GUARD XTREME COOL ','Right Guard xtreme cool zapewnia 72 godziny dodatkowej ochrony. Zapewnia uczucie chłodu na skórze i pozostawia uczucie świeżości, szczególnie jeśli jesteś zestresowany lub doświadczasz wzmożonej aktywności fizycznej.','',61,'E_DE_5');
-insert into product_package (id,product_id,name,price) values (2204,404,'150ML',25.0);
+insert into product_package (id,product_id,name,price) values (2204,404,'150ML',65.0);
 -----------------------------------------------------------
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(62,'menu.men.after_shave','','after_shave','006002','E_AS',60);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (450,'WODA PO GOLENIU BRUT AFTERSHAVE ORIGINAL ','Brut jest znanym na całym świecie, męskim zapachem.  Zapach posiada mieszankę cytrusowych nut z nutą pikantnego drewna. Brut Aftershave Original to charakterystyczny zapach dla prawdziwych mężczyzn.','',62,'E_AS_1');
-insert into product_package (id,product_id,name,price) values (2301,450,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2301,450,'100ML',10.0);
 -----------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
 insert into category_product (id,name,description,url,order_url,category_number) values(80,'menu.gifts','','','008','');
@@ -266,29 +262,29 @@ insert into product_package (id,product_id,name,price) values (2401,500,'100ML',
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values 
 (501,'DKNY WOMEN 2PCE ','DKNY Energizing EDT 30ml i 150ml Balsam do ciała Energizing to piękny pomysł na prezent dla każdej kobiety w twoim życiu.','',81,'G_FH_2');
-insert into product_package (id,product_id,name,price) values (2402,501,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2402,501,'100ML',15.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values (502,'KOLEKCJA DOVE BEAUTY','Ten wspaniały zestaw z Dove zawiera balsam do ciała 250ml, bogatego kremu odżywczego o pojemności 75ml i poręcznego antyperspirantu w rozmiarach podróżnych, 50ml intensywnego szamponu naprawczego i 50ml intensywnej odżywki do naprawy.','',81,'G_FH_3');
 insert into product_package (id,product_id,name,price) values (2403,502,'100ML',25.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values (503,'KOLEKCJA DOVE HAPPINESS ','Ten zestaw jest doskonałym pomysłem na prezent, jako forma podziękowania dla kobiet w każdym wieku!','',81,'G_FH_4');
-insert into product_package (id,product_id,name,price) values (2404,503,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2404,503,'100ML',10.0);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values (504,'ZESTAW PĘDZLI REAL TECHNIQUES TRAVEL ESSENTIALS','Pakiet pędzli Real Techniques Travel Essentials zapewnia wszystko czego potrzebujesz będąc w drodze. Zapewnia doskonałą aplikację podkładu i doskonałe pokrycie. Ten wielozadaniowy pędzel może być stosowany do nakładania bronzera, różu i pudru. Poręczny pokrowiec służy zarówno jako uchwyt, jak i stojak do utrzymywania pędzli w czystości i ochrony.','',81,'G_FH_5');
-insert into product_package (id,product_id,name,price) values (2405,504,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2405,504,'100ML',30.0);
 -----------------------------------------------------------
 insert into category_product (id,name,description,url,order_url,category_number,parent_id) values(82,'menu.gifts.for_him','','for_him','008002','G_FM',80);
 
 insert into product (id, name,description,description_en, category_product_id,product_number) values (550,'WODA PO GOLENIU DLA MĘŻCZYZN CALVIN KLEIN TRUTH','Ta aromatyczna i zmysłowa woda po goleniu, jest zaliczana do aromatycznej klasyfikacji zapachów. Jest zalecany do wieczornego stosowania.','',82,'G_FM_1');
-insert into product_package (id,product_id,name,price) values (2500,550,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2500,550,'100ML',20.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values (551,'ZESTAW DLA SKÓRY WRAŻLIWEJ NIVEA DLA MĘŻCZYZN','Nivea Men Sensitive Complete Kit można stosować nawet dla bardzo wrażliwej skóry. Zawiera wszystkie pełnowymiarowe produkty: żel pod prysznic, 48h dezodorant, żel do mycia twarzy, balsam po prysznicu i balsam po goleniu.','',82,'G_FM_2');
-insert into product_package (id,product_id,name,price) values (2501,551,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2501,551,'100ML',30.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values (552,'PERFUMY DAVID BECKHAM INSTINCT ','Oryginalny zapach Beckhama stał się współczesnym klasykie. Świeży zapach idealnym do porannego lub nocnego użytkowania. Głównymi nutami są zapach grejpfruta i bergamotki, anyżu, czerwonego pieprzu i białego bursztynu. To niezwykłe połączenie tworzy męski i elegancki zapach.','',82,'G_FM_3');
-insert into product_package (id,product_id,name,price) values (2502,552,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2502,552,'100ML',20.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values (553,'WODA PO GOLENIU DAVIDOFF COOLWATER 75ML','Najważniejsze nuty zapachowe to mięta, lawenda, kolendra, rozmaryn,geranium, jaśmin i drzewo sandałowe. Baza składa się z drewna cedrowego, piżma, bursztynu i tytoniu. Odpowiedni dla mężczyzn w każdym wieku.','',82,'G_FM_4');
 insert into product_package (id,product_id,name,price) values (2503,553,'100ML',25.0);
 insert into product (id, name,description,description_en, category_product_id,product_number) values (554,'MASZYNKA DO GOLENIA GILLETTE MACH3 PACZKA','Ostrza Gillette Mach 3 zapewniają komfort i wydajność. Trzy zaawansowane tarcze usuwają włoski z mniejszym podrażnieniem i pozwalają na dokładniejsze golenie. Ostrza te można stosować dwa razy dłużej niż jednorazowe maszynki do golenia. Pasek smarujący umożliwia gładkie golenie. Taśma staje się biała, gdy zmniejsza się skuteczność.','',82,'G_FM_5');
-insert into product_package (id,product_id,name,price) values (2504,554,'100ML',25.0);
+insert into product_package (id,product_id,name,price) values (2504,554,'100ML',15.0);
 
 
 -----------------------------------------------------------

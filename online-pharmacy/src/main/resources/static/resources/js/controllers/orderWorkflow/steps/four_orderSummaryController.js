@@ -9,7 +9,6 @@ angular.module('app.controller.four_orderSummary', [])
     $scope.tatalPrice = cartService.getTotalPrice();
     cartService.getCart().stages[4].isBegin = true;
     $scope.shippingPrice = cartService.getShippingPrice() + $scope.cart.paymentPrice;
-    
     $scope.saveOrder = function(){
     	 angular.forEach(cartService.getCart().cartProducts, function(key,value){
     		 if (key.price == undefined || key.price == null){
@@ -17,7 +16,6 @@ angular.module('app.controller.four_orderSummary', [])
     		 }
     		 key.id = null;
     		 key.categoryProduct = null;
-    		 console.log('key',key)
     	 });
     	 
     	 cartResourceService.save(cartService.getCart(),function(data){

@@ -74,7 +74,7 @@
 				            	 class="form-control arrows"
 				            	 required
 				            	 ng-class="{submitted:newCategoryForm.submitted}"
-				            	 ng-options="category.id as category.name for category in categories"
+				            	 ng-options="category.id as ('menu.'+category.name | translate) for category in categories"
 				            	>
 				            		<option value="">Wybierz</option>
 							</select>

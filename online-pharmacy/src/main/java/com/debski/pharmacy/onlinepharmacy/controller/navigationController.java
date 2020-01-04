@@ -17,11 +17,6 @@ public class navigationController {
 	@RequestMapping("/findUser")
 	@ResponseBody
 	public Principal getUser(Principal user){
-//		System.out.println("Jestem w findUser: " );
-//		if (user == null){
-//			return null;
-//		}
-//		System.out.println("Jestem w findUser: " + user.getName());
 		return user;
 	}
 

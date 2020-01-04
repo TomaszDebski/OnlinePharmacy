@@ -7,7 +7,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.debski.pharmacy.onlinepharmacy.entities.User;
 import com.debski.pharmacy.onlinepharmacy.repository.UserRepository;
 import org.springframework.stereotype.Service;
-
+/**
+ * @author Tomasz Dębski
+ *
+ */
 @Service
 public class LoginService implements ILoginService{
 	

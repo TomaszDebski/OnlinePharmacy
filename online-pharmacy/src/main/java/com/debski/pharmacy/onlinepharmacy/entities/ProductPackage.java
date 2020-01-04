@@ -8,6 +8,10 @@ import javax.persistence.Table;
 
 import com.debski.pharmacy.onlinepharmacy.configuration.Views;
 import com.fasterxml.jackson.annotation.JsonView;
+/**
+ * @author Tomasz Dębski
+ *
+ */
 
 @Entity
 @Table(name="product_package")
